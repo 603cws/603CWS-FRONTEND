@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
     };
   }, []);
 
-  const PORT = "https://603-cws-backend.vercel.app";
+  const PORT = "http://localhost:3000";
   const [selectedLocation, setSelectedLocation] = useState("");
   const [spacetype, setspacetype] = useState("");
 

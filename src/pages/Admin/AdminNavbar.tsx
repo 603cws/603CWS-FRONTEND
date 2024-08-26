@@ -12,7 +12,7 @@ function AdminDashNavbar() {
     const [isSideWindowOpen, setIsSideWindowOpen] = useState(false);
     const navigate = useNavigate();
 
-    const PORT = "https://603-cws-backend.vercel.app";
+    const PORT = "http://localhost:3000";
 
 
     const logout = async () => {

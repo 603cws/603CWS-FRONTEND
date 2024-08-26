@@ -45,7 +45,7 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const response = await axios.get(
-        "https://603-cws-backend.vercel.app/api/v1/users/details/dashboard",
+        "http://localhost:3000/api/v1/users/details/dashboard",
         {
           withCredentials: true,
         }
@@ -114,10 +114,7 @@ function AdminDashboard() {
               </table>
               {/* Add a line chart for user signups */}
               <ResponsiveContainer width="100%" height={200}>
-                <LineChart
-                  data={userSignupsData}
-                  margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-                >
+                <LineChart data={userSignupsData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                   <XAxis dataKey="date" />
                   <YAxis />
                   <CartesianGrid stroke="#f5f5f5" />
@@ -149,10 +146,7 @@ function AdminDashboard() {
               </table>
               {/* Add a bar chart for workspace bookings */}
               <ResponsiveContainer width="100%" height={200}>
-                <BarChart
-                  data={workspaceBookingsData}
-                  margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-                >
+                <BarChart data={workspaceBookingsData} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
                   <XAxis dataKey="workspace" />
                   <YAxis />
                   <CartesianGrid stroke="#f5f5f5" />

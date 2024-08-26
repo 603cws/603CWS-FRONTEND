@@ -23,7 +23,7 @@ function DashNavbar() {
   const navigate = useNavigate();
   console.log(creditsleft);
 
-  const PORT = "https://603-cws-backend.vercel.app";
+  const PORT = "http://localhost:3000";
 
   const n = localStorage.getItem("user");
 

@@ -17,6 +17,7 @@ import {
   FaCar,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
@@ -33,7 +34,9 @@ import { useApp } from "../context/AuthContext";
 
 function Landing() {
   const { setloading } = useApp();
-  setloading(false);
+  useEffect(() => {
+    setloading(false); // Set loading to false after the component mounts
+  }, [setloading]);
   const navigate = useNavigate();
   return (
     <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">

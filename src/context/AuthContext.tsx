@@ -22,7 +22,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [loading, setloading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const PORT = "https://603-cws-backend.vercel.app";
+  const PORT = "http://localhost:3000";
 
   const location = useLocation();
 

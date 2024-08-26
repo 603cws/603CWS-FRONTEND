@@ -12,7 +12,7 @@ const EditUser: React.FC = () => {
     const [credits, setcredits] = useState(0);
 
     async function fetchinfo() {
-        const response = await axios.get(`https://603-cws-backend.vercel.app/api/v1/users/${id}`,{
+        const response = await axios.get(`http://localhost:3000/api/v1/users/${id}`,{
             headers:{
                 Authorization: localStorage.getItem("token")
             }
@@ -38,7 +38,7 @@ const EditUser: React.FC = () => {
             role: role,
             phone: phone,
         }
-        const response = await axios.put(`https://603-cws-backend.vercel.app/api/v1/users/${id}`,data,{
+        const response = await axios.put(`http://localhost:3000/api/v1/users/${id}`,data,{
             headers:{
                 Authorization: localStorage.getItem("token")
             }
