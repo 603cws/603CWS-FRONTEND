@@ -1,0 +1,23 @@
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .lg-only-center {
+    @apply container mx-auto;
+  }
+
+  .lg-only-center-vertical {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+}
+
+.bg-image {
+  background-image: url('https://www.603thecoworkingspace.com/wp-content/uploads/2023/08/slide1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bg-image2{
+  background-image: url('https://www.603thecoworkingspace.com/wp-content/uploads/2020/03/bg-2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}

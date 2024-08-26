@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Modal animations */
+.modal-enter {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-exit {
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Add transition for sliding */
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}

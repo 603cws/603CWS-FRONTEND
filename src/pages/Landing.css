@@ -1,0 +1,30 @@
+@keyframes blur-animation {
+  0% {
+    filter: blur(0px);
+  }
+  50% {
+    filter: blur(0.5px); /* Reduced blur intensity */
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+@keyframes pulse-shadow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+}
+
+.blur-animation {
+  animation: blur-animation 5s ease-in-out infinite, pulse-shadow 2.5s ease-in-out infinite;
+}

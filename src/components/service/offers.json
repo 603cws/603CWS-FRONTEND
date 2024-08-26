@@ -1,0 +1,49 @@
+{
+    "offers": [
+      {
+        "title": "Flexible Workspaces",
+        "description": "Our state-of-the-art coworking spaces are crafted to cater to your specific needs. Whether you're a solopreneur, a startup team, or a remote worker, we have the perfect workspace for you.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon1.png?fit=1123%2C962&ssl=1"
+      },
+      {
+        "title": "Modern Amenities",
+        "description": "Enjoy high-speed internet, ergonomic furniture, and tech-enabled meeting rooms. We prioritise your comfort and productivity, providing all the tools you need to excel.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon2.png?fit=1199%2C813&ssl=1"
+      },
+      {
+        "title": "Networking Opportunities",
+        "description": "Connect and collaborate with a diverse community of like-minded individuals. Our networking events, workshops, and seminars foster a culture of knowledge sharing and professional growth.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon3.png?fit=1417%2C1034&ssl=1"
+      },
+      {
+        "title": "Private Offices",
+        "description": "Need a dedicated space for your team? Our private offices offer privacy and customization while keeping you connected to our vibrant community.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon4.png?fit=1219%2C585&ssl=1"
+      },
+      {
+        "title": "Virtual Office Solutions",
+        "description": "Even if you're not physically present, you can benefit from our business address, mail handling, and virtual receptionist services to maintain a professional image.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon5.png?fit=1211%2C788&ssl=1"
+      },
+      {
+        "title": "Event Spaces",
+        "description": "Hosting an event? Our versatile event spaces are designed to accommodate workshops, seminars, product launches, and more.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon6.png?fit=1082%2C1003&ssl=1"
+      },
+      {
+        "title": "Café and Lounge",
+        "description": "Fuel your creativity with our in-house café serving gourmet coffee and refreshments. Our comfortable lounge areas are perfect for informal meetings or relaxation.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon7.png?fit=1238%2C933&ssl=1"
+      },
+      {
+        "title": "24/7 Access",
+        "description": "Embrace flexible working hours with round-the-clock access to our spaces. Work according to your schedule, not ours.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon8.png?fit=1093%2C725&ssl=1"
+      },
+      {
+        "title": "Supportive Community",
+        "description": "Join a community that encourages collaboration and innovation. Our members come from diverse backgrounds, providing ample opportunities for cross-industry collaboration.",
+        "imagesrc": "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/icon9.png?fit=1176%2C665&ssl=1"
+      }
+    ]
+  }
