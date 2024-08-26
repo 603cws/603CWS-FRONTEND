@@ -29,7 +29,7 @@ const getTheme = (darkMode: boolean): Theme => ({
 const Settings: React.FC = () => {
     const {setloading} = useApp();
 
-    const PORT = "http://localhost:3000";
+    const PORT = "https://603-cws-backend.vercel.app";
 
     const token = localStorage.getItem("token");
 

@@ -23,7 +23,7 @@ const AllBookings = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/bookings/admin/getallbookings", {
+      const response = await axios.get("https://603-cws-backend.vercel.app/api/v1/bookings/admin/getallbookings", {
         withCredentials: true,
       });
       setBookings(response.data.allbookings);

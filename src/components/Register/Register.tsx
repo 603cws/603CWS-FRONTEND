@@ -32,7 +32,7 @@ function Register() {
         phone: phone,
       }
       try{
-        const response = await axios.post("http://localhost:3000/api/v1/users/",data, {withCredentials : true});
+        const response = await axios.post("https://603-cws-backend.vercel.app/api/v1/users/",data, {withCredentials : true});
         console.log(response);
         if(response.data.msg == "Invalid Inputs"){
           toast.error("Invalid Inputs!")

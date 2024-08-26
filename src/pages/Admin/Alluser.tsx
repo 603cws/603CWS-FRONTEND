@@ -28,7 +28,7 @@ const UserManagement = () => {
 
   async function userinfo() {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/users", {
+      const response = await axios.get("https://603-cws-backend.vercel.app/api/v1/users", {
         withCredentials: true,
       });
       setUsers(response.data.msg);
