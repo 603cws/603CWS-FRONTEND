@@ -41,7 +41,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
         e.preventDefault();
         try {
             const response = await axios.post(
-                "http://localhost:3000/api/v1/users/",
+                "https://603-cws-backend.vercel.app/api/v1/users/",
                 { companyName, email, role, monthlycredits, username, location, password },
                 { withCredentials: true }
             );

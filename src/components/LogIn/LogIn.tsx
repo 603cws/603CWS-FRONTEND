@@ -7,7 +7,7 @@ import { useApp } from '../../context/AuthContext';
 
 const LogIn: React.FC = () => {
   const { setIsAuthenticated, setloading } = useApp();
-  const PORT = "http://localhost:3000";
+  const PORT = "https://603-cws-backend.vercel.app";
   const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');

@@ -27,7 +27,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   // Search states
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const PORT = "http://localhost:3000";
+  const PORT = "https://603-cws-backend.vercel.app";
 
   const checkAuth = useCallback(async () => {
     try {
