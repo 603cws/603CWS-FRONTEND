@@ -3,6 +3,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { logo } from "../../utils/Landing/Landing";
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <img
-              src="https://www.603thecoworkingspace.com/wp-content/uploads/2015/12/603_logo-no-bg.png"
+              src={logo}
               alt="603 The Coworking Space"
               className="h-16 md:h-20 w-auto"
             />

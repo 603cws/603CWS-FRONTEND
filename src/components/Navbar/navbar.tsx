@@ -2,6 +2,7 @@ import { IoIosCall } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IoMdMore } from "react-icons/io";
+import { logo } from "../../utils/Landing/Landing";
 
 const Navbar = () => {
   const [path, setPath] = useState('');
@@ -324,7 +325,7 @@ const Navbar = () => {
           </div>
           <button onClick={() => { navigate("/") }}>
             <img
-              src="https://www.603thecoworkingspace.com/wp-content/uploads/2015/12/603_logo-no-bg-e1716361533484.png"
+              src={logo}
               className="h-15 w-40"
             />
           </button>
