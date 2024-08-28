@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-
 const Footer = () => {
   return (
     <footer className="bg-stone-900 text-gray-300 py-8">
@@ -27,6 +26,8 @@ const Footer = () => {
               <li><Link to="/allLocations" className="hover:text-yellow-400">Location</Link></li>
               <li><Link to="/service" className="hover:text-yellow-400">Our Services</Link></li>
               <li><Link to="/contactus" className="hover:text-yellow-400">Contact Us</Link></li>
+              <li><Link to="/privacy-policy" className="hover:text-yellow-400">Privacy Policy</Link></li>
+              <li><Link to="/terms-conditions" className="hover:text-yellow-400">Terms and Conditions</Link></li>
             </ul>
           </div>
           <div className="space-y-4">
@@ -67,8 +68,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
-
-

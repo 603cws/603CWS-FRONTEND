@@ -36,6 +36,8 @@ import { useApp } from "./context/AuthContext";
 import { useEffect } from "react";
 import Loader from "./components/Loader/Loader";
 import Allbookings from "./pages/Admin/Allbookings";
+import Privacy from "./pages/Privacy"
+import TermsNCond from "./pages/Terms"
 
 function App() {
   const location = useLocation();
@@ -109,6 +111,8 @@ function App() {
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />
             <Route path="/603-MBC-Center" element={<MBC />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/terms-conditions" element={<TermsNCond />} />
           </>
         ) : (
           <>
@@ -146,6 +150,8 @@ function App() {
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />
             <Route path="/603-MBC-Center" element={<MBC />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/terms-conditions" element={<TermsNCond />} />
           </>
         )}
       </Routes>

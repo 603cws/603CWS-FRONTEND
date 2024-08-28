@@ -6,6 +6,8 @@ import {
   photo1,
   photo2,
   photo3,
+  gallery3,
+  gallery6
 } from "../utils/Landing/Landing";
 import { Twopeoplesitting, Flexiblepo } from "../utils/Landing/Svg";
 import {
@@ -45,8 +47,13 @@ function Landing() {
       </div>
 
       {/* Hero Section */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-center md:items-center py-20 px-6 md:px-20 font-sans relative z-10 bg-cover bg-no-repeat bg-image blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10">
-        <div className="md:w-full">
+      <div
+        className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10"
+        style={{ backgroundImage: `url('${gallery3}')` }}
+      >
+        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+
+        <div className="relative z-10 md:w-full">
           <div className="text-white">
             <h1 className="border-l-4 border-yellow-500 pl-4 mb-6">
               <div className="flex items-center space-x-3 mb-4">
@@ -66,26 +73,44 @@ function Landing() {
             <h2 className="text-2xl md:text-4xl font-light tracking-wide">
               Be surrounded by inspiration
             </h2>
-            <button onClick={() => { navigate("/login") }} className="mt-8 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-sm button-animated">
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+              className="mt-8 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-sm button-animated"
+            >
               Book a Space
             </button>
           </div>
         </div>
-        <div className="flex justify-end items-center">
+
+        <div className="relative z-10 flex justify-end items-center">
           <div className="space-y-10 text-yellow-400 flex-col gap-9 hidden md:flex">
-            <a href="https://www.instagram.com/603thecoworkingspace/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/603thecoworkingspace/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
-            <a href="https://www.linkedin.com/company/603thecoworkingspace/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/company/603thecoworkingspace/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaLinkedin className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
-            <a href="https://www.facebook.com/603coworking" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.facebook.com/603coworking"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebook className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
           </div>
         </div>
-
       </div>
+
 
 
 
@@ -204,7 +229,7 @@ function Landing() {
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 mx-4 lg:mx-6">
               {/* Column 1 */}
-              <div className="flex flex-col bg-white shadow-md rounded-lg border border-gray-200">
+              <div className="flex flex-col border-gray-200">
                 <div className="flex flex-col py-4 px-4 space-y-4">
                   <Locationdiv
                     onClick={() => navigate("/locations/Amore-Centre")}
@@ -230,7 +255,7 @@ function Landing() {
               </div>
 
               {/* Column 2 */}
-              <div className="flex flex-col bg-white shadow-md rounded-lg border border-gray-200">
+              <div className="flex flex-col border-gray-200">
                 <div className="flex flex-col py-4 px-4 space-y-4">
                   <Locationdiv
                     onClick={() => navigate("/locations/Matulya-Centre")}
@@ -256,7 +281,7 @@ function Landing() {
               </div>
 
               {/* Column 3 */}
-              <div className="flex flex-col bg-white shadow-md rounded-lg border border-gray-200">
+              <div className="flex flex-col border-gray-200">
                 <div className="flex flex-col py-4 px-4 space-y-4">
                   <Locationdiv
                     onClick={() => navigate("/locations/Kamala-Mills")}
@@ -285,8 +310,14 @@ function Landing() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center text-center bg-image2 blur-animation w-full min-h-[800px] py-20 px-6">
-        <div className="text-center ">
+      <div
+        className="relative flex flex-col items-center justify-center text-center bg-cover bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6"
+        style={{ backgroundImage: `url('${gallery6}')` }}>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+
+        <div className="relative z-10 text-center">
           <div className="text-2xl leading-8 text-yellow-500 mb-4 font-sans">
             <span>Join the Coworking Movement</span>
           </div>
@@ -298,12 +329,13 @@ function Landing() {
           </h2>
 
           <div className="flex justify-center">
-            <button onClick={() => { navigate("/login") }} className="bg-yellow-400 text-white hover:bg-yellow-300 transition-colors duration-300 border border-yellow-400 hover:border-transparent py-3 px-6 text-lg sm:text-xl font-sans rounded-md shadow-lg">
+            <button onClick={() => { navigate("/login") }} className="bg-yellow-500 text-white hover:bg-yellow-300 transition-colors duration-300 border border-yellow-400 hover:border-transparent py-3 px-6 text-lg sm:text-xl font-sans rounded-md shadow-lg">
               Book a Space
             </button>
           </div>
         </div>
       </div>
+
 
 
       <div className="w-full flex flex-col mt-12 xl:flex-row">
