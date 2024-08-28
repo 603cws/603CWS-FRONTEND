@@ -2,28 +2,29 @@ import { useState, useEffect } from "react";
 import "./popupanimation.css";
 import axios from "axios";
 import { useApp } from "../../context/AuthContext";
-const Popupform = () => {
+
+interface PopupformProps {
+    val: boolean;
+    setpopup: (state: boolean) => void;
+}
+
+const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
     const { setloading } = useApp();
     const PORT = "https://603-cws-backend.vercel.app";
-    const [isVisible, setIsVisible] = useState<boolean>(false);
+    
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
-    const a = localStorage.getItem("callback");
-
-    const showPopup = () => {
-        setIsAnimating(true);
-        setIsVisible(true);
-    };
-
-    const hidePopup = () => {
-        setIsAnimating(false);
-        setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
-    };
 
     useEffect(() => {
-        const intervalId = setInterval(showPopup, 60000);
+        if (val) {
+            setIsAnimating(true); // Start the animation when val is true
+        }
+    }, [val]);
 
-        return () => clearInterval(intervalId);
-    }, []);
+    const hidePopup = () => {
+        localStorage.removeItem("callback");
+        setIsAnimating(false); // Start fade-out animation
+        setTimeout(() => setpopup(false), 500); // Close popup after animation
+    };
 
     const [formData, setFormData] = useState({
         name: '',
@@ -56,7 +57,7 @@ const Popupform = () => {
 
     return (
         <>
-            {isVisible && a!=="true" && (
+            {val && (
                 <div className={`fixed inset-0 flex items-center justify-center z-50 bg-gray-800 bg-opacity-60 popup-overlay ${isAnimating ? 'fade-in' : 'fade-out'}`}>
                     <div className={`bg-white p-8 rounded-lg shadow-xl transform transition-transform duration-500 max-w-lg w-full popup-content ${isAnimating ? 'slide-in' : 'slide-out'}`}>
                         <button
@@ -65,8 +66,8 @@ const Popupform = () => {
                         >
                             &times;
                         </button>
-                        <h2 className="text-xl font-bold mb-5 text-gray-800">Request a Callback</h2>
-                        <form className="space-y-5">
+                        <h2 className="text-xl font-bold mb-5 text-gray-800">Specifications</h2>
+                        <form className="space-y-5" onSubmit={handleSubmit}>
                             <div>
                                 <label className="block text-gray-700 font-medium mb-1 text-sm" htmlFor="name">Name*</label>
                                 <input className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-300" type="text"
@@ -129,7 +130,6 @@ const Popupform = () => {
                                         : 'bg-yellow-500 text-white hover:bg-yellow-600 cursor-pointer'
                                         }`}
                                     type="submit"
-                                    onClick={handleSubmit}
                                     disabled={isDisabled}
                                 >
                                     Send

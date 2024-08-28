@@ -69,12 +69,7 @@ function AdminDashboard() {
     fetchDashboardData();
   }, []);
 
-  const bookings = [
-    { workspace: "Workspace A", bookedBy: "John Doe", bookingDate: "2023-06-20" },
-    { workspace: "Workspace B", bookedBy: "Jane Smith", bookingDate: "2023-06-18" },
-    { workspace: "Workspace C", bookedBy: "Bob Johnson", bookingDate: "2023-06-15" },
-    { workspace: "Workspace D", bookedBy: "Alice Williams", bookingDate: "2023-06-12" },
-    { workspace: "Workspace E", bookedBy: "Tom Davis", bookingDate: "2023-06-10" },
+  const bookings:any = [
   ];
 
   return (
@@ -135,7 +130,7 @@ function AdminDashboard() {
                   </tr>
                 </thead>
                 <tbody>
-                  {bookings.map((booking, index) => (
+                  {bookings.map((booking:any, index:any) => (
                     <tr key={index}>
                       <td className="py-2">{booking.workspace}</td>
                       <td>{booking.bookedBy}</td>

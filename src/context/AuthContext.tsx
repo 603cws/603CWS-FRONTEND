@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 interface AppContextType {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+  popup: boolean;
+  setpopup: React.Dispatch<React.SetStateAction<boolean>>;
   isAdmin: string;
   setIsAdmin: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
@@ -21,6 +23,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [isAdmin, setIsAdmin] = useState<string>("user");
   const [loading, setloading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [popup, setpopup] = useState<boolean>(false);
 
   const PORT = "https://603-cws-backend.vercel.app";
 
@@ -53,7 +56,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     <AppContext.Provider value={{ 
       isAuthenticated, setIsAuthenticated, loading, setloading, 
       isAdmin, setIsAdmin, refreshAuth, 
-      searchQuery, setSearchQuery
+      searchQuery, setSearchQuery, popup, setpopup
     }}>
       {children}
     </AppContext.Provider>

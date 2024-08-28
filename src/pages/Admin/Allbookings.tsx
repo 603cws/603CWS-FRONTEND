@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 interface Booking {
   _id: string;
@@ -17,21 +18,26 @@ interface Booking {
 const AllBookings = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedWorkspace, setSelectedWorkspace] = useState<string>("");
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const bookingsPerPage = 7;
 
+  const tableRef = useRef<HTMLDivElement>(null);
+
   const fetchBookings = async () => {
     try {
-      const response = await axios.get("https://603-cws-backend.vercel.app/api/v1/bookings/admin/getallbookings", {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "https://603-cws-backend.vercel.app/api/v1/bookings/admin/getallbookings",
+        {
+          withCredentials: true,
+        }
+      );
       setBookings(response.data.allbookings);
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
   };
-
 
   useEffect(() => {
     fetchBookings();
@@ -49,12 +55,15 @@ const AllBookings = () => {
     }
   };
 
-
-  // Search and filter logic
+  // Filter bookings based on search query and selected workspace
   const filteredBookings = bookings
-    .filter((booking) =>
-      booking.companyName?.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    .filter((booking) => {
+      return (
+        (!searchQuery ||
+          booking.companyName?.toLowerCase().includes(searchQuery.toLowerCase())) &&
+        (!selectedWorkspace || booking.spaceName === selectedWorkspace)
+      );
+    })
     .reduce((uniqueBookings, booking) => {
       if (!uniqueBookings.some((b) => b._id === booking._id)) {
         uniqueBookings.push(booking);
@@ -64,7 +73,16 @@ const AllBookings = () => {
 
   const indexOfLastBooking = currentPage * bookingsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
-  const currentBookings = filteredBookings.slice(indexOfFirstBooking, indexOfLastBooking);
+  const currentBookings = filteredBookings.slice(
+    indexOfFirstBooking,
+    indexOfLastBooking
+  );
+
+  // Printing logic
+  const handlePrint = useReactToPrint({
+    content: () => tableRef.current,
+    documentTitle: "Bookings",
+  });
 
   return (
     <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
@@ -74,26 +92,55 @@ const AllBookings = () => {
       <div className="w-full flex justify-center bg-white shadow-2xl rounded-lg p-8 pt-24">
         <div>
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-4xl font-extrabold text-gray-800">Booking Management</h2>
-            <div className="flex items-center bg-gray-200 rounded-full px-2 py-1 text-gray-600">
-              <input
-                type="text"
-                placeholder="Search Company..."
-                value={searchQuery}
-                className="outline-none px-1 font-normal bg-gray-200"
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <div
-                className="cursor-pointer"
-                onClick={() => navigate(`/admin/userinfo/${searchQuery}`)}
-              >
-                <CiSearch />
+            <h2 className="text-4xl font-extrabold text-gray-800">
+              Booking Management
+            </h2>
+            <div className="flex items-center">
+              <div className="flex items-center bg-gray-200 rounded-full px-2 py-1 text-gray-600">
+                <input
+                  type="text"
+                  placeholder="Search Company..."
+                  value={searchQuery}
+                  className="outline-none px-1 font-normal bg-gray-200"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <div
+                  className="cursor-pointer"
+                  onClick={() => navigate(`/admin/userinfo/${searchQuery}`)}
+                >
+                  <CiSearch />
+                </div>
               </div>
+              <select
+                value={selectedWorkspace}
+                onChange={(e) => setSelectedWorkspace(e.target.value)}
+                className="ml-4 px-3 py-2 rounded-lg bg-gray-200 text-gray-600"
+              >
+                <option value="">Please Select</option>
+                <option value="Amore Conference Room">Amore Conference Room</option>
+                <option value="Amore Meeting Room">Amore Meeting Room</option>
+                <option value="Bandra Conference Room">Bandra Conference Room</option>
+                <option value="Kamla Mills Conference Room">Kamla Mills Conference Room</option>
+                <option value="Kamla Mills Meeting Room">Kamla Mills Meeting Room</option>
+                <option value="Matulya Conference Room">Matulya Conference Room</option>
+                <option value="Matulya Meeting Room">Matulya Meeting Room</option>
+                <option value="Rupa Solitaire Conference Room">Rupa Solitaire Conference Room</option>
+                <option value="Sunmill Conference Room">Sunmill Conference Room</option>
+                <option value="Sunmill Meeting Room">Sunmill Meeting Room</option>
+                <option value="Sunshine Conference Room">Sunshine Conference Room</option>
+                <option value="Sunshine Meeting Room">Sunshine Meeting Room</option>
+              </select>
+              <button
+                onClick={handlePrint}
+                className="ml-4 py-2 px-4 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-500 transition duration-300"
+              >
+                Print PDF
+              </button>
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div ref={tableRef} className="overflow-x-auto print:bg-white print:p-0 print:shadow-none">
             <table className="w-full table-auto border-collapse text-left">
-              <thead>
+              <thead className="print:text-black">
                 <tr className="bg-blue-50 border-b-2 border-blue-200">
                   <th className="p-4 font-semibold text-gray-600">Booking ID</th>
                   <th className="p-4 font-semibold text-gray-600">Company Name</th>
@@ -102,10 +149,9 @@ const AllBookings = () => {
                   <th className="p-4 font-semibold text-gray-600">Start Time</th>
                   <th className="p-4 font-semibold text-gray-600">End Time</th>
                   <th className="p-4 font-semibold text-gray-600">Status</th>
-                  <th className="p-4 font-semibold text-gray-600">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="print:text-black">
                 {currentBookings.map((booking, index) => (
                   <tr key={index} className="hover:bg-gray-50 transition">
                     <td className="py-4 px-6 border-b">{booking._id}</td>
@@ -125,19 +171,12 @@ const AllBookings = () => {
                         {booking.status}
                       </span>
                     </td>
-                    <td className="py-4 px-6 border-b">
-                      <button
-                        className="py-1 px-4 bg-yellow-500 text-white rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300"
-                      >
-                        Edit
-                      </button>
-                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-between mt-6 print:hidden">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
@@ -151,9 +190,12 @@ const AllBookings = () => {
             </button>
             <button
               onClick={handleNextPage}
-              disabled={currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)}
-              className={`px-6 py-3 rounded-lg shadow-md ${
+              disabled={
                 currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)
+              }
+              className={`px-6 py-3 rounded-lg shadow-md ${
+                currentPage ===
+                Math.ceil(filteredBookings.length / bookingsPerPage)
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
               }`}

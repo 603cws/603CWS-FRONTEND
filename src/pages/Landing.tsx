@@ -19,7 +19,8 @@ import {
   FaCar,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import Popupform from "./popup/Popupform";
+import { useEffect, useState } from "react";
 import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
@@ -34,11 +35,22 @@ import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
 
 function Landing() {
+
+  const [popup, setpopup] = useState<boolean>(false);
+
+  const openpopup = () => {
+    setpopup(true);
+    localStorage.setItem("callback", "true");
+  }
+
   const { setloading } = useApp();
+
   useEffect(() => {
     setloading(false); // Set loading to false after the component mounts
   }, [setloading]);
+
   const navigate = useNavigate();
+
   return (
     <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
       <div className="fixed top-0 left-0 right-0 z-50">
@@ -46,6 +58,7 @@ function Landing() {
       </div>
 
       {/* Hero Section */}
+      <Popupform val={popup} setpopup={setpopup} />
       <div
         className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10"
         style={{ backgroundImage: `url('${gallery6}')` }}
@@ -73,9 +86,7 @@ function Landing() {
               Be surrounded by inspiration
             </h2>
             <button
-              onClick={() => {
-                navigate("/login");
-              }}
+              onClick={openpopup}
               className="mt-8 bg-yellow-500 hover:bg-yellow-600 transition-all duration-300 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-sm button-animated"
             >
               Book a Space
@@ -300,12 +311,7 @@ function Landing() {
                 </div>
               </div>
             </div>
-
-
-
-
           </div>
-
         </div>
       </div>
 
@@ -328,7 +334,7 @@ function Landing() {
           </h2>
 
           <div className="flex justify-center">
-            <button onClick={() => { navigate("/login") }} className="bg-yellow-500 text-white hover:bg-yellow-300 transition-colors duration-300 border border-yellow-400 hover:border-transparent py-3 px-6 text-lg sm:text-xl font-sans rounded-md shadow-lg">
+            <button onClick={openpopup} className="bg-yellow-500 text-white hover:bg-yellow-300 transition-colors duration-300 border border-yellow-400 hover:border-transparent py-3 px-6 text-lg sm:text-xl font-sans rounded-md shadow-lg">
               Book a Space
             </button>
           </div>

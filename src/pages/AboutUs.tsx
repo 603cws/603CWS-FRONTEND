@@ -4,17 +4,23 @@ import {
   bgimage2,
   vision,
 } from "../utils/AboutUs/AboutUs";
+import { useState } from "react";
 import OurServices from "../components/AboutUs/OurServices";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useApp } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import Popupform from "./popup/Popupform";
 
 function AboutUs() {
+  const [popup, setpopup] = useState<boolean>(false);
+
+  const openpopup = () => {
+    setpopup(true);
+    localStorage.setItem("callback", "true");
+  }
   
   const { setloading } = useApp();
   setloading(false);
-  const navigate = useNavigate();
 
   return (
     <div className="w-full min-h-screen flex flex-col">
@@ -31,6 +37,8 @@ function AboutUs() {
           </p>
         </div>
       </header>
+
+      <Popupform val={popup} setpopup={setpopup} />
 
       <main className="flex-grow">
         <section className="flex flex-col items-center py-16 bg-gray-50">
@@ -129,7 +137,7 @@ function AboutUs() {
               entrepreneurial spirit, we aspire to be a catalyst for innovation
               and a hub for diverse talents.
             </p>
-            <button onClick={()=>{navigate("/login")}} className="mt-8 mb-3 px-6 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md">
+            <button onClick={openpopup} className="mt-8 mb-3 px-6 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md">
               Book a Space
             </button>
           </div>
