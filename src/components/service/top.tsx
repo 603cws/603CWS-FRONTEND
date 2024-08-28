@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from "../Navbar/navbar";
 import explorer from "./explorer.json";
+import offers from './offers.json'
+import Offer from "./offer";
 
 const Top: React.FC = () => {
   const refImage = useRef(null);
@@ -20,7 +22,7 @@ const Top: React.FC = () => {
       <Navbar />
 
       <div
-        className="relative min-h-screen bg-cover bg-center bg-no-repeat bg-opacity-90"
+        className="relative min-h-screen bg-fixed bg-cover bg-center bg-no-repeat bg-opacity-90"
         style={{
           backgroundImage:
             "url('https://img.freepik.com/premium-photo/black-tone-office-desk-with-computer-black-minimalist-working-station_267300-211.jpg')",
@@ -43,7 +45,6 @@ const Top: React.FC = () => {
           </p>
         </div>
       </div>
-
       <div className="min-h-[650px] flex flex-col sm:flex-row px-6 bg-gray-50 py-2">
         <div className="relative w-full flex justify-center items-center mb-6 sm:mb-0">
           <motion.img
@@ -81,11 +82,27 @@ const Top: React.FC = () => {
             Join thousands of professionals at 603 The Coworking Space.
           </h1>
           <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway text-center">
-            At 603 The Coworking Space, we redefine the workspace by offering thoughtfully designed environments tailored for professionals, entrepreneurs, and freelancers. Experience collaboration and innovation in a dynamic setting that fosters growth and success.
+            At 603 The Coworking Space, we redefine the workspace by offering
+            thoughtfully designed environments tailored for professionals,
+            entrepreneurs, and freelancers. Experience collaboration and
+            innovation in a dynamic setting that fosters growth and success.
           </p>
         </motion.div>
       </div>
-      <div className="mt-10 bg-yellow-400 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100 min-h-[600px] mx-6 p-6">
+      <div className="p-5 max-w-full flex justify-center items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1300px]">
+          {offers.offers.map((offer, index) => (
+            <div key={index} className="p-4">
+              <Offer
+                title={offer.title}
+                description={offer.description}
+                imagesrc={offer.imagesrc}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-10  bg-gray-400 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100 min-h-[600px] mx-[50px] p-6">
         <div className="text-center mb-8">
           <p className="text-base sm:text-lg md:text-2xl lg:text-4xl font-semibold font-sans">
             Explore our Services
@@ -106,20 +123,34 @@ const Top: React.FC = () => {
           </div>
         </div>
       </div>
-
       <div className="flex items-center justify-center py-10 px-6 shadow-lg mx-4">
         <div className="text-gray-800 text-center leading-relaxed w-full sm:w-[550px] md:w-[650px] lg:w-[70%]">
           <span className="font-semibold text-sm sm:text-lg md:text-lg mb-7">
             Flexible Workspaces in Mumbai & Thane
           </span>
           <p className="text-xs sm:text-sm md:text-sm lg:text-base">
-            In the ever-evolving landscape of work, the demand for flexibility has become a defining characteristic for professionals and businesses alike. Mumbai and Thane, bustling metropolises known for their vibrant business communities, have witnessed a significant rise in the popularity of flexible workspaces for rent. Our adaptive environments cater to the diverse needs of a dynamic workforce, offering a range of benefits that redefine the traditional office experience.
+            In the ever-evolving landscape of work, the demand for flexibility
+            has become a defining characteristic for professionals and
+            businesses alike. Mumbai and Thane, bustling metropolises known for
+            their vibrant business communities, have witnessed a significant
+            rise in the popularity of flexible workspaces for rent. Our adaptive
+            environments cater to the diverse needs of a dynamic workforce,
+            offering a range of benefits that redefine the traditional office
+            experience.
             <br />
             <br />
-            Our strategically positioned workspaces provide professionals with the freedom to choose locations that align with their preferences and minimize commute times. Whether in the heart of Mumbai’s financial hub or within Thane’s expanding landscape, our spaces ensure accessibility and convenience for all.
+            Our strategically positioned workspaces provide professionals with
+            the freedom to choose locations that align with their preferences
+            and minimize commute times. Whether in the heart of Mumbai’s
+            financial hub or within Thane’s expanding landscape, our spaces
+            ensure accessibility and convenience for all.
             <br />
             <br />
-            The collaborative nature of our workspaces fosters innovation and networking, creating dynamic communities that encourage knowledge exchange and collaboration. With high-speed internet, meeting rooms, ergonomic furniture, and well-equipped kitchens, our spaces provide everything professionals need for a seamless work experience.
+            The collaborative nature of our workspaces fosters innovation and
+            networking, creating dynamic communities that encourage knowledge
+            exchange and collaboration. With high-speed internet, meeting rooms,
+            ergonomic furniture, and well-equipped kitchens, our spaces provide
+            everything professionals need for a seamless work experience.
           </p>
         </div>
       </div>

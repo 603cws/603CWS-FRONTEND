@@ -71,7 +71,7 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       <Navbar />
-      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center rounded-lg p-8 pt-20 lg:p-16 my-12">
+      <div className="container mx-auto flex flex-col lg:flex-row items-center justify-center rounded-lg p-8 pt-20 lg:p-16 mt-12">
         <div className="lg:w-1/2 lg:pr-12">
           <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 lg:mb-8 text-center lg:text-left">
             Connect with <span className="text-yellow-500">603</span>
@@ -136,8 +136,9 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-
-      <Form />
+      <div className="mt-4">
+        <Form />
+      </div>
 
       <div className="mt-14">
         <iframe

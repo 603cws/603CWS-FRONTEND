@@ -30,7 +30,6 @@ import Review from "../components/Landing/Review";
 import Random from "../components/Landing/Random";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
-import "./Landing.css"
 import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
 
@@ -48,10 +47,10 @@ function Landing() {
 
       {/* Hero Section */}
       <div
-        className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10"
-        style={{ backgroundImage: `url('${gallery3}')` }}
+        className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10"
+        style={{ backgroundImage: `url('${gallery6}')` }}
       >
-        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
+        <div className="absolute inset-0 bg-black opacity-50 z-0"></div>
 
         <div className="relative z-10 md:w-full">
           <div className="text-white">
@@ -311,8 +310,8 @@ function Landing() {
       </div>
 
       <div
-        className="relative flex flex-col items-center justify-center text-center bg-cover bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6"
-        style={{ backgroundImage: `url('${gallery6}')` }}>
+        className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6"
+        style={{ backgroundImage: `url('${gallery3}')` }}>
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
