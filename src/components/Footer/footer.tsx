@@ -33,7 +33,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Address</h3>
             <p className="flex items-center gap-2">
               <IoIosCall className="text-yellow-400" />
-              <a href="tel:+919136036603" className="hover:text-yellow-500">+91 9136036603</a>
+              <a href="tel:+919920207026" className="hover:text-yellow-500">+91 99202 07026</a>
             </p>
             <p className="flex items-center gap-2">
               <IoIosMail className="text-yellow-400" />
