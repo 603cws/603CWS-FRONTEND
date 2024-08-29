@@ -21,7 +21,7 @@ const AllBookings = () => {
   const [selectedWorkspace, setSelectedWorkspace] = useState<string>("");
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const bookingsPerPage = 7;
+  const [bookingsPerPage, setBookingsPerPage] = useState(7);
 
   const tableRef = useRef<HTMLDivElement>(null);
 
@@ -79,10 +79,25 @@ const AllBookings = () => {
   );
 
   // Printing logic
-  const handlePrint = useReactToPrint({
+
+  const print = useReactToPrint({
     content: () => tableRef.current,
     documentTitle: "Bookings",
   });
+
+  const handlePrint = () => {
+    const originalBookingsPerPage = bookingsPerPage;
+    setBookingsPerPage(filteredBookings.length); // Display all bookings
+    setCurrentPage(1); // Go to the first page to display all bookings at once
+
+    setTimeout(() => {
+      print(); // Trigger the print functionality
+
+      // Revert back to original settings after printing
+      setBookingsPerPage(originalBookingsPerPage);
+      setCurrentPage(1);
+    }, 0);
+  };
 
   return (
     <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
@@ -162,11 +177,10 @@ const AllBookings = () => {
                     <td className="py-4 px-6 border-b">{booking.endTime}</td>
                     <td className="py-4 px-6 border-b">
                       <span
-                        className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${
-                          booking.status === "Confirmed"
+                        className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${booking.status === "Confirmed"
                             ? "bg-green-100 text-green-800"
                             : "bg-red-100 text-red-800"
-                        }`}
+                          }`}
                       >
                         {booking.status}
                       </span>
@@ -180,11 +194,10 @@ const AllBookings = () => {
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className={`px-6 py-3 rounded-lg shadow-md ${
-                currentPage === 1
+              className={`px-6 py-3 rounded-lg shadow-md ${currentPage === 1
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
-              }`}
+                }`}
             >
               Previous
             </button>
@@ -193,12 +206,11 @@ const AllBookings = () => {
               disabled={
                 currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)
               }
-              className={`px-6 py-3 rounded-lg shadow-md ${
-                currentPage ===
-                Math.ceil(filteredBookings.length / bookingsPerPage)
+              className={`px-6 py-3 rounded-lg shadow-md ${currentPage ===
+                  Math.ceil(filteredBookings.length / bookingsPerPage)
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
-              }`}
+                }`}
             >
               Next
             </button>
