@@ -2,8 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import './MyDatePicker.css';
 
 interface Booking {
   _id: string;
@@ -16,12 +18,26 @@ interface Booking {
 }
 
 const AllBookings = () => {
-  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedWorkspace, setSelectedWorkspace] = useState<string>("");
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [bookingsPerPage, setBookingsPerPage] = useState(7);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [formattedDate, setFormattedDate] = useState<string>("");
+
+  useEffect(() => {
+    if (startDate) {
+      const day = startDate.getDate().toString();
+      const month = (startDate.getMonth() + 1).toString();
+      const year = startDate.getFullYear().toString();
+      setFormattedDate(`${day}/${month}/${year}`);
+      console.log(`${day}/${month}/${year}`);
+    } else {
+      setFormattedDate("");
+    }
+  }, [startDate]);
+
 
   const tableRef = useRef<HTMLDivElement>(null);
 
@@ -55,13 +71,15 @@ const AllBookings = () => {
     }
   };
 
-  // Filter bookings based on search query and selected workspace
+  // Filter bookings based on search query, selected workspace, and selected date
   const filteredBookings = bookings
     .filter((booking) => {
       return (
         (!searchQuery ||
           booking.companyName?.toLowerCase().includes(searchQuery.toLowerCase())) &&
-        (!selectedWorkspace || booking.spaceName === selectedWorkspace)
+        (!selectedWorkspace || booking.spaceName === selectedWorkspace) &&
+        (!formattedDate || booking.date === formattedDate)
+
       );
     })
     .reduce((uniqueBookings, booking) => {
@@ -106,11 +124,11 @@ const AllBookings = () => {
       </header>
       <div className="w-full flex justify-center bg-white shadow-2xl rounded-lg p-8 pt-24">
         <div>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-4xl font-extrabold text-gray-800">
-              Booking Management
-            </h2>
-            <div className="flex items-center">
+          <h2 className="text-4xl font-extrabold text-gray-800">
+            Booking Management
+          </h2>
+          <div className="flex items-center justify-between my-6">
+            <div className="flex items-center w-full justify-between">
               <div className="flex items-center bg-gray-200 rounded-full px-2 py-1 text-gray-600">
                 <input
                   type="text"
@@ -119,19 +137,42 @@ const AllBookings = () => {
                   className="outline-none px-1 font-normal bg-gray-200"
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <div
-                  className="cursor-pointer"
-                  onClick={() => navigate(`/admin/userinfo/${searchQuery}`)}
-                >
+                <div>
                   <CiSearch />
                 </div>
               </div>
+
+              <div className="relative flex items-center">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  dateFormat="d/M/yyyy"
+                  placeholderText="Select a date"
+                  className="custom-datepicker" // Custom class for the input field
+                  calendarClassName="custom-calendar" // Custom class for the calendar
+                />
+
+                {/* Cross Button */}
+                {startDate && (
+                  <button
+                    onClick={() => {
+                      setStartDate(null);
+                      setFormattedDate("");
+                    }}
+                    className="absolute right-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  >
+                    &#x2715; {/* Unicode character for a cross symbol */}
+                  </button>
+                )}
+              </div>
+
+
               <select
                 value={selectedWorkspace}
                 onChange={(e) => setSelectedWorkspace(e.target.value)}
                 className="ml-4 px-3 py-2 rounded-lg bg-gray-200 text-gray-600"
               >
-                <option value="">Please Select</option>
+                <option value="">Select Workspace</option>
                 <option value="Amore Conference Room">Amore Conference Room</option>
                 <option value="Amore Meeting Room">Amore Meeting Room</option>
                 <option value="Bandra Conference Room">Bandra Conference Room</option>
@@ -178,8 +219,8 @@ const AllBookings = () => {
                     <td className="py-4 px-6 border-b">
                       <span
                         className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${booking.status === "Confirmed"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-red-100 text-red-800"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-red-100 text-red-800"
                           }`}
                       >
                         {booking.status}
@@ -195,8 +236,8 @@ const AllBookings = () => {
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
               className={`px-6 py-3 rounded-lg shadow-md ${currentPage === 1
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
                 }`}
             >
               Previous
@@ -207,9 +248,9 @@ const AllBookings = () => {
                 currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)
               }
               className={`px-6 py-3 rounded-lg shadow-md ${currentPage ===
-                  Math.ceil(filteredBookings.length / bookingsPerPage)
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
+                Math.ceil(filteredBookings.length / bookingsPerPage)
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
                 }`}
             >
               Next
