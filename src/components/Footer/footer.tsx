@@ -35,7 +35,9 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Address</h3>
             <p className="flex items-center gap-2">
               <IoIosCall className="text-yellow-400" />
-              <a href="tel:+919920207026" className="hover:text-yellow-500">+919136036603 / +91 99202 07026</a>
+              <a href="tel:+919136036603" className="hover:text-yellow-500">+919136036603 </a>
+              /
+              <a href="tel:+919920207026" className="hover:text-yellow-500">+919920207026</a>
             </p>
             <p className="flex items-center gap-2">
               <IoIosMail className="text-yellow-400" />
@@ -62,7 +64,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-stone-800 text-gray-400 text-center py-4 mt-8">
-        <p>&copy; 2023 603 The Coworking Space. All Rights Reserved.</p>
+        <p>&copy; 2024 603 The Coworking Space. All Rights Reserved.</p>
       </div>
     </footer>
   );
