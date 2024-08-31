@@ -24,7 +24,7 @@ const reviews = [
   {
     text: "603 The Coworking Space embodies professionalism and convenience. As a consultant, I often meet clients here, and the modern meeting rooms are impressive. The staff is attentive and always ready to assist with any needs. Plus, the location is central, making it easy for my clients to access. If you're looking for a polished and productive workspace, this is the place to be.",
     author: "Rajiv"
-},
+  },
   {
     text: "Creativity flows freely at 603 The Coworking Space. As a content creator, I find the ambiance truly inspiring. The natural light, comfortable workstations, and collaborative vibe have boosted my productivity. Being surrounded by fellow creatives has led to unexpected collaborations and projects. It's like working in a hub of innovation, and I couldn't be happier with my choice.",
     author: "Tushar",
@@ -34,7 +34,7 @@ const reviews = [
 
 const Review: React.FC = () => {
   return (
-    <div className="bg-gray-100 py-12">
+    <div className="bg-gray-50 py-12">
       <div className="container mx-auto text-center px-10">
         <h2 className="text-4xl font-bold text-gray-700 mb-12">Hear From Our Valued Clients...</h2>
         <Swiper
@@ -54,7 +54,7 @@ const Review: React.FC = () => {
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center">
+              <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center h-[425px]" style={{ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)' }}>
                 <div className="mb-4">
                   <img src={logo} alt="Company Logo" className="h-14 mb-4" />
                 </div>

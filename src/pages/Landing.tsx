@@ -125,7 +125,7 @@ function Landing() {
 
 
       {/* Features Section */}
-      <section className="flex flex-col md:flex-row items-center md:items-start justify-between py-10 bg-white">
+      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-14 bg-white">
         <div className="md:w-[60%] px-8 flex flex-col justify-center items-center md:items-start">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug text-center md:text-left">
             Tailored workspaces and solutions to meet your business needs.

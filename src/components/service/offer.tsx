@@ -9,7 +9,7 @@ interface OfferProps {
 const Offer: React.FC<OfferProps> = ({ title, description, imagesrc }) => {
   return (
     <div className="p-4 flex justify-center">
-      <div className="card bg-base-100 h-auto w-full max-w-xs shadow-xl border-2 border-black transition-transform transform hover:scale-105">
+      <div className="card h-[410px] bg-base-100 w-full max-w-xs shadow-xl border-2 border-black transition-transform transform hover:scale-105">
         <figure className="px-4 pt-4">
           <img
             src={imagesrc}

@@ -10,6 +10,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import Modal from './Modal'; // Import the Modal component
 import { useApp } from '../../context/AuthContext';
 import Loader from '../Loader/Loader';
+import { IoWarningOutline } from "react-icons/io5";
 
 function DashNavbar() {
   const { setloading } = useApp();
@@ -20,6 +21,7 @@ function DashNavbar() {
   const [showHelp, setShowHelp] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isSideWindowOpen, setIsSideWindowOpen] = useState(false);
+  const [showalert, setshowalert] = useState(false);
   const navigate = useNavigate();
   console.log(creditsleft);
 
@@ -220,13 +222,28 @@ function DashNavbar() {
                     <CiCreditCard1 size="24" />
                   </>
                   )}
-                {extracredits > 0 && (
+
+                {extracredits > 0 && creditsleft == 0 && (
                   <>
                     <div className="text-gray-700" style={creditsTextStyle}>Credits Bill: {extracredits}</div>
                     <CiCreditCard1 size="24" />
                   </>
                 )}
                 <IoIosHelpCircleOutline size="18" color="gray" onClick={() => setShowHelp(true)} className="cursor-pointer" />
+                <>
+                  {creditsleft > 0 && extracredits > 0 && (
+                    <div className="relative inline-block group">
+                      <IoWarningOutline
+                        style={{ color: 'red', fontSize: '20px' }}
+                        className="cursor-pointer"
+                        onClick={() => { setshowalert(!showalert) }}
+                      />
+
+
+                    </div>
+                  )}
+                </>
+
               </div>
             </div>
 
@@ -288,6 +305,12 @@ function DashNavbar() {
         </div>
 
         {/* Modal component usage */}
+        <Modal isOpen={showalert} onClose={() => setshowalert(false)}>
+          <h3 style={modalHeaderStyle}><b>Pending Bill :</b></h3>
+          <div style={modalTextStyle}>
+            <p>Your credit balance of <strong>{extracredits}</strong> is currently due. We kindly request that you process the payment promptly to ensure uninterrupted service.</p>
+          </div>
+        </Modal>
         <Modal isOpen={showHelp} onClose={() => setShowHelp(false)}>
           <div style={modalContentStyle}>
             <h3 style={modalHeaderStyle}><b>Credits Information:</b></h3>

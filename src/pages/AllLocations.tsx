@@ -24,9 +24,9 @@ const locations: { city: string; locations: Location[] }[] = [
     city: "Mumbai",
     locations: [
       {
-        name: "Andheri - Classic Pentagon",
+        name: "Pinnacle Corporate Park, BKC",
         address:
-          "Classic Pentagon, 10th Floor, Western Express Hwy, Parshiwada, Chakala, Andheri East, Mumbai, Maharashtra 400053",
+          "Bandra Kurla Complex, Kolivery Village, Mmrda Area, Bkc Cst Link Road, Bandra Kurla Complex- Bandra East, Mumbai - 400051",
         imgSrc: gallery5, // Replace with actual image link
         link: "/locations/Pinnacle-Corporate-Park",
       },
@@ -122,8 +122,7 @@ const Login: React.FC = () => {
       </header>
       <div
         style={{
-          backgroundImage:
-            "url('https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/partner.png')",
+          backgroundImage: `url(${makhija})`,
         }}
         className="relative bg-no-repeat bg-cover bg-fixed mb-16"
       >

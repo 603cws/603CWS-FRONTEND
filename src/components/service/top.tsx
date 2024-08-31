@@ -45,50 +45,49 @@ const Top: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="min-h-[650px] flex flex-col sm:flex-row px-6 bg-gray-50 py-2">
-        <div className="relative w-full flex justify-center items-center mb-6 sm:mb-0">
-          <motion.img
-            ref={refImage}
-            src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/for-now.png?fit=680%2C506&ssl=1"
-            className="transition-transform duration-300 transform hover:scale-105 rounded-lg shadow-lg w-full sm:w-3/5 md:w-2/3 lg:w-1/2"
-            alt="603 The Coworking Space"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={isInViewImage ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-          />
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/30 backdrop-blur-md rounded-lg p-4"
-            whileHover={{ opacity: 1 }}
-          >
-            <motion.h2
-              className="text-lg sm:text-xl lg:text-2xl text-gray-800 font-semibold text-center"
-              initial={{ y: 20, opacity: 0 }}
-              animate={isInViewImage ? { y: 0, opacity: 1 } : {}}
-              transition={{ duration: 1 }}
-            >
-              603 The Coworking Space
-            </motion.h2>
-          </motion.div>
-        </div>
 
+      <div className="min-h-[650px] flex flex-col sm:flex-row px-6 bg-gray-50 py-6 sm:py-8 lg:py-10">
+      <div className="relative w-full flex justify-center items-center mb-6 sm:mb-0">
+        <motion.img
+          ref={refImage}
+          src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/for-now.png?fit=680%2C506&ssl=1"
+          className="transition-transform duration-300 transform hover:scale-105 rounded-lg shadow-lg w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-5/6"
+          alt="603 The Coworking Space"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInViewImage ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6 }}
+        />
         <motion.div
-          ref={refText}
-          className="w-full flex flex-col justify-center px-4 sm:px-8"
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInViewText ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1 }}
+          className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/80 backdrop-blur-md rounded-lg p-6 sm:p-8"
+          whileHover={{ opacity: 1 }}
         >
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-center">
-            Join thousands of professionals at 603 The Coworking Space.
-          </h1>
-          <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway text-center">
-            At 603 The Coworking Space, we redefine the workspace by offering
-            thoughtfully designed environments tailored for professionals,
-            entrepreneurs, and freelancers. Experience collaboration and
-            innovation in a dynamic setting that fosters growth and success.
-          </p>
+          <motion.h2
+            className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 text-center"
+            initial={{ y: 20, opacity: 0 }}
+            animate={isInViewImage ? { y: 0, opacity: 1 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+            603 The Coworking Space
+          </motion.h2>
         </motion.div>
       </div>
+
+      <motion.div
+        ref={refText}
+        className="w-full flex flex-col justify-center px-4 sm:px-8 lg:px-12"
+        initial={{ opacity: 0, x: -50 }}
+        animate={isInViewText ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.8 }}
+      >
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-center">
+          Join a Network of Innovators at 603 The Coworking Space
+        </h1>
+        <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway text-center leading-relaxed">
+          At 603 The Coworking Space, we offer a thoughtfully designed workspace tailored for professionals, entrepreneurs, and freelancers. Discover a dynamic environment that fosters collaboration, creativity, and growth.
+        </p>
+      </motion.div>
+    </div>
+
       <div className="p-5 max-w-full flex justify-center items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1300px]">
           {offers.offers.map((offer, index) => (

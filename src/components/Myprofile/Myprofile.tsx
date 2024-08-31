@@ -222,7 +222,7 @@ const Settings: React.FC = () => {
                                 <p style={{
                                     fontSize: "16px",
                                     margin: '4px 0',
-                                }}>{data.country + "," + " " + data.state}</p>
+                                }}>{data.country && data.state && (data.country + "," + " " + data.state)}</p>
                             </div>{
                                 windowWidth > 500 && (
                                     <button onClick={handleProfileOpen} style={{
