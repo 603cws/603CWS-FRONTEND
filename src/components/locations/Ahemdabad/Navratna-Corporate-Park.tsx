@@ -1,9 +1,18 @@
-import  gallery3  from "/officeimg/Ahmedabad/ahmedabad.jpg";
+import gallery3 from "/officeimg/Ahmedabad/ahmedabad.jpg";
 import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
+import ImageCarousel from '../../LocationCarousal/LocationCarousal';
 
 const Webpage = () => {
+    const images = [
+        '/officeimg/Ahmedabad/ahmedabad.jpg',
+        '/officeimg/Ahmedabad/ahmedabad2.jpg',
+        '/officeimg/Ahmedabad/ahmedabad3.jpg',
+        '/officeimg/Ahmedabad/ahmedabad4.jpg',
+        '/officeimg/Ahmedabad/ahmedabad5.jpg',
+        '/officeimg/Ahmedabad/ahmedabad6.jpg'
+    ];
     return (
         <div className="font-sans">
             {/* Navbar Section */}
@@ -24,10 +33,13 @@ const Webpage = () => {
 
                 <section className="py-16 flex flex-col lg:flex-row justify-between items-center px-8 lg:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
                     <div className="lg:w-3/5">
-                        <img
-                            src={gallery3}
-                            alt="Workspace"
-                            className="w-full rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105 hover:shadow-2xl h-full"
+                        <ImageCarousel
+                            images={images}
+                            altTextPrefix="My Image"
+                            indicatorColor="bg-gray-300"
+                            indicatorActiveColor="bg-yellow-600"
+                            buttonColor="bg-yellow-600"
+                            buttonHoverColor="bg-blue-900"
                         />
                     </div>
 
@@ -93,6 +105,7 @@ const Webpage = () => {
                         </ul>
                     </div>
                 </section>
+
             </div>
             {/* Footer Section */}
             <Footer />

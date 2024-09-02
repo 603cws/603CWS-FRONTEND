@@ -2,8 +2,13 @@ import { gallery4 } from '../../../utils/Landing/Landing';
 import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Webpage = () => {
+    const [source] = useState(
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1966976400286!2d77.64079672457862!3d12.959261887354954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae153e793c5a5d%3A0x5ff8cd98e5a272e!2sDiamond%20District!5e0!3m2!1sen!2sin!4v1721255315697!5m2!1sen!2sin"
+      );
+      
     return (
         <div className="font-sans">
             {/* Navbar Section */}
@@ -96,6 +101,13 @@ const Webpage = () => {
                         </ul>
                     </div>
                 </section>
+                <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+                        <iframe
+                            src={source}
+                            className="w-full h-80 rounded-lg shadow-lg"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
             </div>
             {/* Footer Section */}
             <Footer />

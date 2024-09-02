@@ -2,8 +2,13 @@ import { gallery7 } from '../../../utils/Landing/Landing';
 import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Webpage = () => {
+    const [source] = useState(
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9576681553413!2d73.01590922472377!3d19.109512932101964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0e7e7a71499%3A0x98d8b38ca6db76be!2sMillenium%20Business%20Park%2C%20MIDC%20Industrial%20Area%2C%20Sector%201%2C%20Kopar%20Khairane%2C%20Navi%20Mumbai%2C%20Maharashtra%20400710!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin"
+      );
+    
     return (
         <div className="font-sans">
             {/* Navbar Section */}
@@ -98,6 +103,13 @@ const Webpage = () => {
                         </ul>
                     </div>
                 </section>
+                <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+                        <iframe
+                            src={source}
+                            className="w-full h-80 rounded-lg shadow-lg"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
             </div>
             {/* Footer Section */}
             <Footer />

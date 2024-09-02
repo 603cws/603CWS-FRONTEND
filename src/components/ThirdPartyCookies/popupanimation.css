@@ -1,0 +1,20 @@
+.popup-overlay.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .popup-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .popup-content.slide-in {
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .popup-content.slide-out {
+    transform: translateY(-20px);
+    transition: transform 0.5s ease-in-out;
+  }
+  
