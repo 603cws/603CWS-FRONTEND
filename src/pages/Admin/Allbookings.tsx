@@ -117,6 +117,19 @@ const AllBookings = () => {
     }, 0);
   };
 
+  const deletebooking = async (id: any) => {
+    try {
+      // Assuming the ID should be part of the URL
+      const resp = await axios.delete(`https://603-cws-backend.vercel.app/api/v1/bookings/admin/deletebooking/${id}`, {
+        withCredentials: true
+      });
+      console.log(resp);
+    } catch (error) {
+      console.error("Error deleting booking:", error);
+    }
+  };
+  
+  
   return (
     <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
@@ -205,6 +218,7 @@ const AllBookings = () => {
                   <th className="p-4 font-semibold text-gray-600">Start Time</th>
                   <th className="p-4 font-semibold text-gray-600">End Time</th>
                   <th className="p-4 font-semibold text-gray-600">Status</th>
+                  <th className="p-4 font-semibold text-gray-600">Cancel</th>
                 </tr>
               </thead>
               <tbody className="print:text-black">
@@ -226,6 +240,7 @@ const AllBookings = () => {
                         {booking.status}
                       </span>
                     </td>
+                    <td className="py-4 px-6 border-b"><button className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl" onClick={()=>deletebooking(booking._id)}>Cancel</button></td>
                   </tr>
                 ))}
               </tbody>
