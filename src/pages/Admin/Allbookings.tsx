@@ -119,8 +119,7 @@ const AllBookings = () => {
 
   const deletebooking = async (id: any) => {
     try {
-      // Assuming the ID should be part of the URL
-      const resp = await axios.post("https://603-cws-backend.vercel.app/api/v1/bookings/admin/deletebooking", id, {
+      const resp = await axios.post("https://603-cws-backend.vercel.app/api/v1/bookings/admin/deletebooking", { id }, {
         withCredentials: true
       });
       console.log(resp);
@@ -128,6 +127,7 @@ const AllBookings = () => {
       console.error("Error deleting booking:", error);
     }
   };
+  
   
   
   return (
