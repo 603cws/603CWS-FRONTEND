@@ -45,7 +45,7 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const response = await axios.get(
-        "https://603-cws-backend.vercel.app/api/v1/users/details/dashboard",
+        "https://603-bcakend-new.vercel.app/api/v1/users/details/dashboard",
         {
           withCredentials: true,
         }

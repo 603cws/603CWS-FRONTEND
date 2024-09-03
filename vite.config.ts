@@ -9,7 +9,7 @@ export default defineConfig({
     port: 5173, // Frontend is running on port 5173
     proxy: {
       '/api': {
-        target: 'https://603-cws-backend.vercel.app', // Backend server address
+        target: 'https://603-bcakend-new.vercel.app', // Backend server address
         changeOrigin: true,
         secure: true,
         cookieDomainRewrite: "localhost",

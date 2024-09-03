@@ -15,7 +15,7 @@ function Userdata() {
     const [kyc,setKyc] = useState("");
     const [created,setCreated] = useState("");
     async function userinfo(){
-        const response = await axios.get(`https://603-cws-backend.vercel.app/api/v1/users/${user}`,{
+        const response = await axios.get(`https://603-bcakend-new.vercel.app/api/v1/users/${user}`,{
             headers:{
                 Authorization: localStorage.getItem("token")
             }
@@ -30,7 +30,7 @@ function Userdata() {
         setCreated(createdat.slice(0,10));
     }
     async function deleteacc(){
-        const response = await axios.delete(`https://603-cws-backend.vercel.app/api/v1/users/${user}`,{
+        const response = await axios.delete(`https://603-bcakend-new.vercel.app/api/v1/users/${user}`,{
             headers:{
                 Authorization: localStorage.getItem("token")
             }

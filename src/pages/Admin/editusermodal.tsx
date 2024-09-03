@@ -56,7 +56,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const response = await axios.post("https://603-cws-backend.vercel.app/api/v1/users/admin/updateuser", { companyName, location, kyc, phone, email, role, monthlycredits, extracredits, creditsleft, id }, { withCredentials: true });
+        const response = await axios.post("https://603-bcakend-new.vercel.app/api/v1/users/admin/updateuser", { companyName, location, kyc, phone, email, role, monthlycredits, extracredits, creditsleft, id }, { withCredentials: true });
         console.log(response);
         if (response.data.msg === "User updated") {
             toast.success(response.data.msg);
@@ -67,7 +67,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
     };
 
     const handleConfirmDelete = async () => {
-        const response = await axios.post("https://603-cws-backend.vercel.app/api/v1/users/admin/deleteuser", { id }, { withCredentials: true });
+        const response = await axios.post("https://603-bcakend-new.vercel.app/api/v1/users/admin/deleteuser", { id }, { withCredentials: true });
         console.log(response);
         if (response.data.msg === "User deleted") {
             toast.success(response.data.msg);

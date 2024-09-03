@@ -44,7 +44,7 @@ const AllBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
-        "https://603-cws-backend.vercel.app/api/v1/bookings/admin/getallbookings",
+        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/getallbookings",
         {
           withCredentials: true,
         }
@@ -119,7 +119,7 @@ const AllBookings = () => {
 
   const deletebooking = async (id: any) => {
     try {
-      const resp = await axios.post("https://603-cws-backend.vercel.app/api/v1/bookings/admin/deletebooking", { id }, {
+      const resp = await axios.post("https://603-bcakend-new.vercel.app/api/v1/bookings/admin/deletebooking", { id }, {
         withCredentials: true
       });
       console.log(resp);

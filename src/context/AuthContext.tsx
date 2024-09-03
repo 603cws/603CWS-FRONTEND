@@ -25,7 +25,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [popup, setpopup] = useState<boolean>(false);
 
-  const PORT = "https://603-cws-backend.vercel.app";
+  const PORT = "https://603-bcakend-new.vercel.app";
 
   const location = useLocation();
 
