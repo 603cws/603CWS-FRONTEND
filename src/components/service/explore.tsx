@@ -29,10 +29,10 @@ const Explore: React.FC<OfferProps> = ({
           <h2 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-900">{title}</h2>
           <p className="text-gray-700 text-sm sm:text-base mb-5">{description}</p>
           <div className="flex flex-col sm:flex-row items-center justify-between">
-            <p className="text-lg font-semibold sm:text-lg  text-gray-600">
-              ₹{price} onwards...
+            <p className="text-lg sm:text-lg  text-gray-500">
+              Starting from <b>₹{price}</b>
             </p>
-            <button onClick={()=>{navigate("/allLocations")}} className="mt-3 sm:mt-0 bg-yellow-500 text-white hover:bg-yellow-600 py-2 px-3 rounded-lg shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+            <button onClick={() => { navigate("/allLocations") }} className="mt-3 sm:mt-0 bg-yellow-500 text-white hover:bg-yellow-600 py-2 px-3 rounded-lg shadow-md transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400">
               More
             </button>
           </div>

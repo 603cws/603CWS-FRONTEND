@@ -6,6 +6,8 @@ import { useReactToPrint } from "react-to-print";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './MyDatePicker.css';
+import toast from "react-hot-toast";
+import { FaFilePdf } from "react-icons/fa";
 
 interface Booking {
   _id: string;
@@ -26,6 +28,9 @@ const AllBookings = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [formattedDate, setFormattedDate] = useState<string>("");
 
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [bookingToCancel, setBookingToCancel] = useState<Booking | null>(null);
+
   useEffect(() => {
     if (startDate) {
       const day = startDate.getDate().toString();
@@ -37,7 +42,6 @@ const AllBookings = () => {
       setFormattedDate("");
     }
   }, [startDate]);
-
 
   const tableRef = useRef<HTMLDivElement>(null);
 
@@ -71,7 +75,6 @@ const AllBookings = () => {
     }
   };
 
-  // Filter bookings based on search query, selected workspace, and selected date
   const filteredBookings = bookings
     .filter((booking) => {
       return (
@@ -96,40 +99,62 @@ const AllBookings = () => {
     indexOfLastBooking
   );
 
-  // Printing logic
-
   const print = useReactToPrint({
     content: () => tableRef.current,
     documentTitle: "Bookings",
+    onBeforePrint: () => {
+      // This function can be used to make sure the table is fully rendered before printing
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 500); // Adjust the delay if needed
+      });
+    },
   });
-
+  
   const handlePrint = () => {
+    // Save the current state values
     const originalBookingsPerPage = bookingsPerPage;
-    setBookingsPerPage(filteredBookings.length); // Display all bookings
-    setCurrentPage(1); // Go to the first page to display all bookings at once
-
+    const originalCurrentPage = currentPage;
+  
+    // Temporarily set bookingsPerPage to include all filtered bookings
+    setBookingsPerPage(filteredBookings.length);
+    setCurrentPage(1);
+  
+    // Use setTimeout to wait for the rendering to complete
     setTimeout(() => {
-      print(); // Trigger the print functionality
-
-      // Revert back to original settings after printing
+      // Trigger the print
+      print();
+  
+      // Restore the original state after printing
       setBookingsPerPage(originalBookingsPerPage);
-      setCurrentPage(1);
-    }, 0);
+      setCurrentPage(originalCurrentPage);
+    }, 300); // Adjust the delay if needed
   };
+  
+  
+  
+  
 
   const deletebooking = async (id: any) => {
     try {
       const resp = await axios.post("https://603-bcakend-new.vercel.app/api/v1/bookings/admin/deletebooking", { id }, {
         withCredentials: true
       });
+      if (resp.data.message === "Booking not found") {
+        toast.error("Booking not found");
+      }
+      if (resp.data.message === "Booking deleted successfully") {
+        toast.success("Booking deleted successfully");
+      }
       console.log(resp);
+      fetchBookings();
     } catch (error) {
       console.error("Error deleting booking:", error);
+      toast.error("An error occurred while creating the user");
     }
   };
-  
-  
-  
+
   return (
     <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
@@ -161,11 +186,10 @@ const AllBookings = () => {
                   onChange={(date) => setStartDate(date)}
                   dateFormat="d/M/yyyy"
                   placeholderText="Select a date"
-                  className="custom-datepicker" // Custom class for the input field
-                  calendarClassName="custom-calendar" // Custom class for the calendar
+                  className="custom-datepicker"
+                  calendarClassName="custom-calendar"
                 />
 
-                {/* Cross Button */}
                 {startDate && (
                   <button
                     onClick={() => {
@@ -174,7 +198,7 @@ const AllBookings = () => {
                     }}
                     className="absolute right-2 text-gray-500 hover:text-gray-700 focus:outline-none"
                   >
-                    &#x2715; {/* Unicode character for a cross symbol */}
+                    &#x2715;
                   </button>
                 )}
               </div>
@@ -185,7 +209,7 @@ const AllBookings = () => {
                 onChange={(e) => setSelectedWorkspace(e.target.value)}
                 className="ml-4 px-3 py-2 rounded-lg bg-gray-200 text-gray-600"
               >
-                <option value="">Select Workspace</option>
+                <option value="">Please Select</option>
                 <option value="Amore Conference Room">Amore Conference Room</option>
                 <option value="Amore Meeting Room">Amore Meeting Room</option>
                 <option value="Bandra Conference Room">Bandra Conference Room</option>
@@ -199,82 +223,124 @@ const AllBookings = () => {
                 <option value="Sunshine Conference Room">Sunshine Conference Room</option>
                 <option value="Sunshine Meeting Room">Sunshine Meeting Room</option>
               </select>
+            </div>
+
+            <div className="ml-4">
               <button
                 onClick={handlePrint}
-                className="ml-4 py-2 px-4 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-500 transition duration-300"
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
               >
-                Print PDF
+                Print <FaFilePdf size={20} />
               </button>
             </div>
           </div>
-          <div ref={tableRef} className="overflow-x-auto print:bg-white print:p-0 print:shadow-none">
-            <table className="w-full table-auto border-collapse text-left">
-              <thead className="print:text-black">
-                <tr className="bg-blue-50 border-b-2 border-blue-200">
-                  <th className="p-4 font-semibold text-gray-600">Booking ID</th>
-                  <th className="p-4 font-semibold text-gray-600">Company Name</th>
-                  <th className="p-4 font-semibold text-gray-600">Workspace</th>
-                  <th className="p-4 font-semibold text-gray-600">Booking Date</th>
-                  <th className="p-4 font-semibold text-gray-600">Start Time</th>
-                  <th className="p-4 font-semibold text-gray-600">End Time</th>
-                  <th className="p-4 font-semibold text-gray-600">Status</th>
-                  <th className="p-4 font-semibold text-gray-600">Cancel</th>
+
+          <div ref={tableRef} className="overflow-x-auto shadow-lg rounded-lg">
+            <table className="min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Company
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Space
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Date
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Start Time
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    End Time
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Status
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Actions
+                  </th>
                 </tr>
               </thead>
-              <tbody className="print:text-black">
-                {currentBookings.map((booking, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition">
-                    <td className="py-4 px-6 border-b">{booking._id}</td>
+              <tbody>
+                {currentBookings.map((booking) => (
+                  <tr key={booking._id}>
                     <td className="py-4 px-6 border-b">{booking.companyName}</td>
                     <td className="py-4 px-6 border-b">{booking.spaceName}</td>
                     <td className="py-4 px-6 border-b">{booking.date}</td>
                     <td className="py-4 px-6 border-b">{booking.startTime}</td>
                     <td className="py-4 px-6 border-b">{booking.endTime}</td>
+                    <td className="py-4 px-6 border-b">{booking.status}</td>
                     <td className="py-4 px-6 border-b">
-                      <span
-                        className={`inline-block px-3 py-1 text-sm font-semibold rounded-full ${booking.status === "Confirmed"
-                          ? "bg-green-100 text-green-800"
-                          : "bg-red-100 text-red-800"
-                          }`}
+                      <button
+                        className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl"
+                        onClick={() => {
+                          setBookingToCancel(booking);
+                          setIsModalOpen(true);
+                        }}
                       >
-                        {booking.status}
-                      </span>
+                        Cancel
+                      </button>
                     </td>
-                    <td className="py-4 px-6 border-b"><button className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl" onClick={()=>deletebooking(booking._id)}>Cancel</button></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="flex justify-between mt-6 print:hidden">
+
+          <div className="flex justify-between mt-6">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
-              className={`px-6 py-3 rounded-lg shadow-md ${currentPage === 1
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
-                }`}
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition disabled:opacity-50"
             >
               Previous
             </button>
             <button
               onClick={handleNextPage}
-              disabled={
-                currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)
-              }
-              className={`px-6 py-3 rounded-lg shadow-md ${currentPage ===
-                Math.ceil(filteredBookings.length / bookingsPerPage)
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
-                }`}
+              disabled={currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)}
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition disabled:opacity-50"
             >
               Next
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && bookingToCancel && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white rounded-lg shadow-xl p-6 w-96">
+            <h2 className="text-xl font-bold text-gray-800">Cancel Booking</h2>
+            <p className="my-4 text-gray-600">
+              Are you sure you want to cancel the booking for{" "}
+              <strong>{bookingToCancel.companyName}</strong> in{" "}
+              <strong>{bookingToCancel.spaceName}</strong>?
+            </p>
+            <div className="flex justify-between">
+
+              <button
+                onClick={() => {
+                  deletebooking(bookingToCancel._id);
+                  setIsModalOpen(false);
+                }}
+                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+              >
+                Yes, Cancel
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg mr-2 hover:bg-gray-400 transition"
+              >
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default AllBookings;
+

@@ -3,16 +3,18 @@ import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
 import { gallery9, gallery8, gallery7, gallery6, gallery1, gallery2, gallery3 } from "../../utils/Landing/Landing";
 import { FaHandshake, FaCoffee, FaWifi, FaBroom, FaLaptop, FaTools, FaLock } from 'react-icons/fa';
+import { GiSofa } from "react-icons/gi";
 import { useNavigate } from 'react-router-dom';
 
 const services = [
     { icon: <FaHandshake />, label: 'Reception Services' },
     { icon: <FaCoffee />, label: 'Unlimited Refreshments' },
     { icon: <FaWifi />, label: 'High Speed Internet Services' },
-    { icon: <FaBroom />, label: 'Housekeeping & Facility Upkeep' },
+    { icon: <FaBroom />, label: 'Housekeeping Facility' },
     { icon: <FaLaptop />, label: 'Fully Managed Tech Services' },
     { icon: <FaTools />, label: 'Maintenance Support' },
-    { icon: <FaLock />, label: 'Security Services' }
+    { icon: <FaLock />, label: 'Security Services' },
+    { icon: <GiSofa />, label: 'Custom Furnished Spaces' }
 ];
 
 const locations = [

@@ -1,4 +1,5 @@
 import "./custom.css";
+import ContactUs from "./Form";
 
 function PartnerWithUs() {
   return (
@@ -48,82 +49,11 @@ function PartnerWithUs() {
           Coworking Space.
         </p>
       </div>
-      {/*
-      <div className="pt-14">
-        <div className="px-8">
-          <h2 className="text-center text-4xl font-bold text-[#363635] rounded">
-            Property Partner Form
-          </h2>
-        </div>
+      <div className="pt-14 pb-12 bg-gradient-to-r from-gray-50 to-yellow-100">
 
-        <div className="bg-yellow-200 w-full max-w-4xl mx-auto mt-8 p-8 rounded-lg shadow-lg">
-          <form className="space-y-6">
-            <div>
-              <input
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Name"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Phone"
-                required
-              />
-            </div>
-
-            <div>
-              <input
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                type="text"
-                id="location"
-                name="location"
-                placeholder="Company"
-                required
-              />
-            </div>
-
-            <div>
-              <textarea
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                id="specifications"
-                name="specifications"
-                rows={4}
-                placeholder="Message"
-                required
-              ></textarea>
-            </div>
-
-            <div className="text-center">
-              <button
-                className="bg-gray-900 text-white font-bold py-2 px-6 rounded-lg hover:shadow-lg transition-shadow duration-300"
-                type="submit"
-              >
-                Send
-              </button>
-            </div>
-          </form>
-        </div>
+        <ContactUs />
       </div>
+      {/* 
       <div className="pt-8">
         <div className="bg-yellow-300 p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center justify-between">
           <div className="text-center md:text-left md:pl-10">
@@ -148,8 +78,9 @@ function PartnerWithUs() {
         
       </div>
       */}
+
     </div>
-    
+
   );
 }
 export default PartnerWithUs;

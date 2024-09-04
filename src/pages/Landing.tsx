@@ -346,13 +346,13 @@ function Landing() {
       <div className="w-full flex flex-col mt-12 xl:flex-row">
         <div className="w-full xl:w-1/2 flex justify-center items-center px-4 md:px-8 lg:px-16">
           <div className="max-w-xl">
-            <h1 className="font-sans text-yellow-400 font-semibold text-2xl md:text-3xl lg:text-5xl mb-4">
+            <h1 className="font-sans text-yellow-400 font-extrabold text-2xl md:text-3xl lg:text-4xl mb-4">
               Did you know about this?
             </h1>
             <h2 className="text-2xl md:text-3xl lg:text-2xl text-gray-800 font-sans font-semibold mb-6">
-              We now offer managed office solutions for all sizes!
+              Managed office solutions for any size!
             </h2>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed mb-8">
+            <p className="text-slate-500 text-lg md:text-lg leading-relaxed mb-8">
               Explore our bespoke standalone workspaces, meticulously crafted to reflect and enhance your brand while meeting your unique requirements. Whether you're seeking private offices, versatile meeting rooms, or flexible co-working spaces, we have solutions tailored to fit the distinct needs of your team. Our offerings are available on a variety of terms – annually, monthly, daily, or even hourly – ensuring that you can choose the arrangement that best suits your operational demands and schedules. With a focus on both functionality and aesthetics, our spaces are designed to foster productivity and collaboration, providing the ideal environment for your business to thrive.
 
 
