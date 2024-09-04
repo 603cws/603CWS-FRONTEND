@@ -2,8 +2,12 @@ import { gallery6 } from '../../../utils/Landing/Landing';
 import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Webpage = () => {
+    const [source] = useState(
+        "https://www.google.com/maps/place/Kamala+Mills+Compound/@19.002693,72.8260568,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7ceed2879bcd3:0x519449d10ba027f0!8m2!3d19.0026879!4d72.8286371!16s%2Fg%2F11cn5qqrcm?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      );
     return (
         <div className="font-sans">
             {/* Navbar Section */}
@@ -104,6 +108,13 @@ const Webpage = () => {
                     </ul>
                 </div>
             </section>
+            <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+                        <iframe
+                            src={source}
+                            className="w-full h-80 rounded-lg shadow-lg"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
             <div/>
             {/* Footer Section */}
             <Footer />

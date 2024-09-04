@@ -15,16 +15,13 @@ import UserManagement from "./pages/Admin/Alluser";
 import Partner from "./pages/Partner";
 import Profile from "./components/Myprofile/Myprofile";
 import Matulya from "./components/locations/Mumbai/Matulya-Centre";
-import Marathon from "./components/locations/Mumbai/Marathon";
 import Sunmill from "./components/locations/Mumbai/Sun-Mill-Compound";
 import Kamala from "./components/locations/Mumbai/Kamala-Mills";
 import Sunshine from "./components/locations/Mumbai/Sunshine-Tower";
 import Amore from "./components/locations/Mumbai/Amore-Centre";
 import Makhija from "./components/locations/Mumbai/Makhija-Archade";
-import MIDC from "./components/locations/Mumbai/MIDC";
 import Pinnacle from "./components/locations/Mumbai/Pinnacle-Corporate-Park";
 import Millenium from "./components/locations/Navi_Mumbai/Millenium-business-park";
-import Diamond from "./components/locations/Bangalore/Diamond-District";
 import Navratna from "./components/locations/Ahemdabad/Navratna-Corporate-Park";
 import Lodha from "./components/Managed_Space/603-Lodha-Supremus-Center";
 import Naman from "./components/Managed_Space/Naman-midtown-center";
@@ -60,8 +57,9 @@ function App() {
     "/admin/userinfo/:user",
     "/admin/alluserinfo",
     "/admin/allbookings",
-    "/admin/edituser/:id"
-
+    "/admin/edituser/:id",
+    "/contactus",
+    "/partner-with-us"
   ];
 
   useEffect(() => {
@@ -97,16 +95,16 @@ function App() {
             <Route path="/admin/edituser/:id" element={isAdmin === "admin" ? <EditUser /> : <Login />} />
             <Route path="/partner-with-us" element={<Partner />} />
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
-            <Route path="/locations/Marathon" element={<Marathon />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
-            <Route path="/locations/MIDC" element={<MIDC />} />
+            {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
+            {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
+            {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
             <Route path="/locations/Pinnacle-Corporate-Park" element={<Pinnacle />} />
             <Route path="/locations/millenium-business-park" element={<Millenium />} />
-            <Route path="/locations/Diamond-District" element={<Diamond />} />
             <Route path="/locations/Navratna-Corporate-Park" element={<Navratna />} />
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />
@@ -135,17 +133,17 @@ function App() {
             <Route path="/admin/createacc" element={<Login />} />
             <Route path="/admin/edituser/:id" element={<Login />} />
             <Route path="/partner-with-us" element={<Partner />} />
+            {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
+            {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
+            {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
-            <Route path="/locations/Marathon" element={<Marathon />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
-            <Route path="/locations/MIDC" element={<MIDC />} />
             <Route path="/locations/Pinnacle-Corporate-Park" element={<Pinnacle />} />
             <Route path="/locations/millenium-business-park" element={<Millenium />} />
-            <Route path="/locations/Diamond-District" element={<Diamond />} />
             <Route path="/locations/Navratna-Corporate-Park" element={<Navratna />} />
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />

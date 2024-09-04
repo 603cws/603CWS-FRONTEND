@@ -3,8 +3,17 @@ import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
 import { useState } from 'react';
+import ImageCarousel from '../../LocationCarousal/LocationCarousal';
 
 const Webpage = () => {
+    const images = [
+        '/officeimg/Rupa/Rupa.jpg',
+        '/officeimg/Rupa/Rupa2.jpg',
+        '/officeimg/Rupa/Rupa3.jpg',
+        '/officeimg/Rupa/Rupa4.jpg',
+        '/officeimg/Rupa/Rupa5.jpg',
+        '/officeimg/Rupa/Rupa6.jpg',
+    ];
     const [source] = useState(
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9576681553413!2d73.01590922472377!3d19.109512932101964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0e7e7a71499%3A0x98d8b38ca6db76be!2sMillenium%20Business%20Park%2C%20MIDC%20Industrial%20Area%2C%20Sector%201%2C%20Kopar%20Khairane%2C%20Navi%20Mumbai%2C%20Maharashtra%20400710!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin"
       );
@@ -28,11 +37,14 @@ const Webpage = () => {
 
                 {/* Workspace Packages Section */}
                 <section className="py-16 flex flex-col lg:flex-row justify-between items-center px-8 lg:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
-                    <div className="lg:w-3/5">
-                        <img
-                            src={gallery7}
-                            alt="Workspace"
-                            className="w-full rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-1"
+                <div className="lg:w-3/5">
+                        <ImageCarousel
+                            images={images}
+                            altTextPrefix="My Image"
+                            indicatorColor="bg-gray-300"
+                            indicatorActiveColor="bg-yellow-600"
+                            buttonColor="bg-yellow-600"
+                            buttonHoverColor="bg-blue-900"
                         />
                     </div>
                     <div className="lg:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 lg:ml-8 shadow-md flex flex-col">

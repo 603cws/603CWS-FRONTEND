@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useApp } from '../../context/AuthContext';
 import Popup from './popup';
 
 const ContactUs = () => {
-    const { setloading } = useApp();
     const PORT = "https://603-bcakend-new.vercel.app";
     const [formData, setFormData] = useState({
         name: '',
@@ -26,10 +24,7 @@ const ContactUs = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            setloading(true);
-            setIsPopupVisible(true);
-            const resp = await axios.post(`${PORT}/api/v1/services/sendpartnershipemail`, formData, { withCredentials: true });
-            setloading(false);
+            const resp = await axios.post(`${PORT}/api/v1/services/sendpartnershipemail`, formData, { withCredentials: true });``
             console.log(resp);
             console.log(formData);
             setFormData({
@@ -39,6 +34,7 @@ const ContactUs = () => {
                 company: '',
                 message: '',
             });
+            setIsPopupVisible(true);
         } catch (error) {
             console.error("Error submitting form:", error);
         }
@@ -102,11 +98,11 @@ const ContactUs = () => {
                 
                 
                 <div>
-                    <label className="block text-gray-700 font-semibold mb-2" htmlFor="specifications">Message</label>
+                    <label className="block text-gray-700 font-semibold mb-2" htmlFor="message">Message</label>
                     <textarea
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow-500"
-                        id="specifications"
-                        name="specifications"
+                        id="message"
+                        name="message"
                         rows={4}
                         value={formData.message}
                         onChange={handleChange}

@@ -2,8 +2,23 @@ import { gallery1 } from '../../../utils/Landing/Landing';
 import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
+import ImageCarousel from '../../LocationCarousal/LocationCarousal';
+import { useState } from 'react';
 
 const Webpage = () => {
+    const [source] = useState(
+        "https://www.google.com/maps/place/Pinnacle+Corporate+Park,+Kolivery+Village,+MMRDA+Area,+Kalina,+Santacruz+East,+Mumbai,+Maharashtra+400098/@19.0724954,72.8676005,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c8edf0d42eb9:0x3229df69dd9417e4!8m2!3d19.0724314!4d72.8702865!16s%2Fg%2F11n6snp78j?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+      );
+    const images = [
+        '/officeimg/Pinnacle/Pinnacle.jpg',
+        '/officeimg/Pinnacle/Pinnacle2.jpg',
+        '/officeimg/Pinnacle/Pinnacle3.jpg',
+        '/officeimg/Pinnacle/Pinnacle4.jpg',
+        '/officeimg/Pinnacle/Pinnacle5.jpg',
+        '/officeimg/Pinnacle/Pinnacle6.jpg',
+        '/officeimg/Pinnacle/Pinnacle7.jpg',
+        '/officeimg/Pinnacle/Pinnacle8.jpg',
+    ];
     return (
         <div className="font-sans">
             {/* Navbar Section */}
@@ -24,10 +39,13 @@ const Webpage = () => {
                 {/* Workspace Packages Section */}
                 <section className="py-16 flex flex-col lg:flex-row justify-between items-center px-8 lg:px-32 bg-gradient-to-r from-gray-50 to-yellow-50">
                     <div className="lg:w-3/5">
-                        <img
-                            src={gallery1}
-                            alt="Workspace"
-                            className="w-full rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-1"
+                    <ImageCarousel
+                            images={images}
+                            altTextPrefix="My Image"
+                            indicatorColor="bg-gray-300"
+                            indicatorActiveColor="bg-yellow-600"
+                            buttonColor="bg-yellow-600"
+                            buttonHoverColor="bg-blue-900"
                         />
                     </div>
                     <div className="lg:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 lg:ml-8 shadow-md flex flex-col">
@@ -99,6 +117,13 @@ const Webpage = () => {
                         </ul>
                     </div>
                 </section>
+                <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+                    <iframe
+                        src={source}
+                        className="w-full h-80 rounded-lg shadow-lg"
+                            loading="lazy"
+                        ></iframe>
+                    </div>
             </div>
 
             {/* Footer Section */}

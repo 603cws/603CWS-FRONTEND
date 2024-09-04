@@ -16,8 +16,6 @@ const Navbar = () => {
   const [isMumbaiDropdownVisible, setMumbaiDropdownVisible] = useState(false);
   const [isNaviMumbaiDropdownVisible, setNaviMumbaiDropdownVisible] =
     useState(false);
-  const [isBangaloreDropdownVisible, setBangaloreDropdownVisible] =
-    useState(false);
   const [isAhmedabadDropdownVisible, setAhmedabadDropdownVisible] =
     useState(false);
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
@@ -87,7 +85,6 @@ const Navbar = () => {
                       clearTimeout(timeoutId);
                       setMumbaiDropdownVisible(true);
                       setNaviMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setAhmedabadDropdownVisible(false);
                     }}
                     onMouseLeave={() => {
@@ -111,15 +108,18 @@ const Navbar = () => {
                           Matulya Centre, Lower Parel
                         </button>
                       </li>
+                      {/*
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300 ">
                         <button className="text-base" onClick={() => { navigate("/locations/Marathon") }}>
                           Marathon, Lower Parel
                         </button>
                       </li>
+                       */}
+
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button className="text-base"
                           onClick={() => {
-                          
+
                             navigate("/locations/Sun-Mill-Compound")
                           }}
                         >
@@ -154,15 +154,18 @@ const Navbar = () => {
                           Makhija Archade, Bandra
                         </button>
                       </li>
+                      {/*
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button className="text-base" onClick={() => { navigate("/locations/MIDC") }}>
                           MIDC, Andheri
                         </button>
                       </li>
+                       */}
+
                       <li className="py-2 hover:text-yellow-500">
                         <button className="text-base"
                           onClick={() => {
-                          
+
                             navigate("/locations/Pinnacle-Corporate-Park")
                           }}
                         >
@@ -177,7 +180,6 @@ const Navbar = () => {
                       clearTimeout(timeoutId);
                       setNaviMumbaiDropdownVisible(true);
                       setMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setAhmedabadDropdownVisible(false);
                     }}
                     onMouseLeave={() => {
@@ -196,7 +198,7 @@ const Navbar = () => {
                       <li className="py-2 hover:text-yellow-500">
                         <button className="text-base"
                           onClick={() => {
-                          
+
                             navigate("/locations/Millenium-Business-Park")
                           }}
                         >
@@ -205,7 +207,7 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </li>
-                  <li
+                  {/*<li
                     className="relative group border-b border-gray-300"
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
@@ -221,6 +223,7 @@ const Navbar = () => {
                     <summary className="py-2 hover:text-yellow-500 border-2 border-transparent text-base">
                       Bangalore
                     </summary>
+
                     <ul
                       className={`p-2 w-60 absolute left-10 top-0 ml-2 bg-white shadow-lg rounded z-50 transition-all duration-200 ${isBangaloreDropdownVisible
                         ? "opacity-100 visible"
@@ -236,16 +239,16 @@ const Navbar = () => {
                         >
                           Diamond District, Domlar
                         </button>
-                      </li>
+
                     </ul>
-                  </li>
+                  </li>*/}
+
                   <li
                     className="relative group"
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
                       setAhmedabadDropdownVisible(true);
                       setMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setNaviMumbaiDropdownVisible(false);
                     }}
                     onMouseLeave={() => {
@@ -264,7 +267,7 @@ const Navbar = () => {
                       <li className="py-2 hover:text-yellow-500">
                         <button className="text-base"
                           onClick={() => {
-                          
+
                             navigate("/locations/Navratna-Corporate-Park")
                           }}
                         >
@@ -275,6 +278,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
+
               <li className="border-b-[1px] border-gray-300 py-1">
                 <button className="text-base" onClick={() => { navigate("/service") }}>Services</button>
               </li>
@@ -371,7 +375,6 @@ const Navbar = () => {
                     onMouseEnter={() => {
                       setMumbaiDropdownVisible(true);
                       setNaviMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setAhmedabadDropdownVisible(false);
                     }}
                   >
@@ -395,15 +398,18 @@ const Navbar = () => {
                           Matulya Centre, Lower Parel
                         </button>
                       </li>
+                      {/*
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button onClick={() => { navigate("/locations/Marathon") }}>
                           Marathon, Lower Parel
                         </button>
                       </li>
+                       */}
+
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           onClick={() => {
-                          
+
                             navigate("/locations/Sun-Mill-Compound")
                           }}
                         >
@@ -438,15 +444,17 @@ const Navbar = () => {
                           Makhija Archade, Bandra
                         </button>
                       </li>
+                      {/*
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button onClick={() => { navigate("/locations/MIDC") }}>
                           MIDC, Andheri
                         </button>
                       </li>
+                       */}
                       <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
                         <button
                           onClick={() => {
-                          
+
                             navigate("/locations/Pinnacle-Corporate-Park")
                           }}
                         >
@@ -460,7 +468,6 @@ const Navbar = () => {
                     onMouseEnter={() => {
                       setNaviMumbaiDropdownVisible(true);
                       setMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setAhmedabadDropdownVisible(false);
                     }}
                   >
@@ -480,7 +487,7 @@ const Navbar = () => {
                       <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
                         <button
                           onClick={() => {
-                          
+
                             navigate("/locations/Millenium-Business-Park");
                           }}
                         >
@@ -489,6 +496,7 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </li>
+                  {/*
                   <li
                     className="relative group border-b border-gray-300"
                     onMouseEnter={() => {
@@ -497,8 +505,7 @@ const Navbar = () => {
                       setNaviMumbaiDropdownVisible(false);
                       setAhmedabadDropdownVisible(false);
                     }}
-                  >
-                    <summary
+                  ><summary
                       className="py-2 hover:text-yellow-500 border-2 border-transparent"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -514,22 +521,22 @@ const Navbar = () => {
                       <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
                         <button
                           onClick={() => {
-                          
+
                             navigate("/locations/Diamond-District");
                           }}
                         >
                           Diamond District, Domlar
                         </button>
                       </li>
+                      
                     </ul>
-                  </li>
+                  </li>*/}
                   <li
                     className="relative group"
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
                       setAhmedabadDropdownVisible(true);
                       setMumbaiDropdownVisible(false);
-                      setBangaloreDropdownVisible(false);
                       setNaviMumbaiDropdownVisible(false);
                     }}
                     onMouseLeave={() => {
@@ -552,7 +559,7 @@ const Navbar = () => {
                       <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
                         <button
                           onClick={() => {
-                          
+
                             navigate("/locations/Navratna-Corporate-Park");
                           }}
                         >
@@ -614,11 +621,6 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-
-
-
-
-
 
         <div className="w-full flex justify-end gap-2">
           {path != "/login" && (

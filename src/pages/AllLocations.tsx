@@ -10,7 +10,7 @@ import { gallery6 } from '../utils/Landing/Landing';
 import sunshine from "/officeimg/Sunshine/sunshine.JPG"
 import Sunmill from "/officeimg/SunMill/Sunmill.jpeg"
 import { gallery7 } from '../utils/Landing/Landing';
-import { gallery4, gallery5 } from '../utils/Landing/Landing';
+import { gallery5 } from '../utils/Landing/Landing';
 
 type Location = {
   name: string;
@@ -98,18 +98,18 @@ const locations: { city: string; locations: Location[] }[] = [
       },
     ],
   },
-  {
-    city: "Bangalore",
-    locations: [
-      {
-        name: "Diamond District, Bangalore",
-        address:
-          "Diamond District, D Wing, 4th Floor, Old Airport Road, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka 560008",
-        imgSrc: gallery4, // Replace with actual image link
-        link: "/locations/Diamond-District",
-      },
-    ],
-  },
+  //{
+  //  city: "Bangalore",
+  //  locations: [
+      //{
+      //  name: "Diamond District, Bangalore",
+      //  address:
+      //    "Diamond District, D Wing, 4th Floor, Old Airport Road, Kodihalli, Bangalore 560008, Karnataka, India, HAL Old Airport Rd, ISRO Colony, Domlur, Bengaluru, Karnataka 560008",
+      //  imgSrc: gallery4, // Replace with actual image link
+      //  link: "/locations/Diamond-District",
+      //},
+  //  ],
+  //},
 ];
 
 
