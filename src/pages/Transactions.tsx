@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DashNavbar from '../components/DashBoardNavbar/DashNavbar';
 import './Transactioncss.css';
 
@@ -61,6 +61,9 @@ const paymentMethodStyles = {
   credit_card: 'text-indigo-600',
   paypal: 'text-teal-600',
 };
+
+useEffect(() => {
+}, [])
 
 const Transactions: React.FC = () => {
   const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null);

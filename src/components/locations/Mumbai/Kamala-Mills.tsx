@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Webpage = () => {
     const [source] = useState(
-        "https://www.google.com/maps/place/Kamala+Mills+Compound/@19.002693,72.8260568,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7ceed2879bcd3:0x519449d10ba027f0!8m2!3d19.0026879!4d72.8286371!16s%2Fg%2F11cn5qqrcm?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609930707!2d72.7462354!3d19.0026697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ceed2879bcd3%3A0x519449d10ba027f0!2s2R3H%2B3FC%2C%20Lower%2C%20Parel%2C%20Mumbai%2C%20Maharashtra%20400013!5e0!3m2!1sen!2sin!4v1721254426295!5m2!1sen!2sin"
       );
     return (
         <div className="font-sans">

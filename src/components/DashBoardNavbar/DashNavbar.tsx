@@ -7,7 +7,7 @@ import { logo } from "../../utils/Landing/Landing";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
-import Modal from './Modal'; // Import the Modal component
+import Modal from './Modal';
 import { useApp } from '../../context/AuthContext';
 import Loader from '../Loader/Loader';
 import { IoWarningOutline } from "react-icons/io5";
@@ -29,7 +29,9 @@ function DashNavbar() {
 
   const n = localStorage.getItem("user");
 
-
+  const toTransactions = () => {
+    navigate("/dashboard/Transactions");
+  }
   const logout = async () => {
     try {
       setloading(true);
@@ -247,7 +249,7 @@ function DashNavbar() {
               </div>
             </div>
 
-            {/*<div className="cursor-pointer text-gray-600" onClick={toTransactions}>My Bookings</div>*/}
+            <div className="cursor-pointer text-gray-600" onClick={toTransactions}>My Bookings</div>
 
             <div className="cursor-pointer text-gray-600" onClick={logout}>Logout</div>
             <Avatar onClick={visitProfile} name={n ? n.charAt(0) : ''} />
@@ -282,13 +284,11 @@ function DashNavbar() {
               <CiCreditCard1 size="24" />
               <IoIosHelpCircleOutline size="18" color="gray" onClick={() => { setShowHelp(true), setIsSideWindowOpen(false) }} className="cursor-pointer" />
             </div>)}
-          {/*
         <div onClick={toTransactions}
           style={sideLinkStyle}
           onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
           onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
         >My Bookings</div>
-         */}
 
           <div
             style={sideLinkStyle}

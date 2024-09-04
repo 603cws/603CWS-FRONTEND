@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const Webpage = () => {
     const [source] = useState(
-        "https://www.google.com/maps/place/Pinnacle+Corporate+Park,+Kolivery+Village,+MMRDA+Area,+Kalina,+Santacruz+East,+Mumbai,+Maharashtra+400098/@19.0724954,72.8676005,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c8edf0d42eb9:0x3229df69dd9417e4!8m2!3d19.0724314!4d72.8702865!16s%2Fg%2F11n6snp78j?entry=ttu&g_ep=EgoyMDI0MDgyOC4wIKXMDSoASAFQAw%3D%3D"
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.212792818998!2d72.86728357472062!3d19.059727882190618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf1f1c71f0a1%3A0x9abf2f1f4a7f7a8b!2sPinnacle%20Corporate%20Park%2C%20BKC!5e0!3m2!1sen!2sin!4v1721352465026!5m2!1sen!2sin"
       );
     const images = [
         '/officeimg/Pinnacle/Pinnacle.jpg',

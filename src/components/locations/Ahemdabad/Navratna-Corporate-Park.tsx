@@ -3,8 +3,12 @@ import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
 import ImageCarousel from '../../LocationCarousal/LocationCarousal';
+import { useState } from "react";
 
 const Webpage = () => {
+
+    const [source] = useState("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.4198362675966!2d72.54141621502953!3d23.0380540849331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84fb84b1a041%3A0xc1d6c6a5a1b9b5a3!2sNavratna%20Corporate%20Park!5e0!3m2!1sen!2sin!4v1721254426295!5m2!1sen!2sin")
+
     const images = [
         '/officeimg/Ahmedabad/ahmedabad.jpg',
         '/officeimg/Ahmedabad/ahmedabad2.jpg',
@@ -105,7 +109,13 @@ const Webpage = () => {
                         </ul>
                     </div>
                 </section>
-
+                <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+                    <iframe
+                        src={source}
+                        className="w-full h-80 rounded-lg shadow-lg"
+                        loading="lazy"
+                    ></iframe>
+                </div>
             </div>
             {/* Footer Section */}
             <Footer />
