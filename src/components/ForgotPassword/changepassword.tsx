@@ -32,7 +32,9 @@ const Changepassword: React.FC = () => {
 
       if (msg === "Password changed successfully") {
         toast.success("Password changed successfully");
-      }else{
+      } else if (msg === "Token has expired") {
+        toast.error("The password reset link has expired. Please generate a new link.");
+      } else {
         toast.error("An error occurred. Please try again later.");
       }
     } catch (e) {
