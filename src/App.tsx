@@ -35,6 +35,8 @@ import Loader from "./components/Loader/Loader";
 import Allbookings from "./pages/Admin/Allbookings";
 import Privacy from "./pages/Privacy"
 import TermsNCond from "./pages/Terms"
+import Forgot from "./components/ForgotPassword/ForgotPass";
+import Changepassword from "./components/ForgotPassword/changepassword";
 
 function App() {
   const location = useLocation();
@@ -43,8 +45,6 @@ function App() {
   const noPopupRoutes = [
     "/admin/dashboard",
     "/admin/login",
-    "/admin/userinfo/:user",
-    "/admin/alluserinfo",
     "/admin/createacc",
     "/admin/edituser/:id",
     "/dashboard",
@@ -52,21 +52,29 @@ function App() {
     "/dashboard/Transactions",
     "/login",
     "/Register",
-    "/admin/login",
-    "/admin/dashboard",
     "/admin/userinfo/:user",
     "/admin/alluserinfo",
     "/admin/allbookings",
     "/admin/edituser/:id",
     "/contactus",
-    "/partner-with-us"
+    "/partner-with-us",
+    "/forgotPassword",
+    "/changepassword/:id"
   ];
-
+  
+  const matchDynamicRoute = (route : any, path : any) => {
+    const routeRegex = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
+    return routeRegex.test(path);
+  };
+  
   useEffect(() => {
     refreshAuth();
   }, [refreshAuth]);
-
-  const shouldShowPopup = !noPopupRoutes.includes(location.pathname);
+  
+  const shouldShowPopup = !noPopupRoutes.some((route) =>
+    matchDynamicRoute(route, location.pathname)
+  );
+  
   const a = localStorage.getItem("callback");
 
   if (loading) return <Loader />;
@@ -111,6 +119,8 @@ function App() {
             <Route path="/603-MBC-Center" element={<MBC />} />
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/terms-conditions" element={<TermsNCond />} />
+            <Route path="/forgotPassword" element={<Forgot />} />
+            <Route path="/changepassword/:id" element={<Changepassword />} />
           </>
         ) : (
           <>
@@ -150,6 +160,8 @@ function App() {
             <Route path="/603-MBC-Center" element={<MBC />} />
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/terms-conditions" element={<TermsNCond />} />
+            <Route path="/forgotPassword" element={<Forgot />} />
+            <Route path="/changepassword/:id" element={<Changepassword />} />
           </>
         )}
       </Routes>

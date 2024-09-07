@@ -107,7 +107,7 @@ const Login: React.FC = () => {
             </button>
           </form>
           <div className="flex flex-col items-center mt-6">
-            <a href="#" className="text-indigo-500 hover:underline transition-colors duration-300">Forgot password?</a>
+            <a onClick={()=>{navigate("/forgotPassword")}} className="text-indigo-500 hover:underline transition-colors duration-300 cursor-pointer">Forgot password?</a>
           </div>
           <div className="flex flex-col items-center mt-4">
             <a
