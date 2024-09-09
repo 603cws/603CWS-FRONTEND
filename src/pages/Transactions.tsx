@@ -241,50 +241,57 @@ const Transactions: React.FC = () => {
           </button>
         </div>
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg">
-            <thead className="bg-gray-100 text-gray-700">
-              <tr>
-                <th className="p-4 text-left text-sm font-semibold">Company</th>
-                <th className="p-4 text-left text-sm font-semibold">Date</th>
-                <th className="p-4 text-left text-sm font-semibold">Start Time</th>
-                <th className="p-4 text-left text-sm font-semibold">End Time</th>
-                <th className="p-4 text-left text-sm font-semibold">Status</th>
-                <th className="p-4 text-left text-sm font-semibold">Payment Method</th>
-                <th className="p-4 text-left text-sm font-semibold">Created At</th>
-                <th className="p-4 text-right text-sm font-semibold">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-200">
-              {sortedTransactions.length > 0 && sortedTransactions.map((transaction) => (
-                <tr key={transaction._id} className="hover:bg-gray-50 transition-colors duration-200">
-                  <td className="p-4 text-sm text-gray-600">{transaction.companyName}</td>
-                  <td className="p-4 text-sm text-gray-600">{transaction.date}</td>
-                  <td className="p-4 text-sm text-gray-600">{transaction.startTime}</td>
-                  <td className="p-4 text-sm text-gray-600">{transaction.endTime}</td>
-                  <td className="p-4 text-sm">
-                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${statusStyles[transaction.status]}`}>
-                      {transaction.status}
-                    </span>
-                  </td>
-                  <td className="p-4 text-sm">
-                    <span className={`font-semibold ${paymentMethodStyles[transaction.paymentMethod]}`}>
-                      {transaction.paymentMethod.replace('_', ' ').toUpperCase()}
-                    </span>
-                  </td>
-                  <td className="p-4 text-sm text-gray-600">{new Date(transaction.createdAt).toLocaleDateString()}</td>
-                  <td className="p-4 text-right space-x-2">
-                    <button
-                      onClick={() => handleViewMore(transaction)}
-                      className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
-                    >
-                      View More
-                    </button>
-                  </td>
+          {sortedTransactions.length > 0 ? (
+            <table className="min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg">
+              <thead className="bg-gray-100 text-gray-700">
+                <tr>
+                  <th className="p-4 text-left text-sm font-semibold">Company</th>
+                  <th className="p-4 text-left text-sm font-semibold">Date</th>
+                  <th className="p-4 text-left text-sm font-semibold">Start Time</th>
+                  <th className="p-4 text-left text-sm font-semibold">End Time</th>
+                  <th className="p-4 text-left text-sm font-semibold">Status</th>
+                  <th className="p-4 text-left text-sm font-semibold">Payment Method</th>
+                  <th className="p-4 text-left text-sm font-semibold">Created At</th>
+                  <th className="p-4 text-right text-sm font-semibold">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {sortedTransactions.map((transaction) => (
+                  <tr key={transaction._id} className="hover:bg-gray-50 transition-colors duration-200">
+                    <td className="p-4 text-sm text-gray-600">{transaction.companyName}</td>
+                    <td className="p-4 text-sm text-gray-600">{transaction.date}</td>
+                    <td className="p-4 text-sm text-gray-600">{transaction.startTime}</td>
+                    <td className="p-4 text-sm text-gray-600">{transaction.endTime}</td>
+                    <td className="p-4 text-sm">
+                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${statusStyles[transaction.status]}`}>
+                        {transaction.status}
+                      </span>
+                    </td>
+                    <td className="p-4 text-sm">
+                      <span className={`font-semibold ${paymentMethodStyles[transaction.paymentMethod]}`}>
+                        {transaction.paymentMethod.replace('_', ' ').toUpperCase()}
+                      </span>
+                    </td>
+                    <td className="p-4 text-sm text-gray-600">{new Date(transaction.createdAt).toLocaleDateString()}</td>
+                    <td className="p-4 text-right space-x-2">
+                      <button
+                        onClick={() => handleViewMore(transaction)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
+                      >
+                        View More
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="p-8 text-center text-gray-600">
+              <p className="text-lg font-semibold">No bookings have been created yet.</p>
+            </div>
+          )}
         </div>
+
 
 
         {/* Booking Details Modal */}
@@ -361,7 +368,7 @@ const Transactions: React.FC = () => {
           <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
             <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg relative">
               <h2 className="text-2xl font-bold mb-4">About</h2>
-              <p className="mb-6">This is the transaction history page where you can view your booking details.</p>
+              <p className="mb-6">This is the transaction history page where you can view your booking details. Please note that while you can cancel your booking, cancellations made less than <strong>40 minutes</strong> before the scheduled start time will not be eligible for a credit refund.</p>
               <div className="flex justify-end">
                 <button
                   onClick={handleCloseAboutModal}
