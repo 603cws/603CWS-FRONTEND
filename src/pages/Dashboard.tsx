@@ -66,8 +66,10 @@ const Dashboard: React.FC = () => {
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Amore Conference Room">Amore Conference Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Amore Meeting Room">Amore Meeting Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Bandra Conference Room">Bandra Conference Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Bandra Meeting Room">Bandra Meeting Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Kamla Mills Conference Room">Kamla Mills Conference Room</option>
-              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Kamla Mills Meeting Room">Kamla Mills Meeting Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Kamla Mills Meeting Room 1">Kamla Mills Meeting Room 1</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Kamla Mills Meeting Room 2">Kamla Mills Meeting Room 2</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Matulya Conference Room">Matulya Conference Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Matulya Meeting Room">Matulya Meeting Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Rupa Solitaire Conference Room">Rupa Solitaire Conference Room</option>

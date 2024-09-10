@@ -213,8 +213,10 @@ const AllBookings = () => {
                 <option value="Amore Conference Room">Amore Conference Room</option>
                 <option value="Amore Meeting Room">Amore Meeting Room</option>
                 <option value="Bandra Conference Room">Bandra Conference Room</option>
+                <option value="Bandra Meeting Room">Bandra Meeting Room</option>
                 <option value="Kamla Mills Conference Room">Kamla Mills Conference Room</option>
-                <option value="Kamla Mills Meeting Room">Kamla Mills Meeting Room</option>
+                <option value="Kamla Mills Meeting Room 1">Kamla Mills Meeting Room 1</option>
+                <option value="Kamla Mills Meeting Room 2">Kamla Mills Meeting Room 2</option>
                 <option value="Matulya Conference Room">Matulya Conference Room</option>
                 <option value="Matulya Meeting Room">Matulya Meeting Room</option>
                 <option value="Rupa Solitaire Conference Room">Rupa Solitaire Conference Room</option>
