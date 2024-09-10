@@ -107,7 +107,7 @@ const Transactions: React.FC = () => {
     const day = date.getDate();
     const year = date.getFullYear(); // Get the full year
 
-    return `${month}/${day}/${year}`;
+    return `${day}/${month}/${year}`;
   };
 
 
