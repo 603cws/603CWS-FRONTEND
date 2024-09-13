@@ -52,19 +52,19 @@ const Webpage = () => {
                         <ul className="space-y-4">
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Day Pass</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 599.00</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 599</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Hot Desk</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 7,999 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 6,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Dedicated Desk</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 11,999 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 8,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Cabin Space</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 12,999 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 9,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Custom Cabin</span>
