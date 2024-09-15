@@ -68,7 +68,7 @@ const Webpage = () => {
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Custom Cabin</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 12,999 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 9,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Meeting Rooms</span>
