@@ -98,7 +98,7 @@ const Transactions: React.FC = () => {
   };
 
   const handleCloseCancelConfirmation = () => {
-    setShowWarningMessage(true);
+    setShowWarningMessage(false);
     setShowCancelConfirmation(false);
   };
 

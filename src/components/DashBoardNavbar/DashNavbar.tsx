@@ -214,8 +214,7 @@ function DashNavbar() {
         {windowWidth < 870 ? (
           <FiMenu size="24" onClick={() => setIsSideWindowOpen(true)} className="cursor-pointer" />
         ) : (
-          <div className="flex items-center space-x-4 gap-5">
-            <div onClick={() => window.location.href = 'tel:+919136036603'} className="text-gray-600 cursor-pointer">Contact Us</div>
+          <div className="flex items-center space-x-4 gap-4">
             <div className="flex items-center">
               <div style={creditsContainerStyle}>
                 {creditsleft > 0 &&
