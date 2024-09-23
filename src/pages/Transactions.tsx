@@ -37,11 +37,12 @@ const Transactions: React.FC = () => {
   const [showCancelConfirmation, setShowCancelConfirmation] = useState<boolean>(false);
   const [showWarningMessage, setShowWarningMessage] = useState<boolean>(false);
   const [isCancellable, setIsCancellable] = useState<boolean>(true);
+  const [isRefundable, setIsRefundable] = useState<boolean>(true);
   const [bookingid, setbookingid] = useState<string>();
 
   const handleCancelTransaction = async () => {
     try {
-      const response = await axios.post(`${PORT}/api/v1/bookings/cancelbooking`, { bookingid, isCancellable }, { withCredentials: true });
+      const response = await axios.post(`${PORT}/api/v1/bookings/cancelbooking`, { bookingid, isCancellable, isRefundable }, { withCredentials: true });
       setSelectedTransaction(null);
       setShowAboutModal(false);
       setShowWarningMessage(false);
@@ -68,6 +69,7 @@ const Transactions: React.FC = () => {
     setbookingid("");
     setSelectedTransaction(null);
     setShowWarningMessage(false);
+    setIsRefundable(true);
   };
 
   const handleOpenAboutModal = () => {
@@ -98,7 +100,6 @@ const Transactions: React.FC = () => {
   };
 
   const handleCloseCancelConfirmation = () => {
-    setShowWarningMessage(false);
     setShowCancelConfirmation(false);
   };
 
@@ -202,15 +203,17 @@ const Transactions: React.FC = () => {
       if (currentMinutes < minutes) {
         if (minutes - currentMinutes < 40 && minutes - currentMinutes > 0) {
           setShowWarningMessage(true);
-          setIsCancellable(false);
+          setIsRefundable(false);
         }
-      } else {
         setIsCancellable(true);
+      } else {
+        setIsCancellable(false);
       }
     } else {
       let res = compareDates(formattedDate.toString(), transaction.date.toString());
       if (res == 1) {
         setIsCancellable(true);
+        setIsRefundable(true);
       } else if (res == 0) {
         setIsCancellable(false);
       }
