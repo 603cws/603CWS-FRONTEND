@@ -202,10 +202,10 @@ const Transactions: React.FC = () => {
       if (currentMinutes < minutes) {
         if (minutes - currentMinutes < 40 && minutes - currentMinutes > 0) {
           setShowWarningMessage(true);
+          setIsCancellable(false);
         }
-        setIsCancellable(true);
       } else {
-        setIsCancellable(false);
+        setIsCancellable(true);
       }
     } else {
       let res = compareDates(formattedDate.toString(), transaction.date.toString());
