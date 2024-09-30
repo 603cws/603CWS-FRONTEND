@@ -1,5 +1,5 @@
 import logoImg from "/logo/logo.png";
-import office from "/officepic.webp"
+import office from "/officepic.jpg"
 import image4 from "/image-4.webp"
 import image5 from "/image-5.webp"
 import image2 from "/image-2.webp"

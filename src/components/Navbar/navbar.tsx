@@ -30,7 +30,7 @@ const Navbar = () => {
       <div onMouseLeave={() => {
         setManagedSpaceDropdownVisible(false);
         setLocationsDropdownVisible(false);
-      }} className="navbar bg-base-100 font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-2xl py-2 z-50 flex items-center font-medium ">
+      }} className="navbar bg-base-100 font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-2 z-50 flex items-center font-medium ">
 
 
         <div>
@@ -626,14 +626,14 @@ const Navbar = () => {
           {path != "/login" && (
             <button
               onClick={() => { navigate("/login") }}
-              className="btn rounded-3xl w-24 sm:w-28 bg-gray-300 hover:bg-yellow-500 text-slate-gray hover:text-white font-bold py-2 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs border-2 border-gray shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+              className="btn rounded-full w-24 sm:w-28 bg-gray-300 hover:bg-yellow-500 text-slate-gray hover:text-white font-bold py-2 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs border-2 border-gray shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
             >
               Login
             </button>
           )}
           {path != "/login" && (
             <button
-              className="btn bg-yellow-500 hover:bg-yellow-600 rounded-3xl text-white font-bold py-2 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex items-center space-x-2 sm:space-x-1"
+              className="btn bg-yellow-500 hover:bg-yellow-600 rounded-full text-white font-bold py-2 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 flex items-center space-x-2 sm:space-x-1"
               onClick={() => window.location.href = 'tel:+919136036603'}
             >
               <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
