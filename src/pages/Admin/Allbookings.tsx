@@ -11,13 +11,22 @@ import { FaFilePdf } from "react-icons/fa";
 
 interface Booking {
   _id: string;
+  user: string;
   startTime: string;
   endTime: string;
   companyName: string;
   spaceName: string;
   date: string;
   status: string;
+  billedcredits?: number;  // Adding billedcredits here
 }
+
+interface userdetails {
+  _id: string;
+  extracredits: number
+}
+
+
 
 const AllBookings = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -27,7 +36,6 @@ const AllBookings = () => {
   const [bookingsPerPage, setBookingsPerPage] = useState(7);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [formattedDate, setFormattedDate] = useState<string>("");
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [bookingToCancel, setBookingToCancel] = useState<Booking | null>(null);
 
@@ -45,6 +53,10 @@ const AllBookings = () => {
 
   const tableRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
@@ -53,7 +65,16 @@ const AllBookings = () => {
           withCredentials: true,
         }
       );
-      setBookings(response.data.allbookings);
+      console.log(response);
+      const bookingsWithBilledCredits = response.data.allbookings.map((booking: Booking) => {
+        const user = response.data.allusers.find((user: userdetails) => user._id === booking.user);
+        const billedcredits = user ? user.extracredits : 0;
+        return {
+          ...booking,
+          billedcredits: billedcredits
+        };
+      });
+      setBookings(bookingsWithBilledCredits);
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
@@ -103,38 +124,36 @@ const AllBookings = () => {
     content: () => tableRef.current,
     documentTitle: "Bookings",
     onBeforePrint: () => {
-      // This function can be used to make sure the table is fully rendered before printing
       return new Promise<void>((resolve) => {
         setTimeout(() => {
           resolve();
-        }, 500); // Adjust the delay if needed
+        }, 500);
       });
     },
   });
-  
+
   const handlePrint = () => {
-    // Save the current state values
     const originalBookingsPerPage = bookingsPerPage;
     const originalCurrentPage = currentPage;
-  
+
     // Temporarily set bookingsPerPage to include all filtered bookings
     setBookingsPerPage(filteredBookings.length);
     setCurrentPage(1);
-  
+
     // Use setTimeout to wait for the rendering to complete
     setTimeout(() => {
       // Trigger the print
       print();
-  
+
       // Restore the original state after printing
       setBookingsPerPage(originalBookingsPerPage);
       setCurrentPage(originalCurrentPage);
     }, 300); // Adjust the delay if needed
   };
-  
-  
-  
-  
+
+
+
+
 
   const deletebooking = async (id: any) => {
     try {
@@ -241,11 +260,17 @@ const AllBookings = () => {
             <table className="min-w-full bg-white">
               <thead>
                 <tr>
+                <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    User ID
+                  </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     Company
                   </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     Space
+                  </th>
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    Bill
                   </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     Date
@@ -257,9 +282,6 @@ const AllBookings = () => {
                     End Time
                   </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
-                    Status
-                  </th>
-                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     Actions
                   </th>
                 </tr>
@@ -267,12 +289,15 @@ const AllBookings = () => {
               <tbody>
                 {currentBookings.map((booking) => (
                   <tr key={booking._id}>
+                    <td className="py-4 px-6 border-b">{booking.user}</td>
                     <td className="py-4 px-6 border-b">{booking.companyName}</td>
                     <td className="py-4 px-6 border-b">{booking.spaceName}</td>
+                    <td className="py-4 px-6 border-b">
+                      {booking.billedcredits} {/* Display billed credits */}
+                    </td>
                     <td className="py-4 px-6 border-b">{booking.date}</td>
                     <td className="py-4 px-6 border-b">{booking.startTime}</td>
                     <td className="py-4 px-6 border-b">{booking.endTime}</td>
-                    <td className="py-4 px-6 border-b">{booking.status}</td>
                     <td className="py-4 px-6 border-b">
                       <button
                         className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl"
