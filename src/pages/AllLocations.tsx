@@ -9,7 +9,6 @@ import matulya from "/officeimg/Matulya/Matulya.jpg";
 import { gallery6 } from '../utils/Landing/Landing';
 import sunshine from "/officeimg/Sunshine/sunshine.JPG"
 import Sunmill from "/officeimg/SunMill/Sunmill.jpeg"
-import { gallery7 } from '../utils/Landing/Landing';
 import { gallery5 } from '../utils/Landing/Landing';
 
 type Location = {
@@ -81,7 +80,7 @@ const locations: { city: string; locations: Location[] }[] = [
         name: "Millennium Business Park",
         address:
           "Millennium Business Park, Sector 2, Kopar Khairane, Navi Mumbai, Maharashtra 400701",
-        imgSrc: gallery7, // Replace with actual image link
+        imgSrc: "/officeimg/Rupa/Rupa2.jpg", // Replace with actual image link
         link: "/locations/Millenium-Business-Park",
       },
     ],
