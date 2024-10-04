@@ -3,8 +3,17 @@ import Navbar from '../../Navbar/navbar';
 import Footer from '../../Footer/footer';
 import { FaWifi, FaBolt, FaSnowflake, FaBroom, FaDoorOpen, FaPrint, FaCouch, FaCoffee } from 'react-icons/fa';
 import { useState } from 'react';
+import ImageCarousel from '../../LocationCarousal/LocationCarousal';
 
 const Webpage = () => {
+    const images = [
+        '/officeimg/Kamala/kamala.jpg',
+        '/officeimg/Kamala/kamala2.jpg',
+        '/officeimg/Kamala/kamala3.jpg',
+        '/officeimg/Kamala/kamala4.jpg',
+        '/officeimg/Kamala/kamala5.jpg',
+        '/officeimg/Kamala/kamala6.jpg',
+    ];
     const [source] = useState(
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609930707!2d72.7462354!3d19.0026697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ceed2879bcd3%3A0x519449d10ba027f0!2s2R3H%2B3FC%2C%20Lower%2C%20Parel%2C%20Mumbai%2C%20Maharashtra%20400013!5e0!3m2!1sen!2sin!4v1721254426295!5m2!1sen!2sin"
       );
@@ -28,12 +37,16 @@ const Webpage = () => {
             
 
             <section className="py-16 flex flex-col lg:flex-row justify-between items-center px-8 lg:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
+                
                 <div className="lg:w-3/5">
-                    <img
-                        src={gallery6}
-                        alt="Workspace"
-                        className="w-full rounded-lg shadow-2xl transition-transform duration-500 hover:scale-105 hover:shadow-2xl h-full"
-                    />
+                        <ImageCarousel
+                            images={images}
+                            altTextPrefix="My Image"
+                            indicatorColor="bg-gray-300"
+                            indicatorActiveColor="bg-yellow-600"
+                            buttonColor="bg-yellow-600"
+                            buttonHoverColor="bg-blue-900"
+                        />
                 </div>
 
                 
