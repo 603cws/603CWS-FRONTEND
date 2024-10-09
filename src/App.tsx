@@ -37,11 +37,22 @@ import Privacy from "./pages/Privacy"
 import TermsNCond from "./pages/Terms"
 import Forgot from "./components/ForgotPassword/ForgotPass";
 import Changepassword from "./components/ForgotPassword/changepassword";
+import Blogs from "./pages/Blogs/Blogs";
+import BlogDetail from "./pages/Blogs/BlogView";
+import Membership from "./pages/MemberShipPlans";
+import Career from "./pages/Career";
+import NewsCenter from "./pages/NewsCentre/Newscenter";
+import Referral from "./pages/Referral/Referral";
+import Events from "./pages/Events";
+import BookNowPage from "./pages/ExternalBooking/BookNowPage";
+import ConfirmPayment from "./pages/ExternalBooking/ConfirmBookingPage";
+import Payment from "./pages/ExternalBooking/Payment";
+import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 
 function App() {
   const location = useLocation();
   const { isAuthenticated, loading, refreshAuth, isAdmin } = useApp();
-  
+
   const noPopupRoutes = [
     "/admin/dashboard",
     "/admin/login",
@@ -59,22 +70,25 @@ function App() {
     "/contactus",
     "/partner-with-us",
     "/forgotPassword",
-    "/changepassword/:id"
+    "/changepassword/:id",
+    "/confirmpayment",
+    "/booknow",
+    "/payment"
   ];
-  
-  const matchDynamicRoute = (route : any, path : any) => {
+
+  const matchDynamicRoute = (route: any, path: any) => {
     const routeRegex = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
     return routeRegex.test(path);
   };
-  
+
   useEffect(() => {
     refreshAuth();
   }, [refreshAuth]);
-  
+
   const shouldShowPopup = !noPopupRoutes.some((route) =>
     matchDynamicRoute(route, location.pathname)
   );
-  
+
   const a = localStorage.getItem("callback");
 
   if (loading) return <Loader />;
@@ -112,6 +126,7 @@ function App() {
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
             <Route path="/locations/Pinnacle-Corporate-Park" element={<Pinnacle />} />
+            <Route path="/locations/Technocity" element={<Technocity />} />
             <Route path="/locations/millenium-business-park" element={<Millenium />} />
             <Route path="/locations/Navratna-Corporate-Park" element={<Navratna />} />
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
@@ -121,9 +136,20 @@ function App() {
             <Route path="/terms-conditions" element={<TermsNCond />} />
             <Route path="/forgotPassword" element={<Forgot />} />
             <Route path="/changepassword/:id" element={<Changepassword />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:title" element={<BlogDetail />} />
+            <Route path="/membership-plans" element={<Membership />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/news-centre" element={<NewsCenter />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/booknow" element={<BookNowPage />} />
+            <Route path="/booknow/:id" element={<ConfirmPayment />} />
+            <Route path="/payment" element={<Payment />} />
           </>
         ) : (
           <>
+            <Route path="/locations/Technocity" element={<Technocity />} />
             <Route path="/" element={<Landing />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/allLocations" element={<AllLocations />} />
@@ -162,6 +188,16 @@ function App() {
             <Route path="/terms-conditions" element={<TermsNCond />} />
             <Route path="/forgotPassword" element={<Forgot />} />
             <Route path="/changepassword/:id" element={<Changepassword />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:title" element={<BlogDetail />} />
+            <Route path="/membership-plans" element={<Membership />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/news-centre" element={<NewsCenter />} />
+            <Route path="/referral" element={<Referral />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/booknow" element={<BookNowPage />} />
+            <Route path="/booknow/:id" element={<ConfirmPayment />} />
+            <Route path="/payment" element={<Payment />} />
           </>
         )}
       </Routes>
