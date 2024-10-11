@@ -172,6 +172,16 @@ const Navbar = () => {
                           Pinnacle Corporate Park, BKC
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500">
+                        <button className="text-base"
+                          onClick={() => {
+
+                            navigate("/locations/Pentagon-Classic")
+                          }}
+                        >
+                          Classic Pentagon
+                        </button>
+                      </li>
                     </ul>
                   </li>
                   <li
@@ -203,6 +213,16 @@ const Navbar = () => {
                           }}
                         >
                           Millenium Business Park
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500">
+                        <button className="text-base"
+                          onClick={() => {
+
+                            navigate("/locations/Technocity")
+                          }}
+                        >
+                          Technocity
                         </button>
                       </li>
                     </ul>
@@ -461,6 +481,16 @@ const Navbar = () => {
                           Pinnacle Corporate Park, BKC
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
+                        <button
+                          onClick={() => {
+
+                            navigate("/locations/Pentagon-Classic")
+                          }}
+                        >
+                          Classic Pentagon
+                        </button>
+                      </li>
                     </ul>
                   </li>
                   <li
@@ -492,6 +522,16 @@ const Navbar = () => {
                           }}
                         >
                           Millenium Business Park
+                        </button>
+                      </li>
+                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
+                        <button
+                          onClick={() => {
+
+                            navigate("/locations/Technocity")
+                          }}
+                        >
+                          Technocity
                         </button>
                       </li>
                     </ul>

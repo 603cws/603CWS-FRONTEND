@@ -2,104 +2,12 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useNavigate } from "react-router-dom";
-import amore from "/officeimg/Amore/Amore.JPG"
 import makhija from "/officeimg/Makhija/Makhija.JPG"
-import ahmedabad from "/officeimg/Ahmedabad/ahmedabad.jpg"
-import matulya from "/officeimg/Matulya/Matulya.jpg";
-import { gallery6 } from '../utils/Landing/Landing';
-import sunshine from "/officeimg/Sunshine/sunshine.JPG"
-import Sunmill from "/officeimg/SunMill/Sunmill.jpeg"
-import { gallery5 } from '../utils/Landing/Landing';
+import { locations } from "./AllLocationsDetails";
 
-type Location = {
-  name: string;
-  address: string;
-  imgSrc: string;
-  link: string;
-};
-
-const locations: { city: string; locations: Location[] }[] = [
-  {
-    city: "Mumbai",
-    locations: [
-      {
-        name: "Pinnacle Corporate Park, BKC",
-        address:
-          "Bandra Kurla Complex, Kolivery Village, Mmrda Area, Bkc Cst Link Road, Bandra Kurla Complex- Bandra East, Mumbai - 400051",
-        imgSrc: gallery5, // Replace with actual image link
-        link: "/locations/Pinnacle-Corporate-Park",
-      },
-      {
-        name: "Khar - Amore Centre",
-        address:
-          "Amore Centre, 5th Floor, Hasnabad Ln, Khar, Ram Krishna Nagar, Khar West, Mumbai, Maharashtra 400052",
-        imgSrc: amore, // Replace with actual image link
-        link: "/locations/Amore-Centre",
-      },
-      {
-        name: "Bandra - Makhija Arcade",
-        address:
-          "Makhija Arcade, 6th Floor, 35th Rd, Khar, Khar West, Mumbai, Maharashtra 400052",
-        imgSrc: makhija, // Replace with actual image link
-        link: "/locations/Makhija-Archade",
-      },
-      {
-        name: "Dadar - Sunshine Tower",
-        address:
-          "Sunshine Tower, 26th Floor, Plot No, 616, Tulsi Pipe Rd, Dadar West, Parel, Mumbai, Maharashtra 400013",
-        imgSrc: sunshine, // Replace with actual image link
-        link: "/locations/Sunshine-Tower",
-      },
-      {
-        name: "Lower Parel - Matulya Centre",
-        address:
-          "Matulya Centre, 2nd Floor, Lower Parel, Mumbai, Maharashtra 400013",
-        imgSrc: matulya, // Replace with actual image link
-        link: "/locations/Matulya-Centre",
-      },
-      {
-        name: "Lower Parel - Kamala Mills",
-        address:
-          "Kamala Mills, 4th Floor, Lower Parel, Mumbai, Maharashtra 400013",
-        imgSrc: gallery6, // Replace with actual image link
-        link: "/locations/Kamala-Mills",
-      },
-      {
-        name: "Lower Parel - Sun Mill Compound",
-        address:
-          "Sun Mill Compound, Unit 15, Cama Industrial Estate, Mumbai 400013",
-        imgSrc: Sunmill, // Replace with actual image link
-        link: "/locations/Sun-Mill-Compound",
-      },
-    ],
-  },
-  {
-    city: "Navi Mumbai",
-    locations: [
-      {
-        name: "Millennium Business Park",
-        address:
-          "Millennium Business Park, Sector 2, Kopar Khairane, Navi Mumbai, Maharashtra 400701",
-        imgSrc: "/officeimg/Rupa/Rupa2.jpg", // Replace with actual image link
-        link: "/locations/Millenium-Business-Park",
-      },
-    ],
-  },
-  {
-    city: "Ahmedabad",
-    locations: [
-      {
-        name: "Navratna Corporate Park, Ahmedabad",
-        address:
-          "B306/ 307/ 308 - Navratna Corporate Park, Ashok Vatika, Ambli Bopal Road, Ahmedabad, Gujarat 380058",
-        imgSrc: ahmedabad, // Replace with actual image link
-        link: "/locations/Navratna-Corporate-Park",
-      },
-    ],
-  }
-];
 
 const LocationPage: React.FC = () => {
+  const [alllocations] = useState(locations)
   const [selectedCity, setSelectedCity] = useState<string>("All");
   const navigate = useNavigate();
 
@@ -108,8 +16,8 @@ const LocationPage: React.FC = () => {
   };
 
   const filteredLocations = selectedCity === "All"
-    ? locations
-    : locations.filter((cityGroup) => cityGroup.city === selectedCity);
+    ? alllocations
+    : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
 
   return (
     <div className="font-sans bg-gray-50 w-screen overflow-x-hidden">

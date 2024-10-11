@@ -48,6 +48,7 @@ import BookNowPage from "./pages/ExternalBooking/BookNowPage";
 import ConfirmPayment from "./pages/ExternalBooking/ConfirmBookingPage";
 import Payment from "./pages/ExternalBooking/Payment";
 import Technocity from "./components/locations/Navi_Mumbai/Technocity";
+import Pentagon from "./components/locations/Mumbai/Pentagon";
 
 function App() {
   const location = useLocation();
@@ -122,6 +123,7 @@ function App() {
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
+            <Route path="/locations/Pentagon-Classic" element={<Pentagon />} />
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
@@ -172,6 +174,7 @@ function App() {
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
+            <Route path="/locations/Pentagon-Classic" element={<Pentagon />} />
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
