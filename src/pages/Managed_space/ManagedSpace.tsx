@@ -178,8 +178,8 @@ const Webpage: React.FC = () => {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             {services.map((service, index) => (
                                 <div key={index} className="flex flex-col items-center text-center p-8">
-                                    <div className="text-2xl sm:text-3xl lg:text-5xl mb-4 text-yellow-500">{service.icon}</div>
-                                    <p className="text-base  sm:text-2xl font-semibold text-gray-700">{service.label}</p>
+                                    <div className="text-2xl sm:text-3xl lg:text-4xl mb-4 text-yellow-500">{service.icon}</div>
+                                    <p className="text-base sm:text-lg font-medium text-gray-700">{service.label}</p>
                                 </div>
                             ))}
                         </div>
