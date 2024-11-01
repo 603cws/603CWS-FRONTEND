@@ -128,7 +128,7 @@ const Webpage = () => {
                                         Leisure
                                     </h3>
                                     <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-                                    <ul className="text-sm text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+                                    <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
                                         <li>Thane Viviana Mall - 4.5 KM</li>
                                         <li>MovieMax Theatre - 2.5 KM</li>
                                     </ul>
@@ -142,7 +142,7 @@ const Webpage = () => {
                                         Utility & Facilities
                                     </h3>
                                     <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-                                    <ul className="text-sm text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+                                    <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
                                         <li>Petrol Pump - 0.8 KM</li>
                                         <li>Sai Hospital - 0.3 KM</li>
                                     </ul>
