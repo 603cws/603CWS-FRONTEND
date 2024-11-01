@@ -8,8 +8,8 @@ const YellowBox: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 p-10 rounded-2xl shadow-xl h-full">
-      <h2 className="text-4xl font-extrabold mb-8 text-center text-white">
+    <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 px-5 py-5 xs:px-10 xs:py-10 rounded-2xl shadow-xl h-full">
+      <h2 className=" text-lg md:text-2xl lg:text-2xl  font-semibold mb-8 text-center text-white">
         Benefits of Our Coworking Spaces
       </h2>
       <div className="space-y-6">
@@ -35,8 +35,8 @@ const YellowBox: React.FC = () => {
               className="flex justify-between items-center w-full p-5 text-left bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
               onClick={() => toggleAccordion(index)}
             >
-              <span className="text-xl font-semibold text-gray-800">{item.title}</span>
-              <span className="text-2xl text-gray-600">{activeIndex === index ? '-' : '+'}</span>
+              <span className="bg-text-base md:text-lg lg:text-lg font-semibold text-gray-800">{item.title}</span>
+              <span className="bg-text-base md:text-lg lg:text-lg text-gray-600">{activeIndex === index ? '-' : '+'}</span>
             </button>
             {activeIndex === index && (
               <div className="p-5 bg-gray-50">

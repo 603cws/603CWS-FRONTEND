@@ -1,7 +1,7 @@
 import { useScramble } from "use-scramble";
 //Making the component reusable
 const Scramble = (prop: any) => {
-  let classnm = "font-sans font-extrabold text-3xl md:text-6xl ";
+  let classnm = "text-gray-200 font-sans font-extrabold text-3xl md:text-5xl ";
   let speed = 0.2;
   if (prop.speed) {
     speed = Number(prop.speed);

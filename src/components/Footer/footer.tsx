@@ -32,7 +32,18 @@ const Footer = () => {
               </ul>
             </div>
 
-            
+            <div>
+              <h3 className="text-base font-semibold mb-4">Explore</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/blogs" className="hover:text-yellow-400">Blogs</Link></li>
+                <li><Link to="/career" className="hover:text-yellow-400">Career</Link></li>
+                {/* <li><Link to="/referral" className="hover:text-yellow-400">Referral</Link></li> */}
+                <li><Link to="/membership-plans" className="hover:text-yellow-400">Membership Plans</Link></li>
+                {/*<li><Link to="/news-centre" className="hover:text-yellow-400">News Centre</Link></li>*/}
+                <li><Link to="/allLocations" className="hover:text-yellow-400">Site Map</Link></li>
+                <li><Link to="/events" className="hover:text-yellow-400">Events</Link></li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Section */}
@@ -45,7 +56,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <FaPhoneAlt className="text-yellow-400" />
-                <span className="text-gray-400">+91 91360 36603</span>
+                <a href="tel:+919136036603" className="hover:text-yellow-500">+919136036603 </a>
               </div>
               <div className="text-gray-400">
                 <p className="text-sm">Makhija Arcade, 35th Rd, Khar, Khar West, Mumbai, Maharashtra 400052</p>

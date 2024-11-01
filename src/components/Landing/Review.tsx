@@ -4,6 +4,7 @@ import './../../../node_modules/swiper/swiper-bundle.min.css';
 import SwiperCore from 'swiper';
 import { Autoplay } from 'swiper/modules';
 import { logo } from '../../utils/Landing/Landing';
+import { useEffect, useState } from 'react';
 
 // Install Swiper modules
 SwiperCore.use([Autoplay]);
@@ -33,10 +34,23 @@ const reviews = [
 
 
 const Review: React.FC = () => {
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    // Function to handle window resize
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    // Event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup listener on component unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="bg-gray-50 py-12">
-      <div className="container mx-auto text-center px-10">
-        <h2 className="text-4xl font-bold text-gray-700 mb-12">Hear From Our Valued Clients...</h2>
+    <div className="bg-gradient-to-r from-blue-100 to-yellow-100 py-12">
+      <div className="container mx-auto text-center px-5 md:px-10">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 mb-12">Our Valued Clients...</h2>
         <Swiper
           spaceBetween={30}
           slidesPerView={1}
@@ -54,13 +68,13 @@ const Review: React.FC = () => {
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>
-              <div className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center h-[425px]" style={{ boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)' }}>
+              <div className="bg-white py-6 rounded-lg shadow-lg flex flex-col items-center" style={{ paddingLeft: windowWidth > 1277 ? '20px' : '15px', paddingRight: windowWidth > 1277 ? '20px' : '15px', height: windowWidth > 390 ? "400px" : "420px", boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)' }}>
                 <div className="mb-4">
                   <img src={logo} alt="Company Logo" className="h-14 mb-4" />
                 </div>
 
 
-                <p className="text-gray-600 mb-8">{review.text}</p>
+                <p className="text-gray-600 mb-8 text-sm leading-relaxed w-full max-w-xl mx-auto text-justify">{review.text}</p>
 
                 <div className="flex items-center mt-auto">
                   <div className="text-left">

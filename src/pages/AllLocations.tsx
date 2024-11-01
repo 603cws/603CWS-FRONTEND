@@ -27,13 +27,13 @@ const LocationPage: React.FC = () => {
 
       <div
         style={{ backgroundImage: `url(${makhija})` }}
-        className="relative bg-no-repeat bg-cover bg-fixed mb-16"
+        className="relative bg-no-repeat bg-cover bg-fixed mb-16 h-screen lg:h-[600px]"
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative flex justify-center items-center h-[600px] w-full">
+        <div className="relative flex justify-center items-center h-full w-full ">
           <div className="text-center px-12 py-16">
-            <h2 className="text-white text-6xl font-semibold mb-4">Locations</h2>
-            <p className="text-white text-2xl">Explore our workspaces</p>
+            <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">Locations</h2>
+            <p className="text-white text-xl lg:text-2xl">Explore our workspaces</p>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ const LocationPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 overflow-auto">
+      <div className="container mx-auto px-2 md:px-12 overflow-auto">
         {filteredLocations.map((cityGroup, cityIndex) => (
           <div key={cityIndex} className="mb-16">
             <h3 className="text-3xl sm:text-5xl pt-6 font-bold mb-8 text-center text-[#cd952dd1]">
@@ -66,7 +66,7 @@ const LocationPage: React.FC = () => {
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
                   key={locationIndex}
-                  className="flex flex-col items-center text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
+                  className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
                 >
                   <img
                     src={location.imgSrc}
@@ -75,7 +75,7 @@ const LocationPage: React.FC = () => {
                   />
 
                   <h4 className="text-2xl font-semibold mb-2">{location.name}</h4>
-                  <p className="text-gray-600 mb-4">{location.address}</p>
+                  <p className="text-gray-600 mb-4 mx-auto text-justify">{location.address}</p>
                   <a
                     onClick={() => navigate(location.link)}
                     className="text-yellow-500 hover:underline font-bold hover:cursor-pointer"

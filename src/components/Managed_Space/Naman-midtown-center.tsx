@@ -15,18 +15,18 @@ const Webpage = () => {
             <div className='pt-9'>
 
                 {/* Hero Section */}
-                <section className="relative text-center py-24 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${gallery3})` }}>
+                <section className="relative text-center py-24 bg-cover bg-center bg-no-repeat  h-screen lg:h-[400px] flex items-center" style={{ backgroundImage: `url(${gallery3})` }}>
                     <div className="absolute inset-0 bg-black opacity-70"></div>
                     <div className="relative z-10 max-w-3xl mx-auto">
-                        <h1 className="text-5xl font-semibold text-white drop-shadow-lg">Naman Midtown Center (Dadar)</h1>
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white drop-shadow-lg">Naman Midtown Center (Dadar)</h1>
                     </div>
                 </section>
 
                 {/* Overview Section */}
                 <section className="bg-white py-16 px-6">
                     <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-4xl font-semibold text-gray-800">A Space Designed for Success</h2>
-                        <p className="text-xl text-gray-600 mt-6 leading-relaxed">
+                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">A Space Designed for Success</h2>
+                        <p className="text-lg md:text-lg lg:text-xl text-gray-600 mt-6 leading-relaxed text-justify">
                         603 Naman Midtown Center is situated at a very prominent location in Mumbai, Dadar and in a lavish structure by the name Naman Midtown.
                         </p>
                     </div>
@@ -37,24 +37,24 @@ const Webpage = () => {
                     <div className="max-w-6xl mx-auto px-6">
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 text-center">
                             <div className="space-y-4">
-                                <FaBuilding size={50} className="text-yellow-500 mx-auto" />
-                                <p className="text-lg font-medium text-gray-700">14000 Sq.ft Total Area</p>
+                                <FaBuilding size={40} className="text-yellow-500 mx-auto" />
+                                <p className="text-base md:text-lg font-medium text-gray-700">14000 Sq.ft Total Area</p>
                             </div>
                             <div className="space-y-4">
-                                <FaChair size={50} className="text-yellow-500 mx-auto" />
-                                <p className="text-lg font-medium text-gray-700">Seating Capacity 430</p>
+                                <FaChair size={40} className="text-yellow-500 mx-auto" />
+                                <p className="text-base md:text-lg font-medium text-gray-700">Seating Capacity 430</p>
                             </div>
                             <div className="space-y-4">
-                                <FaDesktop size={50} className="text-yellow-500 mx-auto" />
-                                <p className="text-lg font-medium text-gray-700">300 Workstations</p>
+                                <FaDesktop size={40} className="text-yellow-500 mx-auto" />
+                                <p className="text-base md:text-lg font-medium text-gray-700">300 Workstations</p>
                             </div>
                             <div className="space-y-4">
-                                <FaDoorClosed size={50} className="text-yellow-500 mx-auto" />
-                                <p className="text-lg font-medium text-gray-700">25  Private Cabins</p>
+                                <FaDoorClosed size={40} className="text-yellow-500 mx-auto" />
+                                <p className="text-base md:text-lg font-medium text-gray-700">25  Private Cabins</p>
                             </div>
                             <div className="space-y-4">
-                                <MdMeetingRoom size={50} className="text-yellow-500 mx-auto" />
-                                <p className="text-lg font-medium text-gray-700">6 Meeting Rooms</p>
+                                <MdMeetingRoom size={40} className="text-yellow-500 mx-auto" />
+                                <p className="text-base md:text-lg font-medium text-gray-700">6 Meeting Rooms</p>
                             </div>
                         </div>
                     </div>
@@ -65,30 +65,30 @@ const Webpage = () => {
                     <h3 className="text-3xl font-semibold text-gray-800 text-center mb-12">Amenities</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                         <div className="space-y-4">
-                            <FaWifi size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">High-speed Wi-Fi</p>
+                            <FaWifi size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">High-speed Wi-Fi</p>
                         </div>
                         <div className="space-y-4">
-                            <MdReceipt size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">Reception Area</p>
+                            <MdReceipt size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">Reception Area</p>
                         </div>
                         <div className="space-y-4">
-                            <FaBroom size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">Cleaning & Maintenance</p>
+                            <FaBroom size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">Cleaning & Maintenance</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-12 text-center">
                         <div className="space-y-4">
-                            <CiCoffeeCup size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">Refreshments</p>
+                            <CiCoffeeCup size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">Refreshments</p>
                         </div>
                         <div className="space-y-4">
-                            <MdMeetingRoom size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">Conference Room</p>
+                            <MdMeetingRoom size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">Conference Room</p>
                         </div>
                         <div className="space-y-4">
-                            <FaDesktop size={50} className="text-yellow-500 mx-auto" />
-                            <p className="text-lg font-medium text-gray-700">Business Lounge</p>
+                            <FaDesktop size={40} className="text-yellow-500 mx-auto" />
+                            <p className="text-base md:text-lg font-medium text-gray-700">Business Lounge</p>
                         </div>
                     </div>
 
@@ -101,11 +101,11 @@ const Webpage = () => {
                     {/* Connectivity Section */}
                     <section className="flex-1">
                         <div className="px-8">
-                            <h3 className="text-3xl font-semibold text-gray-900 text-center mb-3">
+                            <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
                                 Connectivity
                             </h3>
                             <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-                            <ul className="text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+                            <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
                                 <li>Eastern Express Highway - 1 KM</li>
                                 <li>Dadar Railway Station - 1.5 KM</li>
                                 <li>Prabhadevi Railway Station - 0.5 KM</li>
@@ -117,11 +117,11 @@ const Webpage = () => {
                     {/* Leisure Section */}
                     <section className="flex-1">
                         <div className="px-8">
-                            <h3 className="text-3xl font-semibold text-gray-900 text-center mb-3">
+                            <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
                                 Leisure
                             </h3>
                             <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-                            <ul className="text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+                            <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
                                 <li>Restuarants - 0.5 KM</li>
                             </ul>
                         </div>
@@ -130,11 +130,11 @@ const Webpage = () => {
                     {/* Utility & Facilities Section */}
                     <section className="flex-1">
                         <div className="px-8">
-                            <h3 className="text-3xl font-semibold text-gray-900 text-center mb-3">
+                            <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
                                 Utility & Facilities
                             </h3>
                             <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-                            <ul className="text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+                            <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
                                 <li>Petrol Pump - 2.5 KM</li>
                                 <li>Pharmacy - 0.5 KM</li>
                             </ul>

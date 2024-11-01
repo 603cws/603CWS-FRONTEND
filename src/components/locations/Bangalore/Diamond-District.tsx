@@ -80,10 +80,10 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             We are a premium coworking and managed office solution provider for businesses of all sizes. If you need a Dedicated desk, Hot desk, Cabin, or an end-to-end tailored floor at 603 The Coworking Space, We are here to help you! After opening 9 successful centers in Mumbai, We are thrilled to have our presence in the “Silicon Valley of India ” i.e. Bangalore.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             603 The Coworking Space (Bangalore Center) is a well-designed office space. Here we offer you with different options to select a desired office space as per your requirement.
                         </p>
                     </div>

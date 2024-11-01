@@ -72,11 +72,16 @@ const Dashboard: React.FC = () => {
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Kamala Mills Meeting Room 2">Kamala Mills Meeting Room 2</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Matulya Conference Room">Matulya Conference Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Matulya Meeting Room">Matulya Meeting Room</option>
-              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Rupa Solitaire Conference Room">Rupa Solitaire Conference Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Millennium Conference Room">Millennium Conference Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Millennium Meeting Room">Millennium Meeting Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Sunmill Conference Room">Sunmill Conference Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Sunmill Meeting Room">Sunmill Meeting Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Technocity Conference Room">Technocity Conference Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Technocity Meeting Room">Technocity Meeting Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Sunshine Conference Room">Sunshine Conference Room</option>
               <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Sunshine Meeting Room">Sunshine Meeting Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Navratna Conference Room">Navratna Conference Room</option>
+              <option className={`${windowWidth > 610 ? 'text-base' : 'text-sm'}`} value="Navratna Meeting Room">Navratna Meeting Room</option>
             </select>
           </div>
         </div>

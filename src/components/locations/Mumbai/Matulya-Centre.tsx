@@ -89,11 +89,11 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Matulya Centre is based in Lower Parel, famous for being an entertainment and commercial hub. Lower Parel seamlessly brings together this city’s commercial and entertainment aspects.
                             Our centre is situated on the main road, making it easy to travel by rail and bus. Lower Parel and Currey Road station is just a 5-minute walk away.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             For those who are sociable, you’ll find several restaurants, food joints, and gaming zones in proximity. Palladium Mall is 5 minutes away, featuring a multiplex, 5-star restaurants, and four levels of exclusive shopping.
                             Kamala Mills Compound, another highlight, is a commercial complex and party spot located just 5 minutes from Matulya Centre. Enjoy multi-level Sky-Karting, Bowling, cricket, and virtual reality games at Smaaash.
                         </p>

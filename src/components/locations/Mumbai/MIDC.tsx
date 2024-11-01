@@ -76,16 +76,16 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Andheri East MIDC has almost become the city’s next big business hub! With its proximity to the International airport, railway station, and metro junctions. Andheri east has now become the favourite destination for corporate houses and IT companies due to its centralisation and ease of commute from all across the city.
                             <br />And we “603 The Coworking Space” have grabbed this opportunity to open a branch in Andheri East MIDC, Mumbai.
 
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             The center is just 10 minutes away from J B Nagar metro station and 15 minutes away from Andheri Station (E), which is an advantage for all the people traveling from the Western and Central railway lines. (Stations) We have a 7-storey glass facade building with a great view and the right amount of sunlight coming your way.
 
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             The building has a great breakout area and a terrace where you can take a quick glance at an entire MIDC area while having a cup of tea or enjoy playing games and taking a break from the office mundane to rejuvenate back at work efficiently.
                             <br />The center is located in a prime location which is surrounded by many 5-star properties like The Leela, Radisson Mumbai, and food joints like China gate restaurant, bora-bora, CCD, etc.
 

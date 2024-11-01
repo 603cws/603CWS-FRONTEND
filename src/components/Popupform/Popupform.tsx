@@ -20,7 +20,7 @@ const Popupform = () => {
     };
 
     useEffect(() => {
-        const intervalId = setInterval(showPopup, 60000);
+        const intervalId = setInterval(showPopup, 80000);
 
         return () => clearInterval(intervalId);
     }, []);

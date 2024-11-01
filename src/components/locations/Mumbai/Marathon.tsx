@@ -79,10 +79,10 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Marathon Centre is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Our centre is situated on the main-road which helps the commuter to travel easily by rail and bus. Lower Parel and Currey Road station is at 5 minutes walking distance. If you are sociable, you can find several restaurants, food joints and gaming zone in the proximity. Palladium mall is at 5 minutes distance which has a multiplex, 5-star restaurants, four levels of exclusive shopping area.
                         </p>
                         <p className="leading-relaxed text-gray-700">

@@ -95,15 +95,15 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                 <div className="lg:w-3/5">
                     <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                    <p className="leading-relaxed text-gray-700 mb-6">
+                    <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                         Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.
 
 
                     </p>
-                    <p className="leading-relaxed text-gray-700 mb-6">
+                    <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                         If you are sociable, you can find several restaurants, food joints and gaming zone in the vicinity itself. Palladium mall is at 7 minutes distance which has a multiplex, 5-star restaurants, four levels of exclusive shopping area. Another highlight is Kamala Mills Compound itself where the office building is located. It is a commercial complex and a party spot for your corporate events or get together. You can find many renowned restaurants there. You can also enjoy a game of multi-level Sky-Karting, Bowling, playing cricket against the likes of Malinga, Shane Warne & more and experience virtual reality & arcade games at Mumbai’s number 1 arena Smaaash.
                     </p>
-                    <p className="leading-relaxed text-gray-700 mb-6">
+                    <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                         603 The Coworking Space (Kamala Mills Compound) is a well-designed office space. Here we offer you with different options to select a desired office space as per your requirement.
                     </p>
                 </div>

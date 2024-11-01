@@ -37,12 +37,24 @@ import Privacy from "./pages/Privacy"
 import TermsNCond from "./pages/Terms"
 import Forgot from "./components/ForgotPassword/ForgotPass";
 import Changepassword from "./components/ForgotPassword/changepassword";
+import Blogs from "./pages/Blogs/Blogs";
+import BlogDetail from "./pages/Blogs/BlogView";
+import Membership from "./pages/MemberShipPlans";
+import Career from "./pages/Career/Career";
+import NewsCenter from "./pages/NewsCentre/Newscenter";
+import Referral from "./pages/Referral/Referral";
+import Events from "./pages/Events";
+import BookNowPage from "./pages/ExternalBooking/BookNowPage";
+import ConfirmPayment from "./pages/ExternalBooking/ConfirmBookingPage";
+import Payment from "./pages/ExternalBooking/Payment";
 import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 import Pentagon from "./components/locations/Mumbai/Pentagon";
 
 function App() {
   const location = useLocation();
   const { isAuthenticated, loading, refreshAuth, isAdmin } = useApp();
+
+  
 
   const noPopupRoutes = [
     "/admin/dashboard",
@@ -63,8 +75,10 @@ function App() {
     "/forgotPassword",
     "/changepassword/:id",
     "/confirmpayment",
+    "/payment",
+    "/booknow/:id",
     "/booknow",
-    "/payment"
+    "/career"
   ];
 
   const matchDynamicRoute = (route: any, path: any) => {
@@ -128,6 +142,16 @@ function App() {
             <Route path="/terms-conditions" element={<TermsNCond />} />
             <Route path="/forgotPassword" element={<Forgot />} />
             <Route path="/changepassword/:id" element={<Changepassword />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:title" element={<BlogDetail />} />
+            <Route path="/membership-plans" element={<Membership />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/news-centre" element={<NewsCenter />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/booknow" element={<BookNowPage />} />
+            <Route path="/booknow/:id" element={<ConfirmPayment />} />
+            <Route path="/payment" element={<Payment />} />
           </>
         ) : (
           <>
@@ -171,6 +195,16 @@ function App() {
             <Route path="/terms-conditions" element={<TermsNCond />} />
             <Route path="/forgotPassword" element={<Forgot />} />
             <Route path="/changepassword/:id" element={<Changepassword />} />
+            <Route path="/blogs" element={<Blogs />} />
+            <Route path="/blogs/:title" element={<BlogDetail />} />
+            <Route path="/membership-plans" element={<Membership />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/news-centre" element={<NewsCenter />} />
+            <Route path="/referral" element={<Referral />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/booknow" element={<BookNowPage />} />
+            <Route path="/booknow/:id" element={<ConfirmPayment />} />
+            <Route path="/payment" element={<Payment />} />
           </>
         )}
       </Routes>

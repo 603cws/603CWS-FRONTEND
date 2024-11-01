@@ -9,9 +9,9 @@ SwiperCore.use([Autoplay]);
 function OurServices() {
     const comparr:Array<string> =[company1,company2,company3,company4,company5,company6,company7,company8];
   return (
-    <div className="w-full mt-16">
-        <h1 className="text-center text-[42px] font-sans font-bold text-[#fcc519]">Clients we have worked with.</h1>
-        <div className="w-full mt-6">
+    <div className="w-full mt-16 md:pt-20">
+        <h1 className="text-center text-2xl  md:text-2xl lg:text-2xl font-sans font-bold text-[#fcc519]">Clients we have worked with.</h1>
+        <div className="w-full">
             <Swiper
             spaceBetween={20}
             slidesPerView={1}
@@ -27,7 +27,7 @@ function OurServices() {
             className="mySwiper"
             >
                 {comparr.map((photo,index)=>(
-                    <SwiperSlide key={index} className="h-[300px] flex justify-center items-center">
+                    <SwiperSlide key={index} className="h-[280px] flex justify-center items-center">
                         <img src={photo} alt="company logo" height="200px" width="270px" />
                     </SwiperSlide>
                 ))}

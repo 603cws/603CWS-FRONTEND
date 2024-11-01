@@ -215,6 +215,7 @@ function DashNavbar() {
           <FiMenu size="24" onClick={() => setIsSideWindowOpen(true)} className="cursor-pointer" />
         ) : (
           <div className="flex items-center space-x-4 gap-4">
+             <div className="cursor-pointer text-gray-600" onClick={()=>{navigate("/booknow")}}>Day Passes</div>
             <div className="flex items-center">
               <div style={creditsContainerStyle}>
                 {creditsleft > 0 &&

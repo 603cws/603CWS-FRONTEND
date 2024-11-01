@@ -76,8 +76,8 @@ const Webpage: React.FC = () => {
                             />
                         </div>
                         <div className="md:w-1/2 md:pl-12">
-                            <h2 className="text-4xl font-bold mb-6">What is Managed Office Space?</h2>
-                            <p className="text-lg mb-6 leading-relaxed">
+                            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-6">What is Managed Office Space?</h2>
+                            <p className="text-base md:text-lg mb-6 leading-relaxed justify-start w-full max-w-xl text-justify">
                                 Managed office spaces are fully serviced and equipped workspaces that are provided by 603. These spaces offer businesses a convenient and flexible alternative to traditional office leases. In a managed office space, we take care of various aspects of office management, allowing businesses to focus on their core operations.
                             </p>
                             <button onClick={()=>{navigate("/allLocations")}} className="bg-yellow-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300">
@@ -91,8 +91,8 @@ const Webpage: React.FC = () => {
                 <section className="bg-white text-gray-800 py-6">
                     <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 md:pr-12 order-2 md:order-1 mt-8 md:mt-0">
-                            <h2 className="text-4xl font-bold mb-6">Looking for a Managed Solution?</h2>
-                            <p className="text-lg mb-6 leading-relaxed">
+                            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-6">Looking for a Managed Solution?</h2>
+                            <p className="text-base md:text-lg mb-6 leading-relaxed justify-start w-full max-w-xl text-justify">
                                 Pick your location, pick your size, pick your needs and leave the rest to us. Our in-house team will get you up and running within 30 days. We can manage your space or find you a space and manage it. Let us know when, where, and how many. Get in touch with us today.
                             </p>
                             <button onClick={() => window.location.href = 'tel:+919136036603'} className="bg-yellow-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300">
@@ -120,8 +120,8 @@ const Webpage: React.FC = () => {
                             />
                         </div>
                         <div className="md:w-1/2 md:pl-12">
-                            <h2 className="text-4xl font-bold mb-6">Big Solutions for Big Teams</h2>
-                            <p className="text-lg mb-6 leading-relaxed">
+                            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-6">Big Solutions for Big Teams</h2>
+                            <p className="text-base md:text-lg mb-6 leading-relaxed justify-start w-full max-w-xl text-justify">
                                 Enterprises like yours face several challenges when it comes to workspaces. You need to scale up or down quickly, distribute your workforce across locations, and adopt new models of working. We offer flexible, managed office spaces to help you navigate these challenges, allowing you to focus on your core business.
                             </p>
                             <button onClick={()=>{navigate("/allLocations")}} className="bg-yellow-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300">
@@ -135,8 +135,8 @@ const Webpage: React.FC = () => {
                 <section className="bg-white text-gray-800 py-6">
                     <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 md:pr-12 order-2 md:order-1 mt-8 md:mt-0">
-                            <h2 className="text-4xl font-bold mb-6">What Role Does 603 Play?</h2>
-                            <p className="text-lg mb-6 leading-relaxed">
+                            <h2 className="text-xl sm:text-3xl lg:text-4xl  font-bold mb-6">What Role Does 603 Play?</h2>
+                            <p className="text-base md:text-lg mb-6 leading-relaxed justify-start w-full max-w-xl text-justify">
                                 603 provides effective IT, Housekeeping, and Maintenance support, resolving technical and non-technical issues daily. By reducing your administrative burden and providing a flexible workspace solution, 603 helps you maintain a hassle-free work environment.
                             </p>
                             <button onClick={() => window.location.href = 'tel:+919136036603'} className="bg-yellow-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-yellow-600 transition duration-300">
@@ -156,14 +156,14 @@ const Webpage: React.FC = () => {
                 {/* How It Works Section */}
                 <section className="bg-gray-100 py-16">
                     <div className="container mx-auto px-6 md:px-12">
-                        <h2 className="text-4xl font-bold text-center mb-8">How it Works</h2>
-                        <p className="text-center text-lg mb-12 leading-relaxed">
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8">How it Works</h2>
+                        <p className="text-lg mb-12 leading-relaxed text-justify">
                             Managed office concepts enable organizations with the necessary tools to drive business growth without the burden of operational tasks like design, maintenance, utilities, and office materials.
                         </p>
                         <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-8">
                             {data.map((step, index) => (
                                 <div key={index} className="flex flex-col items-center bg-yellow-400 text-black p-8 px-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                                    <div className="text-6xl font-bold">{`0 ${step.number}`}</div>
+                                    <div className="text-4xl lg:text-6xl font-bold">{`0 ${step.number}`}</div>
                                     <p className="mt-4 text-lg">{step.value}</p>
                                 </div>
                             ))}
@@ -178,8 +178,8 @@ const Webpage: React.FC = () => {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                             {services.map((service, index) => (
                                 <div key={index} className="flex flex-col items-center text-center p-8">
-                                    <div className="text-5xl mb-4 text-yellow-500">{service.icon}</div>
-                                    <p className="text-lg font-semibold text-gray-700">{service.label}</p>
+                                    <div className="text-2xl sm:text-3xl lg:text-5xl mb-4 text-yellow-500">{service.icon}</div>
+                                    <p className="text-base  sm:text-2xl font-semibold text-gray-700">{service.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -189,7 +189,7 @@ const Webpage: React.FC = () => {
                 {/* Our Centers Section */}
                 <section className="bg-gray-100 py-16">
                     <div className="container mx-auto px-6 md:px-12">
-                        <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">Our Centers</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Our Centers</h2>
                         <p className="text-center text-lg mb-12 leading-relaxed">
                             Tailored Workspaces for Your Success
                         </p>
@@ -197,7 +197,7 @@ const Webpage: React.FC = () => {
                             {locations.map((location, index) => (
                                 <div key={index} className="flex flex-col items-center text-center bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
                                     <img src={location.imgSrc} alt={location.name} className="rounded-lg mb-4 shadow-lg" />
-                                    <h3 className="text-2xl font-semibold mb-4">{location.name}</h3>
+                                    <h3 className="text-xl md:text-2xl font-semibold mb-4">{location.name}</h3>
                                     <a href={location.link} className="text-yellow-500 hover:underline">
                                         Learn More &rarr;
                                     </a>

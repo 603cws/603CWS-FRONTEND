@@ -10,7 +10,7 @@ function PartnerWithUs() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-800/40 opacity-80"></div>
         <div className="relative flex flex-col justify-center w-full md:w-1/2 py-10 md:py-0 z-10">
-          <h2 className="text-white text-4xl md:text-5xl font-extrabold leading-tight md:leading-snug animate-fadeInUp">
+          <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-snug animate-fadeInUp">
             Interested in becoming a Property Partner?
           </h2>
         </div>
@@ -42,7 +42,7 @@ function PartnerWithUs() {
             </p>
           </div>
         </div>
-        <p className="hidden md:block text-lg md:text-xl text-gray-800 font-semibold leading-relaxed text-center md:text-left md:ml-8 w-full md:w-1/2">
+        <p className="hidden md:block text-lg md:text-xl text-gray-600 font-medium leading-relaxed md:text-left md:ml-8 w-full md:w-1/2 text-justify">
           Coworking is an opportunity to transform your usual office premises
           into a community of Entrepreneurs/Startups with a huge potential of
           earning and to be a proud partner of a coworking space with 603 The

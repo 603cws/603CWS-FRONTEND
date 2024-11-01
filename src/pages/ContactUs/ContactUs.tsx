@@ -58,14 +58,25 @@ const ContactUs = () => {
     },
     {
       title: "Kamala Mills Compound",
-      description: "2R3H+3FC, Lower, Parel, Mumbai, Maharashtra 400013",
+      description: "Trade World, Tower D, 4th Floor, Lower, Parel, Mumbai, Maharashtra 400013",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609930707!2d72.7462354!3d19.0026697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ceed2879bcd3%3A0x519449d10ba027f0!2s2R3H%2B3FC%2C%20Lower%2C%20Parel%2C%20Mumbai%2C%20Maharashtra%20400013!5e0!3m2!1sen!2sin!4v1721254426295!5m2!1sen!2sin"
     },
     {
       title: "Pinnacle Corporate Park",
       description: "Kolivery Village, MMRDA Area, Kalina, Santacruz East, Mumbai, Maharashtra 400098",
       mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.212792818998!2d72.86728357472062!3d19.059727882190618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf1f1c71f0a1%3A0x9abf2f1f4a7f7a8b!2sPinnacle%20Corporate%20Park%2C%20BKC!5e0!3m2!1sen!2sin!4v1721352465026!5m2!1sen!2sin"
+    },
+    {
+      title: "Technocity",
+      description: "Technocity, 5th Floor, Navi Mumbai, Maharashtra 400701",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.9576681553413!2d73.01590922472377!3d19.109512932101964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c1fd6ba2be4d:0xccf82ad58f52a92d!2sTechnocity+IT+Park,+B-201,+601+%26+701,+Technocity,+MIDC+Industrial+Area,+Ghansoli,+Navi+Mumbai,+Maharashtra+400701!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin"
+    },
+    {
+      title: "Pentagon Classic",
+      description: "B306/ 307/ 308 - Navratna Corporate Park, Ashok Vatika, Ambli Bopal Road, Ahmedabad, Gujarat 380058",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1887.365476441699!2d72.8507678!3d19.1070941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c83489ddac01%3A0xa443ab275b61ce12!2sClassic%20Pentagon%2C%20Mumbai%2C%20Maharashtra%20400053!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin"
     }
+
 
   ];
 
@@ -116,7 +127,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <p className="mt-8 lg:mt-10 text-gray-800 leading-relaxed text-lg lg:text-xl">
+          <p className="mt-8 lg:mt-10 text-gray-800 leading-relaxed text-lg lg:text-xl text-justify">
             Our team is dedicated to assisting you and answering any questions. We eagerly await the opportunity to connect with you.
           </p>
         </div>
@@ -131,7 +142,7 @@ const ContactUs = () => {
             <p className="text-3xl font-semibold text-yellow-500">
               Kunal Kataria, Director
             </p>
-            <p className="mt-4 leading-relaxed text-lg lg:text-xl">
+            <p className="mt-4 leading-relaxed text-lg lg:text-xl text-justify">
               At 603, we represent Success, Infinity, and Energy. Our mission is to foster your business's achievements and create a lasting impact. Should we be able to enhance your accomplishments even slightly, we would be honored to assist. With our dedicated team, we offer unparalleled support and commitment.
             </p>
           </div>

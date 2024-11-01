@@ -2,104 +2,11 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
 import { useNavigate } from "react-router-dom";
-import amore from "/officeimg/Amore/Amore.JPG";
 import makhija from "/officeimg/Makhija/Makhija.JPG";
-import ahmedabad from "/officeimg/Ahmedabad/ahmedabad.jpg";
-import matulya from "/officeimg/Matulya/Matulya.jpg";
-import sunshine from "/officeimg/Sunshine/sunshine.JPG";
-import Sunmill from "/officeimg/SunMill/Sunmill.jpeg";
-import { gallery5, gallery6 } from "../../utils/Landing/Landing";
-
-type Location = {
-  name: string;
-  address: string;
-  imgSrc: string;
-  link: string;
-  price: number;
-};
-
-const locations: { city: string; locations: Location[] }[] = [
-  {
-    city: "Mumbai",
-    locations: [
-      {
-        name: "Pinnacle Corporate Park, BKC",
-        address: "Bandra Kurla Complex, Bandra East, Mumbai - 400051",
-        imgSrc: gallery5,
-        link: "/locations/Pinnacle-Corporate-Park",
-        price: 3500,
-      },
-      {
-        name: "Khar - Amore Centre",
-        address: "Amore Centre, 5th Floor, Khar West, Mumbai - 400052",
-        imgSrc: amore,
-        link: "/locations/Amore-Centre",
-        price: 4000,
-      },
-      {
-        name: "Bandra - Makhija Arcade",
-        address: "Makhija Arcade, Khar West, Mumbai - 400052",
-        imgSrc: makhija,
-        link: "/locations/Makhija-Archade",
-        price: 3800,
-      },
-      {
-        name: "Dadar - Sunshine Tower",
-        address: "Sunshine Tower, Dadar West, Mumbai - 400013",
-        imgSrc: sunshine,
-        link: "/locations/Sunshine-Tower",
-        price: 3200,
-      },
-      {
-        name: "Lower Parel - Matulya Centre",
-        address: "Matulya Centre, Lower Parel, Mumbai - 400013",
-        imgSrc: matulya,
-        link: "/locations/Matulya-Centre",
-        price: 4500,
-      },
-      {
-        name: "Lower Parel - Kamala Mills",
-        address: "Kamala Mills, Lower Parel, Mumbai - 400013",
-        imgSrc: gallery6,
-        link: "/locations/Kamala-Mills",
-        price: 4600,
-      },
-      {
-        name: "Lower Parel - Sun Mill Compound",
-        address: "Sun Mill Compound, Cama Industrial Estate, Mumbai 400013",
-        imgSrc: Sunmill,
-        link: "/locations/Sun-Mill-Compound",
-        price: 4200,
-      },
-    ],
-  },
-  {
-    city: "Navi Mumbai",
-    locations: [
-      {
-        name: "Millennium Business Park",
-        address: "Millennium Business Park, Kopar Khairane, Navi Mumbai - 400701",
-        imgSrc: "/officeimg/Rupa/Rupa2.jpg",
-        link: "/locations/Millenium-Business-Park",
-        price: 2800,
-      },
-    ],
-  },
-  {
-    city: "Ahmedabad",
-    locations: [
-      {
-        name: "Navratna Corporate Park, Ahmedabad",
-        address: "Navratna Corporate Park, Ambli Bopal Road, Ahmedabad - 380058",
-        imgSrc: ahmedabad,
-        link: "/locations/Navratna-Corporate-Park",
-        price: 3000,
-      },
-    ],
-  },
-];
+import { locations } from "../AllLocationsDetails";
 
 const BookNowPage: React.FC = () => {
+  const [alllocations] = useState(locations)
   const [selectedCity, setSelectedCity] = useState<string>("All Cities");
   const navigate = useNavigate();
 
@@ -111,8 +18,8 @@ const BookNowPage: React.FC = () => {
   // Filter locations based on selected city
   const filteredLocations =
     selectedCity === "All Cities"
-      ? locations
-      : locations.filter((cityGroup) => cityGroup.city === selectedCity);
+      ? alllocations
+      : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
 
   return (
     <div className="font-sans bg-gray-50 min-h-screen w-screen overflow-x-hidden">
@@ -175,12 +82,9 @@ const BookNowPage: React.FC = () => {
                     {location.name}
                   </h4>
                   <p className="text-gray-600 mb-4">{location.address}</p>
-                  <p className="text-lg font-medium text-black mb-4">
-                    ₹{location.price}/day
-                  </p>
                   <button
                     className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
-                    onClick={() => navigate("/confirmpayment")}
+                    onClick={() => navigate(`${location.name.replace(/\s/g, "_")}`)}
                   >
                     Book Now
                   </button>

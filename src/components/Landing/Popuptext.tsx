@@ -18,7 +18,7 @@ const Popuptext: React.FC = (): ReactElement => {
     <div className="flex items-center justify-center h-full">
       <div className="text-4xl">
         <span className='flex items-center' ref={textRef}>
-          <span className="inline-block font-sans text-sm md:text-2xl">Welcome to 603 CoWorkingSpace</span>
+          <span className="inline-block font-sans text-sm md:text-2xl">Welcome to 603CoWorkingSpace</span>
         </span>
       </div>
     </div>

@@ -91,13 +91,13 @@ const Technocity = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Located in the heart of Navi Mumbai, our Technocity center offers a modern, dynamic workspace designed for businesses of all sizes. Strategically positioned near major corporate hubs and with excellent connectivity to highways, this space is perfect for professionals seeking convenience and productivity.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             The center is equipped with premium amenities, including high-speed internet, ergonomic workstations, meeting rooms, and a vibrant community atmosphere. Whether you’re a freelancer, startup, or large enterprise, our Technocity location provides the perfect environment for growth, collaboration, and innovation.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Come experience the perfect balance of work and community at 603 The Coworking Space, Technocity, Navi Mumbai.
                         </p>
                     </div>

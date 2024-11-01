@@ -27,7 +27,7 @@ const Explore: React.FC<OfferProps> = ({
         </figure>
         <div className="p-4 bg-grey-50">
           <h2 className="text-xl sm:text-2xl font-semibold mb-3 text-gray-900">{title}</h2>
-          <p className="text-gray-700 text-sm sm:text-base mb-5">{description}</p>
+          <p className="text-gray-700 text-sm sm:text-base mb-5 text-justify mx-auto">{description}</p>
           <div className="flex flex-col sm:flex-row items-center justify-between">
             <p className="text-lg sm:text-lg  text-gray-500">
               Starting from <b>₹{price}</b>

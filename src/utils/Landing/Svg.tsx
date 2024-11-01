@@ -3,7 +3,7 @@ import React from "react";
 
 export const Twopeoplesitting: React.FC = () => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{ fill: '#ffffff' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style={{width: '50px', height: '50px', fill: '#ffffff' }}>
             <g>
                 <g>
                     <path d="M399.5,22.5C370.552,22.5,347,46.051,347,75s23.552,52.5,52.5,52.5S452,103.949,452,75S428.448,22.5,399.5,22.5z     M399.5,37.5c17.96,0,33.005,12.694,36.651,29.58c-20.154-2-38.58-11.212-52.297-26.147C388.62,38.735,393.917,37.5,399.5,37.5z     M399.5,112.5c-20.678,0-37.5-16.822-37.5-37.5c0-9.663,3.675-18.483,9.7-25.139c16.691,18.803,39.576,30.244,64.606,32.299    C432.954,99.424,417.729,112.5,399.5,112.5z"/>
@@ -33,8 +33,8 @@ export const Flexiblepo: React.FC = () => {
         viewBox="0 0 512.5 512.5"
         className="h-[55px] w-[55px] fill-yellow-400"
         xmlSpace="preserve"
-        width="512"
-        height="512"
+        width="100"
+        height="100"
       >
         <g>
           <path

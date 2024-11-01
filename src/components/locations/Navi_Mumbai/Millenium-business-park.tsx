@@ -91,13 +91,13 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Discover the epitome of flexibility with our coworking office spaces in Ghansoli. Our brand-new facility is designed to revolutionize your work experience, providing state-of-the-art coworking office spaces in Ghansoli that seamlessly blend innovation, collaboration, and comfort. Our ergonomic furniture, high-speed internet, and cutting-edge technology ensure that your workday is seamless and efficient. At 603, we understand the evolving needs of professionals and businesses, and our Ghansoli location is tailored to meet those demands.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Lying within the Millenium Business Park, Rupa Solitaire is a 1.2 million-square-foot commercial property developed by Rupa Group. It provides easy access to transport, classy hotels, restaurants, and other basic amenities. The premises is 10 minutes from Ghansoli station and 5 minutes from National Highway.
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             The building stands right at the doorstep of Ramada Navi Mumbai and is just five minutes away from Country Inn & Suites. 603 The Coworking Space (Millenium Business Park) is a well-designed office space. Here we offer you with different options to select a desired office space as per your requirement.
                         </p>
                     </div>

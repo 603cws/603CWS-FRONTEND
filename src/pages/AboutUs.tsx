@@ -10,15 +10,13 @@ import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useApp } from "../context/AuthContext";
 import Popupform from "./popup/Popupform";
+import { useNavigate } from "react-router-dom";
 
 function AboutUs() {
   const [popup, setpopup] = useState<boolean>(false);
 
-  const openpopup = () => {
-    setpopup(true);
-    localStorage.setItem("callback", "true");
-  }
-  
+  const navigate = useNavigate()
+
   const { setloading } = useApp();
   setloading(false);
 
@@ -26,7 +24,7 @@ function AboutUs() {
     <div className="w-full min-h-screen flex flex-col">
       <Navbar />
 
-      <header className="relative flex justify-center items-center bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${bgimage2})`, height: '600px' }}>
+      <header className="relative flex justify-center items-center bg-cover bg-center bg-fixed h-screen md:h-[600px]" style={{ backgroundImage: `url(${bgimage2})`}}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative text-center text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold animate__animated animate__fadeInDown">
@@ -41,11 +39,11 @@ function AboutUs() {
       <Popupform val={popup} setpopup={setpopup} />
 
       <main className="flex-grow">
-        <section className="flex flex-col items-center py-16 bg-gray-50">
+        <section className="flex flex-col items-center py-16 bg-gray-50 px-5">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#fcc519] text-center">
             Who We Are
           </h1>
-          <p className="mt-4 max-w-3xl text-center text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed">
+          <p className="mt-4 max-w-3xl text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed w-full text-justify">
             603 is a Mumbai based coworking space with a total of 8 centres, 7
             in Mumbai itself and 1 in Bangalore. 603 as a number defines “Your
             Infinite Existence” and thus we, from our company, aim to provide a
@@ -56,7 +54,7 @@ function AboutUs() {
           </p>
         </section>
 
-        <section className="flex flex-col lg:flex-row gap-5 justify-center items-center px-2 py-5">
+        <section className="flex flex-col lg:flex-row gap-5 justify-center items-center px-4 md:px-14 py-5">
           <div className="lg:w-1/2 w-full flex items-center justify-center">
             <img
               src={lifeat603}
@@ -68,14 +66,14 @@ function AboutUs() {
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#fcc519]">
               Life at 603
             </h1>
-            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg leading-relaxed">
+            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg leading-relaxed w-full max-w-xl text-justify">
               Your life is an orchestra. Your business is the Symphony in it.
               603 The Co-Working Space is built to give your symphony wings to
               fly. Imagine to enjoy the fresh Barista in the morning in a well
               lit office with someone who works 24/7 to ensure you come in with
               a smile and leave with one.
             </p>
-            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed">
+            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed w-full max-w-xl text-justify">
               603 is a Mumbai-based coworking space with a total of 8 centres, 7
               in Mumbai itself and 1 in Bangalore. 603 as a number defines “Your
               Infinite Existence” and thus we, from our company, aim to provide
@@ -89,13 +87,13 @@ function AboutUs() {
 
 
 
-        <section className="flex flex-col md:flex-row-reverse gap-8 justify-center items-center  py-16">
+        <section className="flex flex-col md:flex-row-reverse gap-8 justify-center px-4 items-center md:px-14 pt-16">
           <img src={mission} className="w-full md:w-1/2" alt="Mission" />
           <div className="md:w-1/2 text-center md:text-left px-4">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3f3836]">
               Our Mission
             </h1>
-            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed">
+            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed w-full max-w-xl text-justify">
               At 603, our mission is to provide a vibrant and inspiring
               coworking space that fosters collaboration, innovation, and
               personal growth. We strive to create an inclusive and supportive
@@ -105,13 +103,13 @@ function AboutUs() {
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row gap-8 justify-center items-center py-16">
+        <section className="flex flex-col md:flex-row gap-8 justify-center items-center pt-16 md:pb-12">
           <img src={vision} className="w-full md:w-1/2" alt="Vision" />
           <div className="md:w-1/2 text-center md:text-left px-4">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3f3836]">
               Our Vision
             </h1>
-            <p className="mt-4 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed">
+            <p className="mt-4 pb-8 md-pb-0 text-gray-600 text-base sm:text-base lg:text-lg  leading-relaxed w-full max-w-xl text-justify">
               Our vision at 603 is to be the leading coworking space that
               transforms the way people work, connect, and succeed. We envision
               a dynamic and energising environment where creativity flourishes,
@@ -123,24 +121,19 @@ function AboutUs() {
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row bg-[#fcc519] py-16 text-white">
-          <div className="md:w-1/2 px-8 flex flex-col justify-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold">
+        <section className="flex flex-col md:flex-row bg-[#fcc519] py-16 text-white gap-10 px-5 xl:px-20">
+          <div className="md:w-1/2 flex flex-col justify-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-4xl font-semibold">
               Join a community of early-stage startups.
             </h1>
-            <p className="mt-6 text-base sm:text-base lg:text-lg  leading-relaxed">
-              Our vision at 603 is to be the leading coworking space that
-              transforms the way people work, connect, and succeed. We envision
-              a dynamic and energising environment where creativity flourishes,
-              ideas come to life, and meaningful connections are forged. By
-              nurturing a culture of collaboration, knowledge sharing, and
-              entrepreneurial spirit, we aspire to be a catalyst for innovation
-              and a hub for diverse talents.
+            <p className="mt-6 text-base sm:text-base lg:text-lg leading-relaxed w-full max-w-xl text-justify">
+              Our vision at 603 is to be the leading coworking space that transforms the way people work, connect, and succeed. We envision a dynamic and energising environment where creativity flourishes, ideas come to life, and meaningful connections are forged. By nurturing a culture of collaboration, knowledge sharing, and entrepreneurial spirit, we aspire to be a catalyst for innovation and a hub for diverse talents.
             </p>
-            <button onClick={openpopup} className="mt-8 mb-3 px-6 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md">
+            <button onClick={() => navigate("/booknow")} className="mt-8 mb-3 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md">
               Book a Space
             </button>
           </div>
+
           <div className="relative w-full md:w-1/2 flex items-center">
             <img
               src={bgimage2}

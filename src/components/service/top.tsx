@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from "../Navbar/navbar";
 import explorer from "./explorer.json";
-import offers from './offers.json'
+import offers from './offers.json';
 import Offer from "./offer";
 
 const Top: React.FC = () => {
@@ -47,46 +47,33 @@ const Top: React.FC = () => {
       </div>
 
       <div className="min-h-[650px] flex flex-col sm:flex-row px-6 bg-gray-50 py-6 sm:py-8 lg:py-10">
-      <div className="relative w-full flex justify-center items-center mb-6 sm:mb-0">
-        <motion.img
-          ref={refImage}
-          src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/for-now.png?fit=680%2C506&ssl=1"
-          className="transition-transform duration-300 transform hover:scale-105 rounded-lg shadow-lg w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-5/6"
-          alt="603 The Coworking Space"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInViewImage ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6 }}
-        />
+        <div className="relative w-full flex justify-center items-center mb-6 sm:mb-0">
+          <motion.img
+            ref={refImage}
+            src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/for-now.png?fit=680%2C506&ssl=1"
+            className="transition-transform duration-300 transform hover:scale-105 rounded-lg shadow-lg w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-5/6"
+            alt="603 The Coworking Space"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInViewImage ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.6 }}
+          />
+        </div>
+
         <motion.div
-          className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/80 backdrop-blur-md rounded-lg p-6 sm:p-8"
-          whileHover={{ opacity: 1 }}
+          ref={refText}
+          className="w-full flex flex-col justify-center px-4 sm:px-8 lg:px-12"
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInViewText ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          <motion.h2
-            className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 text-center"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isInViewImage ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            603 The Coworking Space
-          </motion.h2>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-gray-800 text-justify mx-auto">
+            Join a Network of Innovators at 603 The Coworking Space
+          </h1>
+          <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway leading-relaxed text-gray-600 text-justify mx-auto">
+            At 603 The Coworking Space, we offer a thoughtfully designed workspace tailored for professionals, entrepreneurs, and freelancers. Discover a dynamic environment that fosters collaboration, creativity, and growth.
+          </p>
         </motion.div>
       </div>
-
-      <motion.div
-        ref={refText}
-        className="w-full flex flex-col justify-center px-4 sm:px-8 lg:px-12"
-        initial={{ opacity: 0, x: -50 }}
-        animate={isInViewText ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-center">
-          Join a Network of Innovators at 603 The Coworking Space
-        </h1>
-        <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway text-center leading-relaxed">
-          At 603 The Coworking Space, we offer a thoughtfully designed workspace tailored for professionals, entrepreneurs, and freelancers. Discover a dynamic environment that fosters collaboration, creativity, and growth.
-        </p>
-      </motion.div>
-    </div>
 
       <div className="p-5 max-w-full flex justify-center items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1300px]">
@@ -101,9 +88,10 @@ const Top: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="mt-10  bg-gray-400 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100 min-h-[600px] mx-[50px] p-6">
+
+      <div className="mt-10 bg-gray-400 rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100 min-h-[600px] mx-4 p-6">
         <div className="text-center mb-8">
-          <p className="text-base sm:text-lg md:text-2xl lg:text-4xl font-semibold font-sans">
+          <p className="text-base sm:text-lg md:text-2xl lg:text-4xl font-semibold font-sans text-gray-800">
             Explore our Services
           </p>
         </div>
@@ -122,34 +110,20 @@ const Top: React.FC = () => {
           </div>
         </div>
       </div>
+
       <div className="flex items-center justify-center py-10 px-6 shadow-lg mx-4">
         <div className="text-gray-800 text-center leading-relaxed w-full sm:w-[550px] md:w-[650px] lg:w-[70%]">
           <span className="font-semibold text-sm sm:text-lg md:text-lg mb-7">
             Flexible Workspaces in Mumbai & Thane
           </span>
           <p className="text-xs sm:text-sm md:text-sm lg:text-base">
-            In the ever-evolving landscape of work, the demand for flexibility
-            has become a defining characteristic for professionals and
-            businesses alike. Mumbai and Thane, bustling metropolises known for
-            their vibrant business communities, have witnessed a significant
-            rise in the popularity of flexible workspaces for rent. Our adaptive
-            environments cater to the diverse needs of a dynamic workforce,
-            offering a range of benefits that redefine the traditional office
-            experience.
+            In the ever-evolving landscape of work, the demand for flexibility has become a defining characteristic for professionals and businesses alike. Mumbai and Thane, bustling metropolises known for their vibrant business communities, have witnessed a significant rise in the popularity of flexible workspaces for rent. Our adaptive environments cater to the diverse needs of a dynamic workforce, offering a range of benefits that redefine the traditional office experience.
             <br />
             <br />
-            Our strategically positioned workspaces provide professionals with
-            the freedom to choose locations that align with their preferences
-            and minimize commute times. Whether in the heart of Mumbai’s
-            financial hub or within Thane’s expanding landscape, our spaces
-            ensure accessibility and convenience for all.
+            Our strategically positioned workspaces provide professionals with the freedom to choose locations that align with their preferences and minimize commute times. Whether in the heart of Mumbai’s financial hub or within Thane’s expanding landscape, our spaces ensure accessibility and convenience for all.
             <br />
             <br />
-            The collaborative nature of our workspaces fosters innovation and
-            networking, creating dynamic communities that encourage knowledge
-            exchange and collaboration. With high-speed internet, meeting rooms,
-            ergonomic furniture, and well-equipped kitchens, our spaces provide
-            everything professionals need for a seamless work experience.
+            The collaborative nature of our workspaces fosters innovation and networking, creating dynamic communities that encourage knowledge exchange and collaboration. With high-speed internet, meeting rooms, ergonomic furniture, and well-equipped kitchens, our spaces provide everything professionals need for a seamless work experience.
           </p>
         </div>
       </div>

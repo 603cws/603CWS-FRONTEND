@@ -57,23 +57,23 @@ const Pentagon = () => {
                         <ul className="space-y-4">
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Day Pass</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 600</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 599</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Dedicated Desk</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 10000 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 9,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Cabin Space</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 11,000 Onwards</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 10,999 Onwards</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Meeting Rooms</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 400 / Hourly</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 399 / Hourly</span>
                             </li>
                             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                                 <span className="text-sm font-semibold text-gray-500">Conference Rooms</span>
-                                <span className="text-sm font-bold text-gray-500">₹ 700 / Hourly</span>
+                                <span className="text-sm font-bold text-gray-500">₹ 699 / Hourly</span>
                             </li>
                         </ul>
 
@@ -83,16 +83,16 @@ const Pentagon = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Our newest coworking center is now open at the prestigious Classic Pentagon building in Andheri, Mumbai. This prime location offers a vibrant and dynamic environment for businesses, freelancers, and startups to thrive. Situated in one of Mumbai's most sought-after commercial districts, our Andheri center is easily accessible via major roads and public transport. With proximity to the Andheri Railway Station and the Western Express Highway, commuting is convenient for both you and your clients.
 
 
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             The area surrounding the Classic Pentagon is rich with dining options, cafes, and essential services, making it an ideal location for both work and leisure. Enjoy a coffee break, grab lunch, or unwind after a productive day with a variety of choices at your doorstep.
 
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             Experience the benefits of a coworking space in a prime location designed for innovation and collaboration. We invite you to explore our new center at the Classic Pentagon building in Andheri and discover a workspace that inspires success.
 
 

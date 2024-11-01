@@ -91,7 +91,7 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             603 The Coworking Space is excited to announce the opening of our newest office space in the vibrant city of Ahmedabad, strategically located at Navratna Corporate Park. This state-of-the-art facility offers a dynamic and innovative environment designed to foster productivity and collaboration. Our Ahmedabad office space is equipped with modern amenities and cutting-edge technology, ensuring a seamless working experience for all our members. Navratna Corporate Park is one of Ahmedabad's most prestigious business hubs Situated in the heart of the city, the office space is easily accessible from major residential and commercial areas. A range of nearby amenities including restaurants, cafes, gyms, and retail outlets, providing convenience for your daily needs. Surrounded by landscaped gardens and green spaces, promoting a serene and pleasant working environment. Discover a place where productivity meets innovation and where you can connect, create, and grow.
                         </p>
                     </div>

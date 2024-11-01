@@ -90,11 +90,11 @@ const Webpage = () => {
                 <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
                     <div className="lg:w-3/5">
                         <h2 className="text-4xl font-semibold mb-8 text-gray-800">Overview</h2>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             603 The coworking space based in Bandra west which is famous for being an entertainment and prime hub. Bandra is one neighbourhood that seamlessly brings together this city’s hustle bustle and entertainment aspects together. Our centre is situated on the main-road which helps the commuter to travel easily by rail and bus. Khar and Bandra stations are at 5-7 minutes commute.
 
                         </p>
-                        <p className="leading-relaxed text-gray-700 mb-6">
+                        <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
                             If you are sociable, you can find several restaurants, food joints and gaming zone in the proximity. Linking Road, Hill Road and SV Road are all at a 5 minutes distance which has multiplexes, 5-star restaurants, shopping areas and party places. You can find many renowned restaurants there. You can also enjoy a game of multi-level Sky-Karting, Bowling, playing cricket against the likes of Malinga, Shane Warne & more and experience virtual reality & arcade games at Mumbai’s famous arena Game Palacio.
                         </p>
                     </div>
