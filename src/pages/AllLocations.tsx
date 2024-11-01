@@ -33,7 +33,7 @@ const LocationPage: React.FC = () => {
         <div className="relative flex justify-center items-center h-full w-full ">
           <div className="text-center px-12 py-16">
             <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">Locations</h2>
-            <p className="text-white text-xl lg:text-2xl">Explore our workspaces</p>
+            <p className="text-white ">Explore our workspaces</p>
           </div>
         </div>
       </div>

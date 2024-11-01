@@ -25,10 +25,10 @@ const Webpage = () => {
 
             {/* Hero Section */}
             <div className='pt-16'>
-                <section className="relative text-center py-24 bg-cover bg-center bg-no-repeat bg-gray-100" style={{ backgroundImage: `url(${background})` }}>
+                <section className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100" style={{ backgroundImage: `url(${background})` }}>
                     <div className="absolute inset-0 bg-black opacity-50"></div>
                     <div className="relative z-10">
-                        <h1 className="text-5xl font-bold text-white drop-shadow-lg">Amore Building, Khar West</h1>
+                        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">Amore Building, Khar West</h1>
                         <p className="text-lg text-gray-200 mt-4">603 The Coworking Space Amore Building, 5th Road, Khar West</p>
                     </div>
                 </section>
@@ -45,7 +45,7 @@ const Webpage = () => {
                         />
                     </div>
 
-                    <div className="lg:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 lg:ml-8 shadow-md flex flex-col">
+                    <div className="2xl:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">
                         <div className="flex items-start mb-6">
                             <div className="ml-4">
                                 <h3 className="text-xl font-black mb-2 text-gray-600">Workspace Packages</h3>

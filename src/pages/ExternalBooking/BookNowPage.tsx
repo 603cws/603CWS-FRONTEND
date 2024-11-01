@@ -31,19 +31,19 @@ const BookNowPage: React.FC = () => {
         style={{
           backgroundImage: `url(${makhija})`,
         }}
-        className="relative bg-no-repeat bg-cover bg-fixed mb-16"
+        className="relative bg-no-repeat bg-cover bg-fixed mb-16 h-screen lg:h-[600px] flex items-center"
       >
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative flex justify-center items-center h-[330px] w-full bg-cover bg-center pt-5">
           <div className="text-center">
-            <h2 className="text-white text-5xl font-bold mb-4">Discover Our Locations</h2>
-            <p className="text-white text-2xl">Choose a workspace that suits your needs</p>
+            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-bold mb-4">Discover Our Locations</h2>
+            <p className="text-white text-lg lg:text-2xl">Choose a workspace</p>
           </div>
         </div>
 
       </div>
 
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-2 md:px-12 overflow-auto">
         {/* City Filter */}
         <div className="text-center mb-12">
           <select
@@ -70,7 +70,7 @@ const BookNowPage: React.FC = () => {
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
                   key={locationIndex}
-                  className="relative bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-transform duration-300"
+                 className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
                 >
                   <img
                     src={location.imgSrc}

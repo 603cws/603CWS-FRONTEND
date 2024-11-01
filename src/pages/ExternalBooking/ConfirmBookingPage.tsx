@@ -490,11 +490,11 @@ const ConfirmPayment = () => {
             />
           </div>
 
-          <h2 className="text-xl md:text-xl lg:text-3xl font-bold mt-8 text-gray-800">{locationDetails?.name}</h2>
-          <p className="text-gray-600 mt-2 text-lg lg:text-lg">603 The CoWorking Space, {locationDetails?.name}</p>
+          <h2 className="font-bold mt-4 text-gray-800 text-2xl">{locationDetails?.name}</h2>
+          <p className="text-gray-600 mt-2 text-base lg:text-lg">603TheCoWorkingSpace, {locationDetails?.name}</p>
 
           <section className="mt-6">
-            <h3 className="text-2xl font-bold mb-4 text-gray-800">About</h3>
+            <h3 className=" font-bold mb-4 text-gray-800 text-xl md:text-xl lg:text-3xl ">About</h3>
             <p className="text-gray-700 leading-relaxed justify-start text-justify">
               {locationDetails?.about}
             </p>
@@ -508,21 +508,21 @@ const ConfirmPayment = () => {
                 <div className="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mb-2 shadow-lg">
                   <FaWifi className="text-xl" />
                 </div>
-                <p className="text-gray-700 text-center">High-Speed Internet</p>
+                <p className="text-sm md:text-base text-gray-700 text-center">High-Speed Internet</p>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mb-2 shadow-lg">
                   <FaBriefcase className="text-xl" />
                 </div>
-                <p className="text-gray-700 text-center">Conference Rooms</p>
+                <p className="text-sm md:text-base text-gray-700 text-center">Conference Rooms</p>
               </div>
 
               <div className="flex flex-col items-center">
                 <div className="w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center mb-2 shadow-lg">
                   <FaCoffee className="text-xl" />
                 </div>
-                <p className="text-gray-700 text-center">Coffee Bar</p>
+                <p className="text-sm md:text-base text-gray-700 text-center">Coffee Bar</p>
               </div>
             </div>
           </section>
@@ -763,7 +763,6 @@ const ConfirmPayment = () => {
               {!showcalenderdaypass && (
                 <select
                   className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
-                  value={selectedLocation || ""} // Add value to control the select
                   onChange={(e) => {
                     setselectedLocation(e.target.value);
                     setshowcalenderconfroom(false);
@@ -772,7 +771,7 @@ const ConfirmPayment = () => {
                     setspacetype("daypass");
                   }}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled selected>
                     Select
                   </option>
                   {locationDetails?.daypasses?.map((room, index) => (
