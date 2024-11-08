@@ -98,7 +98,7 @@ function DashNavbar() {
     top: 0,
     left: 0,
     width: '100%',
-    zIndex: 10000,
+    zIndex: 10,
     display: 'flex', // flex
     justifyContent: 'space-between', // justify-between
     alignItems: 'center', // items-center

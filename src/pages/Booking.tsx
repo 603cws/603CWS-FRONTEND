@@ -5,6 +5,7 @@ import AnimationComponent from '../components/Gif/Gif';
 import AnimationComponentSorry from '../components/Gif/SorryGif';
 import AnimationComponentAsk from '../components/Gif/Askconfirm';
 import { useApp } from '../context/AuthContext';
+import toast from 'react-hot-toast';
 
 interface Theme {
     background: {
@@ -27,13 +28,13 @@ export const getTheme = (darkMode: boolean): Theme => ({
 const times = [
     "9:00 am", "9:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am",
     "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm",
-    "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm"    
+    "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm"
 ];
 
 const times2 = [
     "9:00 am", "9:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am",
     "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm",
-    "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm" 
+    "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm"
 ];
 
 const getTimeInMinutes = (timeStr: string): number => {
@@ -287,7 +288,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
             try {
                 const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
                     withCredentials: true,
-                  });
+                });
                 setloading(false);
                 console.log(response);
                 const userdata = response.data.user;
@@ -303,9 +304,9 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
 
     const fetchLocationBookings = async (date: string) => {
         try {
-            const response = await axios.post(`${PORT}/api/v1/bookings/getlocationbookings`, { selectedDate: date, selectedLocation },{
+            const response = await axios.post(`${PORT}/api/v1/bookings/getlocationbookings`, { selectedDate: date, selectedLocation }, {
                 withCredentials: true,
-              });
+            });
             setloading(false)
             setTimings(response.data);
         } catch (error) {
@@ -480,23 +481,26 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
                 startTime: selectedStartTime,
                 endTime: selectedEndTime
             };
-
-            await axios.post(`${PORT}/api/v1/bookings/`, {
-                appointmentDetails,
-                credits: Math.ceil(Number(credits.toFixed(2)))
-            }, {
-                withCredentials: true,
-              });
-            setupInterval();
+            try {
+                await axios.post(`${PORT}/api/v1/bookings/`, {
+                    appointmentDetails,
+                    credits: Math.ceil(Number(credits.toFixed(2)))
+                }, {
+                    withCredentials: true,
+                });
+                toast.success("Booking created successfully!");
+                setupInterval();
+            } catch (error) {
+                console.error("Error creating booking:", error);
+                toast.error("Failed to create booking. Please try again.");
+            }
         } else {
             setnotenoughcredits(true);
         }
     };
 
-
     const handleSubmit2 = async () => {
         setnotenoughcredits(false);
-        setProfileOpen(true);
         const appointmentDetails = {
             location: selectedLocation,
             companyName,
@@ -506,14 +510,20 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
             startTime: selectedStartTime,
             endTime: selectedEndTime
         };
-
-        await axios.post(`${PORT}/api/v1/bookings/`, {
-            appointmentDetails,
-            credits: Math.ceil(Number(credits.toFixed(2)))
-        }, {
-            withCredentials: true,
-          });
-        setupInterval();
+        try {
+            await axios.post(`${PORT}/api/v1/bookings/`, {
+                appointmentDetails,
+                credits: Math.ceil(Number(credits.toFixed(2)))
+            }, {
+                withCredentials: true,
+            });
+            setProfileOpen(true);
+            toast.success("Booking created successfully!");
+            setupInterval();
+        } catch (error) {
+            console.error("Error creating booking:", error);
+            toast.error("Failed to create booking. Please try again.");
+        }
     };
 
 
