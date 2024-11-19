@@ -19,7 +19,6 @@ interface User {
 
 // The rest of your CreateUserModal component code remains the same
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 interface CreateUserModalProps {
   isOpen: boolean;
