@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CiCreditCard1 } from "react-icons/ci";
@@ -7,9 +7,9 @@ import { logo } from "../../utils/Landing/Landing";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
-import Modal from './Modal';
-import { useApp } from '../../context/AuthContext';
-import Loader from '../Loader/Loader';
+import Modal from "./Modal";
+import { useApp } from "../../context/AuthContext";
+import Loader from "../Loader/Loader";
 import { IoWarningOutline } from "react-icons/io5";
 
 function DashNavbar() {
@@ -31,7 +31,7 @@ function DashNavbar() {
 
   const toTransactions = () => {
     navigate("/dashboard/Transactions");
-  }
+  };
   const logout = async () => {
     try {
       setloading(true);
@@ -43,7 +43,7 @@ function DashNavbar() {
         }
       );
       console.log(res);
-      localStorage.removeItem('user');
+      localStorage.removeItem("user");
       navigate("/login");
     } catch (error) {
       console.error("Logout error:", error);
@@ -52,21 +52,28 @@ function DashNavbar() {
     }
   };
 
-
   const visitProfile = () => {
     navigate("/dashboard/Myprofile");
-  }
+  };
 
+  // const visitHome = () => {
+  //   navigate("/dashboard");
+  // }
+
+  //change visit home to home page
   const visitHome = () => {
-    navigate("/dashboard");
-  }
+    navigate("/");
+  };
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(`${PORT}/api/v1/credits/getcreditdetails`, {
-          withCredentials: true,
-        });
+        const response = await axios.get(
+          `${PORT}/api/v1/credits/getcreditdetails`,
+          {
+            withCredentials: true,
+          }
+        );
         console.log(response);
         setmonthlycredits(response.data.monthlycredits);
         setcreditsleft(response.data.creditsleft);
@@ -86,31 +93,31 @@ function DashNavbar() {
       setWindowWidth(window.innerWidth);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   const containerStyle: React.CSSProperties = {
-    fontFamily: 'Poppins, sans-serif',
+    fontFamily: "Poppins, sans-serif",
     position: "fixed",
     top: 0,
     left: 0,
-    width: '100%',
+    width: "100%",
     zIndex: 10,
-    display: 'flex', // flex
-    justifyContent: 'space-between', // justify-between
-    alignItems: 'center', // items-center
-    padding: windowWidth > 425 ? '1rem 1.5rem' : '1rem 0.5rem', // p-4 pl-6 pr-6
-    borderBottom: '2px solid #f6e05e', // border-b-2 border-yellow-400
-    backgroundColor: '#ffffff', // bg-white
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    display: "flex", // flex
+    justifyContent: "space-between", // justify-between
+    alignItems: "center", // items-center
+    padding: windowWidth > 425 ? "1rem 1.5rem" : "1rem 0.5rem", // p-4 pl-6 pr-6
+    borderBottom: "2px solid #f6e05e", // border-b-2 border-yellow-400
+    backgroundColor: "#ffffff", // bg-white
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   };
 
   const logoContainerStyle: React.CSSProperties = {
     display: "flex",
-    gap: windowWidth > 425 ? '10px' : "7px",
+    gap: windowWidth > 425 ? "10px" : "7px",
     cursor: "pointer",
   };
 
@@ -129,209 +136,327 @@ function DashNavbar() {
   };
 
   const modalContentStyle: React.CSSProperties = {
-    color: '#333',
-    maxWidth: '600px',
-    margin: '0 auto',
-    padding: windowWidth > 490 ? '20px' : "10px",
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
+    color: "#333",
+    maxWidth: "600px",
+    margin: "0 auto",
+    padding: windowWidth > 490 ? "20px" : "10px",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    backgroundColor: "#f9f9f9",
   };
 
   const modalHeaderStyle: React.CSSProperties = {
-    fontSize: windowWidth > 390 ? '24px' : "20px",
-    marginBottom: '25px',
-    color: '#0056b3',
-    fontFamily: 'Arial, sans-serif',
+    fontSize: windowWidth > 390 ? "24px" : "20px",
+    marginBottom: "25px",
+    color: "#0056b3",
+    fontFamily: "Arial, sans-serif",
   };
 
   const modalTextStyle: React.CSSProperties = {
-    fontSize: '16px',
-    lineHeight: '1.5',
-    margin: '0',
-    fontFamily: 'Arial, sans-serif',
+    fontSize: "16px",
+    lineHeight: "1.5",
+    margin: "0",
+    fontFamily: "Arial, sans-serif",
   };
 
   const sideWindowStyle: React.CSSProperties = {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
-    right: isSideWindowOpen ? 0 : '-300px', // Slide-in effect
-    width: '250px',
-    height: '100%',
-    backgroundColor: '#ffffff',
-    boxShadow: '-2px 0 5px rgba(0,0,0,0.5)',
+    right: isSideWindowOpen ? 0 : "-300px", // Slide-in effect
+    width: "250px",
+    height: "100%",
+    backgroundColor: "#ffffff",
+    boxShadow: "-2px 0 5px rgba(0,0,0,0.5)",
     zIndex: 10001,
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '20px',
-    transition: 'right 0.3s ease-in-out', // Smooth transition
+    display: "flex",
+    flexDirection: "column",
+    padding: "20px",
+    transition: "right 0.3s ease-in-out", // Smooth transition
   };
 
   const overlayStyle: React.CSSProperties = {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 10000,
-    display: isSideWindowOpen ? 'block' : 'none',
+    display: isSideWindowOpen ? "block" : "none",
   };
 
   const closeButtonStyle: React.CSSProperties = {
-    alignSelf: 'flex-end',
-    cursor: 'pointer',
+    alignSelf: "flex-end",
+    cursor: "pointer",
   };
 
   const sideLinkStyle: React.CSSProperties = {
-    margin: '15px 0',
-    padding: '10px',
-    fontSize: '18px',
-    color: '#0056b3',
-    cursor: 'pointer',
-    borderRadius: '4px',
-    textAlign: 'center',
-    transition: 'background-color 0.3s',
+    margin: "15px 0",
+    padding: "10px",
+    fontSize: "18px",
+    color: "#0056b3",
+    cursor: "pointer",
+    borderRadius: "4px",
+    textAlign: "center",
+    transition: "background-color 0.3s",
   };
-
-
 
   const headingstyle: React.CSSProperties = {
     display: "flex",
     alignItems: "center",
-    fontSize: windowWidth > 425 ? '1.125rem' : "1rem",
-    fontWeight: '700',
-    color: '#4a5568',
+    fontSize: windowWidth > 425 ? "1.125rem" : "1rem",
+    fontWeight: "700",
+    color: "#4a5568",
   };
 
-  return (
-    load ? <Loader /> : (
-      <div style={containerStyle}>
-        <div onClick={visitHome} style={logoContainerStyle}>
-          <img src={logo} alt="Logo" style={logoStyle} />
-          <div style={headingstyle}>603 The Coworking Space</div>
-        </div>
-        {windowWidth < 870 ? (
-          <FiMenu size="24" onClick={() => setIsSideWindowOpen(true)} className="cursor-pointer" />
-        ) : (
-          <div className="flex items-center space-x-4 gap-4">
-             <div className="cursor-pointer text-gray-600" onClick={()=>{navigate("/booknow")}}>Day Passes</div>
-            <div className="flex items-center">
-              <div style={creditsContainerStyle}>
-                {creditsleft > 0 &&
-                  (<>
-                    <div className="text-gray-700" style={creditsTextStyle}>Credits left: {creditsleft}/ <p style={{ color: "#dbbd00" }}>{monthlycredits}</p></div>
-                    <CiCreditCard1 size="24" />
-                  </>
-                  )}
-
-                {extracredits > 0 && creditsleft == 0 && (
-                  <>
-                    <div className="text-gray-700" style={creditsTextStyle}>Credits Bill: {extracredits}</div>
-                    <CiCreditCard1 size="24" />
-                  </>
-                )}
-                <IoIosHelpCircleOutline size="18" color="gray" onClick={() => setShowHelp(true)} className="cursor-pointer" />
+  return load ? (
+    <Loader />
+  ) : (
+    <div style={containerStyle}>
+      <div onClick={visitHome} style={logoContainerStyle}>
+        <img src={logo} alt="Logo" style={logoStyle} />
+        <div style={headingstyle}>603 The Coworking Space</div>
+      </div>
+      {windowWidth < 870 ? (
+        <FiMenu
+          size="24"
+          onClick={() => setIsSideWindowOpen(true)}
+          className="cursor-pointer"
+        />
+      ) : (
+        <div className="flex items-center space-x-4 gap-4">
+          <div
+            className="cursor-pointer text-gray-600"
+            onClick={() => {
+              navigate("/booknow");
+            }}
+          >
+            Day Passes
+          </div>
+          <div className="flex items-center">
+            <div style={creditsContainerStyle}>
+              {creditsleft > 0 && (
                 <>
-                  {creditsleft > 0 && extracredits > 0 && (
-                    <div className="relative inline-block group">
-                      <IoWarningOutline
-                        style={{ color: 'red', fontSize: '20px' }}
-                        className="cursor-pointer"
-                        onClick={() => { setshowalert(!showalert) }}
-                      />
-
-
-                    </div>
-                  )}
+                  <div className="text-gray-700" style={creditsTextStyle}>
+                    Credits left: {creditsleft}/{" "}
+                    <p style={{ color: "#dbbd00" }}>{monthlycredits}</p>
+                  </div>
+                  <CiCreditCard1 size="24" />
                 </>
+              )}
 
-              </div>
+              {extracredits > 0 && creditsleft == 0 && (
+                <>
+                  <div className="text-gray-700" style={creditsTextStyle}>
+                    Credits Bill: {extracredits}
+                  </div>
+                  <CiCreditCard1 size="24" />
+                </>
+              )}
+              <IoIosHelpCircleOutline
+                size="18"
+                color="gray"
+                onClick={() => setShowHelp(true)}
+                className="cursor-pointer"
+              />
+              <>
+                {creditsleft > 0 && extracredits > 0 && (
+                  <div className="relative inline-block group">
+                    <IoWarningOutline
+                      style={{ color: "red", fontSize: "20px" }}
+                      className="cursor-pointer"
+                      onClick={() => {
+                        setshowalert(!showalert);
+                      }}
+                    />
+                  </div>
+                )}
+              </>
             </div>
+          </div>
 
-            <div className="cursor-pointer text-gray-600" onClick={toTransactions}>My Bookings</div>
+          <div
+            className="cursor-pointer text-gray-600"
+            onClick={toTransactions}
+          >
+            My Bookings
+          </div>
 
-            <div className="cursor-pointer text-gray-600" onClick={logout}>Logout</div>
-            <Avatar onClick={visitProfile} name={n ? n.charAt(0) : ''} />
+          <div className="cursor-pointer text-gray-600" onClick={logout}>
+            Logout
+          </div>
+          <Avatar onClick={visitProfile} name={n ? n.charAt(0) : ""} />
+        </div>
+      )}
+
+      <div
+        style={overlayStyle}
+        onClick={() => setIsSideWindowOpen(false)}
+      ></div>
+
+      <div style={sideWindowStyle}>
+        <AiOutlineClose
+          size="24"
+          style={closeButtonStyle}
+          onClick={() => setIsSideWindowOpen(false)}
+        />
+        <div
+          style={sideLinkStyle}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#f0f0f0")
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+          onClick={() => {
+            setIsSideWindowOpen(false);
+            visitHome();
+          }}
+        >
+          Home
+        </div>
+        <div
+          style={sideLinkStyle}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#f0f0f0")
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+          onClick={() => {
+            setIsSideWindowOpen(false);
+            navigate("/dashboard/Myprofile");
+          }}
+        >
+          {" "}
+          My Profile
+        </div>
+        {creditsleft > 0 && (
+          <div
+            style={{
+              ...sideLinkStyle,
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <div className="" style={creditsTextStyle}>
+              Credits: {creditsleft}/{" "}
+              <p style={{ color: "#dbbd00" }}>{monthlycredits}</p>
+            </div>
+            <CiCreditCard1 size="24" />
+            <IoIosHelpCircleOutline
+              size="18"
+              color="gray"
+              onClick={() => {
+                setShowHelp(true), setIsSideWindowOpen(false);
+              }}
+              className="cursor-pointer"
+            />
           </div>
         )}
-
-        <div style={overlayStyle} onClick={() => setIsSideWindowOpen(false)}></div>
-
-        <div style={sideWindowStyle}>
-          <AiOutlineClose size="24" style={closeButtonStyle} onClick={() => setIsSideWindowOpen(false)} />
+        {extracredits > 0 && (
           <div
-            style={sideLinkStyle}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
-            onClick={() => { setIsSideWindowOpen(false); visitHome(); }}
-          >Home</div>
-          <div
-            style={sideLinkStyle}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
-            onClick={() => { setIsSideWindowOpen(false); navigate("/dashboard/Myprofile"); }}
-          > My Profile</div>
-          {creditsleft > 0 && (
-            <div style={{ ...sideLinkStyle, display: "flex", alignItems: "center", gap: "5px", }}>
-              <div className="" style={creditsTextStyle}>Credits: {creditsleft}/ <p style={{ color: "#dbbd00" }}>{monthlycredits}</p></div>
-              <CiCreditCard1 size="24" />
-              <IoIosHelpCircleOutline size="18" color="gray" onClick={() => { setShowHelp(true), setIsSideWindowOpen(false) }} className="cursor-pointer" />
-            </div>)}
-          {extracredits > 0 && (
-            <div style={{ ...sideLinkStyle, display: "flex", alignItems: "center", gap: "5px", }}>
-              <div className="" style={creditsTextStyle}>Credits Bill: {extracredits}</div>
-              <CiCreditCard1 size="24" />
-              <IoIosHelpCircleOutline size="18" color="gray" onClick={() => { setShowHelp(true), setIsSideWindowOpen(false) }} className="cursor-pointer" />
-            </div>)}
-        <div onClick={toTransactions}
+            style={{
+              ...sideLinkStyle,
+              display: "flex",
+              alignItems: "center",
+              gap: "5px",
+            }}
+          >
+            <div className="" style={creditsTextStyle}>
+              Credits Bill: {extracredits}
+            </div>
+            <CiCreditCard1 size="24" />
+            <IoIosHelpCircleOutline
+              size="18"
+              color="gray"
+              onClick={() => {
+                setShowHelp(true), setIsSideWindowOpen(false);
+              }}
+              className="cursor-pointer"
+            />
+          </div>
+        )}
+        <div
+          onClick={toTransactions}
           style={sideLinkStyle}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
-        >My Bookings</div>
-
-          <div
-            style={sideLinkStyle}
-            onClick={() => window.location.href = 'tel:+919136036603'}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
-          >Contact Us</div>
-          <div
-            style={sideLinkStyle}
-            onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f0f0'}
-            onMouseOut={(e) => e.currentTarget.style.backgroundColor = ''}
-            onClick={logout}
-          >Logout</div>
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#f0f0f0")
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+        >
+          My Bookings
         </div>
 
-        {/* Modal component usage */}
-        <Modal isOpen={showalert} onClose={() => setshowalert(false)}>
-          <h3 style={modalHeaderStyle}><b>Pending Bill :</b></h3>
-          <div style={modalTextStyle}>
-            <p>Your credit balance of <strong>{extracredits}</strong> is currently due. We kindly request that you process the payment promptly to ensure uninterrupted service.</p>
-          </div>
-        </Modal>
-        <Modal isOpen={showHelp} onClose={() => setShowHelp(false)}>
-          <div style={modalContentStyle}>
-            <h3 style={modalHeaderStyle}><b>Credits Information:</b></h3>
-            {extracredits > 0 ? (
-              <p style={modalTextStyle}>
-                <strong>Credit:</strong> You may use 1 credit to book either a conference room for 1 hour or a meeting room for 2 hours.<br /><br />
-                <strong>Credit Renewal:</strong> Credits are renewed monthly. Please note that any unused credits from previous months will expire.<br /><br />
-                <strong>Credits Bill:</strong> Credits Bill refers to the number of credits you have pre-purchased from 603CoworkingSpace. These credits will be included in your final bill at the end of the month.
-              </p>
-            ) : (
-              <p style={modalTextStyle}>
-                <strong>Credit:</strong> You may use 1 credit to book either a conference room for 1 hour or a meeting room for 2 hours.<br /><br />
-                <strong>Credit Renewal:</strong> Credits are renewed monthly. Please note that any unused credits from previous months will expire.<br /><br />
-              </p>
-            )}
-
-          </div>
-        </Modal>
+        <div
+          style={sideLinkStyle}
+          onClick={() => (window.location.href = "tel:+919136036603")}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#f0f0f0")
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+        >
+          Contact Us
+        </div>
+        <div
+          style={sideLinkStyle}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#f0f0f0")
+          }
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+          onClick={logout}
+        >
+          Logout
+        </div>
       </div>
-    )
 
+      {/* Modal component usage */}
+      <Modal isOpen={showalert} onClose={() => setshowalert(false)}>
+        <h3 style={modalHeaderStyle}>
+          <b>Pending Bill :</b>
+        </h3>
+        <div style={modalTextStyle}>
+          <p>
+            Your credit balance of <strong>{extracredits}</strong> is currently
+            due. We kindly request that you process the payment promptly to
+            ensure uninterrupted service.
+          </p>
+        </div>
+      </Modal>
+      <Modal isOpen={showHelp} onClose={() => setShowHelp(false)}>
+        <div style={modalContentStyle}>
+          <h3 style={modalHeaderStyle}>
+            <b>Credits Information:</b>
+          </h3>
+          {extracredits > 0 ? (
+            <p style={modalTextStyle}>
+              <strong>Credit:</strong> You may use 1 credit to book either a
+              conference room for 1 hour or a meeting room for 2 hours.
+              <br />
+              <br />
+              <strong>Credit Renewal:</strong> Credits are renewed monthly.
+              Please note that any unused credits from previous months will
+              expire.
+              <br />
+              <br />
+              <strong>Credits Bill:</strong> Credits Bill refers to the number
+              of credits you have pre-purchased from 603CoworkingSpace. These
+              credits will be included in your final bill at the end of the
+              month.
+            </p>
+          ) : (
+            <p style={modalTextStyle}>
+              <strong>Credit:</strong> You may use 1 credit to book either a
+              conference room for 1 hour or a meeting room for 2 hours.
+              <br />
+              <br />
+              <strong>Credit Renewal:</strong> Credits are renewed monthly.
+              Please note that any unused credits from previous months will
+              expire.
+              <br />
+              <br />
+            </p>
+          )}
+        </div>
+      </Modal>
+    </div>
   );
 }
 

@@ -19,7 +19,7 @@ interface User {
 
 // The rest of your CreateUserModal component code remains the same
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface CreateUserModalProps {
   isOpen: boolean;
@@ -27,10 +27,7 @@ interface CreateUserModalProps {
   onCreate: (user: User) => void; // Ensure this matches the User type
 }
 
-const CreateUserModal: React.FC<CreateUserModalProps> = ({
-  isOpen,
-  onClose,
-}) => {
+const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("user");
@@ -40,8 +37,10 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
 
+  const navigate = useNavigate();
+
   //to check is authenticated
-  const { isAuthenticated } = useApp();
+  const { isAuthenticated, setIsAuthenticated, setloading } = useApp();
   console.log(isAuthenticated);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -66,6 +65,32 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
       if (response.data.msg === "User created") {
         toast.success(response.data.msg);
         // navigate("/login", { replace: true });
+        // {usernameOrEmail: "rohit", password: "rohit007"}
+
+        try {
+          const response = await axios.post(
+            `https://603-bcakend-new.vercel.app/api/v1/auth/login`,
+            { usernameOrEmail: username, password: password },
+            {
+              withCredentials: true,
+            }
+          );
+          console.log(response);
+          const { msg, user } = response.data;
+
+          if (msg === "User signed in") {
+            toast.success("User logged in");
+            localStorage.setItem("user", user.companyName);
+            setIsAuthenticated(true);
+          }
+        } catch (e) {
+          toast.error("An error occurred. Please try again later.");
+          console.error(e);
+        } finally {
+          setloading(false);
+        }
+
+        // navigate(-1);
       } else {
         toast.error(response.data.msg);
       }
@@ -202,4 +227,4 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   );
 };
 
-export default CreateUserModal;
+export default RegisterUser;

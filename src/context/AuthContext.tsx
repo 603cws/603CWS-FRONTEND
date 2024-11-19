@@ -1,11 +1,18 @@
-import React, { createContext, useState, ReactNode, useContext, useCallback, useEffect } from 'react';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  useContext,
+  useCallback,
+  useEffect,
+} from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addBooking, removeBooking } from "../../redux/bookingsSlice";
-import { addDayPass, removeDayPass } from '../../redux/dayPassesSlice';
-import { RootState } from '../store';
-import toast from 'react-hot-toast';
+import { addDayPass, removeDayPass } from "../../redux/dayPassesSlice";
+import { RootState } from "../store";
+import toast from "react-hot-toast";
 
 interface BookingInterface {
   spaceName: string;
@@ -60,8 +67,9 @@ const convertTimeToMinutes = (time: string): number => {
   return hours * 60 + minutes; // Return total minutes since midnight
 };
 
-
-export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const AppProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -72,69 +80,75 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const PORT = "https://603-bcakend-new.vercel.app";
 
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
-  const dayPasses = useSelector((state: RootState) => state.dayPasses.dayPasses);
+  const dayPasses = useSelector(
+    (state: RootState) => state.dayPasses.dayPasses
+  );
 
   const removeSpecificBooking = (booking: BookingInterface) => {
     dispatch(removeBooking(booking));
-    toast.success('Booking removed from Cart');
+    toast.success("Booking removed from Cart");
   };
 
   const removeSpecificDayPass = (dayPass: DayPassInterface) => {
     dispatch(removeDayPass(dayPass));
-    toast.success('Day Pass removed from Cart');
+    toast.success("Day Pass removed from Cart");
   };
 
   const addNewBooking = (newBooking: BookingInterface) => {
     const newStartTimeInMinutes = convertTimeToMinutes(newBooking.startTime);
     const newEndTimeInMinutes = convertTimeToMinutes(newBooking.endTime);
-  
-    const isDuplicate = bookings.some(booking => {
+
+    const isDuplicate = bookings.some((booking) => {
       const bookingStartTimeInMinutes = convertTimeToMinutes(booking.startTime);
       const bookingEndTimeInMinutes = convertTimeToMinutes(booking.endTime);
-  
+
       return (
         booking.spaceName === newBooking.spaceName &&
         booking.date === newBooking.date &&
-        (
-          (newStartTimeInMinutes >= bookingStartTimeInMinutes && newStartTimeInMinutes < bookingEndTimeInMinutes) ||
-          (newEndTimeInMinutes > bookingStartTimeInMinutes && newEndTimeInMinutes <= bookingEndTimeInMinutes) ||
-          (bookingStartTimeInMinutes >= newStartTimeInMinutes && bookingStartTimeInMinutes < newEndTimeInMinutes) ||
-          (bookingEndTimeInMinutes > newStartTimeInMinutes && bookingEndTimeInMinutes <= newEndTimeInMinutes)
-        )
+        ((newStartTimeInMinutes >= bookingStartTimeInMinutes &&
+          newStartTimeInMinutes < bookingEndTimeInMinutes) ||
+          (newEndTimeInMinutes > bookingStartTimeInMinutes &&
+            newEndTimeInMinutes <= bookingEndTimeInMinutes) ||
+          (bookingStartTimeInMinutes >= newStartTimeInMinutes &&
+            bookingStartTimeInMinutes < newEndTimeInMinutes) ||
+          (bookingEndTimeInMinutes > newStartTimeInMinutes &&
+            bookingEndTimeInMinutes <= newEndTimeInMinutes))
       );
     });
-  
+
     if (!isDuplicate) {
       dispatch(addBooking(newBooking));
-      toast.success('Added to Cart');
+      toast.success("Added to Cart");
     } else {
-      toast.error('Time slots collide');
-      console.log('Booking already exists or time slots collide');
+      toast.error("Time slots collide");
+      console.log("Booking already exists or time slots collide");
     }
   };
-  
-  
+
   const bookDayPass = (newDayPass: DayPassInterface) => {
-    const isDuplicate = dayPasses.some(dayPass =>
-      dayPass.spaceName === newDayPass.spaceName && // Check relevant properties
-      dayPass.bookeddate === newDayPass.bookeddate &&
-      dayPass.day === newDayPass.day &&
-      dayPass.month === newDayPass.month &&
-      dayPass.year === newDayPass.year
+    const isDuplicate = dayPasses.some(
+      (dayPass) =>
+        dayPass.spaceName === newDayPass.spaceName && // Check relevant properties
+        dayPass.bookeddate === newDayPass.bookeddate &&
+        dayPass.day === newDayPass.day &&
+        dayPass.month === newDayPass.month &&
+        dayPass.year === newDayPass.year
     );
-  
+
     if (!isDuplicate) {
       dispatch(addDayPass(newDayPass));
-      toast.success('Added to Cart');
+      toast.success("Added to Cart");
     } else {
-      toast.error('Already Added');
-      console.log('Day pass already exists'); 
+      toast.error("Already Added");
+      console.log("Day pass already exists");
     }
   };
 
   const checkAuth = useCallback(async () => {
     try {
-      const res = await axios.get(`${PORT}/api/v1/users/checkauth`, { withCredentials: true });
+      const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
+        withCredentials: true,
+      });
       setIsAuthenticated(res.data.auth);
       setIsAdmin(res.data.user);
     } catch (error) {
@@ -156,25 +170,27 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   }, [location.pathname, refreshAuth]);
 
   return (
-    <AppContext.Provider value={{
-      isAuthenticated,
-      setIsAuthenticated,
-      loading,
-      setloading,
-      isAdmin,
-      setIsAdmin,
-      refreshAuth,
-      searchQuery,
-      setSearchQuery,
-      popup,
-      setpopup,
-      bookings,
-      dayPasses,
-      addNewBooking,
-      bookDayPass,
-      removeSpecificBooking,
-      removeSpecificDayPass,
-    }}>
+    <AppContext.Provider
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        loading,
+        setloading,
+        isAdmin,
+        setIsAdmin,
+        refreshAuth,
+        searchQuery,
+        setSearchQuery,
+        popup,
+        setpopup,
+        bookings,
+        dayPasses,
+        addNewBooking,
+        bookDayPass,
+        removeSpecificBooking,
+        removeSpecificDayPass,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Landing from "./pages/Landing";
 import OurServicesPage from "./pages/Service";
 import AboutUs from "./pages/AboutUs";
@@ -30,11 +30,11 @@ import Popupform from "./components/Popupform/Popupform";
 import ManagedSpace from "./pages/Managed_space/ManagedSpace";
 import AllLocations from "./pages/AllLocations";
 import { useApp } from "./context/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Loader from "./components/Loader/Loader";
 import Allbookings from "./pages/Admin/Allbookings";
-import Privacy from "./pages/Privacy"
-import TermsNCond from "./pages/Terms"
+import Privacy from "./pages/Privacy";
+import TermsNCond from "./pages/Terms";
 import Forgot from "./components/ForgotPassword/ForgotPass";
 import Changepassword from "./components/ForgotPassword/changepassword";
 import Blogs from "./pages/Blogs/Blogs";
@@ -49,12 +49,17 @@ import ConfirmPayment from "./pages/ExternalBooking/ConfirmBookingPage";
 import Payment from "./pages/ExternalBooking/Payment";
 import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 import Pentagon from "./components/locations/Mumbai/Pentagon";
+// import CreateUserModal from "./pages/Admin/createusermodal";
+import RegisterUser from "./pages/Admin/RegisterUser";
 
 function App() {
   const location = useLocation();
+  const [users, setUsers] = useState<User[]>([]);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(true);
   const { isAuthenticated, loading, refreshAuth, isAdmin } = useApp();
+  const navigate = useNavigate();
 
-  
+  console.log(isAuthenticated); // at the begining without login its false
 
   const noPopupRoutes = [
     "/admin/dashboard",
@@ -78,7 +83,8 @@ function App() {
     "/payment",
     "/booknow/:id",
     "/booknow",
-    "/career"
+    "/career",
+    "/RegisterUser",
   ];
 
   const matchDynamicRoute = (route: any, path: any) => {
@@ -95,6 +101,31 @@ function App() {
   );
 
   const a = localStorage.getItem("callback");
+
+  //handle register
+  interface User {
+    _id: string;
+    companyName: string;
+    email: string;
+    role: string;
+    phone: string;
+    creditsleft: number;
+    monthlycredits: number;
+    extracredits: number;
+    kyc: boolean;
+    location: string;
+  }
+
+  const handleCreateUser = (user: User) => {
+    setUsers((prevUsers) => [...prevUsers, user]);
+    setIsCreateModalOpen(false);
+  };
+
+  const handlecloseofRegisterUser = () => {
+    setIsCreateModalOpen(false);
+    navigate(-1);
+    setIsCreateModalOpen(true);
+  };
 
   if (loading) return <Loader />;
 
@@ -115,11 +146,26 @@ function App() {
             <Route path="/login" element={<LogIn />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin/dashboard" element={isAdmin === "admin" ? <AdminDashboard /> : <Login />} />
-            <Route path="/admin/userinfo/:user" element={isAdmin === "admin" ? <Userdata /> : <Login />} />
-            <Route path="/admin/alluserinfo" element={isAdmin === "admin" ? <UserManagement /> : <Login />} />
-            <Route path="/admin/allbookings" element={isAdmin === "admin" ? <Allbookings /> : <Login />} />
-            <Route path="/admin/edituser/:id" element={isAdmin === "admin" ? <EditUser /> : <Login />} />
+            <Route
+              path="/admin/dashboard"
+              element={isAdmin === "admin" ? <AdminDashboard /> : <Login />}
+            />
+            <Route
+              path="/admin/userinfo/:user"
+              element={isAdmin === "admin" ? <Userdata /> : <Login />}
+            />
+            <Route
+              path="/admin/alluserinfo"
+              element={isAdmin === "admin" ? <UserManagement /> : <Login />}
+            />
+            <Route
+              path="/admin/allbookings"
+              element={isAdmin === "admin" ? <Allbookings /> : <Login />}
+            />
+            <Route
+              path="/admin/edituser/:id"
+              element={isAdmin === "admin" ? <EditUser /> : <Login />}
+            />
             <Route path="/partner-with-us" element={<Partner />} />
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
@@ -131,10 +177,19 @@ function App() {
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
-            <Route path="/locations/Pinnacle-Corporate-Park" element={<Pinnacle />} />
+            <Route
+              path="/locations/Pinnacle-Corporate-Park"
+              element={<Pinnacle />}
+            />
             <Route path="/locations/Technocity" element={<Technocity />} />
-            <Route path="/locations/millenium-business-park" element={<Millenium />} />
-            <Route path="/locations/Navratna-Corporate-Park" element={<Navratna />} />
+            <Route
+              path="/locations/millenium-business-park"
+              element={<Millenium />}
+            />
+            <Route
+              path="/locations/Navratna-Corporate-Park"
+              element={<Navratna />}
+            />
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />
             <Route path="/603-MBC-Center" element={<MBC />} />
@@ -151,7 +206,10 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/booknow" element={<BookNowPage />} />
             <Route path="/booknow/:id" element={<ConfirmPayment />} />
-            <Route path="/payment" element={<Payment />} />
+            <Route
+              path="/payment"
+              element={isAdmin === "admin" && <Payment />}
+            />
           </>
         ) : (
           <>
@@ -185,9 +243,18 @@ function App() {
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
-            <Route path="/locations/Pinnacle-Corporate-Park" element={<Pinnacle />} />
-            <Route path="/locations/millenium-business-park" element={<Millenium />} />
-            <Route path="/locations/Navratna-Corporate-Park" element={<Navratna />} />
+            <Route
+              path="/locations/Pinnacle-Corporate-Park"
+              element={<Pinnacle />}
+            />
+            <Route
+              path="/locations/millenium-business-park"
+              element={<Millenium />}
+            />
+            <Route
+              path="/locations/Navratna-Corporate-Park"
+              element={<Navratna />}
+            />
             <Route path="/603-Lodha-Supremus-Center" element={<Lodha />} />
             <Route path="/Naman-midtown-center" element={<Naman />} />
             <Route path="/603-MBC-Center" element={<MBC />} />
@@ -205,6 +272,16 @@ function App() {
             <Route path="/booknow" element={<BookNowPage />} />
             <Route path="/booknow/:id" element={<ConfirmPayment />} />
             <Route path="/payment" element={<Payment />} />
+            <Route
+              path="/RegisterUser"
+              element={
+                <RegisterUser
+                  isOpen={isCreateModalOpen}
+                  onClose={handlecloseofRegisterUser}
+                  onCreate={handleCreateUser}
+                />
+              }
+            />
           </>
         )}
       </Routes>
