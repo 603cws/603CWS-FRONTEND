@@ -16,6 +16,8 @@ import { useApp } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
+const keyId = import.meta.env.RAZORPAY_KEYID;
+
 // { razorpay_payment_id, razorpay_order_id, razorpay_signature }
 // interface
 interface RazorpayResponse {
@@ -206,10 +208,11 @@ const Payment: React.FC = () => {
       return;
     }
     console.log(order);
+    // "rzp_test_Wy0GGgmeiJGoyn"
 
     // Razorpay options
     const options: RazorpayOptions = {
-      key: "rzp_test_Wy0GGgmeiJGoyn", // Your Razorpay Key ID
+      key: keyId, // Your Razorpay Key ID
       amount: amount * 100, // Amount in paise
       currency: "INR",
       name: "603 cws", // Your business name
