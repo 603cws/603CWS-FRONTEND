@@ -65,7 +65,7 @@ interface UserDetails {
 }
 
 //token
-const token = localStorage.getItem("token");
+// const token = localStorage.getItem("token");
 
 //payment script
 const loadRazorpayScript = () => {
@@ -251,7 +251,7 @@ const Payment: React.FC = () => {
 
           if (bookings.length !== 0) {
             console.log("inside the validate booking");
-            bookings.map((booking, index) => {
+            bookings.map((booking) => {
               handleRemoveBooking(booking);
             });
 
@@ -276,7 +276,7 @@ const Payment: React.FC = () => {
           }
           if (dayPasses.length !== 0) {
             console.log("inside the validate daypasses");
-            dayPasses.map((daypass, index) => {
+            dayPasses.map((daypass) => {
               handleRemoveDayPass(daypass);
             });
 
@@ -328,7 +328,7 @@ const Payment: React.FC = () => {
     };
 
     // Create a new Razorpay instance and open the checkout
-    const rzp1 = new window.Razorpay(options);
+    const rzp1 = new (window as any).Razorpay(options);
     rzp1.on("payment.failed", function (response: any) {
       console.log(response);
       alert("Payment failed");

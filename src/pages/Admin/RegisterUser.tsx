@@ -37,7 +37,7 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   //to check is authenticated
   const { isAuthenticated, setIsAuthenticated, setloading } = useApp();

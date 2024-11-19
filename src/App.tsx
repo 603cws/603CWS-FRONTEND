@@ -120,6 +120,7 @@ function App() {
     setUsers((prevUsers) => [...prevUsers, user]);
     setIsCreateModalOpen(false);
   };
+  console.log(users);
 
   const handlecloseofRegisterUser = () => {
     setIsCreateModalOpen(false);
