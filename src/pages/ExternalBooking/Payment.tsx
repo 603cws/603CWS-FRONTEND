@@ -157,6 +157,28 @@ const Payment: React.FC = () => {
   //paymenthandler function
   //load the script
 
+  const checkOverLap = async (bookings: any): Promise<boolean> => {
+    try {
+      const response = await axios.post(
+        "https://603-bcakend-new.vercel.app/api/v1/order/checkOverlap",
+        bookings,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+
+      console.log(response);
+
+      return response.status === 200; // Return true if the status is 200  means no booking overlap
+    } catch (error) {
+      console.error("Error checking overlap:", error);
+      return false; // Handle failure gracefully booking is there
+    }
+  };
+
   const handleRazorpayPayment = async (): Promise<void> => {
     // Load the Razorpay checkout script
     const isScriptLoaded = await loadRazorpayScript();
@@ -340,6 +362,19 @@ const Payment: React.FC = () => {
     rzp1.open();
   };
 
+  const handleButtonClick = async () => {
+    if (isAuthenticated) {
+      const overlap = await checkOverLap(bookings);
+      if (overlap) {
+        handleRazorpayPayment();
+      } else {
+        toast.error("you are late someone booked around this slot");
+      }
+    } else {
+      handleTOLogin();
+    }
+  };
+
   return (
     <div className="font-sans min-h-screen bg-gray-100 relative min-w-full">
       {/* Navbar */}
@@ -424,6 +459,10 @@ const Payment: React.FC = () => {
               </button>
             </div>
           ))}
+          <span>
+            Note: once the payment is done ,bookings will be shown at dashboard
+            in my booking{" "}
+          </span>
           {bookings.length + dayPasses.length === 0 && (
             <div className=" text-2xl text-gray-500 flex justify-center h-56 items-center">
               Your Cart Is Empty!
@@ -446,8 +485,14 @@ const Payment: React.FC = () => {
           {parseInt(totalBill.toFixed(2)) > 0 && (
             <button
               className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-lg transform hover:scale-105"
-              onClick={isAuthenticated ? handleRazorpayPayment : handleTOLogin}
-              // isAuthenticated ?  handleRazorpayPayment :
+              // onClick={
+              //   isAuthenticated
+              //     ? checkOverLap(bookings) && handleRazorpayPayment
+              //     : handleTOLogin
+              // }
+              // // isAuthenticated ?  handleRazorpayPayment :
+
+              onClick={handleButtonClick}
             >
               Confirm Payment
             </button>
