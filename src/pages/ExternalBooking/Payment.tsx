@@ -157,11 +157,34 @@ const Payment: React.FC = () => {
   //paymenthandler function
   //load the script
 
+  // const checkOverLap = async (bookings: any): Promise<boolean> => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://603-bcakend-new.vercel.app/api/v1/order/checkOverlap",
+  //       bookings,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         withCredentials: true, // Include credentials (cookies) in the request
+  //       }
+  //     );
+  //     console.log(response);
+
+  //     if (response.status === 200) {
+  //       return true;
+  //     } // Return true if the status is 200  means no booking overlap
+  //   } catch (error) {
+  //     console.error("Error checking overlap:", error);
+  //     return false; // Handle failure gracefully booking is there
+  //   }
+  // };
+
   const checkOverLap = async (bookings: any): Promise<boolean> => {
     try {
       const response = await axios.post(
         "https://603-bcakend-new.vercel.app/api/v1/order/checkOverlap",
-        bookings,
+        { bookings },
         {
           headers: {
             "Content-Type": "application/json",
@@ -169,13 +192,19 @@ const Payment: React.FC = () => {
           withCredentials: true, // Include credentials (cookies) in the request
         }
       );
-
       console.log(response);
 
-      return response.status === 200; // Return true if the status is 200  means no booking overlap
+      // Return true if the status is 200, meaning no booking overlap
+      if (response.status === 200) {
+        return true;
+      }
+
+      // If status is not 200, assume an overlap (you can customize this based on your API)
+      return false;
     } catch (error) {
       console.error("Error checking overlap:", error);
-      return false; // Handle failure gracefully booking is there
+      // Return false in case of an error (indicating an overlap)
+      return false;
     }
   };
 
@@ -364,8 +393,8 @@ const Payment: React.FC = () => {
 
   const handleButtonClick = async () => {
     if (isAuthenticated) {
-      const overlap = await checkOverLap(bookings);
-      if (overlap) {
+      const notoverlap = await checkOverLap(bookings);
+      if (notoverlap) {
         handleRazorpayPayment();
       } else {
         toast.error("you are late someone booked around this slot");
