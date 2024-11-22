@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import Calendar from "./Booking";
 import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
 import axios from "axios";
-// import { useApp } from "../context/AuthContext";
-// import AdminCalendar from "./Admin/AdminBookingcal";
+import { useApp } from "../context/AuthContext";
+import AdminCalendar from "./Admin/AdminBookingcal";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // const { isAdmin } = useApp();
+  const { isAdmin } = useApp();
 
   useEffect(() => {
     const handleResize = () => {
@@ -50,6 +50,8 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     console.log("spacetype updated:", spacetype);
   }, [spacetype]);
+
+  // console.log(selectedLocation);
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200">
@@ -222,12 +224,19 @@ const Dashboard: React.FC = () => {
           value={{ key: selectedLocation, selectedLocation, spacetype }}
         />
       )} */}
-      {selectedLocation !== "" && (
-        <Calendar
-          key={selectedLocation}
-          value={{ key: selectedLocation, selectedLocation, spacetype }}
-        />
-      )}
+
+      {selectedLocation !== "" &&
+        (isAdmin == "admin" ? (
+          <AdminCalendar
+            key={selectedLocation}
+            value={{ key: selectedLocation, selectedLocation, spacetype }}
+          />
+        ) : (
+          <Calendar
+            key={selectedLocation}
+            value={{ key: selectedLocation, selectedLocation, spacetype }}
+          />
+        ))}
     </div>
   );
 };

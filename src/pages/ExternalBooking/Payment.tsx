@@ -153,33 +153,6 @@ const Payment: React.FC = () => {
     fetchData();
   }, []);
 
-  //payment function
-  //paymenthandler function
-  //load the script
-
-  // const checkOverLap = async (bookings: any): Promise<boolean> => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://603-bcakend-new.vercel.app/api/v1/order/checkOverlap",
-  //       bookings,
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         withCredentials: true, // Include credentials (cookies) in the request
-  //       }
-  //     );
-  //     console.log(response);
-
-  //     if (response.status === 200) {
-  //       return true;
-  //     } // Return true if the status is 200  means no booking overlap
-  //   } catch (error) {
-  //     console.error("Error checking overlap:", error);
-  //     return false; // Handle failure gracefully booking is there
-  //   }
-  // };
-
   const checkOverLap = async (bookings: any): Promise<boolean> => {
     try {
       const response = await axios.post(
@@ -227,10 +200,6 @@ const Payment: React.FC = () => {
 
     //load the user,billamount
     const currency = "INR";
-    //const usernameoremail
-
-    //prefill data we need
-    //email,username,phoneno
 
     const order = await axios.post(
       "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
@@ -240,9 +209,6 @@ const Payment: React.FC = () => {
           currency,
           payment_capture: 1,
         },
-        // daypasses: dayPasses,
-        // bookings,
-        // userDetails: data,
       },
       {
         headers: {

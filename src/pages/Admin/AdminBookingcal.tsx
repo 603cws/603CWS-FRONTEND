@@ -347,7 +347,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
       try {
         const response = await axios.post(
           `${PORT}/api/v1/users/getUserByAdmin`,
-          email,
+          { email },
           {
             withCredentials: true,
           }
@@ -362,7 +362,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
       }
     };
     fetchData();
-  }, [email]);
+  }, []);
 
   const fetchLocationBookings = async (date: string) => {
     try {
