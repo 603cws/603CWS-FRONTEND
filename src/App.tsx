@@ -52,8 +52,6 @@ import Pentagon from "./components/locations/Mumbai/Pentagon";
 // import CreateUserModal from "./pages/Admin/createusermodal";
 import RegisterUser from "./pages/Admin/RegisterUser";
 
-import BookTour from "./pages/ContactUs/bookTour";
-
 function App() {
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
@@ -87,7 +85,6 @@ function App() {
     "/booknow",
     "/career",
     "/RegisterUser",
-    "/booktour",
   ];
 
   const matchDynamicRoute = (route: any, path: any) => {
@@ -215,8 +212,6 @@ function App() {
               // element={isAdmin === "admin" && <Payment />}
               element={<Payment />}
             />
-
-            <Route path="/booktour" element={<BookTour />} />
           </>
         ) : (
           <>
