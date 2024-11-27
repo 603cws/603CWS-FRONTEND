@@ -60,7 +60,7 @@ const Navbar = () => {
           setManagedSpaceDropdownVisible(false);
           setLocationsDropdownVisible(false);
         }}
-        className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md"
+        className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10"
       >
         <div>
           <div className="dropdown">
@@ -84,26 +84,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-64 shadow-2xl"
             >
-              <li className="border-b-[1px] border-gray-300 py-1">
-                <button
-                  className="text-base"
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                >
-                  Home
-                </button>
-              </li>
-              <li className="border-b-[1px] border-gray-300 py-1">
-                <button
-                  className="text-base"
-                  onClick={() => {
-                    navigate("/about-us");
-                  }}
-                >
-                  About Us
-                </button>
-              </li>
               <li className="border-b-[1px] border-gray-300 py-1">
                 <summary className="cursor-pointer hover:text-yellow-500 border-2 border-transparent flex justify-between">
                   <div
@@ -403,6 +383,14 @@ const Navbar = () => {
                   >
                     Managed Space Solutions
                   </div>
+                  {/* <div
+                    className="text-base"
+                    onClick={() => {
+                      navigate("/managed_space_solutions");
+                    }}
+                  >
+                    Workzone
+                  </div> */}
                   <div
                     style={{
                       backgroundColor: "#f0f0f0",
@@ -458,7 +446,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              <li className="border-b-[1px] border-gray-300 py-1">
+              {/* <li className="border-b-[1px] border-gray-300 py-1">
                 <button
                   className="text-base"
                   onClick={() => {
@@ -466,6 +454,16 @@ const Navbar = () => {
                   }}
                 >
                   Partner with us
+                </button>
+              </li> */}
+              <li className="border-b-[1px] border-gray-300 py-1">
+                <button
+                  className="text-base"
+                  onClick={() => {
+                    navigate("/partner-with-us");
+                  }}
+                >
+                  collaborate
                 </button>
               </li>
               <li className="py-1">
@@ -491,24 +489,6 @@ const Navbar = () => {
 
         <div className="navbar-center hidden lg:flex lg:justify-between">
           <ul className="menu menu-horizontal">
-            <li>
-              <button
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Home
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => {
-                  navigate("/about-us");
-                }}
-              >
-                About Us
-              </button>
-            </li>
             <li
               onMouseEnter={() => {
                 clearTimeout(timeoutId);
@@ -810,6 +790,12 @@ const Navbar = () => {
               >
                 Managed Space Solutions
               </summary>
+              {/* <summary
+                onClick={() => navigate("/managed_space_solutions")}
+                className="cursor-pointer py-2 hover:text-yellow-500 border-2 border-transparent"
+              >
+                Workzone
+              </summary> */}
               <ul
                 className={`p-2 w-60 absolute mt-8 bg-white shadow-lg rounded-lg transition-opacity duration-300 ease-in-out z-50 ${
                   isManagedSpaceDropdownVisible
@@ -846,13 +832,22 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li>
+            {/* <li>
               <button
                 onClick={() => {
                   navigate("/partner-with-us");
                 }}
               >
                 Partner with us
+              </button>
+            </li> */}
+            <li>
+              <button
+                onClick={() => {
+                  navigate("/partner-with-us");
+                }}
+              >
+                collaborate
               </button>
             </li>
             <li>
@@ -879,11 +874,19 @@ const Navbar = () => {
             </button>
           ) : (
             path != "/login" && (
+              // <button
+              //   onClick={() => {
+              //     navigate("/login");
+              //   }}
+              //   className="btn rounded-full w-24 sm:w-28 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-500 text-white hover:text-gray-600 font-bold py-1 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102"
+              // >
+              //   Login
+              // </button>
               <button
                 onClick={() => {
                   navigate("/login");
                 }}
-                className="btn rounded-full w-24 sm:w-28 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-500 text-white hover:text-gray-600 font-bold py-1 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102"
+                className=" cursor-pointer font-bold-400 text-md hover:text-500 hover:underline  border-transparent pr-5"
               >
                 Login
               </button>
@@ -907,11 +910,11 @@ const Navbar = () => {
           ) : (
             path != "/login" && (
               <button
-                className="btn bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-600 rounded-full hover:text-gray-600 text-white font-bold py-1 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102 flex items-center space-x-2 sm:space-x-1"
-                onClick={() => (window.location.href = "tel:+919136036603")}
+                className=" bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-600 rounded-full hover:text-gray-600 text-white font-bold py-1 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102 flex items-center space-x-2 sm:space-x-1"
+                // onClick={() => (window.location.href = "tel:+919136036603")}
               >
                 <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
-                <span className="hidden sm:inline">Call now</span>
+                <span className="hidden sm:inline ">+91-9136036603</span>
               </button>
             )
           )}
