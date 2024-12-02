@@ -51,6 +51,7 @@ import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 import Pentagon from "./components/locations/Mumbai/Pentagon";
 // import CreateUserModal from "./pages/Admin/createusermodal";
 import RegisterUser from "./pages/Admin/RegisterUser";
+import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout";
 
 function App() {
   const location = useLocation();
@@ -284,6 +285,7 @@ function App() {
                 />
               }
             />
+            <Route path="/seatlayout" element={<CoworkingSpaceLayout />} />
           </>
         )}
       </Routes>

@@ -202,6 +202,8 @@ const ConfirmPayment = () => {
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const [coupon,setCoupon]=useState("")
+
   useEffect(() => {
     setCartTotal(
       bookings.reduce((total, booking) => total + booking.price, 0) +
@@ -749,6 +751,15 @@ const ConfirmPayment = () => {
                       </div>
                       {selectedEndTime && (
                         <>
+                        <div>
+                              <input
+                                type="text"
+                                   value={coupon}
+                                   onChange={(e) => setCoupon(e.target.value)}
+                                 placeholder="Enter coupon code"
+                                />
+                               <button >Apply Coupon</button>
+                          </div>
                           <button
                             className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                             onClick={() => {
@@ -769,7 +780,7 @@ const ConfirmPayment = () => {
                             Add{" "}
                             <span className="text-white font-extrabold">
                               ₹
-                              {locationDetails?.conferenceroom * timedifference}
+                              {(locationDetails?.conferenceroom * timedifference)}
                             </span>
                           </button>
                           <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">

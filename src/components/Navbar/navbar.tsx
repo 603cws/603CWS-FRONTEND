@@ -463,7 +463,7 @@ const Navbar = () => {
                     navigate("/partner-with-us");
                   }}
                 >
-                  collaborate
+                  Collaborate
                 </button>
               </li>
               <li className="py-1">
@@ -847,7 +847,7 @@ const Navbar = () => {
                   navigate("/partner-with-us");
                 }}
               >
-                collaborate
+                Collaborate
               </button>
             </li>
             <li>
@@ -911,7 +911,7 @@ const Navbar = () => {
             path != "/login" && (
               <button
                 className=" bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-600 rounded-full hover:text-gray-600 text-white font-bold py-1 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102 flex items-center space-x-2 sm:space-x-1"
-                // onClick={() => (window.location.href = "tel:+919136036603")}
+                onClick={() => (window.location.href = "tel:+919136036603")}
               >
                 <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
                 <span className="hidden sm:inline ">+91-9136036603</span>

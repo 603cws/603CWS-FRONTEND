@@ -65,6 +65,12 @@ function DashNavbar() {
     navigate("/");
   };
 
+  const vistDash = () => {
+    if (location.pathname !== "/dashboard") {
+      navigate("/dashboard");
+    }
+  };
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {

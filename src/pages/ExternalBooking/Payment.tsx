@@ -82,6 +82,10 @@ const loadRazorpayScript = () => {
 };
 
 const Payment: React.FC = () => {
+  const [discountCode, setDiscountCode] = useState("");
+  const [message, setMessage] = useState("");
+  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [isDisable, setIsDisable] = useState(false);
   const { removeSpecificBooking, removeSpecificDayPass } = useApp();
   const navigate = useNavigate();
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
@@ -90,17 +94,59 @@ const Payment: React.FC = () => {
   );
 
   const { isAuthenticated } = useApp();
+  // const [coupon,setCoupon]=useState("")
 
-  console.log(dayPasses);
-  console.log(bookings);
+  // console.log(dayPasses);
+  // console.log(bookings);
 
   // Calculate total price from all bookings and day passes
-  const totalBill =
+  let totalBill =
     bookings.reduce((total, booking) => total + booking.price, 0) +
     dayPasses.reduce((total, dayPass) => total + dayPass.price, 0);
 
+  //coupon changes
+
+  const validateCoupon = async () => {
+    let code = discountCode;
+    try {
+      const response = await axios.post(
+        `https://603-bcakend-new.vercel.app/api/v1/coupon/validatecoupon`,
+        { code },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+
+      console.log(response.data);
+      setDiscountPercentage(
+        (discountPercentage) => discountPercentage + response.data.discount
+      );
+      console.log(discountPercentage);
+
+      setIsDisable(() => true);
+
+      setMessage(`Coupon applied! Discount: ${response.data.discount}%`);
+      toast.success(`COUPON APPLIED SUCCESSFULLY`);
+    } catch (error: any) {
+      setMessage(error.response?.data?.error || "INVALID COUPON CODE");
+      toast.error(`INVALID COUPON CODE,CHECK THE COUPON`);
+    }
+  };
+
+  //handle enter key
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && !isDisable) {
+      validateCoupon(); // Call the button's onClick handler
+    }
+  };
+
   //final bill including gst
-  const finalBill = totalBill + totalBill * 0.18;
+  let finalBill =
+    totalBill + totalBill * 0.18 - totalBill * (discountPercentage / 100);
 
   const handleRemoveBooking = (booking: any) => {
     removeSpecificBooking(booking);
@@ -467,6 +513,24 @@ const Payment: React.FC = () => {
           {/* Total Price */}
           {totalBill > 0 && (
             <>
+              <div className="text-l font-bold mt-4">
+                <input
+                  className="text-gray-500 border-2 border-zinc-900"
+                  type="text"
+                  value={discountCode}
+                  onChange={(e) => setDiscountCode(() => e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Enter coupon code"
+                />
+                <button
+                  className="ml-4 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded-lg transition duration-200 shadow-lg transform hover:scale-105"
+                  onClick={validateCoupon}
+                  disabled={isDisable}
+                >
+                  Apply Coupon
+                </button>
+                {message && <p>{message}</p>}
+              </div>
               <div className="text-right text-2xl font-bold text-gray-800 mb-3">
                 Total Bill: ₹{finalBill.toFixed(2)}
               </div>
