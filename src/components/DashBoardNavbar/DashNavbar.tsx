@@ -63,6 +63,7 @@ function DashNavbar() {
   const PORT = "https://603-bcakend-new.vercel.app";
 
   const n = localStorage.getItem("user");
+  // console.log(n);
 
   const toTransactions = () => {
     navigate("/dashboard/Transactions");
