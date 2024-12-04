@@ -11,7 +11,6 @@ import Modal from "./Modal";
 import { useApp } from "../../context/AuthContext";
 import Loader from "../Loader/Loader";
 import { IoWarningOutline } from "react-icons/io5";
-import toast from "react-hot-toast";
 
 // State variables for form values
 interface UserDetails {

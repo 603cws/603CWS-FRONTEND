@@ -6,11 +6,6 @@ import { useApp } from "../context/AuthContext";
 import AdminCalendar from "./Admin/AdminBookingcal";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  const { data } = useApp();
-
-  console.log(data);
-
   const { isAdmin } = useApp();
 
   useEffect(() => {
