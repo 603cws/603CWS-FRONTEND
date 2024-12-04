@@ -53,6 +53,8 @@ import Pentagon from "./components/locations/Mumbai/Pentagon";
 import RegisterUser from "./pages/Admin/RegisterUser";
 import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout";
 
+import ZohoKYCForm from "./pages/zohoForm";
+
 function App() {
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
@@ -132,7 +134,7 @@ function App() {
   if (loading) return <Loader />;
 
   return (
-    <div className="flex">
+    <div className="">
       <Routes>
         {isAuthenticated ? (
           <>
@@ -213,6 +215,11 @@ function App() {
               // element={isAdmin === "admin" && <Payment />}
               element={<Payment />}
             />
+            <Route
+              path="/kycform"
+              // element={isAdmin === "admin" && <Payment />}
+              element={<ZohoKYCForm />}
+            />
           </>
         ) : (
           <>
@@ -286,6 +293,11 @@ function App() {
               }
             />
             <Route path="/seatlayout" element={<CoworkingSpaceLayout />} />
+            <Route
+              path="/kycform"
+              // element={isAdmin === "admin" && <Payment />}
+              element={<ZohoKYCForm />}
+            />
           </>
         )}
       </Routes>

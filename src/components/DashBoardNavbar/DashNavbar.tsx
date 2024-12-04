@@ -11,6 +11,25 @@ import Modal from "./Modal";
 import { useApp } from "../../context/AuthContext";
 import Loader from "../Loader/Loader";
 import { IoWarningOutline } from "react-icons/io5";
+import toast from "react-hot-toast";
+
+// State variables for form values
+interface UserDetails {
+  companyName: string;
+  username: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: "admin" | "user";
+  kyc: boolean;
+  country: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  location: string;
+  credits?: number;
+  createdAt?: Date;
+}
 
 function DashNavbar() {
   const { setloading } = useApp();
@@ -24,6 +43,23 @@ function DashNavbar() {
   const [showalert, setshowalert] = useState(false);
   const navigate = useNavigate();
   console.log(creditsleft);
+
+  const [data, setData] = useState<UserDetails>({
+    companyName: "",
+    username: "",
+    email: "",
+    password: "",
+    phone: "",
+    role: "user",
+    kyc: false,
+    country: "",
+    state: "",
+    city: "",
+    zipcode: "",
+    location: "",
+    credits: 0,
+    createdAt: new Date(), // Correct initialization for Date
+  });
 
   const PORT = "https://603-bcakend-new.vercel.app";
 
@@ -81,6 +117,7 @@ function DashNavbar() {
           }
         );
         console.log(response);
+        setData(response.data);
         setmonthlycredits(response.data.monthlycredits);
         setcreditsleft(response.data.creditsleft);
         setextracredits(response.data.extracredits);
@@ -231,6 +268,16 @@ function DashNavbar() {
         />
       ) : (
         <div className="flex items-center space-x-4 gap-4">
+          {!data.kyc && (
+            <div
+              className="cursor-pointer text-gray-600"
+              onClick={() => {
+                navigate("/kycform");
+              }}
+            >
+              kyc form
+            </div>
+          )}
           <div
             className="cursor-pointer text-gray-600"
             onClick={() => {
@@ -239,6 +286,7 @@ function DashNavbar() {
           >
             Day Passes
           </div>
+
           <div className="flex items-center">
             <div style={creditsContainerStyle}>
               {creditsleft > 0 && (
