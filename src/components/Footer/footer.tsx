@@ -6,12 +6,13 @@ import { FaEnvelope, FaPhoneAlt } from "react-icons/fa"; // Import icons for con
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-16 px-5">
+    <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-8 px-5">
+      {/* <div className="container mx-auto max-h-9 px-6 lg:px-16"> */}
       <div className="container mx-auto px-6 lg:px-16">
         {/* 3-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Logo and Description */}
-          <div className="space-y-6">
+          <div className="space-y-2">
             <img
               src={logo}
               alt="603 The Coworking Space"
@@ -79,7 +80,11 @@ const Footer = () => {
                     Career
                   </Link>
                 </li>
-                {/* <li><Link to="/referral" className="hover:text-yellow-400">Referral</Link></li> */}
+                <li>
+                  <Link to="/referral" className="hover:text-yellow-400">
+                    Referral
+                  </Link>
+                </li>
                 <li>
                   <Link
                     to="/membership-plans"
@@ -170,7 +175,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom section */}
-      <div className="bg-stone-800 text-gray-400 text-center py-4 mt-8">
+      {/* <div className="bg-stone-800 text-gray-400 text-center py-4 mt-8"> */}
+      <div className="bg-stone-800 text-gray-400 text-center py-1 mt-2">
         <p>&copy; 2024 , 603 The Coworking Space. All Rights Reserved.</p>
       </div>
     </footer>

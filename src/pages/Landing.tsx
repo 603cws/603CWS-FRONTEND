@@ -7,7 +7,7 @@ import {
   photo2,
   photo3,
   gallery3,
-  gallery6
+  gallery6,
 } from "../utils/Landing/Landing";
 import { Twopeoplesitting, Flexiblepo } from "../utils/Landing/Svg";
 import {
@@ -21,7 +21,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import Popupform from "./popup/Popupform";
 import { useEffect, useState } from "react";
-import { FaInstagram, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
 import YellowBox from "../components/Landing/YellowBox";
@@ -31,9 +31,9 @@ import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
+import OurServices from "./../components/AboutUs/OurServices";
 
 function Landing() {
-
   const [popup, setpopup] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
@@ -42,12 +42,11 @@ function Landing() {
     const handleResize = () => setWindowWidth(window.innerWidth);
 
     // Event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-
 
   const { setloading } = useApp();
 
@@ -71,12 +70,11 @@ function Landing() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
             backgroundImage: `url('${gallery6}')`,
-            filter: 'blur(10px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.6)', // dark overlay effect
-            backgroundBlendMode: 'darken', // blends the overlay with the image
+            filter: "blur(10px)",
+            backgroundColor: "rgba(0, 0, 0, 0.6)", // dark overlay effect
+            backgroundBlendMode: "darken", // blends the overlay with the image
           }}
         ></div>
-
 
         <div className="relative z-10 md:w-full">
           <div className="text-white">
@@ -134,9 +132,6 @@ function Landing() {
         </div>
       </div>
 
-
-
-
       {/* Features Section */}
       <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-blue-200 to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20 flex flex-col justify-center items-center md:items-start">
@@ -144,7 +139,13 @@ function Landing() {
             Tailored workspaces and solutions to meet your business needs.
           </h1>
           <p className="mt-6 text-gray-600 bg-text-base md:text-lg lg:text-lg leading-relaxed w-full max-w-xl text-justify">
-            Transform your professional journey with 603 The Coworking Space, where we provide more than just a place to work—we offer an environment designed to inspire and empower. Whether you’re searching for a creative sanctuary to ignite innovation, a polished setting to make a lasting impression on clients, or a vibrant community to foster collaboration and personal growth, our coworking spaces are crafted to meet your diverse needs.
+            Transform your professional journey with 603 The Coworking Space,
+            where we provide more than just a place to work—we offer an
+            environment designed to inspire and empower. Whether you’re
+            searching for a creative sanctuary to ignite innovation, a polished
+            setting to make a lasting impression on clients, or a vibrant
+            community to foster collaboration and personal growth, our coworking
+            spaces are crafted to meet your diverse needs.
           </p>
         </div>
         <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col items-center">
@@ -153,8 +154,12 @@ function Landing() {
               <Twopeoplesitting />
             </div>
             <div className="text-white flex flex-col justify-center w-full">
-              <h1 className="text-lg  md:text-xl lg:text-2xl font-semibold flex justify-center">1,650</h1>
-              <p className="bg-text-base md:text-lg lg:text-lg  text-gray-700 flex justify-center">Total seats available</p>
+              <h1 className="text-lg  md:text-xl lg:text-2xl font-semibold flex justify-center">
+                1,650
+              </h1>
+              <p className="bg-text-base md:text-lg lg:text-lg  text-gray-700 flex justify-center">
+                Total seats available
+              </p>
             </div>
           </div>
           <div className="flex flex-col justify-center space-y-3 mt-6 text-gray-700 bg-text-base md:text-lg lg:text-lg">
@@ -162,13 +167,16 @@ function Landing() {
               <FaWifi className="text-yellow-400 mr-7" /> High-speed internet
             </div>
             <div className="flex items-center">
-              <FaPowerOff className="text-yellow-400 mr-7" /> Uninterrupted power supply
+              <FaPowerOff className="text-yellow-400 mr-7" /> Uninterrupted
+              power supply
             </div>
             <div className="flex items-center">
-              <FaFan className="text-yellow-400 mr-7" /> Fully air-conditioned rooms
+              <FaFan className="text-yellow-400 mr-7" /> Fully air-conditioned
+              rooms
             </div>
             <div className="flex items-center">
-              <FaHome className="text-yellow-400 mr-7" /> Housekeeping & Facility Upkeep
+              <FaHome className="text-yellow-400 mr-7" /> Housekeeping &
+              Facility Upkeep
             </div>
             <div className="flex items-center">
               <RiTeamFill className="text-yellow-400 mr-7" /> Conference Rooms
@@ -183,12 +191,14 @@ function Landing() {
         </div>
       </section>
 
-
-
       <div className="flex flex-col md:flex-row pt-12 pb-12 bg-gradient-to-r from-blue-200 to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20">
           <div className="flex flex-col justify-center items-center py-3">
-            <img src={office_pic} alt="" className="h-[50%] w-[100%] rounded-3xl opacity-85 contrast-less" />
+            <img
+              src={office_pic}
+              alt=""
+              className="h-[50%] w-[100%] rounded-3xl opacity-85 contrast-less"
+            />
           </div>
           <div className="py-4">
             <h1 className="text-lg pb-3 md:text-2xl lg:text-2xl font-semibold text-gray-800 leading-relaxed w-full max-w-xl mx-auto text-justify">
@@ -200,10 +210,12 @@ function Landing() {
               work benefits to all your team members, you need our simple
               solution for teams of any size.
             </p>
-            <button onClick={() => navigate("/managed_space_solutions")} className="my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins">
+            <button
+              onClick={() => navigate("/managed_space_solutions")}
+              className="my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
+            >
               Explore Our Managed Office Solutions
             </button>
-
           </div>
         </div>
         <div className="w-full md:w-1/2 px-5 flex flex-col items-center">
@@ -241,8 +253,14 @@ function Landing() {
               done.
             </p>
           </div>
-          <button onClick={() => navigate("/allLocations")} className=" flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins">
-            <span className="text-gray-800 text-2xl"><FaMapMarkerAlt /></span> Explore Our Locations
+          <button
+            onClick={() => navigate("/allLocations")}
+            className=" flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
+          >
+            <span className="text-gray-800 text-2xl">
+              <FaMapMarkerAlt />
+            </span>{" "}
+            Explore Our Locations
           </button>
           {/*<div className="mt-11 flex flex-col items-start">
             <h1 className="text-4xl font-sans font-semibold text-gray-700">
@@ -335,16 +353,14 @@ function Landing() {
         </div>
       </div>
 
-      <div
-        className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6"
-      >
+      <div className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
             backgroundImage: `url('${gallery3}')`,
-            filter: 'blur(3px)',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)', // dark overlay effect
-            backgroundBlendMode: 'darken', // blends the overlay with the image
+            filter: "blur(3px)",
+            backgroundColor: "rgba(0, 0, 0, 0.3)", // dark overlay effect
+            backgroundBlendMode: "darken", // blends the overlay with the image
           }}
         ></div>
         {/* Overlay */}
@@ -357,19 +373,21 @@ function Landing() {
 
           <h2 className="bg-text-base md:text-lg lg:text-lg leading-tight text-white font-sans tracking-tight mb-8 px-4 sm:px-8">
             <span>
-              Spaces that are occupied by Corporates and Startups, designed with your business&nbsp;in&nbsp;mind
+              Spaces that are occupied by Corporates and Startups, designed with
+              your business&nbsp;in&nbsp;mind
             </span>
           </h2>
 
           <div className="flex justify-center">
-            <button onClick={() => navigate("/booknow")} className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:bg-yellow-200 transition-colors duration-300  py-2 px-4 text-base md:text-xl lg:xl font-sans rounded-md shadow-lg">
+            <button
+              onClick={() => navigate("/booknow")}
+              className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:bg-yellow-200 transition-colors duration-300  py-2 px-4 text-base md:text-xl lg:xl font-sans rounded-md shadow-lg"
+            >
               Book a Space
             </button>
           </div>
         </div>
       </div>
-
-
 
       <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-blue-100 to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
@@ -381,13 +399,22 @@ function Landing() {
               Managed office solutions for any size!
             </h2>
             <p className="text-slate-600 bg-text-base md:text-lg lg:text-lg md:text-lgmb-8 leading-relaxed w-full max-w-xl mx-auto text-justify">
-              Explore our bespoke standalone workspaces, meticulously crafted to reflect and enhance your brand while meeting your unique requirements. Whether you're seeking private offices, versatile meeting rooms, or flexible co-working spaces, we have solutions tailored to fit the distinct needs of your team. Our offerings are available on a variety of terms – annually, monthly, daily, or even hourly – ensuring that you can choose the arrangement that best suits your operational demands and schedules. With a focus on both functionality and aesthetics, our spaces are designed to foster productivity and collaboration, providing the ideal environment for your business to thrive.
+              Explore our bespoke standalone workspaces, meticulously crafted to
+              reflect and enhance your brand while meeting your unique
+              requirements. Whether you're seeking private offices, versatile
+              meeting rooms, or flexible co-working spaces, we have solutions
+              tailored to fit the distinct needs of your team. Our offerings are
+              available on a variety of terms – annually, monthly, daily, or
+              even hourly – ensuring that you can choose the arrangement that
+              best suits your operational demands and schedules. With a focus on
+              both functionality and aesthetics, our spaces are designed to
+              foster productivity and collaboration, providing the ideal
+              environment for your business to thrive.
             </p>
           </div>
         </div>
 
         {windowWidth > 1276 && (
-
           <div className="w-full xl:w-1/2 flex flex-col mt-12 xl:mt-0 px-4 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row justify-center">
               <div className="mx-3 mb-3 bg-gradient-to-r from-gray-700 to-yellow-400 hover:bg-yellow-400 p-6 rounded-lg shadow-lg md:w-96 xl:w-80 flex flex-col items-center justify-around">
@@ -403,12 +430,20 @@ function Landing() {
                 </button>
               </div>
               <div className="mx-3 mb-3 md:block md:w-96 xl:w-80 rounded-lg overflow-hidden">
-                <img src={photo1} className="w-full h-full object-cover" alt="Standard Private Offices" />
+                <img
+                  src={photo1}
+                  className="w-full h-full object-cover"
+                  alt="Standard Private Offices"
+                />
               </div>
             </div>
             <div className="flex flex-col md:flex-row justify-center mt-6">
               <div className="mx-3 mb-3 md:w-96 xl:w-80 rounded-lg overflow-hidden">
-                <img src={photo2} className="w-full h-full object-cover" alt="Conference & Meeting Rooms" />
+                <img
+                  src={photo2}
+                  className="w-full h-full object-cover"
+                  alt="Conference & Meeting Rooms"
+                />
               </div>
               <div className="mx-3 mb-3 bg-gradient-to-r from-yellow-400 to-gray-700  p-6 rounded-lg shadow-lg md:w-96 xl:w-80 flex flex-col items-center justify-around">
                 <h2 className="font-sans font-semibold text-white mb-4 text-lg md:text-2xl lg:text-2xl ">
@@ -425,8 +460,6 @@ function Landing() {
             </div>
           </div>
         )}
-
-
       </div>
 
       <div className="flex-col md:flex-row gap-7 md:gap-14 md:pt-[70px] pt-12 md:px-20 bg-gradient-to-r from-blue-100 flex justify-center to-yellow-100 md:pb-12">
@@ -435,7 +468,6 @@ function Landing() {
             <div className="rounded-sm">
               <img className="rounded" src={photo3} />
             </div>
-
           </div>
         )}
         {windowWidth > 1276 ? (
@@ -447,8 +479,8 @@ function Landing() {
             <YellowBox />
           </div>
         )}
-
       </div>
+
       <div className="pt-20 bg-gradient-to-r from-blue-100 to-yellow-100">
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-yellow-500 font-sans font-semibold text-center">
           Our Photo Gallery
@@ -457,15 +489,20 @@ function Landing() {
         {windowWidth > 1100 ? (
           <div className="pb-5 px-20 bg-gradient-to-r from-blue-100 to-yellow-100">
             <PhotoGallery />
-          </div>) : (
+          </div>
+        ) : (
           <div className="pb-5 px-5 bg-gradient-to-r from-blue-100 to-yellow-100">
             <PhotoGallery />
           </div>
         )}
+
+        {/* our clients  */}
+        <OurServices />
         <div className="w-full bg-gradient-to-r from-blue-100 to-yellow-100">
           <Review />
         </div>
       </div>
+
       {/*<Random />*/}
       <section className="px-6 py-10  bg-gray-100 flex flex-col items-center bg-gradient-to-r from-blue-200 to-yellow-100">
         <h2 className=" bg-text-base md:text-lg lg:text-lg  font-bold text-gray-900 mb-6 md:mb-8">
@@ -474,27 +511,47 @@ function Landing() {
         <ul className="list-disc pl-6 space-y-4 md:space-y-6 text-gray-800 mx-auto text-sm">
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Revolutionary Concept:</span>
-            <p>Coworking spaces are gaining popularity over traditional offices due to flexibility, collaboration, and a dynamic work environment.</p>
+            <p>
+              Coworking spaces are gaining popularity over traditional offices
+              due to flexibility, collaboration, and a dynamic work environment.
+            </p>
           </li>
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Diverse Clientele:</span>
-            <p>Our coworking spaces cater to freelancers, startups, and established businesses, offering an ecosystem that fosters innovation and productivity.</p>
+            <p>
+              Our coworking spaces cater to freelancers, startups, and
+              established businesses, offering an ecosystem that fosters
+              innovation and productivity.
+            </p>
           </li>
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Strategic Locations:</span>
-            <p>Positioned in business districts of Mumbai and Thane, reducing commute times and increasing efficiency.</p>
+            <p>
+              Positioned in business districts of Mumbai and Thane, reducing
+              commute times and increasing efficiency.
+            </p>
           </li>
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Collaborative Community:</span>
-            <p>Spaces bring together professionals from various industries, encouraging knowledge exchange and collaboration through networking events and communal areas.</p>
+            <p>
+              Spaces bring together professionals from various industries,
+              encouraging knowledge exchange and collaboration through
+              networking events and communal areas.
+            </p>
           </li>
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Flexible Plans:</span>
-            <p>Options range from hot desking to private offices, allowing businesses to scale their workspace according to their needs.</p>
+            <p>
+              Options range from hot desking to private offices, allowing
+              businesses to scale their workspace according to their needs.
+            </p>
           </li>
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Enhanced Amenities:</span>
-            <p>High-speed internet, modern meeting rooms, game rooms, ergonomic furniture, and fully-equipped kitchens are standard offerings.</p>
+            <p>
+              High-speed internet, modern meeting rooms, game rooms, ergonomic
+              furniture, and fully-equipped kitchens are standard offerings.
+            </p>
           </li>
         </ul>
       </section>
