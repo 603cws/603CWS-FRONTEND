@@ -22,6 +22,48 @@ interface BookingInterface {
   price: number;
 }
 
+// {
+//   "member": false,
+//   "_id": "6729c2e70d51e5f265467a94",
+//   "companyName": "603cws",
+//   "username": "testuser",
+//   "email": "manchadiyuvraj@gmail.com",
+//   "country": "India",
+//   "state": "Haryana",
+//   "city": "Hisar",
+//   "zipcode": "125005",
+//   "password": "$2b$10$CBpB76XlqvftF5xWCWppG.5nl3OH7TabhLk4E5Pkz3XZQQiNhjTXO",
+//   "phone": "9594767165",
+//   "role": "admin",
+//   "kyc": true,
+//   "creditsleft": 0,
+//   "monthlycredits": 7,
+//   "extracredits": 29,
+//   "createdAt": "2024-11-05T07:01:59.543Z",
+//   "__v": 0
+// }
+// interface User {
+
+// }
+
+interface UserDetails {
+  companyName: string;
+  username: string;
+  email: string;
+  password: string;
+  phone: string;
+  role: "admin" | "user";
+  kyc: boolean;
+  country: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  location: string;
+  credits?: number;
+  createdAt?: Date;
+  member: boolean;
+}
+
 interface DayPassInterface {
   price: number;
   spaceName: string;
@@ -45,6 +87,8 @@ interface AppContextType {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   bookings: BookingInterface[];
   dayPasses: DayPassInterface[];
+  accHolder: UserDetails[];
+  setAccHolder: React.Dispatch<React.SetStateAction<UserDetails>>;
   addNewBooking: (newBooking: BookingInterface) => void;
   bookDayPass: (newDayPass: DayPassInterface) => void;
   removeSpecificBooking: (booking: BookingInterface) => void;
@@ -78,6 +122,24 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [popup, setpopup] = useState<boolean>(false);
   const PORT = "https://603-bcakend-new.vercel.app";
+
+  const [accHolder, setAccHolder] = useState<UserDetails>({
+    companyName: "",
+    username: "",
+    email: "",
+    password: "",
+    phone: "",
+    role: "user",
+    kyc: false,
+    country: "",
+    state: "",
+    city: "",
+    zipcode: "",
+    location: "",
+    credits: 0,
+    createdAt: new Date(), // Correct initialization for Date
+    member: false,
+  });
 
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
   const dayPasses = useSelector(
@@ -151,10 +213,28 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       });
       setIsAuthenticated(res.data.auth);
       setIsAdmin(res.data.user);
+      setAccHolder(res.data.accHolder);
     } catch (error) {
       console.error("Error checking authentication:", error);
       setIsAuthenticated(false);
       setIsAdmin("user");
+      setAccHolder({
+        companyName: "",
+        username: "",
+        email: "",
+        password: "",
+        phone: "",
+        role: "user",
+        kyc: false,
+        country: "",
+        state: "",
+        city: "",
+        zipcode: "",
+        location: "",
+        credits: 0,
+        createdAt: new Date(), // Correct initialization for Date
+        member: false,
+      });
     } finally {
       setloading(false);
     }
@@ -189,6 +269,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         bookDayPass,
         removeSpecificBooking,
         removeSpecificDayPass,
+        accHolder,
+        setAccHolder,
       }}
     >
       {children}

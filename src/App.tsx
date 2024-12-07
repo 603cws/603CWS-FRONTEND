@@ -54,12 +54,14 @@ import RegisterUser from "./pages/Admin/RegisterUser";
 import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout";
 
 import ZohoKYCForm from "./pages/zohoForm";
+import MemberDashboard from "./pages/MemberDashboard";
 
 function App() {
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(true);
-  const { isAuthenticated, loading, refreshAuth, isAdmin } = useApp();
+  const { isAuthenticated, loading, refreshAuth, isAdmin, accHolder } =
+    useApp();
   const navigate = useNavigate();
 
   console.log(isAuthenticated); // at the begining without login its false
@@ -142,7 +144,10 @@ function App() {
             <Route path="/managed_space_solutions" element={<ManagedSpace />} />
             <Route path="/allLocations" element={<AllLocations />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/dashboard"
+              element={accHolder.member ? <MemberDashboard /> : <Dashboard />}
+            />
             <Route path="/dashboard/Myprofile" element={<Profile />} />
             <Route path="/dashboard/Transactions" element={<Transactions />} />
             <Route path="/service" element={<OurServicesPage />} />

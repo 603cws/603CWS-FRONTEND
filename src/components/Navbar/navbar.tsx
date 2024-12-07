@@ -28,7 +28,7 @@ const Navbar = () => {
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
     useState(false);
 
-  const { setIsAuthenticated, setloading } = useApp();
+  const { setIsAuthenticated, setloading, setAccHolder } = useApp();
 
   const logout = async () => {
     try {
@@ -44,6 +44,23 @@ const Navbar = () => {
       localStorage.removeItem("user");
       toast.success("User logged out");
       setIsAuthenticated(false);
+      setAccHolder({
+        companyName: "",
+        username: "",
+        email: "",
+        password: "",
+        phone: "",
+        role: "user",
+        kyc: false,
+        country: "",
+        state: "",
+        city: "",
+        zipcode: "",
+        location: "",
+        credits: 0,
+        createdAt: new Date(), // Correct initialization for Date
+        member: false,
+      });
     } catch (error) {
       console.error("Logout error:", error);
     } finally {

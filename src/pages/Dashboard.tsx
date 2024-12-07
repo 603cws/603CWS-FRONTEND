@@ -6,7 +6,9 @@ import { useApp } from "../context/AuthContext";
 import AdminCalendar from "./Admin/AdminBookingcal";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const { isAdmin } = useApp();
+  const { isAdmin, accHolder } = useApp();
+
+  console.log(accHolder);
 
   useEffect(() => {
     const handleResize = () => {

@@ -39,7 +39,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   const [location, setlocation] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-
+  const [member, setMember] = useState(true);
   //to check is authenticated
   const { isAuthenticated } = useApp();
   console.log(isAuthenticated);
@@ -58,6 +58,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
           location,
           password,
           phone,
+          member,
         },
         { withCredentials: true }
       );
@@ -91,7 +92,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
         isOpen ? "fade-in" : "fade-out"
       } z-50`}
     >
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+      <div className="form-container overflow-y-auto max-h-[650px] bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Create User</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -126,13 +127,31 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">Location</label>
-            <input
+            {/* <input
               type="text"
               className="w-full p-2 border border-gray-300 rounded mt-1"
               value={location}
               onChange={(e) => setlocation(e.target.value)}
               required
-            />
+            /> */}
+
+            <select
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+              value={location}
+              onChange={(e) => setlocation(e.target.value)}
+              required
+            >
+              <option value=" ">Select a location</option>
+              <option value="Amore">Amore</option>
+              <option value="Bandra">Bandra</option>
+              <option value="Sunshine">Sunshine</option>
+              <option value="Matulya">Matulya</option>
+              <option value="Kamala">Kamala Mills</option>
+              <option value="Millennium">Millennium</option>
+              <option value="Sunmill">Sunmill</option>
+              <option value="Technocity">Technocity</option>
+              <option value="Navratna">Navratna</option>
+            </select>
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">Mobile Number</label>
@@ -155,18 +174,32 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
             />
           </div>
           {isAuthenticated && (
-            <div className="mb-4">
-              <label className="block text-gray-700">Role</label>
-              <select
-                className="w-full p-2 border border-gray-300 rounded mt-1"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                required
-              >
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
+            <>
+              <div className="mb-4">
+                <label className="block text-gray-700">Role</label>
+                <select
+                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  required
+                >
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700">Member</label>
+                <select
+                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                  value={member.toString()} // Convert boolean to string
+                  onChange={(e) => setMember(e.target.value === "true")} // Convert string back to boolean
+                  required
+                >
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+            </>
           )}
 
           {isAuthenticated && (

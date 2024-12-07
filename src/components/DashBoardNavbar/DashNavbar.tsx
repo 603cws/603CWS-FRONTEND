@@ -31,7 +31,7 @@ interface UserDetails {
 }
 
 function DashNavbar() {
-  const { setloading } = useApp();
+  const { setloading, setAccHolder } = useApp();
   const [load, setload] = useState(true);
   const [creditsleft, setcreditsleft] = useState(0);
   const [monthlycredits, setmonthlycredits] = useState(0);
@@ -41,7 +41,6 @@ function DashNavbar() {
   const [isSideWindowOpen, setIsSideWindowOpen] = useState(false);
   const [showalert, setshowalert] = useState(false);
   const navigate = useNavigate();
-  console.log(creditsleft);
 
   const [data, setData] = useState<UserDetails>({
     companyName: "",
@@ -80,6 +79,23 @@ function DashNavbar() {
       );
       console.log(res);
       localStorage.removeItem("user");
+      setAccHolder({
+        companyName: "",
+        username: "",
+        email: "",
+        password: "",
+        phone: "",
+        role: "user",
+        kyc: false,
+        country: "",
+        state: "",
+        city: "",
+        zipcode: "",
+        location: "",
+        credits: 0,
+        createdAt: new Date(), // Correct initialization for Date
+        member: false,
+      });
       navigate("/login");
     } catch (error) {
       console.error("Logout error:", error);
