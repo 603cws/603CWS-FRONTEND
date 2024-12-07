@@ -87,7 +87,7 @@ interface AppContextType {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   bookings: BookingInterface[];
   dayPasses: DayPassInterface[];
-  accHolder: UserDetails[];
+  accHolder: UserDetails;
   setAccHolder: React.Dispatch<React.SetStateAction<UserDetails>>;
   addNewBooking: (newBooking: BookingInterface) => void;
   bookDayPass: (newDayPass: DayPassInterface) => void;
