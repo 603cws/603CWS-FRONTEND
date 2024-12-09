@@ -363,6 +363,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
         const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
           withCredentials: true,
         });
+
         setloading(false);
         console.log(response);
         const userdata = response.data.user;
@@ -551,7 +552,11 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   const handleSubmit = async () => {
+    console.log(Math.ceil(Number(credits.toFixed(2))));
+    console.log(Math.ceil(Number(credits.toFixed(2))) <= creditsleft);
+
     setconfirm(false);
+
     if (Math.ceil(Number(credits.toFixed(2))) <= creditsleft) {
       setProfileOpen(true);
       const appointmentDetails = {

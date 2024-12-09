@@ -125,7 +125,7 @@ interface CalendarProps {
 }
 
 const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const { setloading } = useApp();
+  const { setloading, accHolder } = useApp();
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation, spacetype } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
@@ -342,27 +342,26 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     setEmail(email);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post(
-          `${PORT}/api/v1/users/getUserByAdmin`,
-          { email },
-          {
-            withCredentials: true,
-          }
-        );
-        setloading(false);
-        console.log(response);
-        const userdata = response.data.user;
-        setPhone(userdata.phone);
-        setcreditsleft(userdata.creditsleft);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const handleConfirm = async () => {
+    try {
+      const response = await axios.post(
+        `${PORT}/api/v1/users/getUserByAdmin`,
+        { email },
+        {
+          withCredentials: true,
+        }
+      );
+      setloading(false);
+      console.log(response);
+      const userdata = response.data;
+      setPhone(userdata.phone);
+      setcreditsleft(userdata.creditsleft);
+      setconfirm(true);
+    } catch (error) {
+      console.error(error);
+      toast.error("Inavalid Email");
+    }
+  };
 
   const fetchLocationBookings = async (date: string) => {
     try {
@@ -417,7 +416,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     setSelectedEndTime("");
 
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    console.log("Initial available times:", availableStartTimesUnfiltered);
+    // console.log("Initial available times:", availableStartTimesUnfiltered);
 
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
@@ -441,7 +440,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    console.log("Filtered start times:", availableStartTimesUnfiltered);
+    // console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
 
   const selectendtimefunction = (starttime: string) => {
@@ -463,14 +462,14 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        console.log(y, "rjojro");
+        // console.log(y, "rjojro");
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    console.log("Filtered end times:", endTimes);
+    // console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -749,7 +748,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
                 onChange={handlemailChange}
                 style={{
                   ...inputStyle,
-                  backgroundColor: "#f0f0f0",
+                  // backgroundColor: "#f0f0f0",
                 }}
               />
             </div>
@@ -793,7 +792,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
             </div>
             <button
               type="button"
-              onClick={() => setconfirm(true)}
+              onClick={handleConfirm}
               style={
                 selectedStartTime &&
                 selectedEndTime &&
@@ -934,7 +933,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
               <h4
                 style={{ flexGrow: 1, textAlign: "center", fontSize: "20px" }}
               >
-                <b>Not Enough Credits!</b>
+                <b>Not Enough Credits! for user {email}</b>
               </h4>
               <MdClose
                 onClick={() => {
@@ -999,7 +998,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
               </button>
               <button
                 onClick={() => {
-                  setconfirm(false);
+                  setnotenoughcredits(false);
                 }}
                 style={{
                   backgroundColor: "#900000",

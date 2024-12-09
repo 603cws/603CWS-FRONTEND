@@ -150,3 +150,8 @@ html {
   opacity: 0.6;
   cursor: not-allowed;
 }
+.book-tour-btn{
+  position: fixed;
+  right: -40px;
+  top: 50%;
+}

@@ -32,10 +32,13 @@ import Footer from "../components/Footer/footer";
 import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
 import OurServices from "./../components/AboutUs/OurServices";
+import OurPopularity from "../components/AboutUs/OurPopularity";
 
 function Landing() {
   const [popup, setpopup] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+  const [requestModal, setRequestModal] = useState<boolean>(false);
 
   useEffect(() => {
     // Function to handle window resize
@@ -78,6 +81,7 @@ function Landing() {
 
         <div className="relative z-10 md:w-full">
           <div className="text-white">
+            {/* <div className="text-black"> */}
             <h1 className="border-l-4 border-yellow-500 pl-4 mb-6">
               <div className="flex items-center space-x-3 mb-4">
                 <img src={logo} className="h-10 flex items-center" alt="Logo" />
@@ -131,6 +135,11 @@ function Landing() {
           </div>
         </div>
       </div>
+      {/* <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
+        <button className="  text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated">
+          Request A Tour
+        </button>
+      </div> */}
 
       {/* Features Section */}
       <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-blue-200 to-yellow-100">
@@ -138,7 +147,7 @@ function Landing() {
           <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
           </h1>
-          <p className="mt-6 text-gray-600 bg-text-base md:text-lg lg:text-lg leading-relaxed w-full max-w-xl text-justify">
+          <p className="mt-6 text-gray-600 bg-text-base md:text-sm lg:text-lg leading-relaxed w-full max-w-xl text-justify">
             Transform your professional journey with 603 The Coworking Space,
             where we provide more than just a place to work—we offer an
             environment designed to inspire and empower. Whether you’re
@@ -193,7 +202,7 @@ function Landing() {
 
       <div className="flex flex-col md:flex-row pt-12 pb-12 bg-gradient-to-r from-blue-200 to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20">
-          <div className="flex flex-col justify-center items-center py-3">
+          <div className=" flex flex-col justify-center items-center py-3">
             <img
               src={office_pic}
               alt=""
@@ -353,7 +362,7 @@ function Landing() {
         </div>
       </div>
 
-      <div className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6">
+      {/* <div className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
@@ -363,7 +372,6 @@ function Landing() {
             backgroundBlendMode: "darken", // blends the overlay with the image
           }}
         ></div>
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
 
         <div className="relative z-10 text-center">
@@ -387,7 +395,7 @@ function Landing() {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-blue-100 to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
@@ -480,6 +488,10 @@ function Landing() {
           </div>
         )}
       </div>
+
+      <section className="px-6 py-10  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-blue-100  to-yellow-100">
+        <OurPopularity />
+      </section>
 
       <div className="pt-20 bg-gradient-to-r from-blue-100 to-yellow-100">
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-yellow-500 font-sans font-semibold text-center">
