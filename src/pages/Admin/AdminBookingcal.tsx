@@ -125,7 +125,7 @@ interface CalendarProps {
 }
 
 const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const { setloading, accHolder } = useApp();
+  const { setloading } = useApp();
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation, spacetype } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");

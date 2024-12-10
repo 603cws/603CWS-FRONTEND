@@ -26,9 +26,11 @@ body,
   border: 1px solid rgba(255, 255, 255, 0.18);
 } */
 /* For WebKit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 12px;
 }
+
+
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -42,6 +44,21 @@ body,
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+} */
+
+/* Hide scrollbar for WebKit-based browsers */
+::-webkit-scrollbar {
+  width: 0px; /* Set width to 0 */
+  height: 0px; /* Set height to 0 (for horizontal scrollbars) */
+}
+
+/* Optional: Ensure the scrollbar track is also invisible */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
 }
 
 /* For Firefox */

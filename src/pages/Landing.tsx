@@ -6,7 +6,6 @@ import {
   photo1,
   photo2,
   photo3,
-  gallery3,
   gallery6,
 } from "../utils/Landing/Landing";
 import { Twopeoplesitting, Flexiblepo } from "../utils/Landing/Svg";
@@ -33,12 +32,33 @@ import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
 import OurServices from "./../components/AboutUs/OurServices";
 import OurPopularity from "../components/AboutUs/OurPopularity";
+import Modal from "../components/DashBoardNavbar/Modal";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Landing() {
   const [popup, setpopup] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+  const [requestTour, setRequestTour] = useState<boolean>(false);
+  const PORT = "https://603-bcakend-new.vercel.app";
 
-  const [requestModal, setRequestModal] = useState<boolean>(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
+    intrestedIn: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   useEffect(() => {
     // Function to handle window resize
@@ -59,6 +79,36 @@ function Landing() {
 
   const navigate = useNavigate();
 
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    console.log(formData);
+
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        `${PORT}/api/v1/users/requestTour`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+      console.log("Form data:", formData);
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        location: "",
+        intrestedIn: "",
+      });
+      setRequestTour(false);
+      toast.success(
+        "Your Request has been Received,we will shortly contact you"
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
       <div className="fixed top-0 left-0 right-0 z-50">
@@ -135,11 +185,107 @@ function Landing() {
           </div>
         </div>
       </div>
-      {/* <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
-        <button className="  text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated">
+      <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
+        <button
+          onClick={() => setRequestTour(true)}
+          className="text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
+        >
           Request A Tour
         </button>
-      </div> */}
+      </div>
+
+      <Modal isOpen={requestTour} onClose={() => setRequestTour(false)}>
+        <h1 className="text-lg font-bold">Schedule your visit today</h1>
+        <p className="text-sm">
+          Fill out the form below and a member of our team will get in touch
+        </p>
+        <form
+          className=" capitalize grid grid-cols-2 gap-8 m-4"
+          onSubmit={handleFormSubmit}
+        >
+          <div className="col-span-2 ">
+            <input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded p-2 mt-1"
+              type="text"
+              placeholder="Full Name*"
+              required
+            />
+          </div>
+          <div>
+            <input
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded p-2 mt-1"
+              type="email"
+              placeholder="Email*"
+              required
+            />
+          </div>
+          <div>
+            <input
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full border border-gray-300 rounded p-2 mt-1"
+              type="tel"
+              placeholder="Phone Number*"
+              required
+            />
+          </div>
+          <div>
+            {/* <label>Location*</label> */}
+            <select
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              className="capitalize w-full p-2 border border-gray-300 rounded mt-1"
+              required
+            >
+              <option value=" ">Location/Center</option>
+              <option value="Amore">Amore khar(w)</option>
+              <option value="Bandra">Makija Archade Bandra </option>
+              <option value="Sunshine">Sunshine Tower Dadar </option>
+              <option value="Matulya">Matulya lower parel</option>
+              <option value="Kamala Mills">Kamala Mills lower parel</option>
+              <option value="Millennium">
+                Milleinum Business park Navi Mumbai
+              </option>
+              <option value="Sun mill">Sun mill lower Parel</option>
+              <option value="Technocity">Technocity Navi Mumbai</option>
+              <option value="Navratna Ahmedabad">Navratna Ahmedabad</option>
+            </select>
+          </div>
+          <div>
+            <select
+              id="intrestedIn"
+              name="intrestedIn"
+              value={formData.intrestedIn}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+            >
+              <option value="">Intrested In</option>
+              <option value="Hot Desk">Hot Desk</option>
+              <option value="Dedicated Desk">Dedicated Desk</option>
+              <option value="Cabin">Cabin</option>
+              <option value="Meeting Room">Meeting Room</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            className="col-span-2 text-center button text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
+          >
+            Get in Touch
+          </button>
+        </form>
+      </Modal>
 
       {/* Features Section */}
       <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-blue-200 to-yellow-100">
