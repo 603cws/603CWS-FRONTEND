@@ -1,9 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 const OurPopularity: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <>
       <div className="w-full">
