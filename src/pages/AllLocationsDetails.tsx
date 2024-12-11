@@ -4,7 +4,7 @@ import ahmedabad from "/officeimg/Ahmedabad/ahmedabad.jpg";
 import matulya from "/officeimg/Matulya/Matulya.jpg";
 import sunshine from "/officeimg/Sunshine/sunshine.JPG";
 import Sunmill from "/officeimg/SunMill/Sunmill.jpeg";
-import { gallery5 } from "../utils/Landing/Landing";
+// import { gallery5 } from "../utils/Landing/Landing";
 
 type Location = {
   name: string;
