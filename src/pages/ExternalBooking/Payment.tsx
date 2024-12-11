@@ -16,37 +16,37 @@ import { useApp } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const keyId = import.meta.env.RAZORPAY_KEYID;
+// const keyId = import.meta.env.RAZORPAY_KEYID;
 
 // { razorpay_payment_id, razorpay_order_id, razorpay_signature }
-// interface
-interface RazorpayResponse {
-  razorpay_payment_id: string;
-  razorpay_order_id: string;
-  razorpay_signature: string;
-}
+// // interface
+// interface RazorpayResponse {
+//   razorpay_payment_id: string;
+//   razorpay_order_id: string;
+//   razorpay_signature: string;
+// }
 
-interface RazorpayOptions {
-  key: string;
-  amount: number;
-  currency: string;
-  name: string;
-  description: string;
-  image: string;
-  order_id: string;
-  handler: (response: RazorpayResponse) => Promise<void>;
-  prefill: {
-    name: string;
-    email: string;
-    contact: string;
-  };
-  notes: {
-    address: string;
-  };
-  theme: {
-    color: string;
-  };
-}
+// interface RazorpayOptions {
+//   key: string;
+//   amount: number;
+//   currency: string;
+//   name: string;
+//   description: string;
+//   image: string;
+//   order_id: string;
+//   handler: (response: RazorpayResponse) => Promise<void>;
+//   prefill: {
+//     name: string;
+//     email: string;
+//     contact: string;
+//   };
+//   notes: {
+//     address: string;
+//   };
+//   theme: {
+//     color: string;
+//   };
+// }
 
 // State variables for form values
 interface UserDetails {
@@ -64,37 +64,39 @@ interface UserDetails {
   location: string;
   credits?: number;
   createdAt?: Date;
+  member: boolean;
 }
 
 //token
 // const token = localStorage.getItem("token");
 
 //payment script
-const loadRazorpayScript = () => {
-  return new Promise((resolve) => {
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
-    document.body.appendChild(script);
-  });
-};
+// const loadRazorpayScript = () => {
+//   return new Promise((resolve) => {
+//     const script = document.createElement("script");
+//     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+//     script.async = true;
+//     script.onload = () => resolve(true);
+//     script.onerror = () => resolve(false);
+//     document.body.appendChild(script);
+//   });
+// };
 
 const Payment: React.FC = () => {
   const [discountCode, setDiscountCode] = useState("");
   const [message, setMessage] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
-  const { removeSpecificBooking, removeSpecificDayPass } = useApp();
+  const { removeSpecificBooking, removeSpecificDayPass, isAuthenticated } =
+    useApp();
   const navigate = useNavigate();
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
   const dayPasses = useSelector(
     (state: RootState) => state.dayPasses.dayPasses
   );
 
-  const { isAuthenticated } = useApp();
-  // const [coupon,setCoupon]=useState("")
+  // const { isAuthenticated } = useApp();
+  // const [coupon, setCoupon] = useState("");
 
   // console.log(dayPasses);
   // console.log(bookings);
@@ -178,8 +180,10 @@ const Payment: React.FC = () => {
     zipcode: "",
     location: "",
     credits: 0,
+    member: false,
     createdAt: new Date(), // Correct initialization for Date
   });
+  console.log(data);
 
   const fetchData = async () => {
     try {
@@ -227,187 +231,188 @@ const Payment: React.FC = () => {
     }
   };
 
-  const handleRazorpayPayment = async (): Promise<void> => {
-    // Load the Razorpay checkout script
-    const isScriptLoaded = await loadRazorpayScript();
+  // const handleRazorpayPayment = async (): Promise<void> => {
+  //   // Load the Razorpay checkout script
+  //   const isScriptLoaded = await loadRazorpayScript();
 
-    if (!isScriptLoaded) {
-      alert("Razorpay SDK failed to load. Are you online?");
-      return;
-    }
-    console.log(isScriptLoaded, "script is loaded");
+  //   if (!isScriptLoaded) {
+  //     alert("Razorpay SDK failed to load. Are you online?");
+  //     return;
+  //   }
+  //   console.log(isScriptLoaded, "script is loaded");
 
-    console.log(dayPasses, "daypasses");
-    console.log(bookings, "bookings");
-    console.log(data, "user details");
+  //   console.log(dayPasses, "daypasses");
+  //   console.log(bookings, "bookings");
+  //   console.log(data, "user details");
 
-    // totalbill manipulat
-    const amount = totalBill + totalBill * 0.18;
+  //   // totalbill manipulat
+  //   const amount = totalBill + totalBill * 0.18;
 
-    //load the user,billamount
-    const currency = "INR";
+  //   //load the user,billamount
+  //   const currency = "INR";
 
-    const order = await axios.post(
-      "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
-      {
-        options: {
-          amount: amount * 100, // Amount in paise
-          currency,
-          payment_capture: 1,
-        },
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // If you need credentials (cookies/auth), add this:
-        withCredentials: true, // Include credentials (cookies) in the request
-      }
-    );
+  //   const order = await axios.post(
+  //     "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
+  //     {
+  //       options: {
+  //         amount: amount * 100, // Amount in paise
+  //         currency,
+  //         payment_capture: 1,
+  //       },
+  //     },
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       // If you need credentials (cookies/auth), add this:
+  //       withCredentials: true, // Include credentials (cookies) in the request
+  //     }
+  //   );
 
-    // const order = await response.json();
-    if (!order) {
-      alert("Server error. Are you online?");
-      return;
-    }
-    console.log(order);
-    // "rzp_test_Wy0GGgmeiJGoyn"
+  //   // const order = await response.json();
+  //   if (!order) {
+  //     alert("Server error. Are you online?");
+  //     return;
+  //   }
+  //   console.log(order);
+  //   // "rzp_test_Wy0GGgmeiJGoyn"
 
-    // Razorpay options
-    const options: RazorpayOptions = {
-      key: keyId, // Your Razorpay Key ID
-      amount: amount * 100, // Amount in paise
-      currency: "INR",
-      name: "603 cws", // Your business name
-      description: "Test Transaction",
-      image: "https://example.com/your_logo", // Your logo URL
-      // image: "https://603-bcakend-new.vercel.app/logo.png", // Your logo URL
-      order_id: order.data.id, // Order ID from backend
-      handler: async (response: RazorpayResponse): Promise<void> => {
-        const body = { ...response };
-        console.log(response);
-        // Validate payment via backend
-        try {
-          //axios request
-          const validateRes = await axios.post(
-            "https://603-bcakend-new.vercel.app/api/v1/order/validateOrder",
-            body,
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-              // If you need credentials (cookies/auth), add this:
-              withCredentials: true, // Include credentials (cookies) in the request
-            }
-          );
+  //   // Razorpay options
+  //   const options: RazorpayOptions = {
+  //     key: keyId, // Your Razorpay Key ID
+  //     amount: amount * 100, // Amount in paise
+  //     currency: "INR",
+  //     name: "603 cws", // Your business name
+  //     description: "Test Transaction",
+  //     image: "https://example.com/your_logo", // Your logo URL
+  //     // image: "https://603-bcakend-new.vercel.app/logo.png", // Your logo URL
+  //     order_id: order.data.id, // Order ID from backend
+  //     handler: async (response: RazorpayResponse): Promise<void> => {
+  //       const body = { ...response };
+  //       console.log(response);
+  //       // Validate payment via backend
+  //       try {
+  //         //axios request
+  //         const validateRes = await axios.post(
+  //           "https://603-bcakend-new.vercel.app/api/v1/order/validateOrder",
+  //           body,
+  //           {
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //             },
+  //             // If you need credentials (cookies/auth), add this:
+  //             withCredentials: true, // Include credentials (cookies) in the request
+  //           }
+  //         );
 
-          console.log(validateRes);
+  //         console.log(validateRes);
 
-          // const { bookings, daypasses, userDetails } =
-          //   validateRes.data.customData.customData;
+  //         // const { bookings, daypasses, userDetails } =
+  //         //   validateRes.data.customData.customData;
 
-          console.log(bookings, "from validateres");
-          console.log(dayPasses, "from validateres");
+  //         console.log(bookings, "from validateres");
+  //         console.log(dayPasses, "from validateres");
 
-          const { paymentDetails, paymentMethod, paymentId } = validateRes.data;
+  //         const { paymentDetails, paymentMethod, paymentId } = validateRes.data;
 
-          if (validateRes.data.msg === "Success") {
-            toast.success("payment successful");
-          }
+  //         if (validateRes.data.msg === "Success") {
+  //           toast.success("payment successful");
+  //         }
 
-          if (bookings.length !== 0) {
-            console.log("inside the validate booking");
-            bookings.map((booking) => {
-              handleRemoveBooking(booking);
-            });
+  //         if (bookings.length !== 0) {
+  //           console.log("inside the validate booking");
+  //           bookings.map((booking) => {
+  //             handleRemoveBooking(booking);
+  //           });
 
-            const res = await axios.post(
-              "https://603-bcakend-new.vercel.app/api/v1/order/storeBooking",
-              {
-                bookings,
-                userDetails: data,
-                paymentMethod,
-                paymentDetails,
-                paymentId,
-              },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                // If you need credentials (cookies/auth), add this:
-                withCredentials: true, // Include credentials (cookies) in the request
-              }
-            );
-            console.log(res);
-          }
-          if (dayPasses.length !== 0) {
-            console.log("inside the validate daypasses");
-            dayPasses.map((daypass) => {
-              handleRemoveDayPass(daypass);
-            });
+  //           const res = await axios.post(
+  //             "https://603-bcakend-new.vercel.app/api/v1/order/storeBooking",
+  //             {
+  //               bookings,
+  //               userDetails: data,
+  //               paymentMethod,
+  //               paymentDetails,
+  //               paymentId,
+  //             },
+  //             {
+  //               headers: {
+  //                 "Content-Type": "application/json",
+  //               },
+  //               // If you need credentials (cookies/auth), add this:
+  //               withCredentials: true, // Include credentials (cookies) in the request
+  //             }
+  //           );
+  //           console.log(res);
+  //         }
+  //         if (dayPasses.length !== 0) {
+  //           console.log("inside the validate daypasses");
+  //           dayPasses.map((daypass) => {
+  //             handleRemoveDayPass(daypass);
+  //           });
 
-            const res = await axios.post(
-              "https://603-bcakend-new.vercel.app/api/v1/order/storeDaypasses",
-              {
-                daypasses: dayPasses,
-                userDetails: data,
-                paymentMethod,
-                paymentDetails,
-                paymentId,
-              },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                // If you need credentials (cookies/auth), add this:
-                withCredentials: true, // Include credentials (cookies) in the request
-              }
-            );
-            console.log(res);
-          }
+  //           const res = await axios.post(
+  //             "https://603-bcakend-new.vercel.app/api/v1/order/storeDaypasses",
+  //             {
+  //               daypasses: dayPasses,
+  //               userDetails: data,
+  //               paymentMethod,
+  //               paymentDetails,
+  //               paymentId,
+  //             },
+  //             {
+  //               headers: {
+  //                 "Content-Type": "application/json",
+  //               },
+  //               // If you need credentials (cookies/auth), add this:
+  //               withCredentials: true, // Include credentials (cookies) in the request
+  //             }
+  //           );
+  //           console.log(res);
+  //         }
 
-          // if(validateRes.data.msg === "success"){
-          //   handleRemoveBooking()
-          // }
-        } catch (error: unknown) {
-          if (error instanceof Error) {
-            // console.error(error.message);
-            console.log(error);
-            return;
-          } else {
-            console.error("An unknown error occurred");
-            return;
-          }
-        }
-      },
-      prefill: {
-        name: data.username, // Customer's name
-        email: data.email, //customers phone number
-        contact: data.phone, // Customer's phone number
-      },
-      notes: {
-        address: "Razorpay Corporate Office",
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
+  //         // if(validateRes.data.msg === "success"){
+  //         //   handleRemoveBooking()
+  //         // }
+  //       } catch (error: unknown) {
+  //         if (error instanceof Error) {
+  //           // console.error(error.message);
+  //           console.log(error);
+  //           return;
+  //         } else {
+  //           console.error("An unknown error occurred");
+  //           return;
+  //         }
+  //       }
+  //     },
+  //     prefill: {
+  //       name: data.username, // Customer's name
+  //       email: data.email, //customers phone number
+  //       contact: data.phone, // Customer's phone number
+  //     },
+  //     notes: {
+  //       address: "Razorpay Corporate Office",
+  //     },
+  //     theme: {
+  //       color: "#3399cc",
+  //     },
+  //   };
 
-    // Create a new Razorpay instance and open the checkout
-    const rzp1 = new (window as any).Razorpay(options);
-    rzp1.on("payment.failed", function (response: any) {
-      console.log(response);
-      alert("Payment failed");
-    });
+  //   // Create a new Razorpay instance and open the checkout
+  //   const rzp1 = new (window as any).Razorpay(options);
+  //   rzp1.on("payment.failed", function (response: any) {
+  //     console.log(response);
+  //     alert("Payment failed");
+  //   });
 
-    rzp1.open();
-  };
+  //   rzp1.open();
+  // };
 
   const handleButtonClick = async () => {
     if (isAuthenticated) {
       const notoverlap = await checkOverLap(bookings);
       if (notoverlap) {
-        handleRazorpayPayment();
+        // handleRazorpayPayment();
+        toast.error("no payment gateway");
       } else {
         toast.error("you are late someone booked around this slot");
       }
@@ -500,10 +505,27 @@ const Payment: React.FC = () => {
               </button>
             </div>
           ))}
-          <span>
+
+          <ul>
+            <li>Note</li>
+            <li className="ml-2 list-disc">
+              Please note that an 18% GST will be applied to the booking amount
+              during the checkout process.
+            </li>
+            <li className="ml-2 list-disc">
+              once the payment is done ,bookings will be shown at dashboard in
+              my booking
+            </li>
+          </ul>
+          {/* <p className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
+            Please note that an 18% GST will be applied to the booking amount
+            during the checkout process.
+          </p>
+          <p className="text-black-100 px-4 py-2  text-sm  w-full ">
             Note: once the payment is done ,bookings will be shown at dashboard
             in my booking{" "}
-          </span>
+          </p> */}
+
           {bookings.length + dayPasses.length === 0 && (
             <div className=" text-2xl text-gray-500 flex justify-center h-56 items-center">
               Your Cart Is Empty!

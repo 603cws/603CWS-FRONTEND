@@ -6,7 +6,7 @@ import { FaEnvelope, FaPhoneAlt } from "react-icons/fa"; // Import icons for con
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-8 px-5">
+    <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-8 px-5 ">
       {/* <div className="container mx-auto max-h-9 px-6 lg:px-16"> */}
       <div className="container mx-auto px-6 lg:px-16">
         {/* 3-column layout */}
@@ -115,6 +115,15 @@ const Footer = () => {
               <div className="flex items-center gap-2">
                 <FaEnvelope className="text-yellow-400" />
                 <a
+                  href="mailto:finance@603thecoworkingspace.com"
+                  className="text-gray-400 hover:text-yellow-400"
+                >
+                  finance@603thecoworkingspace.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-yellow-400" />
+                <a
                   href="mailto:sales@603thecoworkingspace.com"
                   className="text-gray-400 hover:text-yellow-400"
                 >
@@ -123,8 +132,8 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2">
                 <FaPhoneAlt className="text-yellow-400" />
-                <a href="tel:+919136036603" className="hover:text-yellow-500">
-                  +919136036603{" "}
+                <a href="tel:+919321638143" className="hover:text-yellow-500">
+                  +919321638143 /+919136036603
                 </a>
               </div>
               <div className="text-gray-400">
@@ -177,7 +186,8 @@ const Footer = () => {
       {/* Bottom section */}
       {/* <div className="bg-stone-800 text-gray-400 text-center py-4 mt-8"> */}
       <div className="bg-stone-800 text-gray-400 text-center py-1 mt-2">
-        <p>&copy; 2024 , 603 The Coworking Space. All Rights Reserved.</p>
+        <p>&copy; 2024 ,603 The Coworking Space.</p>
+        <p> Workved spaces pvt ltd. All Rights Reserved.</p>
       </div>
     </footer>
   );

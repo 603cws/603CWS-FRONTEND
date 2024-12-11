@@ -202,7 +202,7 @@ const ConfirmPayment = () => {
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const [coupon,setCoupon]=useState("")
+  // const [coupon, setCoupon] = useState("");
 
   useEffect(() => {
     setCartTotal(
@@ -751,7 +751,7 @@ const ConfirmPayment = () => {
                       </div>
                       {selectedEndTime && (
                         <>
-                        <div>
+                          {/* <div>
                               <input
                                 type="text"
                                    value={coupon}
@@ -759,7 +759,7 @@ const ConfirmPayment = () => {
                                  placeholder="Enter coupon code"
                                 />
                                <button >Apply Coupon</button>
-                          </div>
+                          </div> */}
                           <button
                             className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                             onClick={() => {
@@ -780,13 +780,13 @@ const ConfirmPayment = () => {
                             Add{" "}
                             <span className="text-white font-extrabold">
                               ₹
-                              {(locationDetails?.conferenceroom * timedifference)}
+                              {locationDetails?.conferenceroom * timedifference}
                             </span>
                           </button>
-                          <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
+                          {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                             "Please note that an 18% GST will be applied to the
                             booking amount during the checkout process."
-                          </span>
+                          </span> */}
                         </>
                       )}
                     </div>
@@ -1088,15 +1088,26 @@ const ConfirmPayment = () => {
                           ₹{locationDetails?.daypass}
                         </span>
                       </button>
-                      <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
+                      {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                         "Please note that an 18% GST will be applied to the
                         booking amount during the checkout process."
-                      </span>
+                      </span> */}
                     </>
                   )}
                 </>
               )}
             </div>
+            <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
+              <h3>Terms and conditions </h3>
+              <ul className="list-disc">
+                <li>
+                  Refunds are only available for cancellations made within 30
+                  minutes of booking, and the amount will be refunded within 24
+                  hours of cancellation.
+                </li>
+                <li>kyc is compulsory before using the premises</li>
+              </ul>
+            </span>
           </div>
         ) : (
           <div className="lg:w-2/5 rounded-lg p-6 shadow-xl h-auto flex justify-center">

@@ -125,7 +125,7 @@ interface CalendarProps {
 }
 
 const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const { setloading } = useApp();
+  const { setloading, accHolder } = useApp();
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation, spacetype } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
@@ -343,6 +343,9 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   const handleConfirm = async () => {
+    if (email === accHolder.email) {
+      return toast.error("Admin please enter the user Email");
+    }
     try {
       const response = await axios.post(
         `${PORT}/api/v1/users/getUserByAdmin`,
