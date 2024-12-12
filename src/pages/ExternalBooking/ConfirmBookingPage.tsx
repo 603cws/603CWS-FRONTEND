@@ -1102,8 +1102,8 @@ const ConfirmPayment = () => {
               <ul className="list-disc">
                 <li>
                   Refunds are only available for cancellations made within 30
-                  minutes of booking, and the amount will be refunded within 24
-                  hours of cancellation.
+                  minutes of booking, and the amount will be credited within 24
+                  hours of cancellation to your original payment mode.
                 </li>
                 <li>kyc is compulsory before using the premises</li>
               </ul>

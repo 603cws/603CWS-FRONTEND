@@ -164,8 +164,6 @@ const Payment: React.FC = () => {
 
   //get user
 
-  //token
-
   const [data, setData] = useState<UserDetails>({
     companyName: "",
     username: "",
@@ -230,6 +228,8 @@ const Payment: React.FC = () => {
       return false;
     }
   };
+
+  //handle phonepe payment
 
   // const handleRazorpayPayment = async (): Promise<void> => {
   //   // Load the Razorpay checkout script
@@ -407,12 +407,35 @@ const Payment: React.FC = () => {
   //   rzp1.open();
   // };
 
+  const handlePhonePayPayment = async () => {
+    try {
+      //create an order request a
+      const pay = await axios.post(
+        // "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
+        "http://127.0.0.1:3000/api/v1/order/createorder",
+        { name: "yuvraj manchadi", amount: 1000 },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+
+      console.log(pay.data);
+    } catch (error) {
+      console.log("something went wrong");
+    }
+  };
+
   const handleButtonClick = async () => {
     if (isAuthenticated) {
       const notoverlap = await checkOverLap(bookings);
       if (notoverlap) {
         // handleRazorpayPayment();
-        toast.error("no payment gateway");
+        handlePhonePayPayment();
+        // toast.error("no payment gateway");
       } else {
         toast.error("you are late someone booked around this slot");
       }

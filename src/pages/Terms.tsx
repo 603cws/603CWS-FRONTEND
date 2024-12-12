@@ -288,8 +288,8 @@ const Terms: React.FC = () => {
           <h2 className="text-2xl font-semibold mt-6 mb-4">Refund Policy</h2>
           <p className="mb-4">
             "Refunds are only available for cancellations made within 30 minutes
-            of booking, and the amount will be refunded within 24 hours of
-            cancellation."
+            of booking, and the amount will be credited within 24 hours of
+            cancellation to your original payment mode"
           </p>
           <h2 className="text-2xl font-semibold mt-6 mb-4">Disclaimer</h2>
           <p className="mb-4">
