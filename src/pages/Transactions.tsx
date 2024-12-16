@@ -3,6 +3,7 @@ import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
 import "./Transactioncss.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useApp } from "../context/AuthContext";
 
 interface Transaction {
   _id: string;
@@ -10,44 +11,126 @@ interface Transaction {
   startTime: string;
   endTime: string;
   date: string;
-  status: "confirmed" | "cancelled";
-  paymentMethod: "credits" | "credit_card" | "paypal";
+  status: "confirmed" | "cancelled" | "REFUND" | "COMPLETED";
+  paymentMethod:
+    | "credits"
+    | "credit_card"
+    | "paypal"
+    | "UPI"
+    | "CARD"
+    | "NETBANKING";
   createdAt: Date | string;
   companyName: string;
   spaceName: string;
+  transactionTIme: string;
+  transactionAmount: number;
+  transactionId: string;
   creditsspent: number;
 }
 
 const statusStyles = {
   confirmed: "bg-green-600 text-white",
+  COMPLETED: "bg-green-600 text-white",
   cancelled: "bg-red-600 text-white",
+  REFUND: "bg-red-600 text-white",
 };
 
 const paymentMethodStyles = {
   credits: "text-blue-600",
   credit_card: "text-indigo-600",
+  CARD: "text-indigo-600",
+  UPI: "text-indigo-600",
   paypal: "text-teal-600",
+  NETBANKING: "text-teal-600",
 };
 
 const Transactions: React.FC = () => {
   const PORT = "https://603-bcakend-new.vercel.app";
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [cancelledTransactions, setCancelledTransactions] = useState<
+    Transaction[]
+  >([]);
   const [selectedTransaction, setSelectedTransaction] =
     useState<Transaction | null>(null);
   const [showAboutModal, setShowAboutModal] = useState<boolean>(false);
   const [showCancelConfirmation, setShowCancelConfirmation] =
     useState<boolean>(false);
+  const [showOnlinePayCancelConfirmation, setShowOnlinePayCancelConfirmation] =
+    useState<boolean>(false);
   const [showWarningMessage, setShowWarningMessage] = useState<boolean>(false);
   const [isCancellable, setIsCancellable] = useState<boolean>(true);
   const [isRefundable, setIsRefundable] = useState<boolean>(true);
   const [bookingid, setbookingid] = useState<string>();
+  const { accHolder } = useApp();
+
+  //date
+  const now = new Date();
+
+  // Extract time components
+  const hours = now.getHours(); // 0-23
+  const minutes = now.getMinutes(); // 0-59
+
+  const currentTimeinHrandMin = `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}`;
+
+  function getTimeDifferenceInDecimal(
+    time1: string | undefined,
+    time2: string
+  ): number {
+    if (!time1) {
+      console.error("First time input is undefined.");
+      return 1; // Or handle as needed
+    }
+    // Split the time strings into hours and minutes
+
+    const [hours1, minutes1] = time1.split(":").map(Number);
+    const [hours2, minutes2] = time2.split(":").map(Number);
+
+    // Convert both times to total minutes
+    const totalMinutes1 = hours1 * 60 + minutes1;
+    const totalMinutes2 = hours2 * 60 + minutes2;
+
+    // Calculate the difference in minutes
+    const differenceInMinutes = Math.abs(totalMinutes2 - totalMinutes1);
+
+    // Convert the difference to decimal hours
+    const differenceInDecimal = differenceInMinutes / 60;
+
+    return parseFloat(differenceInDecimal.toFixed(2)); // Return with two decimal precision
+  }
+
+  const checkTimeForRefund = getTimeDifferenceInDecimal(
+    selectedTransaction?.transactionTIme,
+    currentTimeinHrandMin
+  );
+  // const checkTimeForRefund = 0.3;
+  // const conditionCheckForRefund = checkTimeForRefund > 0.5;
+  //0.5 is the one we have to use
+
+  //default 1
+  console.log(
+    "check time refunding",
+    getTimeDifferenceInDecimal(
+      selectedTransaction?.transactionTIme,
+      currentTimeinHrandMin
+    )
+  );
+  console.log(selectedTransaction?.transactionTIme);
+  console.log(currentTimeinHrandMin);
 
   const handleCancelTransaction = async () => {
     try {
       const response = await axios.post(
         `${PORT}/api/v1/bookings/cancelbooking`,
         { bookingid, isCancellable, isRefundable },
-        { withCredentials: true }
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
       );
       setSelectedTransaction(null);
       setShowAboutModal(false);
@@ -58,7 +141,38 @@ const Transactions: React.FC = () => {
       } else {
         toast.error("An error occured! PLease try again later");
       }
+
       console.log(response);
+    } catch (error) {
+      console.error("Failed to fetch bookings:", error);
+    }
+  };
+  const handleCancelOnlineTransaction = async () => {
+    try {
+      const response = await axios.post(
+        `${PORT}/api/v1/order/cancelOnlineBooking`,
+        { accHolder, bookingid, selectedTransaction },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+
+      console.log(response);
+      if (response.data.code == "PAYMENT_SUCCESS") {
+        toast.success("Refund initiated");
+        allbookings();
+        allCancelledBookings();
+      } else {
+        toast.error("refund not availble");
+      }
+      setSelectedTransaction(null);
+      setShowAboutModal(false);
+      setShowWarningMessage(false);
+      setShowOnlinePayCancelConfirmation(false);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
     }
@@ -96,17 +210,50 @@ const Transactions: React.FC = () => {
       console.error("Failed to fetch bookings:", error);
     }
   };
+  const allCancelledBookings = async () => {
+    try {
+      const response = await axios.get(
+        `https://603-bcakend-new.vercel.app/api/v1/bookings/getallcancellbookingsbyuser`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+      setCancelledTransactions(response.data);
+    } catch (error) {
+      console.error("Failed to fetch bookings:", error);
+    }
+  };
 
   useEffect(() => {
     allbookings();
+    allCancelledBookings();
   }, []);
 
   const handleOpenCancelConfirmation = () => {
     setShowCancelConfirmation(true);
   };
 
+  const handleOnlinePaymentCancellation = () => {
+    if (checkTimeForRefund <= 0.5) {
+      setShowOnlinePayCancelConfirmation(true);
+    } else {
+      if (selectedTransaction?.status === "REFUND") {
+        toast.error("refund process is already been made");
+      } else {
+        toast.error("Refund time is only 30mins after booking ");
+      }
+    }
+  };
+
   const handleCloseCancelConfirmation = () => {
     setShowCancelConfirmation(false);
+  };
+  const handleCloseOnlineCancelConfirmation = () => {
+    setShowOnlinePayCancelConfirmation(false);
   };
 
   const formatDate = (date: Date) => {
@@ -240,6 +387,16 @@ const Transactions: React.FC = () => {
         })
       : [];
 
+  //cancelled transaction
+  const sortedCancelledTransactions =
+    cancelledTransactions.length > 0
+      ? [...cancelledTransactions].sort((a, b) => {
+          const aTime = new Date(a.createdAt).getTime();
+          const bTime = new Date(b.createdAt).getTime();
+          return bTime - aTime;
+        })
+      : [];
+
   // if(selectedTransaction.status === "captured"){
   //   return true
   // }else{
@@ -341,6 +498,57 @@ const Transactions: React.FC = () => {
                     </td>
                   </tr>
                 ))}
+                {cancelledTransactions.length > 0 &&
+                  sortedCancelledTransactions.map((transaction) => (
+                    <tr
+                      key={transaction._id}
+                      className="hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      <td className="p-4 text-sm text-gray-600">
+                        {transaction.companyName}
+                      </td>
+                      <td className="p-4 text-sm text-gray-600">
+                        {transaction.date}
+                      </td>
+                      <td className="p-4 text-sm text-gray-600">
+                        {transaction.startTime}
+                      </td>
+                      <td className="p-4 text-sm text-gray-600">
+                        {transaction.endTime}
+                      </td>
+                      <td className="p-4 text-sm">
+                        <span
+                          className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
+                            statusStyles[transaction.status]
+                          }`}
+                        >
+                          {transaction.status}
+                        </span>
+                      </td>
+                      <td className="p-4 text-sm">
+                        <span
+                          className={`font-semibold ${
+                            paymentMethodStyles[transaction.paymentMethod]
+                          }`}
+                        >
+                          {transaction.paymentMethod
+                            .replace("_", " ")
+                            .toUpperCase()}
+                        </span>
+                      </td>
+                      <td className="p-4 text-sm text-gray-600">
+                        {new Date(transaction.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="p-4 text-right space-x-2">
+                        <button
+                          onClick={() => handleViewMore(transaction)}
+                          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
+                        >
+                          View More
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           ) : (
@@ -397,17 +605,24 @@ const Transactions: React.FC = () => {
               )}
 
               <div className="mt-8 flex justify-end space-x-4">
-                {selectedTransaction.status === "confirmed" && isCancellable ? (
+                {selectedTransaction.status === "confirmed" &&
+                  isCancellable && (
+                    <button
+                      onClick={handleOpenCancelConfirmation}
+                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      Cancel Booking
+                    </button>
+                  )}
+
+                {selectedTransaction.status !== "confirmed" && (
+                  // this cancel button is for online payments
                   <button
-                    onClick={handleOpenCancelConfirmation}
+                    onClick={handleOnlinePaymentCancellation}
                     className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
                   >
                     Cancel Booking
                   </button>
-                ) : (
-                  <div className="text-red-600 font-semibold">
-                    Cancellation is no longer available.
-                  </div>
                 )}
                 <button
                   onClick={handleCloseModal}
@@ -439,6 +654,45 @@ const Transactions: React.FC = () => {
                 >
                   Close
                 </button>
+              </div>
+            </div>
+          </div>
+        )}
+        {showOnlinePayCancelConfirmation && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+            <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-lg relative">
+              <h2 className="text-2xl font-bold mb-4">Cancel Booking</h2>
+              <p>Are you sure you want to cancel this online booking?</p>
+              <div className="mt-8 flex justify-end space-x-4">
+                {selectedTransaction?.status === "REFUND" ? (
+                  <>
+                    <p>
+                      Request for refund is already been made ,it will credited
+                      to your original payment mode within 24hr
+                    </p>
+                    <button
+                      onClick={handleCloseOnlineCancelConfirmation}
+                      className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+                    >
+                      Close
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => handleCancelOnlineTransaction()}
+                      className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      Confirm Cancellation
+                    </button>
+                    <button
+                      onClick={handleCloseOnlineCancelConfirmation}
+                      className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
+                    >
+                      Close
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>

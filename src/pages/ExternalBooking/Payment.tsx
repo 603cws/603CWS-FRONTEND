@@ -87,19 +87,18 @@ const Payment: React.FC = () => {
   const [message, setMessage] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const [isDisable, setIsDisable] = useState(false);
-  const { removeSpecificBooking, removeSpecificDayPass, isAuthenticated } =
-    useApp();
+  const {
+    removeSpecificBooking,
+    removeSpecificDayPass,
+    isAuthenticated,
+    accHolder,
+  } = useApp();
   const navigate = useNavigate();
+  // const [checkStatus, setCheckstatus] = useState(false);
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
   const dayPasses = useSelector(
     (state: RootState) => state.dayPasses.dayPasses
   );
-
-  // const { isAuthenticated } = useApp();
-  // const [coupon, setCoupon] = useState("");
-
-  // console.log(dayPasses);
-  // console.log(bookings);
 
   // Calculate total price from all bookings and day passes
   let totalBill =
@@ -145,6 +144,29 @@ const Payment: React.FC = () => {
       validateCoupon(); // Call the button's onClick handler
     }
   };
+
+  //clearing the cart
+  //bookings
+  useEffect(() => {
+    if (bookings.length > 0) {
+      setTimeout(() => {
+        bookings.forEach((booking) => {
+          handleRemoveBooking(booking);
+        });
+      }, 3 * 60 * 1000); // 5 minutes
+    }
+  }, [bookings]);
+
+  //daypass
+  useEffect(() => {
+    if (dayPasses.length > 0) {
+      setTimeout(() => {
+        dayPasses.forEach((daypass) => {
+          handleRemoveDayPass(daypass);
+        });
+      }, 3 * 60 * 1000); // 2 minutes
+    }
+  }, [dayPasses]);
 
   //final bill including gst
   let finalBill =
@@ -230,6 +252,48 @@ const Payment: React.FC = () => {
   };
 
   //handle phonepe payment
+
+  const handlePayment = async () => {
+    const data = {
+      accHolder,
+      amount: finalBill.toFixed(2),
+      bookings,
+      dayPasses,
+      discountPercentage,
+    };
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:3000/api/v1/order/createorder",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+      console.log(response.data);
+      window.location.href = response.data.url;
+      // setCheckstatus(true);
+    } catch (error) {
+      console.log("error in payment", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   if (checkStatus) {
+  //     // Parse query parameters
+  //     const params = new URLSearchParams(location.search);
+  //     const status = params.get("status") || "";
+  //     // const message = params.get("message") || "";
+
+  //     //
+  //     if (status === "success") {
+  //       toast.success("payment successful");
+  //     }
+  //   }
+  // }, [checkStatus]);
 
   // const handleRazorpayPayment = async (): Promise<void> => {
   //   // Load the Razorpay checkout script
@@ -407,34 +471,34 @@ const Payment: React.FC = () => {
   //   rzp1.open();
   // };
 
-  const handlePhonePayPayment = async () => {
-    try {
-      //create an order request a
-      const pay = await axios.post(
-        // "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
-        "http://127.0.0.1:3000/api/v1/order/createorder",
-        { name: "yuvraj manchadi", amount: 1000 },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
-      );
+  // const handlePhonePayPayment = async () => {
+  //   try {
+  //     //create an order request a
+  //     const pay = await axios.post(
+  //       // "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
+  //       "http://127.0.0.1:3000/api/v1/order/createorder",
+  //       { name: "yuvraj manchadi", amount: 1000 },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         // If you need credentials (cookies/auth), add this:
+  //         withCredentials: true, // Include credentials (cookies) in the request
+  //       }
+  //     );
 
-      console.log(pay.data);
-    } catch (error) {
-      console.log("something went wrong");
-    }
-  };
+  //     console.log(pay.data);
+  //   } catch (error) {
+  //     console.log("something went wrong");
+  //   }
+  // };
 
   const handleButtonClick = async () => {
     if (isAuthenticated) {
       const notoverlap = await checkOverLap(bookings);
       if (notoverlap) {
         // handleRazorpayPayment();
-        handlePhonePayPayment();
+        handlePayment();
         // toast.error("no payment gateway");
       } else {
         toast.error("you are late someone booked around this slot");

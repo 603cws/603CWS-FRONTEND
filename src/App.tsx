@@ -217,8 +217,8 @@ function App() {
             <Route path="/booknow/:id" element={<ConfirmPayment />} />
             <Route
               path="/payment"
-              // element={isAdmin === "admin" && <Payment />}
-              element={<Payment />}
+              element={isAdmin === "admin" && <Payment />}
+              // element={<Payment />}
             />
             <Route
               path="/kycform"
