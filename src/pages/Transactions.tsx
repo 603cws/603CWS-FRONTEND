@@ -64,11 +64,11 @@ const Transactions: React.FC = () => {
   const { accHolder } = useApp();
 
   //date
-  const now = new Date();
+  // const now = new Date();
 
   // Extract time components
-  const hours = now.getHours(); // 0-23
-  const minutes = now.getMinutes(); // 0-59
+  const hours = new Date().getHours(); // 0-23
+  const minutes = new Date().getMinutes(); // 0-59
 
   const currentTimeinHrandMin = `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
