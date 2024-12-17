@@ -4,19 +4,19 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
+        sans: ["Poppins", "sans-serif"],
         Raleway: ["Raleway"],
         Convergence: ["Convergence"],
       },
       colors: {
         customYellow: "#fff9c9",
-        customGray: '#817a78'
+        customGray: "#817a78",
       },
       width: {
-        '1524': '1524px',
+        1524: "1524px",
       },
       height: {
-        '810': '810px',
+        810: "810px",
       },
     },
   },

@@ -4,6 +4,7 @@ import "./Transactioncss.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useApp } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface Transaction {
   _id: string;
@@ -63,12 +64,17 @@ const Transactions: React.FC = () => {
   const [bookingid, setbookingid] = useState<string>();
   const { accHolder } = useApp();
 
+  const navigate = useNavigate();
+  const reloadPage = () => {
+    navigate(0); // Reloads the current route
+  };
+
   //date
-  // const now = new Date();
+  const now = new Date();
 
   // Extract time components
-  const hours = new Date().getHours(); // 0-23
-  const minutes = new Date().getMinutes(); // 0-59
+  const hours = now.getHours(); // 0-23
+  const minutes = now.getMinutes(); // 0-59
 
   const currentTimeinHrandMin = `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
@@ -166,6 +172,7 @@ const Transactions: React.FC = () => {
         toast.success("Refund initiated");
         allbookings();
         allCancelledBookings();
+        reloadPage();
       } else {
         toast.error("refund not availble");
       }

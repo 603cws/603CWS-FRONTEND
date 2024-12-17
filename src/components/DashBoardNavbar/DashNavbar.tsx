@@ -67,6 +67,10 @@ function DashNavbar() {
   const toTransactions = () => {
     navigate("/dashboard/Transactions");
   };
+
+  const toDaypassTransactions = () => {
+    navigate("/dashboard/daypassTransactions");
+  };
   const logout = async () => {
     try {
       setloading(true);
@@ -291,7 +295,7 @@ function DashNavbar() {
                 navigate("/kycform");
               }}
             >
-              kyc form
+              KYC form
             </div>
           )}
           <div

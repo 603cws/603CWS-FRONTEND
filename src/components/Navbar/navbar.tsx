@@ -499,6 +499,16 @@ const Navbar = () => {
                   Contact Us
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => {
+                    navigate("/603villa");
+                  }}
+                  className="hover:underline"
+                >
+                  603 Villas
+                </button>
+              </li>
             </ul>
           </div>
           <button
@@ -895,6 +905,17 @@ const Navbar = () => {
               >
                 Contact Us
               </button>
+            </li>
+            <li className="relative">
+              <button
+                onClick={() => {
+                  navigate("/603villa");
+                }}
+                className="font-bold hover:underline "
+              >
+                603 Villas
+              </button>
+              <span className="absolute -top-2  text-red-500">New</span>
             </li>
           </ul>
         </div>

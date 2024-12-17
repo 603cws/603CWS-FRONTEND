@@ -6,7 +6,7 @@ import makhija from "/officeimg/Makhija/Makhija.JPG";
 import { locations } from "../AllLocationsDetails";
 
 const BookNowPage: React.FC = () => {
-  const [alllocations] = useState(locations)
+  const [alllocations] = useState(locations);
   const [selectedCity, setSelectedCity] = useState<string>("All Cities");
   const navigate = useNavigate();
 
@@ -36,11 +36,12 @@ const BookNowPage: React.FC = () => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <div className="relative flex justify-center items-center h-[330px] w-full bg-cover bg-center pt-5">
           <div className="text-center">
-            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-bold mb-4">Discover Our Locations</h2>
+            <h2 className="text-white text-3xl sm:text-5xl lg:text-6xl font-bold mb-4">
+              Discover Our Locations
+            </h2>
             <p className="text-white text-lg lg:text-2xl">Choose a workspace</p>
           </div>
         </div>
-
       </div>
 
       <div className="container mx-auto px-2 md:px-12 overflow-auto">
@@ -70,13 +71,13 @@ const BookNowPage: React.FC = () => {
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
                   key={locationIndex}
-                 className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
+                  className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
                 >
                   <img
                     src={location.imgSrc}
                     alt={location.name}
-                    className="w-full h-64 object-cover rounded-lg mb-6 hover:cursor-pointer"
-                    onClick={() => navigate(location.link)}
+                    className="w-full h-64 object-cover rounded-lg mb-6"
+                    // onClick={() => navigate(location.link)}
                   />
                   <h4 className="text-2xl font-semibold mb-2 text-gray-800">
                     {location.name}
@@ -84,7 +85,9 @@ const BookNowPage: React.FC = () => {
                   <p className="text-gray-600 mb-4">{location.address}</p>
                   <button
                     className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
-                    onClick={() => navigate(`${location.name.replace(/\s/g, "_")}`)}
+                    onClick={() =>
+                      navigate(`${location.name.replace(/\s/g, "_")}`)
+                    }
                   >
                     Book Now
                   </button>

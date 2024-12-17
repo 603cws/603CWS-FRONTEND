@@ -92,9 +92,9 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
         isOpen ? "fade-in" : "fade-out"
       } z-50`}
     >
-      <div className="form-container overflow-y-auto max-h-[650px] bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+      <div className="form-container overflow-y-auto max-h-[650px] bg-white rounded-lg shadow-lg p-8 w-full max-w-md  ">
         <h2 className="text-2xl font-bold mb-4">Create User</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="overflow-y-scroll">
           <div className="mb-4">
             <label className="block text-gray-700">Company Name</label>
             <input
