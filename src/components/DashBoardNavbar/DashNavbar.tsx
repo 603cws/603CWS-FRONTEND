@@ -68,9 +68,9 @@ function DashNavbar() {
     navigate("/dashboard/Transactions");
   };
 
-  const toDaypassTransactions = () => {
-    navigate("/dashboard/daypassTransactions");
-  };
+  // const toDaypassTransactions = () => {
+  //   navigate("/dashboard/daypassTransactions");
+  // };
   const logout = async () => {
     try {
       setloading(true);
