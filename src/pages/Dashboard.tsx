@@ -226,6 +226,9 @@ const Dashboard: React.FC = () => {
         />
       )} */}
 
+      {/* this is a nonmber dashboard */}
+
+      {/* calender for nonmember admin  */}
       {selectedLocation !== "" &&
         (isAdmin == "admin" ? (
           <AdminCalendar

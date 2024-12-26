@@ -5,14 +5,20 @@ import { logo } from "../../utils/Landing/Landing";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useApp } from "../../context/AuthContext";
+import CreateCouponModal from "./createCouponModal";
 
 function AdminDashNavbar() {
   const { setloading, setAccHolder } = useApp();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isSideWindowOpen, setIsSideWindowOpen] = useState(false);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const PORT = "https://603-bcakend-new.vercel.app";
+
+  // const handleCreateUser = () => {
+  //   console.log("sample test");
+  // };
 
   const logout = async () => {
     try {
@@ -142,97 +148,110 @@ function AdminDashNavbar() {
   };
 
   return (
-    <div className="border-b-2 border-yellow-600">
-      <div style={containerStyle}>
-        <div onClick={visitHome} style={logoContainerStyle}>
-          <img src={logo} alt="Logo" style={logoStyle} />
-          <div style={headingstyle}>603 The Coworking Space</div>
-        </div>
-        {windowWidth < 870 ? (
-          <FiMenu
-            size="24"
-            onClick={() => setIsSideWindowOpen(true)}
-            className="cursor-pointer"
-          />
-        ) : (
-          <div className="flex items-center space-x-4 gap-5">
-            <div
+    <>
+      <div className="border-b-2 border-yellow-600">
+        <div style={containerStyle}>
+          <div onClick={visitHome} style={logoContainerStyle}>
+            <img src={logo} alt="Logo" style={logoStyle} />
+            <div style={headingstyle}>603 The Coworking Space</div>
+          </div>
+          {windowWidth < 870 ? (
+            <FiMenu
+              size="24"
+              onClick={() => setIsSideWindowOpen(true)}
+              className="cursor-pointer"
+            />
+          ) : (
+            <div className="flex items-center space-x-4 gap-5">
+              {/* <div
               onClick={() => (window.location.href = "tel:+919136036603")}
               className="text-gray-600 cursor-pointer"
             >
               Contact Us
+            </div> */}
+              {/* <div className="cursor-pointer text-gray-600" >CreateCoupon</div> */}
+
+              {/*<div className="cursor-pointer text-gray-600" onClick={toTransactions}>My Bookings</div>*/}
+
+              <div className="cursor-pointer text-gray-600" onClick={logout}>
+                Logout
+              </div>
             </div>
+          )}
 
-            {/*<div className="cursor-pointer text-gray-600" onClick={toTransactions}>My Bookings</div>*/}
+          <div
+            style={overlayStyle}
+            onClick={() => setIsSideWindowOpen(false)}
+          ></div>
 
-            <div className="cursor-pointer text-gray-600" onClick={logout}>
+          <div style={sideWindowStyle}>
+            <AiOutlineClose
+              size="24"
+              style={closeButtonStyle}
+              onClick={() => setIsSideWindowOpen(false)}
+            />
+            <div
+              style={sideLinkStyle}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundColor = "#f0f0f0")
+              }
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+              onClick={() => {
+                setIsSideWindowOpen(false);
+                visitHome();
+              }}
+            >
+              Home
+            </div>
+            <div
+              style={sideLinkStyle}
+              onClick={() => (window.location.href = "tel:+919136036603")}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundColor = "#f0f0f0")
+              }
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+            >
+              Contact Us
+            </div>
+            <div
+              style={sideLinkStyle}
+              onMouseOver={(e) =>
+                (e.currentTarget.style.backgroundColor = "#f0f0f0")
+              }
+              onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+              onClick={logout}
+            >
               Logout
             </div>
           </div>
-        )}
-
-        <div
-          style={overlayStyle}
-          onClick={() => setIsSideWindowOpen(false)}
-        ></div>
-
-        <div style={sideWindowStyle}>
-          <AiOutlineClose
-            size="24"
-            style={closeButtonStyle}
-            onClick={() => setIsSideWindowOpen(false)}
-          />
+        </div>
+        <div className="w-full flex justify-around p-5 pt-20 font-medium text-slate-500 z-50">
           <div
-            style={sideLinkStyle}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.backgroundColor = "#f0f0f0")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
-            onClick={() => {
-              setIsSideWindowOpen(false);
-              visitHome();
-            }}
+            className="cursor-pointer"
+            onClick={() => navigate("/admin/alluserinfo")}
           >
-            Home
+            <h1>All Users</h1>
           </div>
           <div
-            style={sideLinkStyle}
-            onClick={() => (window.location.href = "tel:+919136036603")}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.backgroundColor = "#f0f0f0")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
+            className="cursor-pointer"
+            onClick={() => setIsCreateModalOpen(true)}
           >
-            Contact Us
+            <h1>Create Coupon</h1>
           </div>
+          <div>KYC Requests</div>
           <div
-            style={sideLinkStyle}
-            onMouseOver={(e) =>
-              (e.currentTarget.style.backgroundColor = "#f0f0f0")
-            }
-            onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
-            onClick={logout}
+            className="cursor-pointer"
+            onClick={() => navigate("/admin/allbookings")}
           >
-            Logout
+            <h1>All Bookings</h1>
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-around p-5 pt-20 font-medium text-slate-500 z-50">
-        <div
-          className="cursor-pointer"
-          onClick={() => navigate("/admin/alluserinfo")}
-        >
-          <h1>All Users</h1>
-        </div>
-        <div>KYC Requests</div>
-        <div
-          className="cursor-pointer"
-          onClick={() => navigate("/admin/allbookings")}
-        >
-          <h1>All Bookings</h1>
-        </div>
-      </div>
-    </div>
+      <CreateCouponModal
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
+      />
+    </>
   );
 }
 

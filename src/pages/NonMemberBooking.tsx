@@ -116,12 +116,6 @@ const getFilteredTimes = (
   }
 };
 
-// const checkTimeLimitOfMeetingAndConf =async (startTime:any,endTIme:any)=>{
-
-//     const getDiffInTime =
-
-// }
-
 interface CalendarProps {
   value: {
     key: string;
@@ -144,7 +138,7 @@ interface Transaction {
   creditsspent: number;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ value }) => {
+const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   const { setloading } = useApp();
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation, spacetype } = value;
@@ -356,6 +350,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
     fontSize: windowWidth > 470 ? undefined : "13px",
   };
 
+  //WE CAN REPLACE THIS FUNCTION WITH ACCHOLDER AND ASSIGN VALUES TO EMAIL AND PHONE
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -544,6 +539,10 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
     const date = new Date(currentYear, currentMonth, day);
     today.setHours(0, 0, 0, 0);
     return date < today;
+  };
+
+  const handleBookNow = async () => {
+    setconfirm(true);
   };
 
   // const setupInterval = () => {
@@ -795,6 +794,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
             </div>
             <button
               type="button"
+              onClick={handleBookNow}
               style={
                 selectedStartTime &&
                 selectedEndTime &&
@@ -1011,4 +1011,4 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
   );
 };
 
-export default Calendar;
+export default NonMemCalendar;

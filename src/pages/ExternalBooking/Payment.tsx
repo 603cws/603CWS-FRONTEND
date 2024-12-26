@@ -75,7 +75,7 @@ const Payment: React.FC = () => {
         }
       );
 
-      console.log(response.data);
+      console.log(response);
       setDiscountPercentage(
         (discountPercentage) => discountPercentage + response.data.discount
       );
@@ -87,7 +87,7 @@ const Payment: React.FC = () => {
       toast.success(`COUPON APPLIED SUCCESSFULLY`);
     } catch (error: any) {
       setMessage(error.response?.data?.error || "INVALID COUPON CODE");
-      toast.error(`INVALID COUPON CODE,CHECK THE COUPON`);
+      toast.error(`INVALID COUPON CODE,OR COUPON EXPIRED`);
     }
   };
 
