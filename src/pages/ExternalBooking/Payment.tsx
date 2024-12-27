@@ -55,11 +55,18 @@ const Payment: React.FC = () => {
 
   // Calculate total price from all bookings and day passes
   let totalBill =
-    bookings.reduce((total, booking) => total + booking.price, 0) +
-    dayPasses.reduce((total, dayPass) => total + dayPass.price, 0);
+    bookings.reduce(
+      (total, booking) =>
+        total + booking.price - booking.price * (discountPercentage / 100),
+      0
+    ) +
+    dayPasses.reduce(
+      (total, dayPass) =>
+        total + dayPass.price - dayPass.price * (discountPercentage / 100),
+      0
+    );
 
   //coupon changes
-
   const validateCoupon = async () => {
     let code = discountCode;
     try {
@@ -99,31 +106,37 @@ const Payment: React.FC = () => {
   };
 
   //clearing the cart
-  //bookings
-  useEffect(() => {
-    if (bookings.length > 0) {
-      setTimeout(() => {
-        bookings.forEach((booking) => {
-          handleRemoveBooking(booking);
-        });
-      }, 3 * 60 * 1000); // 3 minutes
-    }
-  }, [bookings]);
+  // //bookings
+  // useEffect(() => {
+  //   if (bookings.length > 0) {
+  //     setTimeout(() => {
+  //       bookings.forEach((booking) => {
+  //         handleRemoveBooking(booking);
+  //       });
+  //     }, 3 * 60 * 1000); // 3 minutes
+  //   }
+  // }, [bookings]);
 
-  //daypass
-  useEffect(() => {
-    if (dayPasses.length > 0) {
-      setTimeout(() => {
-        dayPasses.forEach((daypass) => {
-          handleRemoveDayPass(daypass);
-        });
-      }, 3 * 60 * 1000); // 3 minutes
-    }
-  }, [dayPasses]);
+  // //daypass
+  // useEffect(() => {
+  //   if (dayPasses.length > 0) {
+  //     setTimeout(() => {
+  //       dayPasses.forEach((daypass) => {
+  //         handleRemoveDayPass(daypass);
+  //       });
+  //     }, 3 * 60 * 1000); // 3 minutes
+  //   }
+  // }, [dayPasses]);
 
+  // let bill = totalBill + totalBill * 0.18;
+  // let discount = bill * (discountPercentage / 100);
+  // let finalBill = bill - discount;
   //final bill including gst
-  let finalBill =
-    totalBill + totalBill * 0.18 - totalBill * (discountPercentage / 100);
+  // let finalBill =
+  //   totalBill + totalBill * 0.18 - totalBill * (discountPercentage / 100);
+
+  let TotalBill = +totalBill.toFixed(2);
+  let finalBill = TotalBill + TotalBill * 0.18;
 
   const handleRemoveBooking = (booking: any) => {
     removeSpecificBooking(booking);
@@ -138,7 +151,6 @@ const Payment: React.FC = () => {
   };
 
   //get user
-
   const [data, setData] = useState<UserDetails>({
     companyName: "",
     username: "",
@@ -379,8 +391,19 @@ const Payment: React.FC = () => {
                 </button>
                 {message && <p>{message}</p>}
               </div>
-              <div className="text-right text-2xl font-bold text-gray-800 mb-3">
+              {/* <div className="text-right text-2xl font-bold text-gray-800 mb-3">
                 Total Bill: ₹{finalBill.toFixed(2)}
+              </div> */}
+              <div className="text-right text-2xl  text-gray-800 mb-3">
+                <ul>
+                  <li> Bill: ₹{TotalBill}</li>
+                  {/* <li> gst : 18 % ₹{(totalBill * 0.18).toFixed(2)}</li> */}
+                  <li>+ GST : 18 %</li>
+                  <li className="font-bold">
+                    {" "}
+                    Total : ₹{finalBill.toFixed(2)}
+                  </li>
+                </ul>
               </div>
               <div className="text-right text-l font-semibold text-gray-500 mb-6">
                 *including gst
