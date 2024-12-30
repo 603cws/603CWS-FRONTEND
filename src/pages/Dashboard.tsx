@@ -4,6 +4,7 @@ import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
 import axios from "axios";
 import { useApp } from "../context/AuthContext";
 import AdminCalendar from "./Admin/AdminBookingcal";
+import NonMemCalendar from "./NonMemberBooking";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { isAdmin, accHolder } = useApp();
@@ -236,7 +237,7 @@ const Dashboard: React.FC = () => {
             value={{ key: selectedLocation, selectedLocation, spacetype }}
           />
         ) : (
-          <Calendar
+          <NonMemCalendar
             key={selectedLocation}
             value={{ key: selectedLocation, selectedLocation, spacetype }}
           />

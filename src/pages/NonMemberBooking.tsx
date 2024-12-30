@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { MdClose } from "react-icons/md";
-import AnimationComponent from "../components/Gif/Gif";
+// import AnimationComponent from "../components/Gif/Gif";
 // import AnimationComponentSorry from "../components/Gif/SorryGif";
 import AnimationComponentAsk from "../components/Gif/Askconfirm";
 import { useApp } from "../context/AuthContext";
+import { useNavigate } from "react-router";
 // import toast from "react-hot-toast";
 
+//for price of booking meeting room and conference room import all location
+// import { locations } from "./AllLocationsDetails";
+// import { addBooking } from "../../redux/bookingsSlice";
 interface Theme {
   background: {
     default: string;
@@ -138,15 +142,69 @@ interface Transaction {
   creditsspent: number;
 }
 
+interface BookingInterface {
+  spaceName: string;
+  startTime: string;
+  endTime: string;
+  date: string;
+  price: number | string;
+}
+
+interface LocationInterface {
+  _id: string;
+  name: string;
+  roomtype: string;
+  location: string;
+  description: string;
+  amenities: any;
+  capacity: number;
+  createdAt: string;
+  price: number | string;
+}
+
+// interface DayPassInterface {
+//   price: number;
+//   spaceName: string;
+//   bookeddate: string;
+//   day: number;
+//   month: number;
+//   year: number;
+// }
+
+// {
+//   "_id": "66e024ed59336988c0e3254e",
+//   "name": "Bandra Meeting Room",
+//   "roomtype": "meeting",
+//   "location": "Mumbai",
+//   "description": "One of the best",
+//   "amenities": [
+//       "AC",
+//       "Mic",
+//       "mic"
+//   ],
+//   "capacity": 200,
+//   "createdAt": "2024-09-10T10:52:29.131Z",
+//   "__v": 0,
+//   "price": 699
+// }
+
 const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const { setloading } = useApp();
+  const {
+    setloading,
+    addNewBooking,
+    bookDayPass,
+    dayPasses,
+    bookings,
+    accHolder,
+  } = useApp();
+
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation, spacetype } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [companyName, setcompanyName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [phone, setPhone] = useState<string>("");
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
@@ -155,7 +213,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   // const [credits, setcredits] = useState<number>(0);
   // const [creditsleft, setcreditsleft] = useState<number>(0);
   // const [creditstobespent, setcreditstobespent] = useState<number>(0);
-  const [profileOpen, setProfileOpen] = useState<boolean>(false);
+  // const [profileOpen, setProfileOpen] = useState<boolean>(false);
   const [confirm, setconfirm] = useState<boolean>(false);
   const [timings, setTimings] = useState<[string, string][][]>([]);
   const [availableStartTimes, setAvailableStartTimes] = useState<string[]>([]);
@@ -163,7 +221,25 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  console.log(spacetype, phone, setProfileOpen, transactions);
+
+  const [bookingData, setBookingData] = useState<BookingInterface[]>([]);
+  // const [dayPasses, setDaypasses] = useState<DayPassInterface[]>([]);
+  const [location, setlocation] = useState<LocationInterface>();
+  let navigate = useNavigate();
+
+  const phone = accHolder.phone;
+  const email = accHolder.email;
+
+  useEffect(() => {
+    console.log("Updated dayPasses:", dayPasses);
+  }, [dayPasses]);
+
+  useEffect(() => {
+    console.log("Updated bookings:", bookings);
+  }, [bookings]);
+
+  const daypasses: any = [];
+  const discountPercentage = 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -351,25 +427,47 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   //WE CAN REPLACE THIS FUNCTION WITH ACCHOLDER AND ASSIGN VALUES TO EMAIL AND PHONE
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+  //         withCredentials: true,
+  //       });
+
+  //       setloading(false);
+  //       console.log(response);
+  //       const userdata = response.data.user;
+  //       setEmail(userdata.email);
+  //       setPhone(userdata.phone);
+  //       // setcreditsleft(userdata.creditsleft);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+  // /getspacebyname
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-          withCredentials: true,
-        });
-
-        setloading(false);
-        console.log(response);
-        const userdata = response.data.user;
-        setEmail(userdata.email);
-        setPhone(userdata.phone);
-        // setcreditsleft(userdata.creditsleft);
+        const response = await axios.post(
+          `${PORT}/api/v1/spaces/getspacebyname`,
+          {
+            name: selectedLocation,
+          },
+          {
+            withCredentials: true,
+          }
+        );
+        console.log(response.data);
+        setlocation(response.data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, []);
+  }, [selectedLocation]);
 
   const fetchLocationBookings = async (date: string) => {
     try {
@@ -542,6 +640,20 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   const handleBookNow = async () => {
+    //get the location details based on the spacetype of location i.e selected location
+    //location
+    // let price = location?.price;
+    const price = location?.price || 0;
+    const prebill = +price;
+    console.log(location);
+    addNewBooking({
+      spaceName: selectedLocation,
+      startTime: selectedStartTime,
+      endTime: selectedEndTime,
+      date: selectedDate,
+      price: prebill,
+    });
+    console.log("daypass", daypasses);
     setconfirm(true);
   };
 
@@ -605,6 +717,41 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   useEffect(() => {
     allbookings();
   }, []);
+
+  //for data formation
+  const handleConfirmBooking = async () => {
+    console.log(bookings);
+    navigate("/payment");
+  };
+
+  //handle phonepe payment
+  // const handlePayment = async () => {
+  //   const data = {
+  //     accHolder,
+  //     amount: finalBill.toFixed(2),
+  //     bookings,
+  //     dayPasses,
+  //     discountPercentage,
+  //   };
+  //   try {
+  //     const response = await axios.post(
+  //       "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
+  //       data,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         // If you need credentials (cookies/auth), add this:
+  //         withCredentials: true, // Include credentials (cookies) in the request
+  //       }
+  //     );
+  //     console.log(response.data);
+  //     window.location.href = response.data.url;
+  //     // setCheckstatus(true);
+  //   } catch (error) {
+  //     console.log("error in payment", error);
+  //   }
+  // };
 
   return (
     <div style={containerStyle}>
@@ -819,7 +966,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
           </>
         )}
       </form>
-      {profileOpen && (
+      {/* {profileOpen && (
         <div
           style={{
             position: "fixed",
@@ -887,7 +1034,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
             </p>
           </div>
         </div>
-      )}
+      )} */}
       {confirm && (
         <div
           style={{
@@ -974,7 +1121,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
               }}
             >
               <button
-                // onClick={handleSubmit}
+                onClick={handleConfirmBooking}
                 style={{
                   backgroundColor: "#2b901f",
                   color: "white",

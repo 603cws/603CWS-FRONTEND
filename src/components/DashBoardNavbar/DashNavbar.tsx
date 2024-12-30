@@ -42,6 +42,8 @@ function DashNavbar() {
   const [showalert, setshowalert] = useState(false);
   const navigate = useNavigate();
 
+  const { accHolder } = useApp();
+
   const [data, setData] = useState<UserDetails>({
     companyName: "",
     username: "",
@@ -307,47 +309,49 @@ function DashNavbar() {
             Day Passes
           </div>
 
-          <div className="flex items-center">
-            <div style={creditsContainerStyle}>
-              {creditsleft > 0 && (
-                <>
-                  <div className="text-gray-700" style={creditsTextStyle}>
-                    Credits left: {creditsleft}/{" "}
-                    <p style={{ color: "#dbbd00" }}>{monthlycredits}</p>
-                  </div>
-                  <CiCreditCard1 size="24" />
-                </>
-              )}
-
-              {extracredits > 0 && creditsleft == 0 && (
-                <>
-                  <div className="text-gray-700" style={creditsTextStyle}>
-                    Credits Bill: {extracredits}
-                  </div>
-                  <CiCreditCard1 size="24" />
-                </>
-              )}
-              <IoIosHelpCircleOutline
-                size="18"
-                color="gray"
-                onClick={() => setShowHelp(true)}
-                className="cursor-pointer"
-              />
-              <>
-                {creditsleft > 0 && extracredits > 0 && (
-                  <div className="relative inline-block group">
-                    <IoWarningOutline
-                      style={{ color: "red", fontSize: "20px" }}
-                      className="cursor-pointer"
-                      onClick={() => {
-                        setshowalert(!showalert);
-                      }}
-                    />
-                  </div>
+          {accHolder.member && (
+            <div className="flex items-center">
+              <div style={creditsContainerStyle}>
+                {creditsleft > 0 && (
+                  <>
+                    <div className="text-gray-700" style={creditsTextStyle}>
+                      Credits left: {creditsleft}/{" "}
+                      <p style={{ color: "#dbbd00" }}>{monthlycredits}</p>
+                    </div>
+                    <CiCreditCard1 size="24" />
+                  </>
                 )}
-              </>
+
+                {extracredits > 0 && creditsleft == 0 && (
+                  <>
+                    <div className="text-gray-700" style={creditsTextStyle}>
+                      Credits Bill: {extracredits}
+                    </div>
+                    <CiCreditCard1 size="24" />
+                  </>
+                )}
+                <IoIosHelpCircleOutline
+                  size="18"
+                  color="gray"
+                  onClick={() => setShowHelp(true)}
+                  className="cursor-pointer"
+                />
+                <>
+                  {creditsleft > 0 && extracredits > 0 && (
+                    <div className="relative inline-block group">
+                      <IoWarningOutline
+                        style={{ color: "red", fontSize: "20px" }}
+                        className="cursor-pointer"
+                        onClick={() => {
+                          setshowalert(!showalert);
+                        }}
+                      />
+                    </div>
+                  )}
+                </>
+              </div>
             </div>
-          </div>
+          )}
 
           <div
             className="cursor-pointer text-gray-600"

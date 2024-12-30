@@ -216,6 +216,14 @@ const Payment: React.FC = () => {
     }
   };
 
+  // console.log(
+  //   accHolder,
+  //   finalBill.toFixed(2),
+  //   bookings,
+  //   dayPasses,
+  //   discountPercentage
+  // );
+
   //handle phonepe payment
 
   const handlePayment = async () => {

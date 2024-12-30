@@ -6,6 +6,48 @@ import toast from "react-hot-toast";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+//daypass
+//   [
+//     {
+//         "_id": "673c4031b5c2547d36da6687",
+//         "space": "6724804d5c694d98e3e0048e",
+//         "companyName": "603cws",
+//         "email": "manchadiyuvraj@gmail.com",
+//         "spaceName": "Bandra Day Pass",
+//         "phone": "9594767165",
+//         "bookeddate": "18/11/2024",
+//         "day": 18,
+//         "month": 11,
+//         "year": 2024,
+//         "status": "captured",
+//         "paymentMethod": "upi",
+//         "createdAt": "2024-11-19T07:37:21.615Z",
+//         "__v": 0
+//     }
+// ]
+
+// interface DaypassTransaction {
+//   _id: string;
+//   space: string;
+//   companyName: string;
+//   email: string;
+//   spaceName: string;
+//   phone: string | number;
+//   bookeddate: string;
+//   day: number;
+//   month: number;
+//   year: number;
+//   status: "confirmed" | "cancelled" | "REFUND" | "COMPLETED";
+//   paymentMethod:
+//     | "credits"
+//     | "credit_card"
+//     | "paypal"
+//     | "UPI"
+//     | "CARD"
+//     | "NETBANKING";
+//   createdAt: Date | string;
+// }
+
 interface Transaction {
   _id: string;
   user: string;
@@ -51,8 +93,17 @@ const Transactions: React.FC = () => {
   const [cancelledTransactions, setCancelledTransactions] = useState<
     Transaction[]
   >([]);
+
+  // const [daypassTransaction, setDaypassTransaction] = useState<
+  //   DaypassTransaction[]
+  // >([]);
+
   const [selectedTransaction, setSelectedTransaction] =
     useState<Transaction | null>(null);
+
+  // //selected daypass
+  // const [selectedDaypassTransaction, setSelectedDaypassTransaction] =
+  //   useState<DaypassTransaction | null>(null);
   const [showAboutModal, setShowAboutModal] = useState<boolean>(false);
   const [showCancelConfirmation, setShowCancelConfirmation] =
     useState<boolean>(false);
@@ -67,6 +118,32 @@ const Transactions: React.FC = () => {
   const navigate = useNavigate();
   const reloadPage = () => {
     navigate(0); // Reloads the current route
+  };
+
+  //todays date
+  let day = new Date().getDate();
+  let month = new Date().getMonth() + 1;
+  let year = new Date().getFullYear();
+
+  let today = `${day}/${month}/${year}`;
+
+  //
+  // const addTransaction = (newTransactions: Transaction[]) => {
+  //   setTransactions((prevTransactions) => [
+  //     ...prevTransactions,
+  //     ...newTransactions,
+  //   ]);
+  // };
+  const addTransaction = (newTransactions: Transaction[]) => {
+    setTransactions((prevTransactions) => {
+      const uniqueTransactions = newTransactions.filter(
+        (newTransaction) =>
+          !prevTransactions.some(
+            (transaction) => transaction._id === newTransaction._id
+          )
+      );
+      return [...prevTransactions, ...uniqueTransactions];
+    });
   };
 
   //date
@@ -89,7 +166,6 @@ const Transactions: React.FC = () => {
       return 1; // Or handle as needed
     }
     // Split the time strings into hours and minutes
-
     const [hours1, minutes1] = time1.split(":").map(Number);
     const [hours2, minutes2] = time2.split(":").map(Number);
 
@@ -191,11 +267,20 @@ const Transactions: React.FC = () => {
     checkForRefundWarning(transaction);
   };
 
+  // //handleviewmore for daypasses
+  // const handleViewDaypassMore = (transaction: DaypassTransaction) => {
+  //   setbookingid(transaction._id);
+  //   setSelectedDaypassTransaction(transaction);
+  //   // setSelectedTransaction(transaction);
+  //   // checkForRefundWarning(transaction);
+  // };
+
   const handleCloseModal = () => {
     setbookingid("");
     setSelectedTransaction(null);
     setShowWarningMessage(false);
     setIsRefundable(true);
+    // setSelectedDaypassTransaction(null);
   };
 
   const handleOpenAboutModal = () => {
@@ -212,11 +297,57 @@ const Transactions: React.FC = () => {
         `${PORT}/api/v1/bookings/getallbookingsbyuser`,
         { withCredentials: true }
       );
-      setTransactions(response.data);
+      // setTransactions(response.data);
+      // setTransactions(response.data);
+      addTransaction(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
     }
   };
+
+  //   [
+  //     {
+  //         "_id": "673c4031b5c2547d36da6687",
+  //         "space": "6724804d5c694d98e3e0048e",
+  //         "companyName": "603cws",
+  //         "email": "manchadiyuvraj@gmail.com",
+  //         "spaceName": "Bandra Day Pass",
+  //         "phone": "9594767165",
+  //         "bookeddate": "18/11/2024",
+  //         "day": 18,
+  //         "month": 11,
+  //         "year": 2024,
+  //         "status": "captured",
+  //         "paymentMethod": "upi",
+  //         "createdAt": "2024-11-19T07:37:21.615Z",
+  //         "__v": 0
+  //     }
+  // ]
+
+  //get all the daypasses by user
+  const alldaypasses = async () => {
+    try {
+      const response = await axios.post(
+        `https://603-bcakend-new.vercel.app/api/v1/daypass/getalldaypassbyuser`,
+        { accHolder },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // If you need credentials (cookies/auth), add this:
+          withCredentials: true, // Include credentials (cookies) in the request
+        }
+      );
+      console.log(response);
+      // setDaypassTransaction(response.data);
+      // setTransactions((prev)=> []);
+      addTransaction(response.data);
+    } catch (error: any) {
+      console.error("Failed to fetch bookings:", error);
+      console.log(error.message);
+    }
+  };
+
   const allCancelledBookings = async () => {
     try {
       const response = await axios.get(
@@ -238,6 +369,7 @@ const Transactions: React.FC = () => {
   useEffect(() => {
     allbookings();
     allCancelledBookings();
+    alldaypasses();
   }, []);
 
   const handleOpenCancelConfirmation = () => {
@@ -245,7 +377,10 @@ const Transactions: React.FC = () => {
   };
 
   const handleOnlinePaymentCancellation = () => {
-    if (checkTimeForRefund <= 0.5) {
+    console.log(selectedTransaction?.date === today);
+    console.log(selectedTransaction?.date), today;
+
+    if (selectedTransaction?.date === today && checkTimeForRefund <= 0.5) {
       setShowOnlinePayCancelConfirmation(true);
     } else {
       if (selectedTransaction?.status === "REFUND") {
@@ -404,6 +539,16 @@ const Transactions: React.FC = () => {
         })
       : [];
 
+  // //daypass transaction sorting
+  // const sortedDaypassTransactions =
+  //   daypassTransaction.length > 0
+  //     ? [...daypassTransaction].sort((a, b) => {
+  //         const aTime = new Date(a.createdAt).getTime();
+  //         const bTime = new Date(b.createdAt).getTime();
+  //         return bTime - aTime;
+  //       })
+  //     : [];
+
   // if(selectedTransaction.status === "captured"){
   //   return true
   // }else{
@@ -487,9 +632,10 @@ const Transactions: React.FC = () => {
                           paymentMethodStyles[transaction.paymentMethod]
                         }`}
                       >
-                        {transaction.paymentMethod
+                        {/* {transaction.paymentMethod
                           .replace("_", " ")
-                          .toUpperCase()}
+                          .toUpperCase()} */}
+                        {transaction.paymentMethod.toUpperCase()}
                       </span>
                     </td>
                     <td className="p-4 text-sm text-gray-600">
