@@ -128,27 +128,27 @@ interface CalendarProps {
   };
 }
 
-interface Transaction {
-  _id: string;
-  user: string;
-  startTime: string;
-  endTime: string;
-  date: string;
-  status: "confirmed" | "cancelled";
-  paymentMethod: "credits" | "credit_card" | "paypal";
-  createdAt: Date | string;
-  companyName: string;
-  spaceName: string;
-  creditsspent: number;
-}
+// interface Transaction {
+//   _id: string;
+//   user: string;
+//   startTime: string;
+//   endTime: string;
+//   date: string;
+//   status: "confirmed" | "cancelled";
+//   paymentMethod: "credits" | "credit_card" | "paypal";
+//   createdAt: Date | string;
+//   companyName: string;
+//   spaceName: string;
+//   creditsspent: number;
+// }
 
-interface BookingInterface {
-  spaceName: string;
-  startTime: string;
-  endTime: string;
-  date: string;
-  price: number | string;
-}
+// interface BookingInterface {
+//   spaceName: string;
+//   startTime: string;
+//   endTime: string;
+//   date: string;
+//   price: number | string;
+// }
 
 interface LocationInterface {
   _id: string;
@@ -189,17 +189,13 @@ interface LocationInterface {
 // }
 
 const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const {
-    setloading,
-    addNewBooking,
-    bookDayPass,
-    dayPasses,
-    bookings,
-    accHolder,
-  } = useApp();
+  const { setloading, addNewBooking, dayPasses, bookings, accHolder } =
+    useApp();
+
+  // bookDayPass,
 
   const [darkMode] = useState<boolean>(false);
-  const { selectedLocation, spacetype } = value;
+  const { selectedLocation } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [companyName, setcompanyName] = useState<string>("");
@@ -220,14 +216,14 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  // const [transactions, setTransactions] = useState<Transaction[]>([]);
 
-  const [bookingData, setBookingData] = useState<BookingInterface[]>([]);
+  // const [bookingData, setBookingData] = useState<BookingInterface[]>([]);
   // const [dayPasses, setDaypasses] = useState<DayPassInterface[]>([]);
   const [location, setlocation] = useState<LocationInterface>();
   let navigate = useNavigate();
 
-  const phone = accHolder.phone;
+  // const phone = accHolder.phone;
   const email = accHolder.email;
 
   useEffect(() => {
@@ -239,7 +235,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   }, [bookings]);
 
   const daypasses: any = [];
-  const discountPercentage = 0;
+  // const discountPercentage = 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -702,21 +698,21 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   //   }
   // };
 
-  const allbookings = async () => {
-    try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-        { withCredentials: true }
-      );
-      setTransactions(response.data);
-    } catch (error) {
-      console.error("Failed to fetch bookings:", error);
-    }
-  };
+  // const allbookings = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${PORT}/api/v1/bookings/getallbookingsbyuser`,
+  //       { withCredentials: true }
+  //     );
+  //     setTransactions(response.data);
+  //   } catch (error) {
+  //     console.error("Failed to fetch bookings:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    allbookings();
-  }, []);
+  // useEffect(() => {
+  //   allbookings();
+  // }, []);
 
   //for data formation
   const handleConfirmBooking = async () => {
