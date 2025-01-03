@@ -7,19 +7,34 @@ import AdminCalendar from "./Admin/AdminBookingcal";
 const MemberDashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { isAdmin, accHolder } = useApp();
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [spacetype, setspacetype] = useState("");
 
   console.log(accHolder);
+  let splitLocation, getmainlocation, userLocation;
+  if (accHolder.role !== "admin") {
+    splitLocation = accHolder.location.split(" ");
+    console.log(splitLocation);
 
-  const splitLocation = accHolder.location.split(" ");
-  console.log(splitLocation);
+    getmainlocation = splitLocation[0];
+    console.log(getmainlocation);
 
-  const getmainlocation = splitLocation[0];
-  console.log(getmainlocation);
+    userLocation =
+      getmainlocation.charAt(0).toUpperCase() +
+      getmainlocation.slice(1).toLowerCase();
+    console.log(userLocation);
+  }
 
-  const userLocation =
-    getmainlocation.charAt(0).toUpperCase() +
-    getmainlocation.slice(1).toLowerCase();
-  console.log(userLocation);
+  // const splitLocation = accHolder.location.split(" ");
+  // console.log(splitLocation);
+
+  // const getmainlocation = splitLocation[0];
+  // console.log(getmainlocation);
+
+  // const userLocation =
+  //   getmainlocation.charAt(0).toUpperCase() +
+  //   getmainlocation.slice(1).toLowerCase();
+  // console.log(userLocation);
 
   useEffect(() => {
     const handleResize = () => {
@@ -33,8 +48,6 @@ const MemberDashboard: React.FC = () => {
   }, []);
 
   const PORT = "https://603-bcakend-new.vercel.app";
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [spacetype, setspacetype] = useState("");
 
   const handleLocationChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -95,196 +108,199 @@ const MemberDashboard: React.FC = () => {
             </p>
           )}
           <div className="flex justify-around items-center w-full">
-            <select
-              id="location"
-              value={selectedLocation}
-              onChange={handleLocationChange}
-              className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-            >
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value=""
+            {isAdmin !== "admin" && (
+              <select
+                id="location"
+                value={selectedLocation}
+                onChange={handleLocationChange}
+                className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
               >
-                Please Select
-              </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value=""
+                >
+                  Please Select
+                </option>
 
-              {userLocation === "Kamala" ? (
-                <>
-                  <option
-                    className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                    value="Kamala Mills Conference Room"
-                  >
-                    Kamala Mills Conference Room
-                  </option>
-                  <option
-                    className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                    value="Kamala Mills Meeting Room 1"
-                  >
-                    Kamala Mills Meeting Room 1
-                  </option>
-                  <option
-                    className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                    value="Kamala Mills Meeting Room 2"
-                  >
-                    Kamala Mills Meeting Room 2
-                  </option>
-                </>
-              ) : (
-                <>
-                  <option
-                    className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                    value={`${userLocation} Conference Room`}
-                  >
-                    {userLocation} Conference Room
-                  </option>
-                  <option
-                    className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                    value={`${userLocation} Meeting Room`}
-                  >
-                    {userLocation} Meeting Room
-                  </option>
-                </>
-              )}
-            </select>
+                {userLocation === "Kamala" ? (
+                  <>
+                    <option
+                      className={`${
+                        windowWidth > 610 ? "text-base" : "text-sm"
+                      }`}
+                      value="Kamala Mills Conference Room"
+                    >
+                      Kamala Mills Conference Room
+                    </option>
+                    <option
+                      className={`${
+                        windowWidth > 610 ? "text-base" : "text-sm"
+                      }`}
+                      value="Kamala Mills Meeting Room 1"
+                    >
+                      Kamala Mills Meeting Room 1
+                    </option>
+                    <option
+                      className={`${
+                        windowWidth > 610 ? "text-base" : "text-sm"
+                      }`}
+                      value="Kamala Mills Meeting Room 2"
+                    >
+                      Kamala Mills Meeting Room 2
+                    </option>
+                  </>
+                ) : (
+                  <>
+                    <option
+                      className={`${
+                        windowWidth > 610 ? "text-base" : "text-sm"
+                      }`}
+                      value={`${userLocation} Conference Room`}
+                    >
+                      {userLocation} Conference Room
+                    </option>
+                    <option
+                      className={`${
+                        windowWidth > 610 ? "text-base" : "text-sm"
+                      }`}
+                      value={`${userLocation} Meeting Room`}
+                    >
+                      {userLocation} Meeting Room
+                    </option>
+                  </>
+                )}
+              </select>
+            )}
 
-            {/* <select
-              id="location"
-              value={selectedLocation}
-              onChange={handleLocationChange}
-              className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-            >
-              
-
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Amore"
+            {isAdmin === "admin" && (
+              <select
+                id="location"
+                value={selectedLocation}
+                onChange={handleLocationChange}
+                className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
               >
-                Amore
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Bandra"
-              >
-                Bandra
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Kamala Mills"
-              >
-                kamala Mills
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Matulya"
-              >
-                Matulya
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Millennium"
-              >
-                Millennium
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Sunmill"
-              >
-                Sunmill
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Technocity"
-              >
-                Technocity
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="sunshine"
-              >
-                sunshine
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Navratna"
-              >
-                Navratna
-              </option>
-
-              
-
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Matulya Conference Room"
-              >
-                Matulya Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Matulya Meeting Room"
-              >
-                Matulya Meeting Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Millennium Conference Room"
-              >
-                Millennium Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Millennium Meeting Room"
-              >
-                Millennium Meeting Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Sunmill Conference Room"
-              >
-                Sunmill Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Sunmill Meeting Room"
-              >
-                Sunmill Meeting Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Technocity Conference Room"
-              >
-                Technocity Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Technocity Meeting Room"
-              >
-                Technocity Meeting Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Sunshine Conference Room"
-              >
-                Sunshine Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Sunshine Meeting Room"
-              >
-                Sunshine Meeting Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Navratna Conference Room"
-              >
-                Navratna Conference Room
-              </option>
-              <option
-                className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                value="Navratna Meeting Room"
-              >
-                Navratna Meeting Room
-              </option>
-            </select> */}
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value=""
+                >
+                  Please Select
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Amore Conference Room"
+                >
+                  Amore Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Amore Meeting Room"
+                >
+                  Amore Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Bandra Conference Room"
+                >
+                  Bandra Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Bandra Meeting Room"
+                >
+                  Bandra Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Kamala Mills Conference Room"
+                >
+                  Kamala Mills Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Kamala Mills Meeting Room 1"
+                >
+                  Kamala Mills Meeting Room 1
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Kamala Mills Meeting Room 2"
+                >
+                  Kamala Mills Meeting Room 2
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Matulya Conference Room"
+                >
+                  Matulya Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Matulya Meeting Room"
+                >
+                  Matulya Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Millennium Conference Room"
+                >
+                  Millennium Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Millennium Meeting Room"
+                >
+                  Millennium Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Sunmill Conference Room"
+                >
+                  Sunmill Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Sunmill Meeting Room"
+                >
+                  Sunmill Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Technocity Conference Room"
+                >
+                  Technocity Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Technocity Meeting Room"
+                >
+                  Technocity Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Sunshine Conference Room"
+                >
+                  Sunshine Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Sunshine Meeting Room"
+                >
+                  Sunshine Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Navratna Conference Room"
+                >
+                  Navratna Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Navratna Meeting Room"
+                >
+                  Navratna Meeting Room
+                </option>
+              </select>
+            )}
           </div>
         </div>
       </div>
