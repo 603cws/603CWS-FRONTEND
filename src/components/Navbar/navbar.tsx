@@ -28,7 +28,20 @@ const Navbar = () => {
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
     useState(false);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const { setIsAuthenticated, setloading, setAccHolder } = useApp();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const logout = async () => {
     try {
@@ -82,11 +95,15 @@ const Navbar = () => {
           setLocationsDropdownVisible(false);
         }}
         // className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10  "
-        className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10 "
+        className=" bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
       >
         <div>
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div className="dropdown ">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost  lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -928,9 +945,12 @@ const Navbar = () => {
             // >
             //   <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
             // </button>
-            <span className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center ">
+            <span
+              onClick={() => (window.location.href = "tel:+919136036603")}
+              className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center "
+            >
               <FaPhoneAlt />
-              +91-9136036603
+              {windowWidth > 450 && "+91-9136036603"}
             </span>
           ) : (
             path != "/login" && (
@@ -944,7 +964,7 @@ const Navbar = () => {
 
               <span className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center ">
                 <FaPhoneAlt />
-                +91-9136036603
+                {windowWidth > 450 && "+91-9136036603"}
               </span>
             )
           )}

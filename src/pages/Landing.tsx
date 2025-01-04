@@ -112,6 +112,7 @@ function Landing() {
   return (
     <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
       <div className="fixed top-0 left-0 right-0 z-50">
+        {/* <div className=""> */}
         <Navbar />
       </div>
 

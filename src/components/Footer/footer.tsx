@@ -3,8 +3,21 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { logo } from "../../utils/Landing/Landing";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa"; // Import icons for contact details
+import { useState, useEffect } from "react";
 
 const Footer = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-8 px-5 ">
       {/* <div className="container mx-auto max-h-9 px-6 lg:px-16"> */}
@@ -12,18 +25,27 @@ const Footer = () => {
         {/* 3-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Logo and Description */}
-          <div className="space-y-2">
+          <div className="space-y-2 ">
             <img
               src={logo}
               alt="603 The Coworking Space"
-              className="h-16 md:h-20 w-auto"
+              // className="h-16 md:h-20 w-auto"
+              className="h-16 md:h-8 w-auto"
             />
-            <p className="text-sm  text-justify">
-              Elevate your work experience with 603 The Coworking Space. Whether
-              you’re looking for a creative hub, a place to meet clients, or a
-              supportive community, we have it all. Join us and unlock your full
-              potential in an environment designed for success.
-            </p>
+            {windowWidth > 450 ? (
+              <p className="text-sm  text-justify">
+                Elevate your work experience with 603 The Coworking Space.
+                Whether you’re looking for a creative hub, a place to meet
+                clients, or a supportive community, we have it all. Join us and
+                unlock your full potential in an environment designed for
+                success.
+              </p>
+            ) : (
+              <p className="text-sm  text-justify">
+                Unlock your potential at 603 ,your hub for creativity, client
+                meetings, and a supportive community. Join us for success!
+              </p>
+            )}
           </div>
 
           {/* Links Section */}
