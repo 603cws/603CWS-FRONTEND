@@ -40,6 +40,8 @@ function Landing() {
   const [popup, setpopup] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
   const [requestTour, setRequestTour] = useState<boolean>(false);
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const PORT = "https://603-bcakend-new.vercel.app";
 
   const [formData, setFormData] = useState({
@@ -80,9 +82,13 @@ function Landing() {
   const navigate = useNavigate();
 
   const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     console.log(formData);
 
-    e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+
     try {
       const res = await axios.post(
         `${PORT}/api/v1/users/requestTour`,
@@ -101,12 +107,15 @@ function Landing() {
         location: "",
         intrestedIn: "",
       });
-      setRequestTour(false);
       toast.success(
         "Your Request has been Received,we will shortly contact you"
       );
+      setRequestTour(() => false);
     } catch (error) {
       console.error(error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -202,7 +211,7 @@ function Landing() {
         </p>
         <form
           className=" capitalize grid grid-cols-2 gap-8 m-4"
-          onSubmit={handleFormSubmit}
+          // onSubmit={handleFormSubmit}
         >
           <div className="col-span-2 ">
             <input
@@ -280,10 +289,37 @@ function Landing() {
             </select>
           </div>
           <button
-            type="submit"
+            // type="submit"
+            onClick={handleFormSubmit}
+            disabled={isSubmitting}
             className="col-span-2 text-center button text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
           >
-            Get in Touch
+            {isSubmitting ? (
+              <div className="spinner">
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+                  ></path>
+                </svg>
+              </div>
+            ) : (
+              "Get In Touch"
+            )}
           </button>
         </form>
       </Modal>

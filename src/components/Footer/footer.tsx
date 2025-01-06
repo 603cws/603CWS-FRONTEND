@@ -30,7 +30,7 @@ const Footer = () => {
               src={logo}
               alt="603 The Coworking Space"
               // className="h-16 md:h-20 w-auto"
-              className="h-16 md:h-8 w-auto"
+              // className="h-16 md:h-8 w-auto"
             />
             {windowWidth > 450 ? (
               <p className="text-sm  text-justify">

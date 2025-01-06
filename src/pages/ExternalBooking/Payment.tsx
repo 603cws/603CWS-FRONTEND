@@ -223,7 +223,6 @@ const Payment: React.FC = () => {
   //   dayPasses,
   //   discountPercentage
   // );
-
   //handle phonepe payment
 
   const handlePayment = async () => {

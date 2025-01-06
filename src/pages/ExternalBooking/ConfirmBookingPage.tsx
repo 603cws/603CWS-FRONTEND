@@ -182,7 +182,7 @@ const ConfirmPayment = () => {
     dayPasses.reduce((total, dayPass) => total + dayPass.price, 0);
 
   const [cartTotal, setCartTotal] = useState(totalBill);
-  const [selectedLocation, setselectedLocation] = useState<string>("");
+  const [selectedLocation,  setselectedLocation] = useState<string>("");
   const [spacetype, setspacetype] = useState<string>("");
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
@@ -764,7 +764,7 @@ const ConfirmPayment = () => {
                             className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                             onClick={() => {
                               setshowcalenderconfroom(false),
-                                setshowcalenderdaypass(false);
+                              setshowcalenderdaypass(false);
                               setshowcalendermeetroom(false);
                               addNewBooking({
                                 spaceName: selectedLocation,
