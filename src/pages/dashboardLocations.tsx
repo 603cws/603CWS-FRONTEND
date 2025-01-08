@@ -9,6 +9,8 @@ import { locationsfornewDashboard } from "./AllLocationsDetails";
 import { useApp } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { CiCirclePlus } from "react-icons/ci";
+import { CiCircleMinus } from "react-icons/ci";
 
 interface LocationProps {
   value: {
@@ -98,6 +100,8 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   const [availableStartTimes, setAvailableStartTimes] = useState<string[]>([]);
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const [quantity, setQuantity] = useState(1);
   // const [selectedCity, setSelectedCity] = useState<string>("All");
   // const navigate = useNavigate();
   const { selectedCity, spacetype } = value;
@@ -135,6 +139,19 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   //calender
   const { bookDayPass, addNewBooking, dayPasses, bookings } = useApp();
+
+  const handledecQuan = () => {
+    if (quantity <= 1) return;
+    setQuantity(() => quantity - 1);
+  };
+
+  //handle inc
+  const handleincQuan = () => {
+    if (quantity >= 20) return;
+    setQuantity(() => quantity + 1);
+  };
+
+  //handle daypass for checking
 
   useEffect(() => {
     console.log("Updated dayPasses:", dayPasses);
@@ -578,6 +595,39 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   //   setselectedLocation(location.name);
   // };
 
+  const handleAddDaypass = async () => {
+    try {
+      const res = await axios.post(
+        `${PORT}/api/v1/daypass/daypassCheck`,
+        {
+          spaceName: selectedLocation,
+          quantity,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+
+      if (res.status === 200) {
+        bookDayPass({
+          price: likelyprice * quantity,
+          spaceName: selectedLocation,
+          bookeddate: selectedDate,
+          day: selectedDay || 0,
+          month: currentMonth + 1,
+          year: currentYear,
+          quantity: quantity,
+        });
+        console.log(dayPasses);
+        navigate("/payment");
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("daypass not available");
+    }
+  };
+
   return (
     <div className="font-sans bg-gray-50  overflow-x-hidden">
       {/* <header className="bg-white shadow-lg z-50 fixed w-full top-0">
@@ -652,6 +702,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                           setSelectedLocationIndex(locationIndex);
                           setselectedLocation(location.spacetypename);
                           setDetailedLocation(location);
+                          setQuantity(1);
                         }}
                         className={`text-black hover:underline font-bold hover:cursor-pointer btn bg-yellow-500 hover:bg-yellow-500 ${
                           selectedLocationIndex === locationIndex && "hidden"
@@ -897,7 +948,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                 </div>
                               ))}
                             </div>
-                            <div className="w-full flex justify-center">
+                            <div className="w-full flex justify-center gap-4">
                               <input
                                 type="text"
                                 className="flex justify-center w-32 bg-yellow-200 px-3 py-2 rounded-md shadow-lg border-gray-200"
@@ -905,31 +956,48 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                   selectedDay ? selectedDate : "Select Date"
                                 }
                               />
+
+                              <div className="mx-4 flex justify-around mt-2 gap-4">
+                                {/* btn for dec */}
+                                <button onClick={handledecQuan}>
+                                  <CiCircleMinus size={30} />
+                                </button>
+                                {/* display no */}
+                                <div className="w-[20px] border-2 rounded-xl px-8 text-center">
+                                  {quantity}
+                                </div>
+                                {/* inc btn */}
+                                <button onClick={handleincQuan}>
+                                  <CiCirclePlus size={30} />
+                                </button>
+                              </div>
                             </div>
 
-                            {enabledaypasstime && (
+                            {enabledaypasstime && selectedDay && (
                               <>
                                 <button
                                   className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
-                                  onClick={() => {
-                                    bookDayPass({
-                                      price: likelyprice,
-                                      spaceName: selectedLocation,
-                                      bookeddate: selectedDate,
-                                      day: selectedDay || 0,
-                                      month: currentMonth + 1,
-                                      year: currentYear,
-                                    });
-                                    // setshowcalenderconfroom(false);
-                                    // setshowcalenderdaypass(false);
-                                    // setshowcalendermeetroom(false);
-                                    navigate("/payment");
-                                    console.log(dayPasses);
-                                  }}
+                                  // onClick={() => {
+                                  //   bookDayPass({
+                                  //     price: likelyprice * quantity,
+                                  //     spaceName: selectedLocation,
+                                  //     bookeddate: selectedDate,
+                                  //     day: selectedDay || 0,
+                                  //     month: currentMonth + 1,
+                                  //     year: currentYear,
+                                  //     quantity: quantity,
+                                  //   });
+                                  //   // setshowcalenderconfroom(false);
+                                  //   // setshowcalenderdaypass(false);
+                                  //   // setshowcalendermeetroom(false);
+                                  //   navigate("/payment");
+                                  //   console.log(dayPasses);
+                                  // }}
+                                  onClick={handleAddDaypass}
                                 >
                                   Add{" "}
                                   <span className="text-white font-extrabold">
-                                    ₹{likelyprice}
+                                    ₹{likelyprice * quantity}
                                   </span>
                                 </button>
                                 {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">

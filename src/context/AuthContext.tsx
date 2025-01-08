@@ -71,6 +71,7 @@ interface DayPassInterface {
   day: number;
   month: number;
   year: number;
+  quantity?: number;
 }
 
 interface AppContextType {

@@ -340,6 +340,12 @@ const Payment: React.FC = () => {
                 <FaMoneyBillAlt className="inline-block mr-2" /> Price: ₹
                 {dayPass.price.toFixed(2)}
               </div>
+              {dayPass.quantity && (
+                <div className="text-gray-600 font-semibold">
+                  <FaMoneyBillAlt className="inline-block mr-2" /> Quantity :
+                  {dayPass.quantity}
+                </div>
+              )}
               {/* Delete Button */}
               <button
                 onClick={() => handleRemoveDayPass(dayPass)}

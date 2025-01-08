@@ -12,6 +12,8 @@ import {
 import { locations } from "../AllLocationsDetails";
 import axios from "axios";
 import { useApp } from "../../context/AuthContext";
+import { CiCirclePlus } from "react-icons/ci";
+import { CiCircleMinus } from "react-icons/ci";
 
 type Location = {
   name: string;
@@ -51,6 +53,8 @@ const PORT = `https://603-bcakend-new.vercel.app`;
 
 const ConfirmPayment = () => {
   const { addNewBooking, bookDayPass, dayPasses, bookings } = useApp();
+
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     console.log("Updated dayPasses:", dayPasses);
@@ -154,6 +158,52 @@ const ConfirmPayment = () => {
     undefined
   );
 
+  const handledecQuan = () => {
+    if (quantity <= 1) return;
+    setQuantity(() => quantity - 1);
+  };
+
+  //handle inc
+  const handleincQuan = () => {
+    if (quantity >= 20) return;
+    setQuantity(() => quantity + 1);
+  };
+
+  const handleAddDaypass = async () => {
+    try {
+      const res = await axios.post(
+        `${PORT}/api/v1/daypass/daypassCheck`,
+        {
+          spaceName: selectedLocation,
+          quantity,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res);
+
+      if (res.status === 200) {
+        bookDayPass({
+          price: locationDetails?.daypass! * quantity,
+          spaceName: selectedLocation,
+          bookeddate: selectedDate,
+          day: selectedDay || 0,
+          month: currentMonth + 1,
+          year: currentYear,
+          quantity: quantity,
+        });
+        setshowcalenderconfroom(false);
+        setshowcalenderdaypass(false);
+        setshowcalendermeetroom(false);
+        console.log(dayPasses);
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("daypass not available");
+    }
+  };
+
   useEffect(() => {
     const path = window.location.pathname;
     const location = path.split("/")[2];
@@ -182,7 +232,7 @@ const ConfirmPayment = () => {
     dayPasses.reduce((total, dayPass) => total + dayPass.price, 0);
 
   const [cartTotal, setCartTotal] = useState(totalBill);
-  const [selectedLocation,  setselectedLocation] = useState<string>("");
+  const [selectedLocation, setselectedLocation] = useState<string>("");
   const [spacetype, setspacetype] = useState<string>("");
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
@@ -203,6 +253,8 @@ const ConfirmPayment = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   // const [coupon, setCoupon] = useState("");
+
+  //daypass price manipulation based on quantity
 
   useEffect(() => {
     setCartTotal(
@@ -764,7 +816,7 @@ const ConfirmPayment = () => {
                             className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                             onClick={() => {
                               setshowcalenderconfroom(false),
-                              setshowcalenderdaypass(false);
+                                setshowcalenderdaypass(false);
                               setshowcalendermeetroom(false);
                               addNewBooking({
                                 spaceName: selectedLocation,
@@ -1056,36 +1108,53 @@ const ConfirmPayment = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="w-full flex justify-center">
+                  <div className="w-full flex justify-center gap-4">
                     <input
                       type="text"
                       className="flex justify-center w-32 bg-yellow-200 px-3 py-2 rounded-md shadow-lg border-gray-200"
                       value={selectedDay ? selectedDate : "Select Date"}
                     />
+                    {/* counter */}
+                    <div className=" flex justify-around mt-2 gap-4">
+                      {/* btn for dec */}
+                      <button onClick={handledecQuan}>
+                        <CiCircleMinus size={30} />
+                      </button>
+                      {/* display no */}
+                      <div className="w-[20px] border-2 rounded-xl px-8 text-center">
+                        {quantity}
+                      </div>
+                      {/* inc btn */}
+                      <button onClick={handleincQuan}>
+                        <CiCirclePlus size={30} />
+                      </button>
+                    </div>
                   </div>
 
                   {enabledaypasstime && (
                     <>
                       <button
                         className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
-                        onClick={() => {
-                          bookDayPass({
-                            price: locationDetails?.daypass,
-                            spaceName: selectedLocation,
-                            bookeddate: selectedDate,
-                            day: selectedDay || 0,
-                            month: currentMonth + 1,
-                            year: currentYear,
-                          });
-                          setshowcalenderconfroom(false);
-                          setshowcalenderdaypass(false);
-                          setshowcalendermeetroom(false);
-                          console.log(dayPasses);
-                        }}
+                        // onClick={() => {
+                        //   bookDayPass({
+                        //     price: locationDetails?.daypass * quantity,
+                        //     spaceName: selectedLocation,
+                        //     bookeddate: selectedDate,
+                        //     day: selectedDay || 0,
+                        //     month: currentMonth + 1,
+                        //     year: currentYear,
+                        //     quantity: quantity,
+                        //   });
+                        //   setshowcalenderconfroom(false);
+                        //   setshowcalenderdaypass(false);
+                        //   setshowcalendermeetroom(false);
+                        //   console.log(dayPasses);
+                        // }}
+                        onClick={handleAddDaypass}
                       >
                         Add{" "}
                         <span className="text-white font-extrabold">
-                          ₹{locationDetails?.daypass}
+                          ₹{locationDetails?.daypass * quantity}
                         </span>
                       </button>
                       {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">

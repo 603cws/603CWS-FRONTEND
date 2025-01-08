@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface DayPassInterface {
   price: number;
@@ -7,6 +7,7 @@ export interface DayPassInterface {
   day: number;
   month: number;
   year: number;
+  quantity?: number;
 }
 
 export interface DayPassState {
@@ -18,7 +19,7 @@ const initialState: DayPassState = {
 };
 
 const dayPassesSlice = createSlice({
-  name: 'dayPasses',
+  name: "dayPasses",
   initialState,
   reducers: {
     addDayPass(state, action: PayloadAction<DayPassInterface>) {
@@ -42,5 +43,6 @@ const dayPassesSlice = createSlice({
   },
 });
 
-export const { addDayPass, setDayPasses, removeDayPass } = dayPassesSlice.actions;
+export const { addDayPass, setDayPasses, removeDayPass } =
+  dayPassesSlice.actions;
 export default dayPassesSlice.reducer;
