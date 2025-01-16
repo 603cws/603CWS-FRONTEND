@@ -42,10 +42,10 @@ const Webpage = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-            Lawers Chamber ,Fort
+            Lawyers Chamber ,Fort
           </h1>
           <p className="text-lg text-gray-200 mt-4">
-            603 The Co Working Space, Lawers Chamber
+            603 The Co Working Space, Lawyers Chamber
           </p>
         </div>
       </section>
