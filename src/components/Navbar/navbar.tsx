@@ -278,6 +278,16 @@ const Navbar = () => {
                           Classic Pentagon
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Lawyers-Chamber");
+                          }}
+                        >
+                          Lawyers Chamber
+                        </button>
+                      </li>
                     </ul>
                   </li>
                   <li
@@ -686,6 +696,16 @@ const Navbar = () => {
                           }}
                         >
                           Classic Pentagon
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
+                        <button
+                          // className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Lawyers-Chamber");
+                          }}
+                        >
+                          Lawyers Chamber
                         </button>
                       </li>
                     </ul>

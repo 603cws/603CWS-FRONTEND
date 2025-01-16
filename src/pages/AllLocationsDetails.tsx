@@ -278,6 +278,23 @@ export const locations: { city: string; locations: Location[] }[] = [
         meetingrooms: ["Pentagon Meeting Room"],
         daypasses: ["Pentagon Day Pass"],
       },
+      {
+        name: "Fort - Lawers Chamber",
+        address:
+          "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
+        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1200,
+        conferenceroom: 0,
+        daypass: 899,
+        membership: {},
+        enablebooking: false,
+        conferencerooms: ["Lawers Chamber Conference Room"],
+        meetingrooms: ["Lawyers Chamber Meeting Room"],
+        daypasses: ["Lawyers Chamber Day Pass"],
+      },
     ],
   },
   {
@@ -679,6 +696,25 @@ export const locationsfornewDashboard: {
         meetingrooms: ["Pentagon Meeting Room"],
         daypasses: ["Pentagon Day Pass"],
         spacetypename: "Pentagon Meeting Room",
+      },
+      {
+        name: "Fort - Lawers Chamber",
+        address:
+          "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
+        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1200,
+        spacetypeprice: 1200,
+        conferenceroom: 0,
+        daypass: 899,
+        membership: {},
+        enablebooking: false,
+        conferencerooms: ["Lawers Chamber Conference Room"],
+        meetingrooms: ["Lawyers Chamber Meeting Room"],
+        daypasses: ["Lawyers Chamber Day Pass"],
+        spacetypename: "Lawyers Chamber Meeting Room",
       },
     ],
   },
@@ -1181,6 +1217,25 @@ export const locationsfornewDashboard: {
         meetingrooms: ["Pentagon Meeting Room"],
         daypasses: ["Pentagon Day Pass"],
         spacetypename: "Pentagon Day Pass",
+      },
+      {
+        name: "Fort - Lawers Chamber",
+        address:
+          "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
+        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1200,
+        spacetypeprice: 899,
+        conferenceroom: 0,
+        daypass: 899,
+        membership: {},
+        enablebooking: false,
+        conferencerooms: ["Lawers Chamber Conference Room"],
+        meetingrooms: ["Lawyers Chamber Meeting Room"],
+        daypasses: ["Lawyers Chamber Day Pass"],
+        spacetypename: "Lawyers Chamber Day Pass",
       },
     ],
   },

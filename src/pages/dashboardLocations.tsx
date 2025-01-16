@@ -11,6 +11,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 interface LocationProps {
   value: {
@@ -622,9 +623,14 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
         console.log(dayPasses);
         navigate("/payment");
       }
+
+      if (res.status === 400) {
+        toast.error("daypass not available for Today at selected location ");
+      }
     } catch (error) {
       console.log(error);
       console.log("daypass not available");
+      toast.error("daypass not available for Today at  selected location");
     }
   };
 

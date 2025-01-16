@@ -14,6 +14,7 @@ import axios from "axios";
 import { useApp } from "../../context/AuthContext";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 type Location = {
   name: string;
@@ -198,9 +199,14 @@ const ConfirmPayment = () => {
         setshowcalendermeetroom(false);
         console.log(dayPasses);
       }
+
+      if (res.status === 400) {
+        toast.error("daypass not available for Today at selected location ");
+      }
     } catch (error) {
       console.log(error);
       console.log("daypass not available");
+      toast.error("daypass not available for Today at selected location ");
     }
   };
 

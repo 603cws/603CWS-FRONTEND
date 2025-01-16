@@ -50,6 +50,8 @@ import ConfirmPayment from "./pages/ExternalBooking/ConfirmBookingPage";
 import Payment from "./pages/ExternalBooking/Payment";
 import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 import Pentagon from "./components/locations/Mumbai/Pentagon";
+
+import Fort from "./components/locations/Mumbai/lawyers-Chamber";
 // import CreateUserModal from "./pages/Admin/createusermodal";
 import RegisterUser from "./pages/Admin/RegisterUser";
 import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout";
@@ -189,6 +191,7 @@ function App() {
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
             <Route path="/locations/Pentagon-Classic" element={<Pentagon />} />
+            <Route path="/locations/Lawyers-Chamber" element={<Fort />} />
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}
@@ -262,6 +265,7 @@ function App() {
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
+            <Route path="/locations/Lawyers-Chamber" element={<Fort />} />
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
