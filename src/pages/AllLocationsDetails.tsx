@@ -279,7 +279,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         daypasses: ["Pentagon Day Pass"],
       },
       {
-        name: "Fort - Lawers Chamber",
+        name: "Fort - Lawyers Chamber",
         address:
           "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
         imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
@@ -291,7 +291,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         daypass: 899,
         membership: {},
         enablebooking: false,
-        conferencerooms: ["Lawers Chamber Conference Room"],
+        conferencerooms: ["Lawyers Chamber Conference Room"],
         meetingrooms: ["Lawyers Chamber Meeting Room"],
         daypasses: ["Lawyers Chamber Day Pass"],
       },
@@ -698,7 +698,7 @@ export const locationsfornewDashboard: {
         spacetypename: "Pentagon Meeting Room",
       },
       {
-        name: "Fort - Lawers Chamber",
+        name: "Fort - Lawyers Chamber",
         address:
           "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
         imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
@@ -711,7 +711,7 @@ export const locationsfornewDashboard: {
         daypass: 899,
         membership: {},
         enablebooking: false,
-        conferencerooms: ["Lawers Chamber Conference Room"],
+        conferencerooms: ["Lawyers Chamber Conference Room"],
         meetingrooms: ["Lawyers Chamber Meeting Room"],
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Lawyers Chamber Meeting Room",
@@ -1219,7 +1219,7 @@ export const locationsfornewDashboard: {
         spacetypename: "Pentagon Day Pass",
       },
       {
-        name: "Fort - Lawers Chamber",
+        name: "Fort - Lawyers Chamber",
         address:
           "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
         imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
@@ -1232,7 +1232,7 @@ export const locationsfornewDashboard: {
         daypass: 899,
         membership: {},
         enablebooking: false,
-        conferencerooms: ["Lawers Chamber Conference Room"],
+        conferencerooms: ["Lawyers Chamber Conference Room"],
         meetingrooms: ["Lawyers Chamber Meeting Room"],
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Lawyers Chamber Day Pass",

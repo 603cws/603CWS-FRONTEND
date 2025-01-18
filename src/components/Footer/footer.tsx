@@ -134,7 +134,7 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className=" font-semibold text-base">Get in Touch</h3>
             <div className="flex flex-col space-y-2 text-sm">
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <FaEnvelope className="text-yellow-400" />
                 <a
                   href="mailto:finance@603thecoworkingspace.com"
@@ -142,7 +142,7 @@ const Footer = () => {
                 >
                   finance@603thecoworkingspace.com
                 </a>
-              </div>
+              </div> */}
               <div className="flex items-center gap-2">
                 <FaEnvelope className="text-yellow-400" />
                 <a
@@ -152,10 +152,16 @@ const Footer = () => {
                   sales@603thecoworkingspace.com
                 </a>
               </div>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <FaPhoneAlt className="text-yellow-400" />
                 <a href="tel:+919321638143" className="hover:text-yellow-500">
                   +919321638143 /+919136036603
+                </a>
+              </div> */}
+              <div className="flex items-center gap-2">
+                <FaPhoneAlt className="text-yellow-400" />
+                <a href="tel:+919136036603" className="hover:text-yellow-500">
+                  +919136036603
                 </a>
               </div>
               <div className="text-gray-400">
