@@ -16,6 +16,7 @@ import Partner from "./pages/Partner";
 import Profile from "./components/Myprofile/Myprofile";
 import Matulya from "./components/locations/Mumbai/Matulya-Centre";
 import KarjatVilla from "./components/locations/Mumbai/karjat-villa";
+import Interior from "./pages/603Interior";
 import Sunmill from "./components/locations/Mumbai/Sun-Mill-Compound";
 import Kamala from "./components/locations/Mumbai/Kamala-Mills";
 import Sunshine from "./components/locations/Mumbai/Sunshine-Tower";
@@ -185,6 +186,7 @@ function App() {
             <Route path="/partner-with-us" element={<Partner />} />
             <Route path="/locations/Matulya-Centre" element={<Matulya />} />
             <Route path="/603villa" element={<KarjatVilla />} />
+            <Route path="/603Interior" element={<Interior />} />
             <Route path="/locations/Sun-Mill-Compound" element={<Sunmill />} />
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
@@ -258,6 +260,7 @@ function App() {
             <Route path="/admin/edituser/:id" element={<Login />} />
             <Route path="/partner-with-us" element={<Partner />} />
             <Route path="/603villa" element={<KarjatVilla />} />
+            <Route path="/603Interior" element={<Interior />} />
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
             {/*<Route path="/locations/Diamond-District" element={<Diamond />} />*/}

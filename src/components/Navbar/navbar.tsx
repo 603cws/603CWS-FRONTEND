@@ -536,6 +536,16 @@ const Navbar = () => {
                   603 Villas
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => {
+                    navigate("/603Interior");
+                  }}
+                  className="hover:underline"
+                >
+                  603 Interior
+                </button>
+              </li>
             </ul>
           </div>
           <button
@@ -951,6 +961,17 @@ const Navbar = () => {
                 className="font-bold hover:underline "
               >
                 603 Villas
+              </button>
+              <span className="absolute -top-2  text-red-500">New</span>
+            </li>
+            <li className="relative pl-5">
+              <button
+                onClick={() => {
+                  navigate("/603Interior");
+                }}
+                className="font-bold hover:underline "
+              >
+                603 Interior
               </button>
               <span className="absolute -top-2  text-red-500">New</span>
             </li>
