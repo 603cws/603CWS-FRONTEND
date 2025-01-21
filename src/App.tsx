@@ -94,6 +94,7 @@ function App() {
     "/booknow",
     "/career",
     "/RegisterUser",
+    "/603Interior",
   ];
 
   const matchDynamicRoute = (route: any, path: any) => {

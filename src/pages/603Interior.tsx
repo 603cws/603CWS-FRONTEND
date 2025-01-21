@@ -20,6 +20,14 @@ const Webpage = () => {
 
   const PORT = "https://603-bcakend-new.vercel.app";
 
+  const handleButtonClick = () => {
+    window.open(
+      "https://603-interior.vercel.app/",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   const handleformSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     try {
       event.preventDefault();
@@ -206,7 +214,10 @@ const Webpage = () => {
               />
             </div>
             <div className="flex-1 flex justify-center items-center">
-              <button className="bg-[#f4f4f4] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase hover:bg-[#F2C66D]">
+              <button
+                onClick={handleButtonClick}
+                className="bg-[#f4f4f4] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase hover:bg-[#F2C66D]"
+              >
                 visit 603 Interior
               </button>
             </div>
