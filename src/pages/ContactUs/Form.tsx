@@ -18,6 +18,7 @@ const ContactUs = () => {
     requirements: "", // New field for requirements
   });
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -36,13 +37,14 @@ const ContactUs = () => {
     try {
       setloading(true);
       setIsPopupVisible(true);
+      setIsDisabled(true);
       const resp = await axios.post(
         `${PORT}/api/v1/users/contactus`,
         formData,
         { withCredentials: true }
       );
       setloading(false);
-      toast.success("Request for callback submitted")
+      toast.success("Request for callback submitted");
       console.log(resp);
       console.log(formData);
       setFormData({
@@ -57,17 +59,19 @@ const ContactUs = () => {
       });
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setIsDisabled(false);
     }
   };
 
-  const isDisabled =
-    !formData.name ||
-    !formData.phone ||
-    !formData.email ||
-    !formData.location ||
-    !formData.seats ||
-    !formData.company ||
-    !formData.requirements;
+  // const isDisabled =
+  //   !formData.name ||
+  //   !formData.phone ||
+  //   !formData.email ||
+  //   !formData.location ||
+  //   !formData.seats ||
+  //   !formData.company ||
+  //   !formData.requirements;
 
   return (
     <div className="bg-white w-full max-w-2xl mx-auto p-8 rounded-lg shadow-md mb-12">
@@ -143,7 +147,14 @@ const ContactUs = () => {
             Preferred Location*
           </label>
 
-          <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow-500">
+          <select
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow-500"
+            required
+          >
             <option value="">SELECT A LOCATION</option>
             <option value="AHMEDABAD">AHMEDBAD</option>
             <option value="ANDHERI EAST">ANDHERI EAST</option>
