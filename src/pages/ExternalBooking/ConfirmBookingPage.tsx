@@ -91,6 +91,7 @@ const ConfirmPayment = () => {
     "8:00 pm",
     "8:30 pm",
     "9:00 pm",
+    "10:00 pm",
   ];
 
   const times2 = [
@@ -119,6 +120,7 @@ const ConfirmPayment = () => {
     "8:00 pm",
     "8:30 pm",
     "9:00 pm",
+    "10:00 pm",
   ];
 
   const getTimeInMinutes = (timeStr: string): number => {
