@@ -258,7 +258,7 @@ const Navbar = () => {
                       </li>
                        */}
 
-                      <li className="py-2 hover:text-yellow-500">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
                           onClick={() => {
@@ -268,24 +268,24 @@ const Navbar = () => {
                           Pinnacle Corporate Park, BKC
                         </button>
                       </li>
-                      <li className="py-2 hover:text-yellow-500">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
                           onClick={() => {
                             navigate("/locations/Pentagon-Classic");
                           }}
                         >
-                          Classic Pentagon
+                          Classic Pentagon,Andheri
                         </button>
                       </li>
-                      <li className="py-2 hover:text-yellow-500">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
                           onClick={() => {
                             navigate("/locations/Lawyers-Chamber");
                           }}
                         >
-                          Lawyers Chamber
+                          Lawyers Chamber,Fort
                         </button>
                       </li>
                     </ul>
@@ -315,7 +315,7 @@ const Navbar = () => {
                           : "opacity-0 invisible"
                       } overflow-y-auto max-h-60`}
                     >
-                      <li className="py-2 hover:text-yellow-500">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
                           onClick={() => {
@@ -690,7 +690,7 @@ const Navbar = () => {
                         </button>
                       </li>
                        */}
-                      <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           onClick={() => {
                             navigate("/locations/Pinnacle-Corporate-Park");
@@ -699,23 +699,23 @@ const Navbar = () => {
                           Pinnacle Corporate Park, BKC
                         </button>
                       </li>
-                      <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           onClick={() => {
                             navigate("/locations/Pentagon-Classic");
                           }}
                         >
-                          Classic Pentagon
+                          Classic Pentagon,Andheri
                         </button>
                       </li>
-                      <li className="py-2 hover:text-yellow-500 border-2 border-transparent">
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
                         <button
                           // className="text-base"
                           onClick={() => {
                             navigate("/locations/Lawyers-Chamber");
                           }}
                         >
-                          Lawyers Chamber
+                          Lawyers Chamber,Fort
                         </button>
                       </li>
                     </ul>
@@ -746,7 +746,7 @@ const Navbar = () => {
                           : "opacity-0 invisible"
                       } overflow-y-auto max-h-96`}
                     >
-                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
+                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           onClick={() => {
                             navigate("/locations/Millenium-Business-Park");

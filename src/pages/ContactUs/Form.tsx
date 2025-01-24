@@ -165,6 +165,7 @@ const ContactUs = () => {
             <option value="NAVI MUMBAI GHANSOLI">NAVI MUMBAI GHANSOLI</option>
             <option value="SUNSHINE TOWER DADAR">SUNSHINE TOWER DADAR</option>
             <option value="THANE">THANE</option>
+            <option value="FORT">FORT</option>
             <option value="OTHER">OTHER</option>
           </select>
         </div>
@@ -228,6 +229,7 @@ const ContactUs = () => {
             </option>
             <option value="conference room">Conference Room</option>
             <option value="meeting room">Meeting Room</option>
+            <option value="meeting room">Interior Designing Services</option>
           </select>
         </div>
         <div>

@@ -174,6 +174,7 @@ const ConfirmPayment = () => {
 
   const handleAddDaypass = async () => {
     try {
+      setIsSubmitting(true);
       const res = await axios.post(
         `${PORT}/api/v1/daypass/daypassCheck`,
         {
@@ -202,13 +203,20 @@ const ConfirmPayment = () => {
         console.log(dayPasses);
       }
 
-      if (res.status === 400) {
-        toast.error("daypass not available for Today at selected location ");
-      }
-    } catch (error) {
+      // if (res.status === 400) {
+      //   toast.error(
+      //     `${res.data.availabledaypass} ${res.data.quantity}daypass not available for Today at selected location `
+      //   );
+      // }
+    } catch (error: any) {
       console.log(error);
       console.log("daypass not available");
-      toast.error("daypass not available for Today at selected location ");
+      // toast.error("daypass not available for Today at selected location ");
+      toast.error(
+        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -259,6 +267,8 @@ const ConfirmPayment = () => {
   const [availableStartTimes, setAvailableStartTimes] = useState<string[]>([]);
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // const [coupon, setCoupon] = useState("");
 
@@ -1141,7 +1151,7 @@ const ConfirmPayment = () => {
 
                   {enabledaypasstime && (
                     <>
-                      <button
+                      {/* <button
                         className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                         // onClick={() => {
                         //   bookDayPass({
@@ -1164,6 +1174,39 @@ const ConfirmPayment = () => {
                         <span className="text-white font-extrabold">
                           ₹{locationDetails?.daypass * quantity}
                         </span>
+                      </button> */}
+                      <button
+                        // type="submit"
+                        onClick={handleAddDaypass}
+                        disabled={isSubmitting}
+                        className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
+                      >
+                        {isSubmitting ? (
+                          <div className="spinner flex justify-center items-center">
+                            <svg
+                              className="animate-spin h-5 w-5 text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              ></circle>
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+                              ></path>
+                            </svg>
+                          </div>
+                        ) : (
+                          "Add"
+                        )}
                       </button>
                       {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                         "Please note that an 18% GST will be applied to the

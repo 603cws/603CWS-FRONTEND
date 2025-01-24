@@ -61,7 +61,7 @@ interface UserDetails {
   location: string;
   credits?: number;
   createdAt?: Date;
-  member: boolean;
+  member?: boolean;
 }
 
 interface DayPassInterface {

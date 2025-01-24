@@ -112,6 +112,8 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   // };
   // console.log(spacetype);
 
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   let navigate = useNavigate();
 
   const likelyprice = detailedLocation?.spacetypeprice || 0;
@@ -600,6 +602,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   const handleAddDaypass = async () => {
     try {
+      setIsSubmitting(true);
       const res = await axios.post(
         `${PORT}/api/v1/daypass/daypassCheck`,
         {
@@ -629,10 +632,14 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
       if (res.status === 400) {
         toast.error("daypass not available for Today at selected location ");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
       console.log("daypass not available");
-      toast.error("daypass not available for Today at  selected location");
+      toast.error(
+        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -865,11 +872,31 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                           navigate("/payment");
                                         }}
                                       >
+                                        <span className="text-white font-extrabold">
+                                          Add ₹{baseprice}
+                                        </span>
+                                      </button>
+                                      {/* <button
+                                        className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
+                                        onClick={() => {
+                                          // setshowcalenderconfroom(false),
+                                          // setshowcalenderdaypass(false);
+                                          // setshowcalendermeetroom(false);
+                                          addNewBooking({
+                                            spaceName: selectedLocation,
+                                            startTime: selectedStartTime,
+                                            endTime: selectedEndTime,
+                                            date: selectedDate,
+                                            price: baseprice,
+                                          });
+                                          navigate("/payment");
+                                        }}
+                                      >
                                         Add{" "}
                                         <span className="text-white font-extrabold">
                                           ₹{baseprice}
                                         </span>
-                                      </button>
+                                      </button> */}
                                       <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                                         "Please note that an 18% GST will be
                                         applied to the booking amount during the
@@ -983,7 +1010,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
                             {enabledaypasstime && selectedDay && (
                               <>
-                                <button
+                                {/* <button
                                   className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                                   // onClick={() => {
                                   //   bookDayPass({
@@ -1007,6 +1034,43 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                   <span className="text-white font-extrabold">
                                     ₹{likelyprice * quantity}
                                   </span>
+                                </button> */}
+                                <button
+                                  // type="submit"
+                                  onClick={handleAddDaypass}
+                                  disabled={isSubmitting}
+                                  className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
+                                >
+                                  {isSubmitting ? (
+                                    <div className="spinner flex justify-center items-center">
+                                      <svg
+                                        className="animate-spin h-5 w-5 text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <circle
+                                          className="opacity-25"
+                                          cx="12"
+                                          cy="12"
+                                          r="10"
+                                          stroke="currentColor"
+                                          strokeWidth="4"
+                                        ></circle>
+                                        <path
+                                          className="opacity-75"
+                                          fill="currentColor"
+                                          d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                  ) : (
+                                    <>
+                                      <span className="text-white font-extrabold">
+                                        Add ₹{likelyprice * quantity}
+                                      </span>
+                                    </>
+                                  )}
                                 </button>
                                 {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                         "Please note that an 18% GST will be applied to the

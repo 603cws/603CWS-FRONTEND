@@ -14,6 +14,8 @@ import {
 import { useState } from "react";
 import ImageCarousel from "../../LocationCarousal/LocationCarousal";
 
+import { useNavigate } from "react-router-dom";
+
 const Webpage = () => {
   const images = [
     "/officeimg/Fort/Fort1.jpeg",
@@ -24,6 +26,9 @@ const Webpage = () => {
   const [source] = useState(
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.967975681942!2d72.83315967497366!3d18.93281158224242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1db3d654c9b%3A0xde8247f7a6a611c7!2sKaiser-E-Hind%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1737014183093!5m2!1sen!2sin"
   );
+
+  const name = "Fort - Lawyers Chamber";
+  const navigate = useNavigate();
 
   return (
     <div className="font-sans">
@@ -60,6 +65,15 @@ const Webpage = () => {
             buttonColor="bg-yellow-600"
             buttonHoverColor="bg-blue-900"
           />
+          <div className="pt-5">
+            <button
+              className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
+              onClick={() => navigate(`/booknow/${name.replace(/\s/g, "_")}`)}
+              // onClick={() => navigate("/")}
+            >
+              Book Now
+            </button>
+          </div>
         </div>
 
         <div className="2xl:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">

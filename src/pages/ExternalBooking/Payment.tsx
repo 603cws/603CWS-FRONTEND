@@ -53,6 +53,8 @@ const Payment: React.FC = () => {
     (state: RootState) => state.dayPasses.dayPasses
   );
 
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   // Calculate total price from all bookings and day passes
   let totalBill =
     bookings.reduce(
@@ -254,15 +256,20 @@ const Payment: React.FC = () => {
   };
 
   const handleButtonClick = async () => {
-    if (isAuthenticated) {
-      const notoverlap = await checkOverLap(bookings);
-      if (notoverlap) {
-        handlePayment();
+    try {
+      setIsSubmitting(true);
+      if (isAuthenticated) {
+        const notoverlap = await checkOverLap(bookings);
+        if (notoverlap) {
+          handlePayment();
+        } else {
+          toast.error("you are late someone booked around this slot");
+        }
       } else {
-        toast.error("you are late someone booked around this slot");
+        handleTOLogin();
       }
-    } else {
-      handleTOLogin();
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -435,9 +442,35 @@ const Payment: React.FC = () => {
               // }
               // // isAuthenticated ?  handleRazorpayPayment :
 
+              disabled={isSubmitting}
               onClick={handleButtonClick}
             >
-              Confirm Payment
+              {isSubmitting ? (
+                <div className="spinner flex justify-center items-center">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+                    ></path>
+                  </svg>
+                </div>
+              ) : (
+                "Confirm Payment"
+              )}
             </button>
           )}
         </div>
