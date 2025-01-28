@@ -85,7 +85,7 @@ const Webpage = () => {
       </div>
 
       <div>
-        <section className="flex m-5 p-10">
+        <section className="flex m-5 p-10 gap-10">
           {/* form section */}
           <div className="flex-1">
             <div className="px-10 bg-[#F2C66D] rounded-3xl">
@@ -207,16 +207,60 @@ const Webpage = () => {
           {/* div for gif and text */}
           <div className="flex-1 flex flex-col justify-center items-center gap-3">
             <div>
-              <img
+              {/* <img
                 src="/Chatbot.gif"
                 alt="gif for animation"
                 className="object-contain object-center"
-              />
+              /> */}
+
+              <h2 className="text-center lg:text-3xl sm:text-lg pb-10 uppercase font-semibold">
+                Design Your Dream Office Space
+              </h2>
+
+              <div className="flex justify-center items-center gap-4">
+                {/* 1st icon div */}
+                <div className="flex-1">
+                  <div className="flex justify-center mb-2">
+                    <img src="/image52.png" alt="" className="w-28 h-28" />
+                  </div>
+                  <p className="text-center capitalize">
+                    select your office area
+                  </p>
+                </div>
+                {/* 2nd icon div */}
+                <div className="flex-1">
+                  <div className="flex justify-center mb-2">
+                    <img src="/image51.png" alt="" className="w-28 h-28" />
+                  </div>
+                  <p className="text-center capitalize">
+                    {" "}
+                    customize workspaces
+                  </p>
+                </div>
+                {/* 3rd icon div */}
+                <div className="flex-1">
+                  <div className="flex justify-center mb-2">
+                    <img src="/image53.png" alt="" className="w-28 h-28" />
+                  </div>
+                  <p className="text-center capitalize">
+                    Personalize every detail
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-center pt-10 text-lg">
+                603 Interiors is an online platform that empowers businesses to
+                design and furnish their ideal office spaces. Our intuitive
+                interface guides you through selecting your desired workspace,
+                customizing it with a wide range of furniture, flooring, and
+                finishes, and instantly generates a detailed cost estimate and
+                Bill of Quantities (BOQ).
+              </p>
             </div>
-            <div className="flex-1 flex justify-center items-center">
+            <div className=" flex justify-center items-center mt-5">
               <button
                 onClick={handleButtonClick}
-                className="bg-[#f4f4f4] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase hover:bg-[#F2C66D]"
+                className="bg-[#F2C66D] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase rounded-lg hover:bg-[#1A3A36] hover:text-[#f4f4f4]"
               >
                 visit 603 Interior
               </button>

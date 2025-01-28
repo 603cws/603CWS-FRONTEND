@@ -95,7 +95,7 @@ const Webpage = () => {
 
             <div className="mt-5">
               <button
-                className="px-5 py-2 bg-yellow-500 rounded-xl text-gray-600"
+                className="px-5 py-2 bg-yellow-500 rounded-xl text-gray-600 capitalize font-semibold"
                 onClick={handleButtonClick}
               >
                 visit SattigoFarms
