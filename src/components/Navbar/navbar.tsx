@@ -962,7 +962,7 @@ const Navbar = () => {
               >
                 603 Villas
               </button>
-              <span className="absolute -top-2  text-red-500">New</span>
+              {/* <span className="absolute -top-2  text-red-500">New</span> */}
             </li>
             <li className="relative pl-5">
               <button
