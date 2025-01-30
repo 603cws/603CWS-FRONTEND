@@ -1,4 +1,5 @@
-import background from "/villaimg/villa_photo_9.webp";
+// import background from "/villaimg/villa_photo_9.webp";
+import background from "/villaimg/sattigosection.webp";
 import Navbar from "../../Navbar/navbar";
 import Footer from "../../Footer/footer";
 
@@ -11,17 +12,33 @@ const Webpage = () => {
   const [source] = useState(
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5435.959280715239!2d73.31827823930506!3d18.909171595176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7fb76ff72fb6b%3A0x2711a3c5836a79e4!2sKarjat%20Junction!5e0!3m2!1sen!2sin!4v1734351856143!5m2!1sen!2sin"
   );
+
+  //old images
+
+  // const images = [
+  //   "/villaimg/villa_photo_1.webp",
+  //   "/villaimg/villa_photo_2.webp",
+  //   "/villaimg/villa_photo_3.webp",
+  //   "/villaimg/villa_photo_4.webp",
+  //   "/villaimg/villa_photo_5.webp",
+  //   "/villaimg/villa_photo_6.webp",
+  //   "/villaimg/villa_photo_7.webp",
+  //   "/villaimg/villa_photo_8.webp",
+  //   "/villaimg/villa_photo_9.webp",
+  //   "/villaimg/villa_photo_10.webp",
+  // ];
+
   const images = [
-    "/villaimg/villa_photo_1.webp",
-    "/villaimg/villa_photo_2.webp",
-    "/villaimg/villa_photo_3.webp",
-    "/villaimg/villa_photo_4.webp",
-    "/villaimg/villa_photo_5.webp",
-    "/villaimg/villa_photo_6.webp",
-    "/villaimg/villa_photo_7.webp",
-    "/villaimg/villa_photo_8.webp",
-    "/villaimg/villa_photo_9.webp",
-    "/villaimg/villa_photo_10.webp",
+    "/villaimg/villa1.webp",
+    "/villaimg/villa2.webp",
+    "/villaimg/villa3.webp",
+    "/villaimg/villa4.webp",
+    "/villaimg/villa5.webp",
+    "/villaimg/villa6.webp",
+    "/villaimg/villa7.webp",
+    "/villaimg/villa8.webp",
+    // "/villaimg/villa9.1.webp",
+    "/villaimg/villa10.webp",
   ];
 
   const handleButtonClick = () => {
