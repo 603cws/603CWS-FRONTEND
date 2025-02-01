@@ -680,23 +680,26 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
         </div>
       </div> */}
 
-      <div className="container mx-auto px-2 md:px-12 overflow-auto ">
+      {/* <div className="container mx-auto px-2 md:px-12 overflow-auto "> */}
+      <div className="w-full md:px-12 px-2">
         {filteredLocations.map((cityGroup, cityIndex) => (
           <div key={cityIndex} className="mb-16">
             <h3 className="text-xl pt-6 font-bold mb-8 text-center text-[#cd952dd1]">
               {cityGroup.city} | {cityGroup.spacetype}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8"> */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
                   key={locationIndex}
-                  className="flex gap-4 items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
+                  className="flex flex-col gap-4 items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
                 >
                   <div>
                     <img
                       src={location.imgSrc}
                       alt={location.name}
-                      className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
+                      // className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
+                      className="w-full h-52 object-cover rounded-lg mb-4 shadow-lg"
                     />
                   </div>
 
@@ -707,7 +710,8 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                         : location.name} */}
                       {location.spacetypename}
                     </h4>
-                    <p className="text-gray-600 mb-4 mx-auto text-justify">
+                    {/* <p className="text-gray-600 mb-4 mx-auto text-justify"> */}
+                    <p className="text-gray-600 mb-4 mx-auto text-center">
                       {location.address}
                     </p>
                     {location.enablebooking ? (
