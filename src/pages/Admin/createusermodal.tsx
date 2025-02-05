@@ -94,7 +94,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
     >
       <div className="form-container overflow-y-auto max-h-[650px] bg-white rounded-lg shadow-lg p-8 w-full max-w-md  ">
         <h2 className="text-2xl font-bold mb-4">Create User</h2>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700">Company Name</label>
             <input
@@ -151,6 +151,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
               <option value="Sunmill">Sunmill</option>
               <option value="Technocity">Technocity</option>
               <option value="Navratna">Navratna</option>
+              <option value="Lawyers Chamber">Lawyers Chamber</option>
             </select>
           </div>
           <div className="mb-4">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { CiCreditCard1 } from "react-icons/ci";
-// import Avatar from "../Dashboard/Avatar";
+import Avatar from "../Dashboard/Avatar";
 import { logo } from "../../utils/Landing/Landing";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
@@ -63,7 +63,7 @@ function DashNavbar() {
 
   const PORT = "https://603-bcakend-new.vercel.app";
 
-  // const n = localStorage.getItem("user");
+  const n = localStorage.getItem("user");
   // console.log(n);
 
   const toTransactions = () => {
@@ -110,9 +110,9 @@ function DashNavbar() {
     }
   };
 
-  // const visitProfile = () => {
-  //   navigate("/dashboard/Myprofile");
-  // };
+  const visitProfile = () => {
+    navigate("/dashboard/Myprofile");
+  };
 
   // const visitHome = () => {
   //   navigate("/dashboard");
@@ -363,7 +363,7 @@ function DashNavbar() {
           <div className="cursor-pointer text-gray-600" onClick={logout}>
             Logout
           </div>
-          {/* <Avatar onClick={visitProfile} name={n ? n.charAt(0) : ""} /> */}
+          <Avatar onClick={visitProfile} name={n ? n.charAt(0) : ""} />
         </div>
       )}
 

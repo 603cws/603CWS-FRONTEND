@@ -61,7 +61,8 @@ const Membership: React.FC = () => {
         <Navbar />
       </div>
 
-      <div className=" mx-auto py-16 px-6 md:px-8 my-14">
+      {/* <div className=" mx-auto py-16 px-6 md:px-8 my-14"> */}
+      <div className=" mx-auto pb-16 pt-20 px-6 md:px-8 ">
         {!spacename ? (
           <h2 className="text-center text-4xl md:text-5xl font-extrabold text-gray-800 mb-12 tracking-tight leading-tight">
             Membership Plans

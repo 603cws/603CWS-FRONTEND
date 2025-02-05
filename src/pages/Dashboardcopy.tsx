@@ -210,7 +210,10 @@ const Dashboard: React.FC = () => {
     <>
       {/* navbar for mobile */}
       <div className="fixed top-0 h-[4rem] py-3.5 px-2 flex justify-around sm:justify-between items-center w-full z-10 border-b-2 border-[#f6e05e] bg-[#fff] shadow-md">
-        <div className="flex gap-2 sm:justify-start">
+        <div
+          className="flex gap-2 sm:justify-start cursor-pointer"
+          onClick={visitHome}
+        >
           <img src={logo} alt="Logo" className="w-auto h-[36px]" />
           <div
             className={`flex items-center font-[700] text-[#4a5568] ${

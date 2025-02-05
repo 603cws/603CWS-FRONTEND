@@ -13,15 +13,19 @@ const MemberDashboard: React.FC = () => {
   console.log(accHolder);
   let splitLocation, getmainlocation, userLocation;
   if (accHolder.role !== "admin") {
-    splitLocation = accHolder.location.split(" ");
-    console.log(splitLocation);
+    if (accHolder.location === "Lawyers Chamber") {
+      userLocation = "Lawyers Chamber";
+    } else {
+      splitLocation = accHolder.location.split(" ");
+      console.log(splitLocation);
 
-    getmainlocation = splitLocation[0];
-    console.log(getmainlocation);
+      getmainlocation = splitLocation[0];
+      console.log(getmainlocation);
 
-    userLocation =
-      getmainlocation.charAt(0).toUpperCase() +
-      getmainlocation.slice(1).toLowerCase();
+      userLocation =
+        getmainlocation.charAt(0).toUpperCase() +
+        getmainlocation.slice(1).toLowerCase();
+    }
     console.log(userLocation);
   }
 
@@ -298,6 +302,18 @@ const MemberDashboard: React.FC = () => {
                   value="Navratna Meeting Room"
                 >
                   Navratna Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Lawyers Chamber Meeting Room"
+                >
+                  Lawyers Chamber Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Lawyers Chamber Conference Room"
+                >
+                  Lawyers Chamber Conference Room
                 </option>
               </select>
             )}
