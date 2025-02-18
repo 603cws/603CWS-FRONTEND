@@ -104,8 +104,6 @@ const UserManagement = () => {
     }, 0);
   };
 
-
-
   return (
     <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
@@ -130,35 +128,44 @@ const UserManagement = () => {
             >
               Create User
             </button>
-              <button
-                onClick={handlePrint}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
-              >
-                Print <FaFilePdf size={20} />
-              </button>
+            <button
+              onClick={handlePrint}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              Print <FaFilePdf size={20} />
+            </button>
           </div>
           <div ref={tableRef} className="overflow-x-auto">
             <table className="w-full table-auto border-collapse text-left">
               <thead>
                 <tr className="bg-blue-50 border-b-2 border-blue-200">
-                  <th className="p-4 font-semibold text-gray-600">Company Name</th>
+                  <th className="p-4 font-semibold text-gray-600">
+                    Company Name
+                  </th>
                   <th className="p-4 font-semibold text-gray-600">Email</th>
-                  <th className="p-4 font-semibold text-gray-600">Monthly Credits</th>
-                  <th className="p-4 font-semibold text-gray-600">Credits Left</th>
-                  <th className="p-4 font-semibold text-gray-600">Billed Credits</th>
-                  <th className="p-4 font-semibold text-gray-600">KYC Status</th>
+                  <th className="p-4 font-semibold text-gray-600">
+                    Monthly Credits
+                  </th>
+                  <th className="p-4 font-semibold text-gray-600">
+                    Credits Left
+                  </th>
+                  <th className="p-4 font-semibold text-gray-600">
+                    Billed Credits
+                  </th>
+                  <th className="p-4 font-semibold text-gray-600">
+                    KYC Status
+                  </th>
                   <th className="p-4 font-semibold text-gray-600">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {currentUsers.map((user) => (
-                  <tr
-                    key={user._id}
-                    className="hover:bg-gray-50 transition"
-                  >
+                  <tr key={user._id} className="hover:bg-gray-50 transition">
                     <td className="py-4 px-6 border-b">{user.companyName}</td>
                     <td className="py-4 px-6 border-b">{user.email}</td>
-                    <td className="py-4 px-6 border-b">{user.monthlycredits}</td>
+                    <td className="py-4 px-6 border-b">
+                      {user.monthlycredits}
+                    </td>
                     <td className="py-4 px-6 border-b">{user.creditsleft}</td>
                     <td className="py-4 px-6 border-b">{user.extracredits}</td>
                     <td className="py-4 px-6 border-b">
@@ -203,8 +210,7 @@ const UserManagement = () => {
                 currentPage === Math.ceil(filteredUsers.length / usersPerPage)
               }
               className={`px-6 py-3 rounded-lg shadow-md ${
-                currentPage ===
-                Math.ceil(filteredUsers.length / usersPerPage)
+                currentPage === Math.ceil(filteredUsers.length / usersPerPage)
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : "bg-blue-600 text-white hover:bg-blue-500 transition duration-300"
               }`}

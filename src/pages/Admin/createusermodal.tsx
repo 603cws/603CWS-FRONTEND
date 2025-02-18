@@ -151,7 +151,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
               <option value="Sunmill">Sunmill</option>
               <option value="Technocity">Technocity</option>
               <option value="Navratna">Navratna</option>
-              <option value="Lawyers Chamber">Lawyers Chamber</option>
+              <option value="Fort">Fort</option>
             </select>
           </div>
           <div className="mb-4">

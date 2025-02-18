@@ -305,15 +305,15 @@ const MemberDashboard: React.FC = () => {
                 </option>
                 <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                  value="Lawyers Chamber Meeting Room"
+                  value="Fort Meeting Room"
                 >
-                  Lawyers Chamber Meeting Room
+                  Fort Meeting Room
                 </option>
                 <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-                  value="Lawyers Chamber Conference Room"
+                  value="Fort Conference Room"
                 >
-                  Lawyers Chamber Conference Room
+                  Fort Conference Room
                 </option>
               </select>
             )}
