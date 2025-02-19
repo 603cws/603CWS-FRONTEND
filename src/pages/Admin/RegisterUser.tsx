@@ -27,38 +27,40 @@ interface CreateUserModalProps {
 }
 
 const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
-  const [companyName, setCompanyName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("user");
-  const [monthlycredits, setMonthlyCredits] = useState(0);
-  const [username, setusername] = useState("");
-  const [location, setlocation] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [companyName, setCompanyName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [role, setRole] = useState<string>("user");
+  const [monthlycredits, setMonthlyCredits] = useState<number>(0);
+  const [username, setusername] = useState<string>("");
+  const [location, setlocation] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [isSubmitting, setisSubmitting] = useState<boolean>(false);
 
+  const { setAccHolder } = useApp();
+
+  const PORT = "https://603-bcakend-new.vercel.app";
   // const navigate = useNavigate();
 
   //to check is authenticated
-  const { isAuthenticated, setIsAuthenticated, setloading } = useApp();
+  const { isAuthenticated, setIsAuthenticated, setloading, setIsAdmin } =
+    useApp();
   console.log(isAuthenticated);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setisSubmitting(true);
     try {
-      const response = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/users/",
-        {
-          companyName,
-          email,
-          role,
-          monthlycredits,
-          username,
-          location,
-          password,
-          phone,
-        },
-        { withCredentials: true }
-      );
+      const response = await axios.post(`${PORT}/api/v1/users/`, {
+        companyName,
+        email,
+        role,
+        monthlycredits,
+        username,
+        location,
+        password,
+        phone,
+      });
 
       console.log(response);
       if (response.data.msg === "User created") {
@@ -68,7 +70,7 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
 
         try {
           const response = await axios.post(
-            `https://603-bcakend-new.vercel.app/api/v1/auth/login`,
+            `${PORT}/api/v1/auth/login`,
             { usernameOrEmail: username, password: password },
             {
               withCredentials: true,
@@ -80,7 +82,13 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
           if (msg === "User signed in") {
             toast.success("User logged in");
             localStorage.setItem("user", user.companyName);
-            setIsAuthenticated(true);
+
+            const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
+              withCredentials: true,
+            });
+            setIsAuthenticated(res.data.auth);
+            setIsAdmin(res.data.user);
+            setAccHolder(res.data.accHolder);
           }
         } catch (e) {
           toast.error("An error occurred. Please try again later.");
@@ -101,9 +109,10 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
       //   }
 
       onClose();
-    } catch (error) {
-      toast.error("An error occurred");
-      console.error("Error creating user:", error);
+    } catch (error: any) {
+      toast.error(error.response.data.msg);
+      console.log("Error creating user:", error);
+      setisSubmitting(false);
     }
   };
 
@@ -215,9 +224,35 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
             </button>
             <button
               type="submit"
+              disabled={isSubmitting}
               className="bg-blue-600 text-white px-4 py-2 rounded"
             >
-              Create
+              {isSubmitting ? (
+                <div className="spinner flex justify-center items-center">
+                  <svg
+                    className="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8h8a8 8 0 01-8 8V12H4z"
+                    ></path>
+                  </svg>
+                </div>
+              ) : (
+                "create"
+              )}
             </button>
           </div>
         </form>

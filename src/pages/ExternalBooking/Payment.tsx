@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   FaCalendarAlt,
@@ -17,23 +17,23 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 // State variables for form values
-interface UserDetails {
-  companyName: string;
-  username: string;
-  email: string;
-  password: string;
-  phone: string;
-  role: "admin" | "user";
-  kyc: boolean;
-  country: string;
-  state: string;
-  city: string;
-  zipcode: string;
-  location: string;
-  credits?: number;
-  createdAt?: Date;
-  member: boolean;
-}
+// interface UserDetails {
+//   companyName: string;
+//   username: string;
+//   email: string;
+//   password: string;
+//   phone: string;
+//   role: "admin" | "user";
+//   kyc: boolean;
+//   country: string;
+//   state: string;
+//   city: string;
+//   zipcode: string;
+//   location: string;
+//   credits?: number;
+//   createdAt?: Date;
+//   member: boolean;
+// }
 
 const Payment: React.FC = () => {
   const [discountCode, setDiscountCode] = useState("");
@@ -67,6 +67,9 @@ const Payment: React.FC = () => {
         total + dayPass.price - dayPass.price * (discountPercentage / 100),
       0
     );
+
+  // accholder
+  console.log("accholder", accHolder);
 
   //coupon changes
   const validateCoupon = async () => {
@@ -152,43 +155,43 @@ const Payment: React.FC = () => {
     navigate("/RegisterUser");
   };
 
-  //get user
-  const [data, setData] = useState<UserDetails>({
-    companyName: "",
-    username: "",
-    email: "",
-    password: "",
-    phone: "",
-    role: "user",
-    kyc: false,
-    country: "",
-    state: "",
-    city: "",
-    zipcode: "",
-    location: "",
-    credits: 0,
-    member: false,
-    createdAt: new Date(), // Correct initialization for Date
-  });
-  console.log(data);
+  // //get user
+  // const [data, setData] = useState<UserDetails>({
+  //   companyName: "",
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  //   phone: "",
+  //   role: "user",
+  //   kyc: false,
+  //   country: "",
+  //   state: "",
+  //   city: "",
+  //   zipcode: "",
+  //   location: "",
+  //   credits: 0,
+  //   member: false,
+  //   createdAt: new Date(), // Correct initialization for Date
+  // });
+  // console.log(data);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
-        {
-          withCredentials: true,
-        }
-      );
-      const userdata: UserDetails = response.data.user;
-      setData(userdata);
-    } catch (error) {
-      console.error("Error fetching user details:", error);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     );
+  //     const userdata: UserDetails = response.data.user;
+  //     setData(userdata);
+  //   } catch (error) {
+  //     console.error("Error fetching user details:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   const checkOverLap = async (bookings: any): Promise<boolean> => {
     try {
