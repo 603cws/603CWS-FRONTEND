@@ -222,10 +222,11 @@ export const locations: { city: string; locations: Location[] }[] = [
         },
         enablebooking: true,
         conferencerooms: ["Kamala Mills Conference Room"],
-        meetingrooms: [
-          "Kamala Mills Meeting Room 1",
-          "Kamala Mills Meeting Room 2",
-        ],
+        meetingrooms: ["Kamala Mills Meeting Room 1"],
+        // meetingrooms: [
+        //   "Kamala Mills Meeting Room 1",
+        //   "Kamala Mills Meeting Room 2",
+        // ],
         daypasses: ["Kamala Mills Day Pass"],
       },
       {
@@ -652,7 +653,8 @@ export const locationsfornewDashboard: {
             thirtyhours: 11999,
           },
         },
-        enablebooking: true,
+        // enablebooking: true,
+        enablebooking: false,
         conferencerooms: ["Kamala Mills Conference Room"],
         meetingrooms: ["Kamala Mills Meeting Room 2"],
         daypasses: ["Kamala Mills Day Pass"],
