@@ -3,9 +3,9 @@ import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import { CiSearch } from "react-icons/ci";
 import { useReactToPrint } from "react-to-print";
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import './MyDatePicker.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./MyDatePicker.css";
 import toast from "react-hot-toast";
 import { FaFilePdf } from "react-icons/fa";
 
@@ -18,15 +18,13 @@ interface Booking {
   spaceName: string;
   date: string;
   status: string;
-  billedcredits?: number;  // Adding billedcredits here
+  billedcredits?: number; // Adding billedcredits here
 }
 
 interface userdetails {
   _id: string;
-  extracredits: number
+  extracredits: number;
 }
-
-
 
 const AllBookings = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -66,14 +64,18 @@ const AllBookings = () => {
         }
       );
       console.log(response);
-      const bookingsWithBilledCredits = response.data.allbookings.map((booking: Booking) => {
-        const user = response.data.allusers.find((user: userdetails) => user._id === booking.user);
-        const billedcredits = user ? user.extracredits : 0;
-        return {
-          ...booking,
-          billedcredits: billedcredits
-        };
-      });
+      const bookingsWithBilledCredits = response.data.allbookings.map(
+        (booking: Booking) => {
+          const user = response.data.allusers.find(
+            (user: userdetails) => user._id === booking.user
+          );
+          const billedcredits = user ? user.extracredits : 0;
+          return {
+            ...booking,
+            billedcredits: billedcredits,
+          };
+        }
+      );
       setBookings(bookingsWithBilledCredits);
     } catch (error) {
       console.error("Error fetching bookings:", error);
@@ -100,10 +102,11 @@ const AllBookings = () => {
     .filter((booking) => {
       return (
         (!searchQuery ||
-          booking.companyName?.toLowerCase().includes(searchQuery.toLowerCase())) &&
+          booking.companyName
+            ?.toLowerCase()
+            .includes(searchQuery.toLowerCase())) &&
         (!selectedWorkspace || booking.spaceName === selectedWorkspace) &&
         (!formattedDate || booking.date === formattedDate)
-
       );
     })
     .reduce((uniqueBookings, booking) => {
@@ -151,15 +154,15 @@ const AllBookings = () => {
     }, 300); // Adjust the delay if needed
   };
 
-
-
-
-
   const deletebooking = async (id: any) => {
     try {
-      const resp = await axios.post("https://603-bcakend-new.vercel.app/api/v1/bookings/admin/deletebooking", { id }, {
-        withCredentials: true
-      });
+      const resp = await axios.post(
+        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/deletebooking",
+        { id },
+        {
+          withCredentials: true,
+        }
+      );
       if (resp.data.message === "Booking not found") {
         toast.error("Booking not found");
       }
@@ -222,27 +225,48 @@ const AllBookings = () => {
                 )}
               </div>
 
-
               <select
                 value={selectedWorkspace}
                 onChange={(e) => setSelectedWorkspace(e.target.value)}
                 className="ml-4 px-3 py-2 rounded-lg bg-gray-200 text-gray-600"
               >
                 <option value="">Please Select</option>
-                <option value="Amore Conference Room">Amore Conference Room</option>
+                <option value="Amore Conference Room">
+                  Amore Conference Room
+                </option>
                 <option value="Amore Meeting Room">Amore Meeting Room</option>
-                <option value="Bandra Conference Room">Bandra Conference Room</option>
+                <option value="Bandra Conference Room">
+                  Bandra Conference Room
+                </option>
                 <option value="Bandra Meeting Room">Bandra Meeting Room</option>
-                <option value="Kamala Mills Conference Room">Kamala Mills Conference Room</option>
-                <option value="Kamala Mills Meeting Room 1">Kamala Mills Meeting Room 1</option>
-                <option value="Kamala Mills Meeting Room 2">Kamala Mills Meeting Room 2</option>
-                <option value="Matulya Conference Room">Matulya Conference Room</option>
-                <option value="Matulya Meeting Room">Matulya Meeting Room</option>
-                <option value="Rupa Solitaire Conference Room">Rupa Solitaire Conference Room</option>
-                <option value="Sunmill Conference Room">Sunmill Conference Room</option>
-                <option value="Sunmill Meeting Room">Sunmill Meeting Room</option>
-                <option value="Sunshine Conference Room">Sunshine Conference Room</option>
-                <option value="Sunshine Meeting Room">Sunshine Meeting Room</option>
+                <option value="Kamala Mills Conference Room">
+                  Kamala Mills Conference Room
+                </option>
+                <option value="Kamala Mills Meeting Room 1">
+                  Kamala Mills Meeting Room 1
+                </option>
+                {/* <option value="Kamala Mills Meeting Room 2">Kamala Mills Meeting Room 2</option>/ */}
+                <option value="Matulya Conference Room">
+                  Matulya Conference Room
+                </option>
+                <option value="Matulya Meeting Room">
+                  Matulya Meeting Room
+                </option>
+                <option value="Rupa Solitaire Conference Room">
+                  Rupa Solitaire Conference Room
+                </option>
+                <option value="Sunmill Conference Room">
+                  Sunmill Conference Room
+                </option>
+                <option value="Sunmill Meeting Room">
+                  Sunmill Meeting Room
+                </option>
+                <option value="Sunshine Conference Room">
+                  Sunshine Conference Room
+                </option>
+                <option value="Sunshine Meeting Room">
+                  Sunshine Meeting Room
+                </option>
               </select>
             </div>
 
@@ -260,7 +284,7 @@ const AllBookings = () => {
             <table className="min-w-full bg-white">
               <thead>
                 <tr>
-                <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     User ID
                   </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
@@ -290,7 +314,9 @@ const AllBookings = () => {
                 {currentBookings.map((booking) => (
                   <tr key={booking._id}>
                     <td className="py-4 px-6 border-b">{booking.user}</td>
-                    <td className="py-4 px-6 border-b">{booking.companyName}</td>
+                    <td className="py-4 px-6 border-b">
+                      {booking.companyName}
+                    </td>
                     <td className="py-4 px-6 border-b">{booking.spaceName}</td>
                     <td className="py-4 px-6 border-b">
                       {booking.billedcredits} {/* Display billed credits */}
@@ -325,7 +351,10 @@ const AllBookings = () => {
             </button>
             <button
               onClick={handleNextPage}
-              disabled={currentPage === Math.ceil(filteredBookings.length / bookingsPerPage)}
+              disabled={
+                currentPage ===
+                Math.ceil(filteredBookings.length / bookingsPerPage)
+              }
               className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition disabled:opacity-50"
             >
               Next
@@ -345,7 +374,6 @@ const AllBookings = () => {
               <strong>{bookingToCancel.spaceName}</strong>?
             </p>
             <div className="flex justify-between">
-
               <button
                 onClick={() => {
                   deletebooking(bookingToCancel._id);
@@ -370,4 +398,3 @@ const AllBookings = () => {
 };
 
 export default AllBookings;
-
