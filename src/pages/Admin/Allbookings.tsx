@@ -267,6 +267,16 @@ const AllBookings = () => {
                 <option value="Sunshine Meeting Room">
                   Sunshine Meeting Room
                 </option>
+                <option value="Fort Conference Room">
+                  Fort Conference Room
+                </option>
+                <option value="Fort Meeting Room">Fort Meeting Room</option>
+                <option value="Trade Link Conference Room">
+                  Trade Link Conference Room
+                </option>
+                <option value="Trade Link Meeting Room">
+                  Trade Link Meeting Room
+                </option>
               </select>
             </div>
 

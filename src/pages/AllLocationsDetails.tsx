@@ -312,6 +312,39 @@ export const locations: { city: string; locations: Location[] }[] = [
         meetingrooms: ["Fort Meeting Room"],
         daypasses: ["Fort Day Pass"],
       },
+      {
+        name: "Trade Link, Kamala Mills",
+        address:
+          "Trade Link, 1st Floor, Kamala Mills Compound, Lower Parel. Mumbai 400013",
+        imgSrc: "/officeimg/Tradelink/1.jpg", // Replace with actual image link
+        link: "/locations/TradeLink",
+        about:
+          "Our location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 699,
+        conferenceroom: 1099,
+        daypass: 999,
+        membership: {
+          daypass: {
+            tendays: 7799,
+            fifteendays: 10899,
+            twentydays: 12799,
+          },
+          conferenceroom: {
+            tenhours: 10499,
+            twentyhours: 19199,
+            thirtyhours: 24599,
+          },
+          meetingroom: {
+            tenhours: 5799,
+            twentyhours: 9399,
+            thirtyhours: 11999,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Trade Link Conference Room"],
+        meetingrooms: ["Trade Link Meeting Room"],
+        daypasses: ["Trade Link Day Pass"],
+      },
     ],
   },
   {
@@ -733,6 +766,41 @@ export const locationsfornewDashboard: {
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Fort Meeting Room",
       },
+      {
+        name: "Trade Link, Kamala Mills",
+        address:
+          "Trade Link, 1st Floor, Kamala Mills Compound, Lower Parel. Mumbai 400013",
+        imgSrc: "/officeimg/Tradelink/1.jpg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 699,
+        conferenceroom: 1099,
+        spacetypeprice: 699,
+        spacetypename: "Trade Link Meeting Room",
+        daypass: 999,
+        membership: {
+          daypass: {
+            tendays: 7799,
+            fifteendays: 10899,
+            twentydays: 12799,
+          },
+          conferenceroom: {
+            tenhours: 10499,
+            twentyhours: 19199,
+            thirtyhours: 24599,
+          },
+          meetingroom: {
+            tenhours: 5799,
+            twentyhours: 9399,
+            thirtyhours: 11999,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Trade Link Conference Room"],
+        meetingrooms: ["Trade Link Meeting Room"],
+        daypasses: ["Trade Link Day Pass"],
+      },
     ],
   },
   {
@@ -1003,6 +1071,41 @@ export const locationsfornewDashboard: {
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Fort Conference Room",
       },
+      {
+        name: "Trade Link, Kamala Mills",
+        address:
+          "Trade Link, 1st Floor, Kamala Mills Compound, Lower Parel. Mumbai 400013",
+        imgSrc: "/officeimg/Tradelink/1.jpg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 699,
+        conferenceroom: 1099,
+        spacetypeprice: 1099,
+        spacetypename: "Trade Link Conference Room",
+        daypass: 999,
+        membership: {
+          daypass: {
+            tendays: 7799,
+            fifteendays: 10899,
+            twentydays: 12799,
+          },
+          conferenceroom: {
+            tenhours: 10499,
+            twentyhours: 19199,
+            thirtyhours: 24599,
+          },
+          meetingroom: {
+            tenhours: 5799,
+            twentyhours: 9399,
+            thirtyhours: 11999,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Trade Link Conference Room"],
+        meetingrooms: ["Trade Link Meeting Room"],
+        daypasses: ["Trade Link Day Pass"],
+      },
     ],
   },
   {
@@ -1272,6 +1375,41 @@ export const locationsfornewDashboard: {
         meetingrooms: ["Lawyers Chamber Meeting Room"],
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Fort Day Pass",
+      },
+      {
+        name: "Trade Link, Kamala Mills",
+        address:
+          "Trade Link, 1st Floor, Kamala Mills Compound, Lower Parel. Mumbai 400013",
+        imgSrc: "/officeimg/Tradelink/1.jpg", // Replace with actual image link
+        link: "/locations/Lawyers-Chamber",
+        about:
+          "Our location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 699,
+        conferenceroom: 1099,
+        spacetypeprice: 999,
+        spacetypename: "Trade Link Day Pass",
+        daypass: 999,
+        membership: {
+          daypass: {
+            tendays: 7799,
+            fifteendays: 10899,
+            twentydays: 12799,
+          },
+          conferenceroom: {
+            tenhours: 10499,
+            twentyhours: 19199,
+            thirtyhours: 24599,
+          },
+          meetingroom: {
+            tenhours: 5799,
+            twentyhours: 9399,
+            thirtyhours: 11999,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Trade Link Conference Room"],
+        meetingrooms: ["Trade Link Meeting Room"],
+        daypasses: ["Trade Link Day Pass"],
       },
     ],
   },

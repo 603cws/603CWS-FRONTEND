@@ -288,6 +288,16 @@ const Navbar = () => {
                           Lawyers Chamber,Fort
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/TradeLink");
+                          }}
+                        >
+                          Trade Link ,Lower Parel
+                        </button>
+                      </li>
                     </ul>
                   </li>
                   <li
@@ -716,6 +726,16 @@ const Navbar = () => {
                           }}
                         >
                           Lawyers Chamber,Fort
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
+                        <button
+                          // className="text-base"
+                          onClick={() => {
+                            navigate("/locations/TradeLink");
+                          }}
+                        >
+                          Trade Link ,Lower Parel
                         </button>
                       </li>
                     </ul>
