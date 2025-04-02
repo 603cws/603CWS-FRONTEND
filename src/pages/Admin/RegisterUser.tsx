@@ -51,16 +51,20 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     setisSubmitting(true);
     try {
-      const response = await axios.post(`${PORT}/api/v1/users/`, {
-        companyName,
-        email,
-        role,
-        monthlycredits,
-        username,
-        location,
-        password,
-        phone,
-      });
+      const response = await axios.post(
+        `${PORT}/api/v1/users/`,
+        {
+          companyName,
+          email,
+          role,
+          monthlycredits,
+          username,
+          location,
+          password,
+          phone,
+        },
+        { withCredentials: true }
+      );
 
       console.log(response);
       if (response.data.msg === "User created") {
@@ -86,6 +90,7 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
             const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
               withCredentials: true,
             });
+            console.log(res);
             setIsAuthenticated(res.data.auth);
             setIsAdmin(res.data.user);
             setAccHolder(res.data.accHolder);
