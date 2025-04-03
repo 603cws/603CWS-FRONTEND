@@ -62,6 +62,8 @@ import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout"
 import ZohoKYCForm from "./pages/zohoForm";
 import MemberDashboard from "./pages/MemberDashboard";
 
+import OnlineBookings from "./pages/Admin/Onlinebookings";
+
 function App() {
   const location = useLocation();
   const [users, setUsers] = useState<User[]>([]);
@@ -85,6 +87,7 @@ function App() {
     "/admin/userinfo/:user",
     "/admin/alluserinfo",
     "/admin/allbookings",
+    "/admin/onlinebookings",
     "/admin/edituser/:id",
     "/contactus",
     "/partner-with-us",
@@ -183,6 +186,10 @@ function App() {
               element={isAdmin === "admin" ? <Allbookings /> : <Login />}
             />
             <Route
+              path="/admin/onlinebookings"
+              element={isAdmin === "admin" ? <OnlineBookings /> : <Login />}
+            />
+            <Route
               path="/admin/edituser/:id"
               element={isAdmin === "admin" ? <EditUser /> : <Login />}
             />
@@ -258,6 +265,7 @@ function App() {
             <Route path="/admin/dashboard" element={<Login />} />
             <Route path="/admin/login" element={<Login />} />
             <Route path="/admin/allbookings" element={<Login />} />
+            <Route path="/admin/onlinebookings" element={<Login />} />
             <Route path="/admin/userinfo/:user" element={<Login />} />
             <Route path="/admin/alluserinfo" element={<Login />} />
             <Route path="/admin/createacc" element={<Login />} />

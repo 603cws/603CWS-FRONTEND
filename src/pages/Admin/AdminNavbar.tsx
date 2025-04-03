@@ -245,6 +245,12 @@ function AdminDashNavbar() {
           >
             <h1>All Bookings</h1>
           </div>
+          <div
+            className="cursor-pointer"
+            onClick={() => navigate("/admin/onlinebookings")}
+          >
+            <h1>Online Bookings</h1>
+          </div>
         </div>
       </div>
       <CreateCouponModal
