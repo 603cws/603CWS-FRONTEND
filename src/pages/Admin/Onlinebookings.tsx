@@ -53,7 +53,7 @@ const OnlineBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:3000/api/v1/bookings/admin/getonlinebookings",
+        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/getonlinebookings",
         {
           withCredentials: true,
         }
