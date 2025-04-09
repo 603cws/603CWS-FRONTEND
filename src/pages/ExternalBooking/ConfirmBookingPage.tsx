@@ -693,35 +693,43 @@ const ConfirmPayment = () => {
                   ₹{locationDetails?.conferenceroom}/Hr
                 </p>
               </div>
-              {!showcalenderconfroom && (
-                <select
-                  className="bg-gray-200 text-gray-700 px-2 py-2  rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
-                  onChange={(e) => {
-                    setselectedLocation(e.target.value);
-                    const selectedRoom = e.target.value;
-                    setshowcalenderconfroom(true);
-                    setshowcalenderdaypass(false);
-                    setshowcalendermeetroom(false);
-                    console.log("Selected Conference Room:", selectedRoom);
-                  }}
-                >
-                  <option value="" disabled selected>
-                    Select
-                  </option>
-                  {locationDetails?.conferencerooms?.map((room, index) => (
-                    <option
-                      key={index}
-                      value={room}
-                      onClick={() => {
-                        setspacetype("conference");
-                        setselectedLocation(room);
-                      }}
-                    >
-                      {room}
+              {!showcalenderconfroom &&
+                locationDetails?.conferencerooms?.length > 0 && (
+                  <select
+                    className="bg-gray-200 text-gray-700 px-2 py-2  rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
+                    onChange={(e) => {
+                      setselectedLocation(e.target.value);
+                      const selectedRoom = e.target.value;
+                      setshowcalenderconfroom(true);
+                      setshowcalenderdaypass(false);
+                      setshowcalendermeetroom(false);
+                      console.log("Selected Conference Room:", selectedRoom);
+                    }}
+                  >
+                    <option value="" disabled selected>
+                      Select
                     </option>
-                  ))}
-                </select>
-              )}
+                    {locationDetails?.conferencerooms?.map((room, index) => (
+                      <option
+                        key={index}
+                        value={room}
+                        onClick={() => {
+                          setspacetype("conference");
+                          setselectedLocation(room);
+                        }}
+                      >
+                        {room}
+                      </option>
+                    ))}
+                  </select>
+                )}
+
+              {!showcalenderconfroom &&
+                locationDetails?.conferencerooms?.length < 1 && (
+                  <div>
+                    <p className="text-red-600">currently not available </p>
+                  </div>
+                )}
               {showcalenderconfroom && (
                 <button
                   className=" text-red-600 px-4 py-2 bg-slate-200 rounded-md shadow-lg transition transform hover:bg-gray-300 hover:scale-105"
@@ -872,33 +880,42 @@ const ConfirmPayment = () => {
                   ₹{locationDetails?.meetingroom}/Hr
                 </p>
               </div>
-              {!showcalendermeetroom && (
-                <select
-                  className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
-                  onChange={(e) => {
-                    setselectedLocation(e.target.value);
-                    setshowcalenderconfroom(false);
-                    setshowcalenderdaypass(false);
-                    setshowcalendermeetroom(true);
-                  }}
-                >
-                  <option value="" disabled selected>
-                    Select
-                  </option>
-                  {locationDetails?.meetingrooms?.map((room, index) => (
-                    <option
-                      key={index}
-                      value={room}
-                      onClick={() => {
-                        setspacetype("meeting");
-                        setselectedLocation(room);
-                      }}
-                    >
-                      {room}
+              {!showcalendermeetroom &&
+                locationDetails?.meetingrooms?.length > 0 && (
+                  <select
+                    className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
+                    onChange={(e) => {
+                      setselectedLocation(e.target.value);
+                      setshowcalenderconfroom(false);
+                      setshowcalenderdaypass(false);
+                      setshowcalendermeetroom(true);
+                    }}
+                  >
+                    <option value="" disabled selected>
+                      Select
                     </option>
-                  ))}
-                </select>
-              )}
+                    {locationDetails?.meetingrooms?.map((room, index) => (
+                      <option
+                        key={index}
+                        value={room}
+                        onClick={() => {
+                          setspacetype("meeting");
+                          setselectedLocation(room);
+                        }}
+                      >
+                        {room}
+                      </option>
+                    ))}
+                  </select>
+                )}
+
+              {!showcalendermeetroom &&
+                locationDetails?.meetingrooms?.length <= 0 && (
+                  <div>
+                    <p className="text-red-500">currently not available</p>
+                  </div>
+                )}
+
               {showcalendermeetroom && (
                 <button
                   className=" text-red-600 px-4 py-2 bg-slate-200 rounded-md shadow-lg transition transform hover:bg-gray-300 hover:scale-105"
@@ -1038,27 +1055,35 @@ const ConfirmPayment = () => {
                   ₹{locationDetails?.daypass}/Day
                 </p>
               </div>
-              {!showcalenderdaypass && (
-                <select
-                  className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
-                  onChange={(e) => {
-                    setselectedLocation(e.target.value);
-                    setshowcalenderconfroom(false);
-                    setshowcalenderdaypass(true);
-                    setshowcalendermeetroom(false);
-                    setspacetype("daypass");
-                  }}
-                >
-                  <option value="" disabled selected>
-                    Select
-                  </option>
-                  {locationDetails?.daypasses?.map((room, index) => (
-                    <option key={index} value={room}>
-                      {room}
+              {!showcalenderdaypass &&
+                locationDetails?.daypasses?.length > 0 && (
+                  <select
+                    className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
+                    onChange={(e) => {
+                      setselectedLocation(e.target.value);
+                      setshowcalenderconfroom(false);
+                      setshowcalenderdaypass(true);
+                      setshowcalendermeetroom(false);
+                      setspacetype("daypass");
+                    }}
+                  >
+                    <option value="" disabled selected>
+                      Select
                     </option>
-                  ))}
-                </select>
-              )}
+                    {locationDetails?.daypasses?.map((room, index) => (
+                      <option key={index} value={room}>
+                        {room}
+                      </option>
+                    ))}
+                  </select>
+                )}
+
+              {!showcalenderdaypass &&
+                locationDetails?.daypasses?.length <= 0 && (
+                  <div>
+                    <p className="text-red-500">currently not available</p>
+                  </div>
+                )}
               {showcalenderdaypass && (
                 <button
                   className="text-red-600 px-4 py-2 bg-slate-200 rounded-md shadow-lg transition transform hover:bg-gray-300 hover:scale-105"
