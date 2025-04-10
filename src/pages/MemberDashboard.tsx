@@ -155,7 +155,7 @@ const MemberDashboard: React.FC = () => {
                       Kamala Mills Meeting Room 2
                     </option> */}
                   </>
-                ) : userLocation === "Bandra" || "bandra" ? (
+                ) : userLocation === "Bandra" ? (
                   <>
                     {/* <option
                       className={`${
