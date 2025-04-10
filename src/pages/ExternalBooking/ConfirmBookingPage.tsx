@@ -27,7 +27,7 @@ type Location = {
   meetingroom: number;
   enablebooking: boolean;
   conferencerooms: string[];
-  meetingrooms: string[];
+  meetingrooms?: string[];
   daypasses: string[];
 };
 
@@ -873,61 +873,63 @@ const ConfirmPayment = () => {
               )}
             </div>
 
-            <div className="flex items-center justify-between border-t-2 border-gray-200">
-              <div className="py-5">
-                <p className="text-gray-700 font-semibold">Meetings Rooms</p>
-                <p className="text-2xl font-semibold text-yellow-500">
-                  ₹{locationDetails?.meetingroom}/Hr
-                </p>
-              </div>
-              {!showcalendermeetroom &&
-                locationDetails?.meetingrooms?.length > 0 && (
-                  <select
-                    className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
-                    onChange={(e) => {
-                      setselectedLocation(e.target.value);
-                      setshowcalenderconfroom(false);
-                      setshowcalenderdaypass(false);
-                      setshowcalendermeetroom(true);
+            {locationDetails?.meetingrooms && (
+              <div className="flex items-center justify-between border-t-2 border-gray-200">
+                <div className="py-5">
+                  <p className="text-gray-700 font-semibold">Meetings Rooms</p>
+                  <p className="text-2xl font-semibold text-yellow-500">
+                    ₹{locationDetails?.meetingroom}/Hr
+                  </p>
+                </div>
+                {!showcalendermeetroom &&
+                  locationDetails?.meetingrooms?.length > 0 && (
+                    <select
+                      className="bg-gray-200 text-gray-700 px-2 py-2 rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
+                      onChange={(e) => {
+                        setselectedLocation(e.target.value);
+                        setshowcalenderconfroom(false);
+                        setshowcalenderdaypass(false);
+                        setshowcalendermeetroom(true);
+                      }}
+                    >
+                      <option value="" disabled selected>
+                        Select
+                      </option>
+                      {locationDetails?.meetingrooms?.map((room, index) => (
+                        <option
+                          key={index}
+                          value={room}
+                          onClick={() => {
+                            setspacetype("meeting");
+                            setselectedLocation(room);
+                          }}
+                        >
+                          {room}
+                        </option>
+                      ))}
+                    </select>
+                  )}
+
+                {!showcalendermeetroom &&
+                  locationDetails?.meetingrooms?.length <= 0 && (
+                    <div>
+                      <p className="text-red-500">currently not available</p>
+                    </div>
+                  )}
+
+                {showcalendermeetroom && (
+                  <button
+                    className=" text-red-600 px-4 py-2 bg-slate-200 rounded-md shadow-lg transition transform hover:bg-gray-300 hover:scale-105"
+                    onClick={() => {
+                      setshowcalendermeetroom(false);
+                      setSelectedDate("");
                     }}
                   >
-                    <option value="" disabled selected>
-                      Select
-                    </option>
-                    {locationDetails?.meetingrooms?.map((room, index) => (
-                      <option
-                        key={index}
-                        value={room}
-                        onClick={() => {
-                          setspacetype("meeting");
-                          setselectedLocation(room);
-                        }}
-                      >
-                        {room}
-                      </option>
-                    ))}
-                  </select>
+                    Remove
+                  </button>
                 )}
-
-              {!showcalendermeetroom &&
-                locationDetails?.meetingrooms?.length <= 0 && (
-                  <div>
-                    <p className="text-red-500">currently not available</p>
-                  </div>
-                )}
-
-              {showcalendermeetroom && (
-                <button
-                  className=" text-red-600 px-4 py-2 bg-slate-200 rounded-md shadow-lg transition transform hover:bg-gray-300 hover:scale-105"
-                  onClick={() => {
-                    setshowcalendermeetroom(false);
-                    setSelectedDate("");
-                  }}
-                >
-                  Remove
-                </button>
-              )}
-            </div>
+              </div>
+            )}
 
             <div className={`h-auto`}>
               {showcalendermeetroom && (

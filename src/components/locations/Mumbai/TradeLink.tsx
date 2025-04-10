@@ -129,14 +129,14 @@ const Webpage = () => {
                 ₹ 18,999 Onwards
               </span>
             </li>
-            <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+            {/* <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
               <span className="text-sm font-semibold text-gray-500">
                 Meeting Rooms
               </span>
               <span className="text-sm font-bold text-gray-500">
                 ₹ 699 / Hourly
               </span>
-            </li>
+            </li> */}
             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
               <span className="text-sm font-semibold text-gray-500">
                 Conference Rooms

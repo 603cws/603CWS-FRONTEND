@@ -184,14 +184,16 @@ const MemberDashboard: React.FC = () => {
                     >
                       {userLocation} Conference Room
                     </option>
-                    <option
-                      className={`${
-                        windowWidth > 610 ? "text-base" : "text-sm"
-                      }`}
-                      value={`${userLocation} Meeting Room`}
-                    >
-                      {userLocation} Meeting Room
-                    </option>
+                    {userLocation !== "Trade Link" && (
+                      <option
+                        className={`${
+                          windowWidth > 610 ? "text-base" : "text-sm"
+                        }`}
+                        value={`${userLocation} Meeting Room`}
+                      >
+                        {userLocation} Meeting Room
+                      </option>
+                    )}
                   </>
                 )}
               </select>
@@ -336,12 +338,12 @@ const MemberDashboard: React.FC = () => {
                 >
                   Fort Conference Room
                 </option>
-                <option
+                {/* <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
                   value="Trade Link Meeting Room"
                 >
                   Trade Link Meeting Room
-                </option>
+                </option> */}
                 <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
                   value="Trade Link Conference Room"
