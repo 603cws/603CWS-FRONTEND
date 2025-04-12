@@ -266,7 +266,7 @@ const MemberDashboard: React.FC = () => {
                 >
                   Matulya Meeting Room
                 </option>
-                <option
+                {/* <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
                   value="Millennium Conference Room"
                 >
@@ -277,7 +277,7 @@ const MemberDashboard: React.FC = () => {
                   value="Millennium Meeting Room"
                 >
                   Millennium Meeting Room
-                </option>
+                </option> */}
                 <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
                   value="Sunmill Conference Room"
