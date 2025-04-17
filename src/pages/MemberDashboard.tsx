@@ -17,6 +17,8 @@ const MemberDashboard: React.FC = () => {
       userLocation = "Lawyers Chamber";
     } else if (accHolder.location === "Trade Link") {
       userLocation = "Trade Link";
+    } else if (accHolder.location === "Marathon Futurex") {
+      userLocation = "Marathon Futurex";
     } else {
       splitLocation = accHolder.location.split(" ");
       console.log(splitLocation);
@@ -337,6 +339,18 @@ const MemberDashboard: React.FC = () => {
                   value="Fort Conference Room"
                 >
                   Fort Conference Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Marathon Futurex Meeting Room"
+                >
+                  Marathon Futurex Meeting Room
+                </option>
+                <option
+                  className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
+                  value="Marathon Futurex Conference Room"
+                >
+                  Marathon Futurex Conference Room
                 </option>
                 {/* <option
                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}

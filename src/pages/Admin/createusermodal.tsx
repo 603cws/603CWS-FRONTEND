@@ -153,6 +153,7 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
               <option value="Navratna">Navratna</option>
               <option value="Fort">Fort</option>
               <option value="Trade Link">Trade Link</option>
+              <option value="Marathon Futurex">Marathon Futurex</option>
             </select>
           </div>
           <div className="mb-4">
