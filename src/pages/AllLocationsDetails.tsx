@@ -286,7 +286,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         name: "Fort - Lawyers Chamber",
         address:
           "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
-        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
         link: "/locations/Lawyers-Chamber",
         about:
           "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
@@ -314,6 +314,39 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Fort Conference Room"],
         meetingrooms: ["Fort Meeting Room"],
         daypasses: ["Fort Day Pass"],
+      },
+      {
+        name: "Marathon Futurex",
+        address:
+          "Marathon Futurex, B Wing, 7th Floor, Mafatlal Mills Compound, NM Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013",
+        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        link: "/locations/MarathonFuturex",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1199,
+        conferenceroom: 1999,
+        daypass: 1849,
+        membership: {
+          daypass: {
+            tendays: 11700,
+            fifteendays: 16950,
+            twentydays: 18200,
+          },
+          conferenceroom: {
+            tenhours: 14430,
+            twentyhours: 26200,
+            thirtyhours: 36450,
+          },
+          meetingroom: {
+            tenhours: 9360,
+            twentyhours: 16900,
+            thirtyhours: 21900,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Marathon Futurex Conference Room"],
+        meetingrooms: ["Marathon Futurex Meeting Room"],
+        daypasses: ["Marathon Futurex Day Pass"],
       },
       {
         name: "Trade Link, Kamala Mills",
@@ -771,6 +804,41 @@ export const locationsfornewDashboard: {
         daypasses: ["Lawyers Chamber Day Pass"],
         spacetypename: "Fort Meeting Room",
       },
+      {
+        name: "Marathon Futurex",
+        address:
+          "Marathon Futurex, B Wing, 7th Floor, Mafatlal Mills Compound, NM Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013",
+        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
+        link: "/locations/MarathonFuturex",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1199,
+        conferenceroom: 1999,
+        spacetypename: "Marathon Futurex Meeting Room",
+        spacetypeprice: 1199,
+        daypass: 1849,
+        membership: {
+          daypass: {
+            tendays: 11700,
+            fifteendays: 16950,
+            twentydays: 18200,
+          },
+          conferenceroom: {
+            tenhours: 14430,
+            twentyhours: 26200,
+            thirtyhours: 36450,
+          },
+          meetingroom: {
+            tenhours: 9360,
+            twentyhours: 16900,
+            thirtyhours: 21900,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Marathon Futurex Conference Room"],
+        meetingrooms: ["Marathon Futurex Meeting Room"],
+        daypasses: ["Marathon Futurex Day Pass"],
+      },
       // {
       //   name: "Trade Link, Kamala Mills",
       //   address:
@@ -1112,6 +1180,41 @@ export const locationsfornewDashboard: {
         meetingrooms: ["Trade Link Meeting Room"],
         daypasses: ["Trade Link Day Pass"],
       },
+      {
+        name: "Marathon Futurex",
+        address:
+          "Marathon Futurex, B Wing, 7th Floor, Mafatlal Mills Compound, NM Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013",
+        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
+        link: "/locations/MarathonFuturex",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1199,
+        conferenceroom: 1999,
+        spacetypename: "Marathon Futurex Conference Room",
+        spacetypeprice: 1999,
+        daypass: 1849,
+        membership: {
+          daypass: {
+            tendays: 11700,
+            fifteendays: 16950,
+            twentydays: 18200,
+          },
+          conferenceroom: {
+            tenhours: 14430,
+            twentyhours: 26200,
+            thirtyhours: 36450,
+          },
+          meetingroom: {
+            tenhours: 9360,
+            twentyhours: 16900,
+            thirtyhours: 21900,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Marathon Futurex Conference Room"],
+        meetingrooms: ["Marathon Futurex Meeting Room"],
+        daypasses: ["Marathon Futurex Day Pass"],
+      },
     ],
   },
   {
@@ -1417,6 +1520,41 @@ export const locationsfornewDashboard: {
         conferencerooms: ["Trade Link Conference Room"],
         meetingrooms: ["Trade Link Meeting Room"],
         daypasses: ["Trade Link Day Pass"],
+      },
+      {
+        name: "Marathon Futurex",
+        address:
+          "Marathon Futurex, B Wing, 7th Floor, Mafatlal Mills Compound, NM Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013",
+        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
+        link: "/locations/MarathonFuturex",
+        about:
+          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+        meetingroom: 1199,
+        conferenceroom: 1999,
+        spacetypename: "Marathon Futurex Day Pass",
+        spacetypeprice: 1849,
+        daypass: 1849,
+        membership: {
+          daypass: {
+            tendays: 11700,
+            fifteendays: 16950,
+            twentydays: 18200,
+          },
+          conferenceroom: {
+            tenhours: 14430,
+            twentyhours: 26200,
+            thirtyhours: 36450,
+          },
+          meetingroom: {
+            tenhours: 9360,
+            twentyhours: 16900,
+            thirtyhours: 21900,
+          },
+        },
+        enablebooking: true,
+        conferencerooms: ["Marathon Futurex Conference Room"],
+        meetingrooms: ["Marathon Futurex Meeting Room"],
+        daypasses: ["Marathon Futurex Day Pass"],
       },
     ],
   },

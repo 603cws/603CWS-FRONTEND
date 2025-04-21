@@ -298,6 +298,16 @@ const Navbar = () => {
                           Trade Link ,Lower Parel
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/MarathonFuturex");
+                          }}
+                        >
+                          Marathon Futurex,Lower Parel
+                        </button>
+                      </li>
                     </ul>
                   </li>
                   <li
@@ -736,6 +746,16 @@ const Navbar = () => {
                           }}
                         >
                           Trade Link ,Lower Parel
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
+                        <button
+                          // className="text-base"
+                          onClick={() => {
+                            navigate("/locations/MarathonFuturex");
+                          }}
+                        >
+                          Marathon Futurex ,Lower Parel
                         </button>
                       </li>
                     </ul>

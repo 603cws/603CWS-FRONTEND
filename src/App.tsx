@@ -54,6 +54,7 @@ import Technocity from "./components/locations/Navi_Mumbai/Technocity";
 import Pentagon from "./components/locations/Mumbai/Pentagon";
 
 import Fort from "./components/locations/Mumbai/lawyers-Chamber";
+import MarathonFuturex from "./components/locations/Mumbai/Marathon-Futurex";
 import TradeLink from "./components/locations/Mumbai/TradeLink";
 // import CreateUserModal from "./pages/Admin/createusermodal";
 import RegisterUser from "./pages/Admin/RegisterUser";
@@ -204,6 +205,10 @@ function App() {
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
             <Route path="/locations/Pentagon-Classic" element={<Pentagon />} />
             <Route path="/locations/Lawyers-Chamber" element={<Fort />} />
+            <Route
+              path="/locations/MarathonFuturex"
+              element={<MarathonFuturex />}
+            />
             <Route path="/locations/TradeLink" element={<TradeLink />} />
             {/*<Route path="/locations/Marathon" element={<Marathon />} />*/}
             {/*<Route path="/locations/MIDC" element={<MIDC />} />*/}
@@ -282,6 +287,10 @@ function App() {
             <Route path="/locations/Kamala-Mills" element={<Kamala />} />
             <Route path="/locations/TradeLink" element={<TradeLink />} />
             <Route path="/locations/Lawyers-Chamber" element={<Fort />} />
+            <Route
+              path="/locations/MarathonFuturex"
+              element={<MarathonFuturex />}
+            />
             <Route path="/locations/Sunshine-Tower" element={<Sunshine />} />
             <Route path="/locations/Amore-Centre" element={<Amore />} />
             <Route path="/locations/Makhija-Archade" element={<Makhija />} />
