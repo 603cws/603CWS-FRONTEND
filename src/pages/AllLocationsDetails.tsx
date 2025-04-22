@@ -286,7 +286,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         name: "Fort - Lawyers Chamber",
         address:
           "Kaiser-E-Hind Pvt LtdHanuman Building,Ground Floor,300  Perin Nariman Street,Behind Reserve Bank of India Fort, Mumbai-400 001",
-        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
+        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
         link: "/locations/Lawyers-Chamber",
         about:
           "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
@@ -319,7 +319,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         name: "Marathon Futurex",
         address:
           "Marathon Futurex, B Wing, 7th Floor, Mafatlal Mills Compound, NM Joshi Marg, Lower Parel, Mumbai, Maharashtra 400013",
-        imgSrc: "/officeimg/Fort/Fort1.jpeg", // Replace with actual image link
+        imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
         link: "/locations/MarathonFuturex",
         about:
           "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
