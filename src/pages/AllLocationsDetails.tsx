@@ -322,7 +322,7 @@ export const locations: { city: string; locations: Location[] }[] = [
         imgSrc: "/officeimg/MarathonFuturex/1.jpeg", // Replace with actual image link
         link: "/locations/MarathonFuturex",
         about:
-          "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
+          "Our location at Marathon Futurex, Lower Parel – a premium coworking destination in the heart of Mumbai's bustling business district. Strategically located in one of the city's most prominent commercial hubs, this centre is designed for professionals, startups, and enterprises looking for a dynamic and well-connected workspace Set in a Grade A commercial tower with excellent connectivity to both Central and Western railway lines, the 603 centre at Futurex offers modern infrastructure, a vibrant work atmosphere, and stunning views of the Mumbai skyline. Whether you're looking for flexible hot desks, private cabins, or premium meeting rooms, this centre caters to all your professional needs.",
         meetingroom: 1199,
         conferenceroom: 1999,
         daypass: 1849,
