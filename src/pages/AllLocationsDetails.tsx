@@ -60,6 +60,22 @@ export const locations: { city: string; locations: Location[] }[] = [
       //   meetingrooms: ["Pinnacle Meeting Room"],
       //   daypasses : ["Pinnacle Day Pass"]
       // },
+      // {
+      //   name: "Pinnacle Corporate Park, BKC",
+      //   address:
+      //     "Bandra Kurla Complex, Kolivery Village, Mmrda Area, Bkc Cst Link Road, Bandra Kurla Complex- Bandra East, Mumbai - 400051",
+      //   imgSrc: gallery5, // Replace with actual image link
+      //   link: "/locations/Pinnacle-Corporate-Park",
+      //   about: "BKC offers a wide range of facilities to cater to the needs of its residents, employees, and visitors. The complex boasts of modern office spaces, commercial buildings, hotels, restaurants, and shopping centers. The presence of multinational corporations, financial institutions, and government offices in BKC has further enhanced its reputation as a prime business destination. Additionally, BKC is known for its green spaces and well-maintained infrastructure. Moreover, BKC is home to a mix of luxury hotels, upscale restaurants, and retail outlets, offering a perfect blend of work and leisure options.",
+      //   meetingroom: 899,
+      //   conferenceroom: 1499,
+      //   daypass: 999,
+      //   membership: {},
+      //   enablebooking: false,
+      //   conferencerooms: ["Pinnacle Conference Room"],
+      //   meetingrooms: ["Pinnacle Meeting Room"],
+      //   daypasses : ["Pinnacle Day Pass"]
+      // },
       {
         name: "Khar - Amore Centre",
         address:
