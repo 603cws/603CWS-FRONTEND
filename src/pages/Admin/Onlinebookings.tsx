@@ -8,9 +8,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./MyDatePicker.css";
 import { FaFilePdf } from "react-icons/fa";
 
+interface onlinebookinguser {
+  _id: string;
+  kyc: boolean;
+  username: string;
+  email: string;
+}
+
 interface Booking {
   _id: string;
-  user: string;
+  user: onlinebookinguser;
   startTime: string;
   endTime: string;
   companyName: string;
@@ -20,6 +27,18 @@ interface Booking {
   transactionAmount: number;
   billedcredits?: number; // Adding billedcredits here
 }
+// interface Booking {
+//   _id: string;
+//   user: string;
+//   startTime: string;
+//   endTime: string;
+//   companyName: string;
+//   spaceName: string;
+//   date: string;
+//   status: string;
+//   transactionAmount: number;
+//   billedcredits?: number; // Adding billedcredits here
+// }
 
 const OnlineBookings = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -50,6 +69,17 @@ const OnlineBookings = () => {
 
   console.log("hello from the online booking");
 
+  // const fetchBookings = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://127.0.0.1:3000/api/v1/bookings/admin/getonlinebookings"
+  //     );
+  //     console.log(response);
+  //     setBookings(response.data.combinedBookings);
+  //   } catch (error) {
+  //     console.error("Error fetching bookings:", error);
+  //   }
+  // };
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
@@ -67,6 +97,7 @@ const OnlineBookings = () => {
 
   useEffect(() => {
     fetchBookings();
+    console.log(bookings);
   }, []);
 
   const handleNextPage = () => {
@@ -80,6 +111,12 @@ const OnlineBookings = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  function parseCustomDate(dateStr: string): Date {
+    const [day, month, year] = dateStr.split("/").map(Number);
+    return new Date(year, month - 1, day); // JS months are 0-indexed
+  }
+  const today = new Date();
 
   const filteredBookings = bookings
     .filter((booking) => {
@@ -97,7 +134,34 @@ const OnlineBookings = () => {
         uniqueBookings.push(booking);
       }
       return uniqueBookings;
-    }, [] as Booking[]);
+    }, [] as Booking[])
+    .sort((a, b) => {
+      const dateA = parseCustomDate(a.date).getTime();
+      const dateB = parseCustomDate(b.date).getTime();
+
+      // Closest to today comes first
+      return (
+        Math.abs(dateA - today.getTime()) - Math.abs(dateB - today.getTime())
+      );
+    });
+
+  // const filteredBookings = bookings
+  //   .filter((booking) => {
+  //     return (
+  //       (!searchQuery ||
+  //         booking.companyName
+  //           ?.toLowerCase()
+  //           .includes(searchQuery.toLowerCase())) &&
+  //       (!selectedWorkspace || booking.spaceName === selectedWorkspace) &&
+  //       (!formattedDate || booking.date === formattedDate)
+  //     );
+  //   })
+  //   .reduce((uniqueBookings, booking) => {
+  //     if (!uniqueBookings.some((b) => b._id === booking._id)) {
+  //       uniqueBookings.push(booking);
+  //     }
+  //     return uniqueBookings;
+  //   }, [] as Booking[]);
 
   const indexOfLastBooking = currentPage * bookingsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
@@ -266,7 +330,7 @@ const OnlineBookings = () => {
               <thead>
                 <tr>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
-                    User ID
+                    username
                   </th>
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     Company
@@ -286,15 +350,17 @@ const OnlineBookings = () => {
                   <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
                     End Time
                   </th>
-                  {/* <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
-                    Actions
-                  </th> */}
+                  <th className="py-4 px-6 bg-blue-100 font-bold uppercase text-gray-600 text-sm border-b">
+                    KYC status
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {currentBookings.map((booking) => (
                   <tr key={booking._id}>
-                    <td className="py-4 px-6 border-b">{booking.user}</td>
+                    <td className="py-4 px-6 border-b">
+                      {booking.user.username}
+                    </td>
                     <td className="py-4 px-6 border-b">
                       {booking.companyName}
                     </td>
@@ -306,6 +372,13 @@ const OnlineBookings = () => {
                     <td className="py-4 px-6 border-b">{booking.date}</td>
                     <td className="py-4 px-6 border-b">{booking.startTime}</td>
                     <td className="py-4 px-6 border-b">{booking.endTime}</td>
+                    <td
+                      className={`py-4 px-6 border-b ${
+                        booking.user.kyc ? "text-green-700" : "text-red-700"
+                      }`}
+                    >
+                      {booking.user.kyc ? "Verified" : "Pending"}
+                    </td>
                     {/* <td className="py-4 px-6 border-b">
                       <button
                         className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl"
