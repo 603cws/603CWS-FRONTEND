@@ -53,6 +53,37 @@ const Payment: React.FC = () => {
     (state: RootState) => state.dayPasses.dayPasses
   );
 
+  // useEffect(() => {
+  //   refreshAuth();
+  // }, []);
+
+  const checkuser = async () => {
+    try {
+      const res = await axios.get(
+        `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
+        {
+          withCredentials: true,
+        }
+      );
+      if (res.data.user) {
+        //      {
+        //   accHolder.kyc ? handlePayment() : navigate("/kycform");
+        // }
+        const checkagain = await axios.get(
+          `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
+          {
+            withCredentials: true,
+          }
+        );
+        checkagain.data.user.kyc ? handlePayment() : navigate("/kycform");
+      }
+      console.log("response from checkuser", res);
+      // setAccHolder(res.data.);
+    } catch (error) {
+      console.log("user not found");
+    }
+  };
+
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // Calculate total price from all bookings and day passes
@@ -230,6 +261,33 @@ const Payment: React.FC = () => {
   // );
   //handle phonepe payment
 
+  // const handlePayment = async () => {
+  //   const data = {
+  //     accHolder,
+  //     amount: finalBill.toFixed(2),
+  //     bookings,
+  //     dayPasses,
+  //     discountPercentage,
+  //   };
+  //   try {
+  //     const response = await axios.post(
+  //       "http://127.0.0.1:3000/api/v1/order/createorder",
+  //       data,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         // If you need credentials (cookies/auth), add this:
+  //         withCredentials: true, // Include credentials (cookies) in the request
+  //       }
+  //     );
+  //     console.log(response.data);
+  //     window.location.href = response.data.url;
+  //     // setCheckstatus(true);
+  //   } catch (error) {
+  //     console.log("error in payment", error);
+  //   }
+  // };
   const handlePayment = async () => {
     const data = {
       accHolder,
@@ -264,7 +322,11 @@ const Payment: React.FC = () => {
       if (isAuthenticated) {
         const notoverlap = await checkOverLap(bookings);
         if (notoverlap) {
-          handlePayment();
+          // {
+          //   accHolder.kyc ? handlePayment() : navigate("/kycform");
+          // }
+          checkuser();
+          // handlePayment();
         } else {
           toast.error("you are late someone booked around this slot");
         }

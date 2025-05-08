@@ -3,6 +3,7 @@ import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
 import { useApp } from "./../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface User {
   _id: string;
@@ -46,6 +47,8 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
   const { isAuthenticated, setIsAuthenticated, setloading, setIsAdmin } =
     useApp();
   console.log(isAuthenticated);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -261,6 +264,17 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
             </button>
           </div>
         </form>
+        <div className="pt-3 lg:pt-6">
+          <h1>
+            Already a user ,click here to{" "}
+            <span
+              className="underline cursor-pointer font-bold text-lg"
+              onClick={() => navigate("/login")}
+            >
+              login
+            </span>{" "}
+          </h1>
+        </div>
       </div>
     </div>
   );
