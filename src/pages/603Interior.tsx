@@ -21,11 +21,7 @@ const Webpage = () => {
   const PORT = "https://603-bcakend-new.vercel.app";
 
   const handleButtonClick = () => {
-    window.open(
-      "https://603-interior.vercel.app/",
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open("https://www.workved.com/", "_blank", "noopener,noreferrer");
   };
 
   const handleformSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
