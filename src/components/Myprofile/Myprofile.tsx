@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { MdClose } from "react-icons/md";
 import "./animations.css";
 import DashNavbar from "../DashBoardNavbar/DashNavbar";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
 import { useApp } from "../../context/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 // Define the theme type
 interface Theme {
@@ -29,7 +30,7 @@ const getTheme = (darkMode: boolean): Theme => ({
 const Settings: React.FC = () => {
   const { setloading } = useApp();
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const token = localStorage.getItem("token");
 
@@ -123,9 +124,10 @@ const Settings: React.FC = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-        withCredentials: true,
-      });
+      const response = await axiosInstance.get(`/api/v1/users/userdetails`);
+      // const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+      //   withCredentials: true,
+      // });
       const userdata: UserDetails = response.data.user;
       console.log(userdata);
       setData(userdata);
@@ -159,11 +161,19 @@ const Settings: React.FC = () => {
   const theme = getTheme(darkMode);
 
   const handleProfileSave = async () => {
-    const response = await axios.put(
-      `${PORT}/api/v1/users/updateuser`,
-      { companyName, country, state, city, zipCode, token },
-      { withCredentials: true }
-    );
+    const response = await axiosInstance.put(`/api/v1/users/updateuser`, {
+      companyName,
+      country,
+      state,
+      city,
+      zipCode,
+      token,
+    });
+    // const response = await axios.put(
+    //   `${PORT}/api/v1/users/updateuser`,
+    //   { companyName, country, state, city, zipCode, token },
+    //   { withCredentials: true }
+    // );
     console.log(response.data);
     fetchData();
   };
@@ -171,11 +181,16 @@ const Settings: React.FC = () => {
   const handlePasswordChange = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newPassword === confirmPassword) {
-      const response = await axios.put(
-        `${PORT}/api/v1/users/changepassword`,
-        { newPassword, oldPassword, token },
-        { withCredentials: true }
-      );
+      const response = await axiosInstance.put(`/api/v1/users/changepassword`, {
+        newPassword,
+        oldPassword,
+        token,
+      });
+      // const response = await axios.put(
+      //   `${PORT}/api/v1/users/changepassword`,
+      //   { newPassword, oldPassword, token },
+      //   { withCredentials: true }
+      // );
       console.log(response, "dmompdkp");
       if (response.data.msg === "Password changed successfully") {
         toast.success("Password changed successfully");

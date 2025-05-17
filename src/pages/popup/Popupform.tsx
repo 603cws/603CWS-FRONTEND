@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import "./popupanimation.css";
-import axios from "axios";
+// import axios from "axios";
 import { useApp } from "../../context/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface PopupformProps {
   val: boolean;
@@ -10,7 +11,7 @@ interface PopupformProps {
 
 const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
   const { setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
@@ -56,11 +57,15 @@ const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
     e.preventDefault();
     hidePopup();
     localStorage.setItem("callback", "true");
-    const res = await axios.post(
-      `${PORT}/api/v1/users/sendcallback`,
-      formData,
-      { withCredentials: true }
+    const res = await axiosInstance.post(
+      `/api/v1/users/sendcallback`,
+      formData
     );
+    // const res = await axios.post(
+    //   `${PORT}/api/v1/users/sendcallback`,
+    //   formData,
+    //   { withCredentials: true }
+    // );
     console.log(res);
     setloading(false);
     console.log("Form data:", formData);

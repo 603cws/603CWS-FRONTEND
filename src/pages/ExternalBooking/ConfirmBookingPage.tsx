@@ -10,11 +10,12 @@ import {
   FaCoffee,
 } from "react-icons/fa"; // Import FontAwesome icons
 import { locations } from "../AllLocationsDetails";
-import axios from "axios";
+// import axios from "axios";
 import { useApp } from "../../context/AuthContext";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 type Location = {
   name: string;
@@ -50,7 +51,7 @@ export const getTheme = (darkMode: boolean): Theme => ({
 });
 
 //for production
-const PORT = import.meta.env.VITE_BACKEND_URL;
+// const PORT = import.meta.env.VITE_BACKEND_URL;
 
 const ConfirmPayment = () => {
   const { addNewBooking, bookDayPass, dayPasses, bookings } = useApp();
@@ -175,16 +176,20 @@ const ConfirmPayment = () => {
   const handleAddDaypass = async () => {
     try {
       setIsSubmitting(true);
-      const res = await axios.post(
-        `${PORT}/api/v1/daypass/daypassCheck`,
-        {
-          spaceName: selectedLocation,
-          quantity,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axiosInstance.post(`/api/v1/daypass/daypassCheck`, {
+        spaceName: selectedLocation,
+        quantity,
+      });
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/daypass/daypassCheck`,
+      //   {
+      //     spaceName: selectedLocation,
+      //     quantity,
+      //   },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
 
       if (res.status === 200) {
@@ -509,13 +514,17 @@ const ConfirmPayment = () => {
   const fetchLocationBookings = async (date: string) => {
     try {
       console.log("selectedLocation", selectedLocation);
-      const response = await axios.post(
-        `${PORT}/api/v1/bookings/getlocationbookings`,
-        { selectedDate: date, selectedLocation },
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/bookings/getlocationbookings`,
+        { selectedDate: date, selectedLocation }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/bookings/getlocationbookings`,
+      //   { selectedDate: date, selectedLocation },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       setTimings(response.data);
     } catch (error) {
       console.error(error);
@@ -525,17 +534,22 @@ const ConfirmPayment = () => {
   const fetchLocationDayPassBookings = async () => {
     try {
       console.log("iprjepr", selectedLocation);
-      const response = await axios.post(
-        `${PORT}/api/v1/daypass/getdata`,
-        {
-          selectedLocation,
-          selectedYear: currentYear,
-          selectedMonth: currentMonth + 1,
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axiosInstance.post(`/api/v1/daypass/getdata`, {
+        selectedLocation,
+        selectedYear: currentYear,
+        selectedMonth: currentMonth + 1,
+      });
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/daypass/getdata`,
+      //   {
+      //     selectedLocation,
+      //     selectedYear: currentYear,
+      //     selectedMonth: currentMonth + 1,
+      //   },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       setunavailabledaypasses(response.data);
       console.log(response.data);
     } catch (error) {

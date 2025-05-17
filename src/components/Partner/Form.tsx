@@ -1,9 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Popup from "./popup";
+import axiosInstance from "../../utils/axiosInstance";
 
 const ContactUs = () => {
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  //   const PORT = import.meta.env.VITE_BACKEND_URL;
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -28,11 +29,15 @@ const ContactUs = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const resp = await axios.post(
-        `${PORT}/api/v1/services/sendpartnershipemail`,
-        formData,
-        { withCredentials: true }
+      const resp = await axiosInstance.post(
+        `/api/v1/services/sendpartnershipemail`,
+        formData
       );
+      //   const resp = await axios.post(
+      //     `${PORT}/api/v1/services/sendpartnershipemail`,
+      //     formData,
+      //     { withCredentials: true }
+      //   );
       ``;
       console.log(resp);
       console.log(formData);

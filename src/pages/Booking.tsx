@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { MdClose } from "react-icons/md";
 import AnimationComponent from "../components/Gif/Gif";
 import AnimationComponentSorry from "../components/Gif/SorryGif";
 import AnimationComponentAsk from "../components/Gif/Askconfirm";
 import { useApp } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import axiosInstance from "../utils/axiosInstance";
 
 interface Theme {
   background: {
@@ -185,7 +186,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
     };
   }, []);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const containerStyle: React.CSSProperties = {
     display: "flex",
@@ -362,9 +363,10 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-          withCredentials: true,
-        });
+        const response = await axiosInstance.get(`/api/v1/users/userdetails`);
+        // const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+        //   withCredentials: true,
+        // });
 
         setloading(false);
         console.log(response);
@@ -381,13 +383,17 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
 
   const fetchLocationBookings = async (date: string) => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/bookings/getlocationbookings`,
-        { selectedDate: date, selectedLocation },
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/bookings/getlocationbookings`,
+        { selectedDate: date, selectedLocation }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/bookings/getlocationbookings`,
+      //   { selectedDate: date, selectedLocation },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       setloading(false);
       setTimings(response.data);
     } catch (error) {
@@ -571,16 +577,20 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
         endTime: selectedEndTime,
       };
       try {
-        await axios.post(
-          `${PORT}/api/v1/bookings/`,
-          {
-            appointmentDetails,
-            credits: Math.ceil(Number(credits.toFixed(2))),
-          },
-          {
-            withCredentials: true,
-          }
-        );
+        await axiosInstance.post(`/api/v1/bookings/`, {
+          appointmentDetails,
+          credits: Math.ceil(Number(credits.toFixed(2))),
+        });
+        // await axios.post(
+        //   `${PORT}/api/v1/bookings/`,
+        //   {
+        //     appointmentDetails,
+        //     credits: Math.ceil(Number(credits.toFixed(2))),
+        //   },
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
         toast.success("Booking created successfully!");
         setupInterval();
       } catch (error) {
@@ -604,16 +614,20 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
       endTime: selectedEndTime,
     };
     try {
-      await axios.post(
-        `${PORT}/api/v1/bookings/`,
-        {
-          appointmentDetails,
-          credits: Math.ceil(Number(credits.toFixed(2))),
-        },
-        {
-          withCredentials: true,
-        }
-      );
+      await axiosInstance.post(`/api/v1/bookings/`, {
+        appointmentDetails,
+        credits: Math.ceil(Number(credits.toFixed(2))),
+      });
+      // await axios.post(
+      //   `${PORT}/api/v1/bookings/`,
+      //   {
+      //     appointmentDetails,
+      //     credits: Math.ceil(Number(credits.toFixed(2))),
+      //   },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       setProfileOpen(true);
       toast.success("Booking created successfully!");
       setupInterval();
@@ -625,10 +639,13 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
 
   const allbookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-        { withCredentials: true }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/getallbookingsbyuser`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/getallbookingsbyuser`,
+      //   { withCredentials: true }
+      // );
       setTransactions(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);

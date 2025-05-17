@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import {
   LineChart,
@@ -13,6 +13,7 @@ import {
   Bar,
   Legend,
 } from "recharts";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface User {
   city: string;
@@ -42,16 +43,19 @@ function AdminDashboard() {
   const [userSignupsData, setUserSignupsData] = useState([]);
   const [workspaceBookingsData, setWorkspaceBookingsData] = useState([]);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const fetchDashboardData = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/users/details/dashboard`,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.get(
+        `/api/v1/users/details/dashboard`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/users/details/dashboard`,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       const data = response.data;
       console.log(response);
       if (data.msg === "details") {

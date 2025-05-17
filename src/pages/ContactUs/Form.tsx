@@ -1,12 +1,13 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Popup from "./popup";
 import { useApp } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 const ContactUs = () => {
   const { setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -38,11 +39,15 @@ const ContactUs = () => {
       setloading(true);
       setIsPopupVisible(true);
       setIsDisabled(true);
-      const resp = await axios.post(
-        `${PORT}/api/v1/users/contactus`,
-        formData,
-        { withCredentials: true }
+      const resp = await axiosInstance.post(
+        `/api/v1/users/contactus`,
+        formData
       );
+      // const resp = await axios.post(
+      //   `${PORT}/api/v1/users/contactus`,
+      //   formData,
+      //   { withCredentials: true }
+      // );
       setloading(false);
       toast.success("Request for callback submitted");
       console.log(resp);

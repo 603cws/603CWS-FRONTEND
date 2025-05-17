@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./popup.css";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface User {
   _id: string;
@@ -40,7 +41,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   const [creditsleft, setcreditsleft] = useState(0);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     if (user) {
@@ -58,8 +59,8 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await axios.post(
-      `${PORT}/api/v1/users/admin/updateuser`,
+    const response = await axiosInstance.post(
+      `/api/v1/users/admin/updateuser`,
       {
         companyName,
         location,
@@ -71,9 +72,24 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
         extracredits,
         creditsleft,
         id,
-      },
-      { withCredentials: true }
+      }
     );
+    // const response = await axios.post(
+    //   `${PORT}/api/v1/users/admin/updateuser`,
+    //   {
+    //     companyName,
+    //     location,
+    //     kyc,
+    //     phone,
+    //     email,
+    //     role,
+    //     monthlycredits,
+    //     extracredits,
+    //     creditsleft,
+    //     id,
+    //   },
+    //   { withCredentials: true }
+    // );
     console.log(response);
     if (response.data.msg === "User updated") {
       toast.success(response.data.msg);
@@ -84,11 +100,15 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   };
 
   const handleConfirmDelete = async () => {
-    const response = await axios.post(
-      `${PORT}/api/v1/users/admin/deleteuser`,
-      { id },
-      { withCredentials: true }
+    const response = await axiosInstance.post(
+      `/api/v1/users/admin/deleteuser`,
+      { id }
     );
+    // const response = await axios.post(
+    //   `${PORT}/api/v1/users/admin/deleteuser`,
+    //   { id },
+    //   { withCredentials: true }
+    // );
     console.log(response);
     if (response.data.msg === "User deleted") {
       toast.success(response.data.msg);

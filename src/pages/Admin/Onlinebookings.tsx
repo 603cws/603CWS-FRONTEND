@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import { CiSearch } from "react-icons/ci";
 import { useReactToPrint } from "react-to-print";
@@ -7,6 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./MyDatePicker.css";
 import { FaFilePdf } from "react-icons/fa";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface onlinebookinguser {
   _id: string;
@@ -49,7 +50,7 @@ const OnlineBookings = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [formattedDate, setFormattedDate] = useState<string>("");
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (startDate) {
       const day = startDate.getDate().toString();
@@ -83,12 +84,15 @@ const OnlineBookings = () => {
   // };
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/admin/getonlinebookings`,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/admin/getonlinebookings`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/admin/getonlinebookings`,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(response);
       setBookings(response.data.combinedBookings);
     } catch (error) {

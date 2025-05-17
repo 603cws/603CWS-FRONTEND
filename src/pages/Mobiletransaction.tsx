@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance";
 
 interface Transaction {
   _id: string;
@@ -155,6 +156,17 @@ const Mobiletransactions: React.FC = () => {
           withCredentials: true, // Include credentials (cookies) in the request
         }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/bookings/cancelbooking`,
+      //   { bookingid, isCancellable, isRefundable },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       setSelectedTransaction(null);
       setShowAboutModal(false);
       setShowWarningMessage(false);
@@ -234,10 +246,13 @@ const Mobiletransactions: React.FC = () => {
 
   const allbookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-        { withCredentials: true }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/getallbookingsbyuser`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/getallbookingsbyuser`,
+      //   { withCredentials: true }
+      // );
       addTransaction(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
@@ -247,17 +262,21 @@ const Mobiletransactions: React.FC = () => {
   //get all the daypasses by user
   const alldaypasses = async () => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/daypass/getalldaypassbyuser`,
-        { accHolder },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/daypass/getalldaypassbyuser`,
+        { accHolder }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/daypass/getalldaypassbyuser`,
+      //   { accHolder },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       console.log(response);
       addTransaction(response.data);
     } catch (error: any) {
@@ -268,16 +287,19 @@ const Mobiletransactions: React.FC = () => {
 
   const allCancelledBookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/getallcancellbookingsbyuser`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       setCancelledTransactions(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);

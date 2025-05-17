@@ -1,12 +1,13 @@
 import React, { useState, FormEvent, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { toast } from "react-hot-toast";
 import { gallery9 } from "../../utils/Landing/Landing";
 import { useApp } from "../../context/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Changepassword: React.FC = () => {
   const { setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [password, setPassword] = useState<string>("");
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
 
@@ -23,13 +24,17 @@ const Changepassword: React.FC = () => {
     console.log("Token:", token);
     const data = { password, token };
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/users/setnewpass`,
-        data,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/users/setnewpass`,
+        data
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/users/setnewpass`,
+      //   data,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(response);
       const { msg } = response.data;
 

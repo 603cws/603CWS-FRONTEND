@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import "./popupanimation.css";
-import axios from "axios";
+// import axios from "axios";
 import { useApp } from "../../context/AuthContext";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 const Popupform = () => {
   const { setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const a = localStorage.getItem("callback");
@@ -56,11 +57,15 @@ const Popupform = () => {
     try {
       setloading(true);
       localStorage.setItem("callback", "true");
-      const res = await axios.post(
-        `${PORT}/api/v1/users/sendcallback`,
-        formData,
-        { withCredentials: true }
+      const res = await axiosInstance.post(
+        `/api/v1/users/sendcallback`,
+        formData
       );
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/users/sendcallback`,
+      //   formData,
+      //   { withCredentials: true }
+      // );
       console.log(res);
       console.log("Form data:", formData);
       toast.success("form submitted");

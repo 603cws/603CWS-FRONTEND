@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import { CiSearch } from "react-icons/ci";
 import { useReactToPrint } from "react-to-print";
@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./MyDatePicker.css";
 import toast from "react-hot-toast";
 import { FaFilePdf } from "react-icons/fa";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface Booking {
   _id: string;
@@ -37,7 +38,7 @@ const AllBookings = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [bookingToCancel, setBookingToCancel] = useState<Booking | null>(null);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (startDate) {
       const day = startDate.getDate().toString();
@@ -58,12 +59,15 @@ const AllBookings = () => {
 
   const fetchBookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/admin/getallbookings`,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/admin/getallbookings`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/admin/getallbookings`,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(response);
       const bookingsWithBilledCredits = response.data.allbookings.map(
         (booking: Booking) => {
@@ -157,13 +161,17 @@ const AllBookings = () => {
 
   const deletebooking = async (id: any) => {
     try {
-      const resp = await axios.post(
-        `${PORT}/api/v1/bookings/admin/deletebooking`,
-        { id },
-        {
-          withCredentials: true,
-        }
+      const resp = await axiosInstance.post(
+        `/api/v1/bookings/admin/deletebooking`,
+        { id }
       );
+      // const resp = await axios.post(
+      //   `${PORT}/api/v1/bookings/admin/deletebooking`,
+      //   { id },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       if (resp.data.message === "Booking not found") {
         toast.error("Booking not found");
       }

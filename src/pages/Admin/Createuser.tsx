@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 const CreateUser: React.FC = () => {
   const [name, setName] = useState("");
@@ -12,12 +13,13 @@ const CreateUser: React.FC = () => {
     event.preventDefault();
 
     const data = { name, email, password, phone };
-    const PORT = import.meta.env.VITE_BACKEND_URL;
+    // const PORT = import.meta.env.VITE_BACKEND_URL;
 
     try {
-      const response = await axios.post(`${PORT}/api/v1/users/`, data, {
-        withCredentials: true,
-      });
+      const response = await axiosInstance.post(`/api/v1/users/`, data);
+      // const response = await axios.post(`${PORT}/api/v1/users/`, data, {
+      //   withCredentials: true,
+      // });
 
       if (response.data.msg === "Invalid Inputs") {
         toast.error("Invalid Inputs!");

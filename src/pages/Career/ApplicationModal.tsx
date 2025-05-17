@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface ApplicationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-const PORT = import.meta.env.VITE_BACKEND_URL;
+// const PORT = import.meta.env.VITE_BACKEND_URL;
 
 const ApplicationModal: React.FC<ApplicationModalProps> = ({
   isOpen,
@@ -38,13 +39,20 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
       return; // Stop the function here if the form is invalid
     }
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/career/send`,
-        { name, email, phone, position, experience },
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axiosInstance.post(`/api/v1/career/send`, {
+        name,
+        email,
+        phone,
+        position,
+        experience,
+      });
+      //   const response = await axios.post(
+      //     `${PORT}/api/v1/career/send`,
+      //     { name, email, phone, position, experience },
+      //     {
+      //       withCredentials: true,
+      //     }
+      //   );
       console.log(response);
     } catch (error) {
       console.error("error is", error);

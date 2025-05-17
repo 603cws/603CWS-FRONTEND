@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { CiCreditCard1 } from "react-icons/ci";
 import Avatar from "../Dashboard/Avatar";
 import { logo } from "../../utils/Landing/Landing";
@@ -11,6 +11,7 @@ import Modal from "./Modal";
 import { useApp } from "../../context/AuthContext";
 import Loader from "../Loader/Loader";
 import { IoWarningOutline } from "react-icons/io5";
+import axiosInstance from "../../utils/axiosInstance";
 
 // State variables for form values
 interface UserDetails {
@@ -79,15 +80,17 @@ function DashNavbar() {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axios.post(
-        `${PORT}/api/v1/auth/logout`,
-        {}, // Empty object if no body is needed
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axiosInstance.post(`/api/v1/auth/logout`, {});
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/auth/logout`,
+      //   {}, // Empty object if no body is needed
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
       setAccHolder({
         companyName: "",
         username: "",
@@ -135,12 +138,15 @@ function DashNavbar() {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const response = await axios.get(
-          `${PORT}/api/v1/credits/getcreditdetails`,
-          {
-            withCredentials: true,
-          }
+        const response = await axiosInstance.get(
+          `/api/v1/credits/getcreditdetails`
         );
+        // const response = await axios.get(
+        //   `${PORT}/api/v1/credits/getcreditdetails`,
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
         console.log(response);
         setData(response.data);
         setmonthlycredits(response.data.monthlycredits);

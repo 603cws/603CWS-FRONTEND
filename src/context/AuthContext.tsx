@@ -6,13 +6,14 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addBooking, removeBooking } from "../../redux/bookingsSlice";
 import { addDayPass, removeDayPass } from "../../redux/dayPassesSlice";
 import { RootState } from "../store";
 import toast from "react-hot-toast";
+import axiosInstance from "../utils/axiosInstance";
 
 interface BookingInterface {
   spaceName: string;
@@ -209,9 +210,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
 
   const checkAuth = useCallback(async () => {
     try {
-      const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
-        withCredentials: true,
-      });
+      const res = await axiosInstance.get(`/api/v1/users/checkauth`);
+      // const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
+      //   withCredentials: true,
+      // });
       setIsAuthenticated(res.data.auth);
       setIsAdmin(res.data.user);
       setAccHolder(res.data.accHolder);

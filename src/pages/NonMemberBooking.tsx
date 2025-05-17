@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { MdClose } from "react-icons/md";
 // import AnimationComponent from "../components/Gif/Gif";
 // import AnimationComponentSorry from "../components/Gif/SorryGif";
 import AnimationComponentAsk from "../components/Gif/Askconfirm";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router";
+import axiosInstance from "../utils/axiosInstance";
 // import toast from "react-hot-toast";
 
 //for price of booking meeting room and conference room import all location
@@ -250,7 +251,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
     };
   }, []);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const containerStyle: React.CSSProperties = {
     display: "flex",
@@ -449,15 +450,21 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post(
-          `${PORT}/api/v1/spaces/getspacebyname`,
+        const response = await axiosInstance.post(
+          `/api/v1/spaces/getspacebyname`,
           {
             name: selectedLocation,
-          },
-          {
-            withCredentials: true,
           }
         );
+        // const response = await axios.post(
+        //   `${PORT}/api/v1/spaces/getspacebyname`,
+        //   {
+        //     name: selectedLocation,
+        //   },
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
         console.log(response.data);
         setlocation(response.data);
       } catch (error) {
@@ -469,13 +476,17 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
 
   const fetchLocationBookings = async (date: string) => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/bookings/getlocationbookings`,
-        { selectedDate: date, selectedLocation },
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/bookings/getlocationbookings`,
+        { selectedDate: date, selectedLocation }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/bookings/getlocationbookings`,
+      //   { selectedDate: date, selectedLocation },
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       setloading(false);
       setTimings(response.data);
     } catch (error) {

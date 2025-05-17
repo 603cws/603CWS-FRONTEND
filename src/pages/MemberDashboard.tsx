@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Calendar from "./Booking";
 import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
-import axios from "axios";
+// import axios from "axios";
 import { useApp } from "../context/AuthContext";
 import AdminCalendar from "./Admin/AdminBookingcal";
+import axiosInstance from "../utils/axiosInstance";
 const MemberDashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { isAdmin, accHolder } = useApp();
@@ -55,7 +56,7 @@ const MemberDashboard: React.FC = () => {
     };
   }, []);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleLocationChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -65,13 +66,17 @@ const MemberDashboard: React.FC = () => {
 
     if (location !== "") {
       try {
-        const response = await axios.post(
-          `${PORT}/api/v1/spaces/getspacebyname`,
-          { name: location },
-          {
-            withCredentials: true,
-          }
+        const response = await axiosInstance.post(
+          `/api/v1/spaces/getspacebyname`,
+          { name: location }
         );
+        // const response = await axios.post(
+        //   `${PORT}/api/v1/spaces/getspacebyname`,
+        //   { name: location },
+        //   {
+        //     withCredentials: true,
+        //   }
+        // );
         setspacetype(response.data.roomtype);
       } catch (error) {
         console.error("Error fetching space type:", error);

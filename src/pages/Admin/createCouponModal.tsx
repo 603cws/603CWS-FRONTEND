@@ -1,8 +1,9 @@
 // Define the User interface
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface CreateUserModalProps {
   isOpen: boolean;
@@ -18,7 +19,7 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
   const [expiryDate, setExpiryDate] = useState("");
   const [usageLimit, setUsageLimit] = useState<number | undefined>();
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  // const PORT = "https://603-bcakend-new.vercel.app";
 
   //req body for creating a discount code
   // {
@@ -40,16 +41,22 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/coupon/createcoupon`,
-        {
-          code,
-          discount,
-          usageLimit,
-          expiryDate,
-        },
-        { withCredentials: true }
-      );
+      const response = await axiosInstance.post(`/api/v1/coupon/createcoupon`, {
+        code,
+        discount,
+        usageLimit,
+        expiryDate,
+      });
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/coupon/createcoupon`,
+      //   {
+      //     code,
+      //     discount,
+      //     usageLimit,
+      //     expiryDate,
+      //   },
+      //   { withCredentials: true }
+      // );
 
       console.log(response);
       if (response.data.message === "success") {

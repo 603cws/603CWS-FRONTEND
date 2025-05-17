@@ -1,7 +1,8 @@
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
+import axiosInstance from "../../utils/axiosInstance";
 
 const EditUser: React.FC = () => {
   const { id } = useParams();
@@ -11,14 +12,15 @@ const EditUser: React.FC = () => {
   const [role, setRole] = useState("user");
   const [credits, setcredits] = useState(0);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  //   const PORT = import.meta.env.VITE_BACKEND_URL;
 
   async function fetchinfo() {
-    const response = await axios.get(`${PORT}/api/v1/users/${id}`, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    });
+    const response = await axiosInstance.get(`/api/v1/users/${id}`);
+    // const response = await axios.get(`${PORT}/api/v1/users/${id}`, {
+    //   headers: {
+    //     Authorization: localStorage.getItem("token"),
+    //   },
+    // });
     const msg = response.data.msg;
     setcredits(msg.credits);
     setEmail(msg.email);
@@ -40,11 +42,12 @@ const EditUser: React.FC = () => {
       role: role,
       phone: phone,
     };
-    const response = await axios.put(`${PORT}/api/v1/users/${id}`, data, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    });
+    const response = await axiosInstance.put(`/api/v1/users/${id}`, data);
+    // const response = await axios.put(`${PORT}/api/v1/users/${id}`, data, {
+    //   headers: {
+    //     Authorization: localStorage.getItem("token"),
+    //   },
+    // });
     if (response.data.msg == "User updated") {
       toast.success("User updated");
     } else {

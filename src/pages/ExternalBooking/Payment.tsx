@@ -15,6 +15,7 @@ import { RootState } from "../../store";
 import { useApp } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 // State variables for form values
 // interface UserDetails {
@@ -61,16 +62,18 @@ const Payment: React.FC = () => {
 
   const checkuser = async () => {
     try {
-      const res = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-        withCredentials: true,
-      });
+      const res = await axiosInstance.get(`/api/v1/users/userdetails`);
+      // const res = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+      //   withCredentials: true,
+      // });
       if (res.data.user) {
         //      {
         //   accHolder.kyc ? handlePayment() : navigate("/kycform");
         // }
-        const checkagain = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-          withCredentials: true,
-        });
+        const checkagain = await axiosInstance.get(`/api/v1/users/userdetails`);
+        // const checkagain = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+        //   withCredentials: true,
+        // });
         checkagain.data.user.kyc ? handlePayment() : navigate("/kycform");
       }
       console.log("response from checkuser", res);
@@ -102,17 +105,21 @@ const Payment: React.FC = () => {
   const validateCoupon = async () => {
     let code = discountCode;
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/coupon/validatecoupon`,
-        { code },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/coupon/validatecoupon`,
+        { code }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/coupon/validatecoupon`,
+      //   { code },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
 
       console.log(response);
       setDiscountPercentage(
@@ -300,10 +307,19 @@ const Payment: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
         }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/order/createorder`,
+      //   data,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       console.log(response.data);
       window.location.href = response.data.url;
       // setCheckstatus(true);

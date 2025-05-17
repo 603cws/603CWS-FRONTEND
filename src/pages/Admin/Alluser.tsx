@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
+// import axios from "axios";
 import AdminDashNavbar from "./AdminNavbar";
 import CreateUserModal from "./createusermodal";
 import EditUserModal from "./editusermodal";
 import { useReactToPrint } from "react-to-print";
 import { FaFilePdf } from "react-icons/fa";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface User {
   _id: string;
@@ -30,14 +31,15 @@ const UserManagement = () => {
 
   const tableRef = useRef<HTMLDivElement>(null);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await axios.get(`${PORT}/api/v1/users`, {
-          withCredentials: true,
-        });
+        const response = await axiosInstance.get(`/api/v1/users`);
+        // const response = await axios.get(`${PORT}/api/v1/users`, {
+        //   withCredentials: true,
+        // });
         setUsers(response.data.msg);
       } catch (error) {
         console.error("Error fetching users:", error);

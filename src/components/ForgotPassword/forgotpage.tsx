@@ -1,12 +1,13 @@
 import React, { useState, FormEvent, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { toast } from "react-hot-toast";
 import { gallery5 } from "../../utils/Landing/Landing";
 import { useApp } from "../../context/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 const LogIn: React.FC = () => {
   const { setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [email, setEmail] = useState<string>("");
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
 
@@ -18,13 +19,17 @@ const LogIn: React.FC = () => {
     event.preventDefault();
     const data = { email };
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/users/forgotpassLink`,
-        data,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/users/forgotpassLink`,
+        data
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/users/forgotpassLink`,
+      //   data,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       const { msg } = response.data;
 
       if (msg === "Password reset link sent successfully!") {

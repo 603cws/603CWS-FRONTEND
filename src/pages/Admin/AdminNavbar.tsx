@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import { logo } from "../../utils/Landing/Landing";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineClose } from "react-icons/ai";
 import { useApp } from "../../context/AuthContext";
 import CreateCouponModal from "./createCouponModal";
+import axiosInstance from "../../utils/axiosInstance";
 
 function AdminDashNavbar() {
   const { setloading, setAccHolder } = useApp();
@@ -14,7 +15,7 @@ function AdminDashNavbar() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   // const handleCreateUser = () => {
   //   console.log("sample test");
@@ -23,15 +24,20 @@ function AdminDashNavbar() {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axios.post(
-        `${PORT}/api/v1/auth/logout`,
-        {}, // Empty object if no body is needed
-        {
-          withCredentials: true,
-        }
+      const res = await axiosInstance.post(
+        `/api/v1/auth/logout`,
+        {} // Empty object if no body is needed
       );
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/auth/logout`,
+      //   {}, // Empty object if no body is needed
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
       setAccHolder({
         companyName: "",
         username: "",

@@ -1,5 +1,5 @@
 // Define the User interface
-import axios from "axios";
+// import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
 import { useApp } from "./../../context/AuthContext";
@@ -20,6 +20,7 @@ interface User {
 
 // The rest of your CreateUserModal component code remains the same
 import React, { useState } from "react";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface CreateUserModalProps {
   isOpen: boolean;
@@ -40,7 +41,7 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
 
   const { setAccHolder } = useApp();
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   // const navigate = useNavigate();
 
   //to check is authenticated
@@ -54,20 +55,30 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     setisSubmitting(true);
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/users/`,
-        {
-          companyName,
-          email,
-          role,
-          monthlycredits,
-          username,
-          location,
-          password,
-          phone,
-        },
-        { withCredentials: true }
-      );
+      const response = await axiosInstance.post(`/api/v1/users/`, {
+        companyName,
+        email,
+        role,
+        monthlycredits,
+        username,
+        location,
+        password,
+        phone,
+      });
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/users/`,
+      //   {
+      //     companyName,
+      //     email,
+      //     role,
+      //     monthlycredits,
+      //     username,
+      //     location,
+      //     password,
+      //     phone,
+      //   },
+      //   { withCredentials: true }
+      // );
 
       console.log(response);
       if (response.data.msg === "User created") {
@@ -76,23 +87,29 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
         // {usernameOrEmail: "rohit", password: "rohit007"}
 
         try {
-          const response = await axios.post(
-            `${PORT}/api/v1/auth/login`,
-            { usernameOrEmail: username, password: password },
-            {
-              withCredentials: true,
-            }
-          );
+          const response = await axiosInstance.post(`/api/v1/auth/login`, {
+            usernameOrEmail: username,
+            password: password,
+          });
+          // const response = await axios.post(
+          //   `${PORT}/api/v1/auth/login`,
+          //   { usernameOrEmail: username, password: password },
+          //   {
+          //     withCredentials: true,
+          //   }
+          // );
           console.log(response);
-          const { msg, user } = response.data;
+          const { msg, user, token } = response.data;
 
           if (msg === "User signed in") {
             toast.success("User logged in");
             localStorage.setItem("user", user.companyName);
+            localStorage.setItem("token", token);
 
-            const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
-              withCredentials: true,
-            });
+            const res = await axiosInstance.get(`/api/v1/users/checkauth`);
+            // const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
+            //   withCredentials: true,
+            // });
             console.log(res);
             setIsAuthenticated(res.data.auth);
             setIsAdmin(res.data.user);

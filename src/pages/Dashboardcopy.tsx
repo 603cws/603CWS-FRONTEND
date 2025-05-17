@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
-import axios from "axios";
+// import axios from "axios";
 import { FiMenu } from "react-icons/fi";
 import { logo } from "../utils/Landing/Landing";
 import { useApp } from "../context/AuthContext";
@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Mobiletransactions from "./Mobiletransaction";
 import { FaUserCircle } from "react-icons/fa";
 import { MdDashboardCustomize } from "react-icons/md";
+import axiosInstance from "../utils/axiosInstance";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { accHolder, setAccHolder, setloading } = useApp();
@@ -51,7 +52,7 @@ const Dashboard: React.FC = () => {
     };
   }, []);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [selectedPlace, setSelectedPlace] = useState("");
 
   const handleplaceChange = async (
@@ -84,11 +85,16 @@ const Dashboard: React.FC = () => {
   const handlePasswordChange = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (newPassword === confirmPassword) {
-      const response = await axios.put(
-        `${PORT}/api/v1/users/changepassword`,
-        { newPassword, oldPassword, token },
-        { withCredentials: true }
-      );
+      const response = await axiosInstance.put(`/api/v1/users/changepassword`, {
+        newPassword,
+        oldPassword,
+        token,
+      });
+      // const response = await axios.put(
+      //   `${PORT}/api/v1/users/changepassword`,
+      //   { newPassword, oldPassword, token },
+      //   { withCredentials: true }
+      // );
       console.log(response, "dmompdkp");
       if (response.data.msg === "Password changed successfully") {
         toast.success("Password changed successfully");
@@ -129,15 +135,20 @@ const Dashboard: React.FC = () => {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axios.post(
-        `${PORT}/api/v1/auth/logout`,
-        {}, // Empty object if no body is needed
-        {
-          withCredentials: true,
-        }
+      const res = await axiosInstance.post(
+        `/api/v1/auth/logout`,
+        {} // Empty object if no body is needed
       );
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/auth/logout`,
+      //   {}, // Empty object if no body is needed
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
       setAccHolder({
         companyName: "",
         username: "",

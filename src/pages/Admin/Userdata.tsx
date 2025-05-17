@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axiosInstance from "../../utils/axiosInstance";
 
 function Userdata() {
   const navigate = useNavigate();
@@ -14,13 +15,14 @@ function Userdata() {
   const [phone, setPhone] = useState("");
   const [kyc, setKyc] = useState("");
   const [created, setCreated] = useState("");
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  //   const PORT = import.meta.env.VITE_BACKEND_URL;
   async function userinfo() {
-    const response = await axios.get(`${PORT}/api/v1/users/${user}`, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    });
+    const response = await axiosInstance.get(`/api/v1/users/${user}`);
+    // const response = await axios.get(`${PORT}/api/v1/users/${user}`, {
+    //   headers: {
+    //     Authorization: localStorage.getItem("token"),
+    //   },
+    // });
     const msg = response.data.msg;
     setcredits(msg.credits);
     setEmail(msg.email);
@@ -31,11 +33,12 @@ function Userdata() {
     setCreated(createdat.slice(0, 10));
   }
   async function deleteacc() {
-    const response = await axios.delete(`${PORT}/api/v1/users/${user}`, {
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    });
+    const response = await axiosInstance.delete(`/api/v1/users/${user}`);
+    // const response = await axios.delete(`${PORT}/api/v1/users/${user}`, {
+    //   headers: {
+    //     Authorization: localStorage.getItem("token"),
+    //   },
+    // });
     if (response.data.msg == "user deleted") {
       toast.success("user deleted");
       navigate("/admin/dashboard");

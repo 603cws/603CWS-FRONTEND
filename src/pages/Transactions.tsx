@@ -1,52 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
 import "./Transactioncss.css";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-
-//daypass
-//   [
-//     {
-//         "_id": "673c4031b5c2547d36da6687",
-//         "space": "6724804d5c694d98e3e0048e",
-//         "companyName": "603cws",
-//         "email": "manchadiyuvraj@gmail.com",
-//         "spaceName": "Bandra Day Pass",
-//         "phone": "9594767165",
-//         "bookeddate": "18/11/2024",
-//         "day": 18,
-//         "month": 11,
-//         "year": 2024,
-//         "status": "captured",
-//         "paymentMethod": "upi",
-//         "createdAt": "2024-11-19T07:37:21.615Z",
-//         "__v": 0
-//     }
-// ]
-
-// interface DaypassTransaction {
-//   _id: string;
-//   space: string;
-//   companyName: string;
-//   email: string;
-//   spaceName: string;
-//   phone: string | number;
-//   bookeddate: string;
-//   day: number;
-//   month: number;
-//   year: number;
-//   status: "confirmed" | "cancelled" | "REFUND" | "COMPLETED";
-//   paymentMethod:
-//     | "credits"
-//     | "credit_card"
-//     | "paypal"
-//     | "UPI"
-//     | "CARD"
-//     | "NETBANKING";
-//   createdAt: Date | string;
-// }
+import axiosInstance from "../utils/axiosInstance";
 
 interface Transaction {
   _id: string;
@@ -88,7 +47,7 @@ const paymentMethodStyles = {
 };
 
 const Transactions: React.FC = () => {
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [cancelledTransactions, setCancelledTransactions] = useState<
     Transaction[]
@@ -203,17 +162,21 @@ const Transactions: React.FC = () => {
 
   const handleCancelTransaction = async () => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/bookings/cancelbooking`,
-        { bookingid, isCancellable, isRefundable },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/bookings/cancelbooking`,
+        { bookingid, isCancellable, isRefundable }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/bookings/cancelbooking`,
+      //   { bookingid, isCancellable, isRefundable },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       setSelectedTransaction(null);
       setShowAboutModal(false);
       setShowWarningMessage(false);
@@ -231,17 +194,21 @@ const Transactions: React.FC = () => {
   };
   const handleCancelOnlineTransaction = async () => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/order/cancelOnlineBooking`,
-        { accHolder, bookingid, selectedTransaction },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/order/cancelOnlineBooking`,
+        { accHolder, bookingid, selectedTransaction }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/order/cancelOnlineBooking`,
+      //   { accHolder, bookingid, selectedTransaction },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
 
       console.log(response);
       if (response.data.code == "PAYMENT_SUCCESS") {
@@ -293,10 +260,13 @@ const Transactions: React.FC = () => {
 
   const allbookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-        { withCredentials: true }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/getallbookingsbyuser`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/getallbookingsbyuser`,
+      //   { withCredentials: true }
+      // );
       // setTransactions(response.data);
       // setTransactions(response.data);
       addTransaction(response.data);
@@ -327,17 +297,21 @@ const Transactions: React.FC = () => {
   //get all the daypasses by user
   const alldaypasses = async () => {
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/daypass/getalldaypassbyuser`,
-        { accHolder },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/daypass/getalldaypassbyuser`,
+        { accHolder }
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/daypass/getalldaypassbyuser`,
+      //   { accHolder },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       console.log(response);
       // setDaypassTransaction(response.data);
       // setTransactions((prev)=> []);
@@ -350,16 +324,19 @@ const Transactions: React.FC = () => {
 
   const allCancelledBookings = async () => {
     try {
-      const response = await axios.get(
-        `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          // If you need credentials (cookies/auth), add this:
-          withCredentials: true, // Include credentials (cookies) in the request
-        }
+      const response = await axiosInstance.get(
+        `/api/v1/bookings/getallcancellbookingsbyuser`
       );
+      // const response = await axios.get(
+      //   `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     // If you need credentials (cookies/auth), add this:
+      //     withCredentials: true, // Include credentials (cookies) in the request
+      //   }
+      // );
       setCancelledTransactions(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);

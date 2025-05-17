@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/axiosInstance";
 
 function Register() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function Register() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     axios.get("", {
@@ -33,9 +34,10 @@ function Register() {
         phone: phone,
       };
       try {
-        const response = await axios.post(`${PORT}/api/v1/users/`, data, {
-          withCredentials: true,
-        });
+        const response = await axiosInstance.post(`/api/v1/users/`, data);
+        // const response = await axios.post(`${PORT}/api/v1/users/`, data, {
+        //   withCredentials: true,
+        // });
         console.log(response);
         if (response.data.msg == "Invalid Inputs") {
           toast.error("Invalid Inputs!");

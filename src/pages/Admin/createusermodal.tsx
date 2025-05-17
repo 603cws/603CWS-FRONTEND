@@ -1,5 +1,5 @@
 // Define the User interface
-import axios from "axios";
+// import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
 import { useApp } from "./../../context/AuthContext";
@@ -19,6 +19,7 @@ interface User {
 
 // The rest of your CreateUserModal component code remains the same
 import React, { useState } from "react";
+import axiosInstance from "../../utils/axiosInstance";
 // import { useNavigate } from "react-router-dom";
 
 interface CreateUserModalProps {
@@ -44,26 +45,37 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   const { isAuthenticated } = useApp();
   console.log(isAuthenticated);
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/users/`,
-        {
-          companyName,
-          email,
-          role,
-          monthlycredits,
-          username,
-          location,
-          password,
-          phone,
-          member,
-        },
-        { withCredentials: true }
-      );
+      const response = await axiosInstance.post(`/api/v1/users/`, {
+        companyName,
+        email,
+        role,
+        monthlycredits,
+        username,
+        location,
+        password,
+        phone,
+        member,
+      });
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/users/`,
+      //   {
+      //     companyName,
+      //     email,
+      //     role,
+      //     monthlycredits,
+      //     username,
+      //     location,
+      //     password,
+      //     phone,
+      //     member,
+      //   },
+      //   { withCredentials: true }
+      // );
 
       console.log(response);
       if (response.data.msg === "User created") {
@@ -72,12 +84,6 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
       } else {
         toast.error(response.data.msg);
       }
-
-      //   //for non register user
-      //   if (!isAuthenticated) {
-      //     //navigate him to login page
-      //     navigate("/login");
-      //   }
 
       onClose();
     } catch (error) {

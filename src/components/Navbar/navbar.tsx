@@ -4,16 +4,17 @@ import { useEffect, useState } from "react";
 import { IoMdMore } from "react-icons/io";
 import { logo } from "../../utils/Landing/Landing";
 import { useApp } from "../../context/AuthContext";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
 import { FaRegUser, FaPhoneAlt, FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 import "./../../index.css";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Navbar = () => {
   const [path, setPath] = useState("");
   const [isHovered, setIsHovered] = useState(false);
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -47,15 +48,17 @@ const Navbar = () => {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axios.post(
-        `${PORT}/api/v1/auth/logout`,
-        {}, // Empty object if no body is needed
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axiosInstance.post(`/api/v1/auth/logout`, {});
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/auth/logout`,
+      //   {}, // Empty object if no body is needed
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
       localStorage.removeItem("user");
+      localStorage.removeItem("token");
       toast.success("User logged out");
       setIsAuthenticated(false);
       setAccHolder({

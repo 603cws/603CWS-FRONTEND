@@ -1,15 +1,16 @@
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/navbar";
 import React, { useState, FormEvent, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { gallery8 } from "../../utils/Landing/Landing";
 import { useApp } from "../../context/AuthContext";
+import axiosInstance from "../../utils/axiosInstance";
 
 const Login: React.FC = () => {
   const { setIsAuthenticated, setloading } = useApp();
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -28,19 +29,24 @@ const Login: React.FC = () => {
     const data = { usernameOrEmail, password };
 
     try {
-      const response = await axios.post(
-        `${PORT}/api/v1/auth/admin/login`,
-        data,
-        {
-          withCredentials: true,
-        }
+      const response = await axiosInstance.post(
+        `/api/v1/auth/admin/login`,
+        data
       );
+      // const response = await axios.post(
+      //   `${PORT}/api/v1/auth/admin/login`,
+      //   data,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(response);
-      const { msg, user } = response.data;
+      const { msg, user, token } = response.data;
 
       if (msg === "Admin signed in") {
         toast.success("Admin signed in");
         localStorage.setItem("user", user.companyName);
+        localStorage.setItem("token", token);
         navigate("/admin/dashboard");
         setIsAuthenticated(true);
       } else {

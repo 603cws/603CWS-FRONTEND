@@ -33,8 +33,9 @@ import { useApp } from "../context/AuthContext";
 import OurServices from "./../components/AboutUs/OurServices";
 import OurPopularity from "../components/AboutUs/OurPopularity";
 import Modal from "../components/DashBoardNavbar/Modal";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import axiosInstance from "../utils/axiosInstance";
 
 function Landing() {
   const [popup, setpopup] = useState<boolean>(false);
@@ -42,7 +43,7 @@ function Landing() {
   const [requestTour, setRequestTour] = useState<boolean>(false);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const PORT = import.meta.env.VITE_BACKEND_URL;
+  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -90,13 +91,17 @@ function Landing() {
     setIsSubmitting(true);
 
     try {
-      const res = await axios.post(
-        `${PORT}/api/v1/users/requestTour`,
-        formData,
-        {
-          withCredentials: true,
-        }
+      const res = await axiosInstance.post(
+        `/api/v1/users/requestTour`,
+        formData
       );
+      // const res = await axios.post(
+      //   `${PORT}/api/v1/users/requestTour`,
+      //   formData,
+      //   {
+      //     withCredentials: true,
+      //   }
+      // );
       console.log(res);
       console.log("Form data:", formData);
 
