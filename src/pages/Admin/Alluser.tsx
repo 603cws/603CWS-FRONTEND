@@ -30,13 +30,14 @@ const UserManagement = () => {
 
   const tableRef = useRef<HTMLDivElement>(null);
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     async function fetchUsers() {
       try {
-        const response = await axios.get(
-          "https://603-bcakend-new.vercel.app/api/v1/users",
-          { withCredentials: true }
-        );
+        const response = await axios.get(`${PORT}/api/v1/users`, {
+          withCredentials: true,
+        });
         setUsers(response.data.msg);
       } catch (error) {
         console.error("Error fetching users:", error);

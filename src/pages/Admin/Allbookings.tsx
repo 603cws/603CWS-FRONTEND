@@ -37,6 +37,7 @@ const AllBookings = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [bookingToCancel, setBookingToCancel] = useState<Booking | null>(null);
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (startDate) {
       const day = startDate.getDate().toString();
@@ -58,7 +59,7 @@ const AllBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
-        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/getallbookings",
+        `${PORT}/api/v1/bookings/admin/getallbookings`,
         {
           withCredentials: true,
         }
@@ -157,7 +158,7 @@ const AllBookings = () => {
   const deletebooking = async (id: any) => {
     try {
       const resp = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/deletebooking",
+        `${PORT}/api/v1/bookings/admin/deletebooking`,
         { id },
         {
           withCredentials: true,

@@ -1,13 +1,13 @@
-import React, { useState, FormEvent, useEffect } from 'react';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import React, { useState, FormEvent, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 import { gallery5 } from "../../utils/Landing/Landing";
-import { useApp } from '../../context/AuthContext';
+import { useApp } from "../../context/AuthContext";
 
 const LogIn: React.FC = () => {
   const { setloading } = useApp();
-  const PORT = "https://603-bcakend-new.vercel.app";
-  const [email, setEmail] = useState<string>('');
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+  const [email, setEmail] = useState<string>("");
   const [focusedInput, setFocusedInput] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,15 +18,21 @@ const LogIn: React.FC = () => {
     event.preventDefault();
     const data = { email };
     try {
-      const response = await axios.post(`${PORT}/api/v1/users/forgotpassLink`, data, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${PORT}/api/v1/users/forgotpassLink`,
+        data,
+        {
+          withCredentials: true,
+        }
+      );
       const { msg } = response.data;
 
       if (msg === "Password reset link sent successfully!") {
-        toast.success("Password reset link sent successfully! Please check your mailbox");
-      }else{
-        toast.error("An error occured! Please try again later.")
+        toast.success(
+          "Password reset link sent successfully! Please check your mailbox"
+        );
+      } else {
+        toast.error("An error occured! Please try again later.");
       }
     } catch (e) {
       toast.error("An error occurred. Please try again later.");
@@ -41,8 +47,8 @@ const LogIn: React.FC = () => {
       className="flex items-center justify-center min-h-screen p-6 relative overflow-hidden bg-fixed"
       style={{
         backgroundImage: `url(${gallery5})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <div className="absolute inset-0 bg-black opacity-30"></div>
@@ -51,7 +57,8 @@ const LogIn: React.FC = () => {
           Forgot Password?
         </h1>
         <p className="text-center text-gray-600 mb-8 sm:text-base">
-          Enter your email address and we'll send you a link to reset your password.
+          Enter your email address and we'll send you a link to reset your
+          password.
         </p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
@@ -62,8 +69,12 @@ const LogIn: React.FC = () => {
               placeholder="Enter your email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg text-gray-700 transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400 focus:outline-none ${focusedInput === 'email' ? 'border-cyan-500 ring-2 ring-cyan-400' : 'border-gray-300'}`}
-              onFocus={() => setFocusedInput('email')}
+              className={`w-full px-4 py-3 border rounded-lg text-gray-700 transition-all duration-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-400 focus:outline-none ${
+                focusedInput === "email"
+                  ? "border-cyan-500 ring-2 ring-cyan-400"
+                  : "border-gray-300"
+              }`}
+              onFocus={() => setFocusedInput("email")}
               required
             />
           </div>

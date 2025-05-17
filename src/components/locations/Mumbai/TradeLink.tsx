@@ -20,7 +20,9 @@ const Webpage = () => {
   const images = [
     "/officeimg/Tradelink/1.jpg",
     "/officeimg/Tradelink/2.jpg",
-    "/officeimg/Tradelink/3.jpg",
+    // "/officeimg/Tradelink/3.jpg",
+    "/officeimg/Tradelink/tradelink1.jpg",
+    "/officeimg/Tradelink/tradelink2.jpg",
     "/officeimg/Tradelink/4.jpg",
   ];
   const [source] = useState(

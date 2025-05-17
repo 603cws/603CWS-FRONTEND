@@ -42,7 +42,7 @@ function Landing() {
   const [requestTour, setRequestTour] = useState<boolean>(false);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const [formData, setFormData] = useState({
     name: "",

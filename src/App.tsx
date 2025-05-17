@@ -73,6 +73,9 @@ function App() {
     useApp();
   const navigate = useNavigate();
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+  console.log(PORT);
+
   console.log(isAuthenticated); // at the begining without login its false
 
   const noPopupRoutes = [

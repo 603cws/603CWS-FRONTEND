@@ -10,7 +10,7 @@ interface PopupformProps {
 
 const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
   const { setloading } = useApp();
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 

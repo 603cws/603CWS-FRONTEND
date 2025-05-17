@@ -7,7 +7,7 @@ import { useApp } from "../../context/AuthContext";
 
 const LogIn: React.FC = () => {
   const { setIsAuthenticated, setloading } = useApp();
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const [usernameOrEmail, setUsernameOrEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");

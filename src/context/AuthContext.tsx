@@ -122,7 +122,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [loading, setloading] = useState<boolean>(true);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [popup, setpopup] = useState<boolean>(false);
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const [accHolder, setAccHolder] = useState<UserDetails>({
     companyName: "",

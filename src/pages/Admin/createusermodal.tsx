@@ -44,11 +44,13 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   const { isAuthenticated } = useApp();
   console.log(isAuthenticated);
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/users/",
+        `${PORT}/api/v1/users/`,
         {
           companyName,
           email,

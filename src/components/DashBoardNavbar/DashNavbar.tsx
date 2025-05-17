@@ -61,7 +61,10 @@ function DashNavbar() {
     createdAt: new Date(), // Correct initialization for Date
   });
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+  console.log(PORT);
+
+  // const PORT = "https://603-bcakend-new.vercel.app";
 
   const n = localStorage.getItem("user");
   // console.log(n);

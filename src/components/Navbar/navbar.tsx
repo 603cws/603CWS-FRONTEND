@@ -13,6 +13,7 @@ import "./../../index.css";
 const Navbar = () => {
   const [path, setPath] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -47,7 +48,7 @@ const Navbar = () => {
     try {
       setloading(true);
       const res = await axios.post(
-        `https://603-bcakend-new.vercel.app/api/v1/auth/logout`,
+        `${PORT}/api/v1/auth/logout`,
         {}, // Empty object if no body is needed
         {
           withCredentials: true,

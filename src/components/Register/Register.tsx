@@ -10,56 +10,57 @@ function Register() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
-  useEffect(()=>{
-    axios.get("",{
-      headers:{
-        Authorization: localStorage.getItem("token")
-      }
-    })
-  },[]);
+  useEffect(() => {
+    axios.get("", {
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    });
+  }, []);
 
-  const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (password != confirmPassword) {
       toast.error("Passwords do not match");
       return;
-    }else{
+    } else {
       const data = {
         name: name,
         email: email,
         password: password,
         phone: phone,
-      }
-      try{
-        const response = await axios.post("https://603-bcakend-new.vercel.app/api/v1/users/",data, {withCredentials : true});
+      };
+      try {
+        const response = await axios.post(`${PORT}/api/v1/users/`, data, {
+          withCredentials: true,
+        });
         console.log(response);
-        if(response.data.msg == "Invalid Inputs"){
-          toast.error("Invalid Inputs!")
+        if (response.data.msg == "Invalid Inputs") {
+          toast.error("Invalid Inputs!");
           return;
         }
-        if(response.data.msg == "Username exsists"){
-          toast.error("This username already exsists")
+        if (response.data.msg == "Username exsists") {
+          toast.error("This username already exsists");
           return;
         }
-        if(response.data.msg == "Email Exsists"){
-          toast.error("account with this email already exsists")
+        if (response.data.msg == "Email Exsists") {
+          toast.error("account with this email already exsists");
         }
-        if(response.data.msg == "user created"){
-          toast.success("User created")
-          const token = response.data.jwt
-          localStorage.setItem("token",token);
-          const user = response.data.name
-          localStorage.setItem("user",user)
+        if (response.data.msg == "user created") {
+          toast.success("User created");
+          const token = response.data.jwt;
+          localStorage.setItem("token", token);
+          const user = response.data.name;
+          localStorage.setItem("user", user);
           navigate("/dashboard");
         }
-      }catch(e){
+      } catch (e) {
         toast.error("Some error occoured");
       }
-
     }
-    
-  }
+  };
 
   return (
     <div className="container mx-auto p-4">

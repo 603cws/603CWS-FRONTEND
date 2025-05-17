@@ -50,7 +50,7 @@ export const getTheme = (darkMode: boolean): Theme => ({
 });
 
 //for production
-const PORT = `https://603-bcakend-new.vercel.app`;
+const PORT = import.meta.env.VITE_BACKEND_URL;
 
 const ConfirmPayment = () => {
   const { addNewBooking, bookDayPass, dayPasses, bookings } = useApp();

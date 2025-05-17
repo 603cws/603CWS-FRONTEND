@@ -49,6 +49,7 @@ const OnlineBookings = () => {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [formattedDate, setFormattedDate] = useState<string>("");
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     if (startDate) {
       const day = startDate.getDate().toString();
@@ -83,7 +84,7 @@ const OnlineBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axios.get(
-        "https://603-bcakend-new.vercel.app/api/v1/bookings/admin/getonlinebookings",
+        `${PORT}/api/v1/bookings/admin/getonlinebookings`,
         {
           withCredentials: true,
         }

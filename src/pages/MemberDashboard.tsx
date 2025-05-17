@@ -55,7 +55,7 @@ const MemberDashboard: React.FC = () => {
     };
   }, []);
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleLocationChange = async (
     event: React.ChangeEvent<HTMLSelectElement>

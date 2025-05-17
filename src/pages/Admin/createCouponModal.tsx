@@ -18,6 +18,8 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
   const [expiryDate, setExpiryDate] = useState("");
   const [usageLimit, setUsageLimit] = useState<number | undefined>();
 
+  const PORT = "https://603-bcakend-new.vercel.app";
+
   //req body for creating a discount code
   // {
   //     "code": "DISCOUNT10",
@@ -39,7 +41,7 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/coupon/createcoupon",
+        `${PORT}/api/v1/coupon/createcoupon`,
         {
           code,
           discount,

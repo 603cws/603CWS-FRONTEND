@@ -18,7 +18,7 @@ const Webpage = () => {
   //loader
   const [loader, setLoader] = useState(false);
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleButtonClick = () => {
     window.open("https://www.workved.com/", "_blank", "noopener,noreferrer");

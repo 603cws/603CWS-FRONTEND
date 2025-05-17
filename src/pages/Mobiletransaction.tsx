@@ -46,7 +46,7 @@ const paymentMethodStyles = {
 };
 
 const Mobiletransactions: React.FC = () => {
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [cancelledTransactions, setCancelledTransactions] = useState<
     Transaction[]
@@ -248,7 +248,7 @@ const Mobiletransactions: React.FC = () => {
   const alldaypasses = async () => {
     try {
       const response = await axios.post(
-        `https://603-bcakend-new.vercel.app/api/v1/daypass/getalldaypassbyuser`,
+        `${PORT}/api/v1/daypass/getalldaypassbyuser`,
         { accHolder },
         {
           headers: {
@@ -269,7 +269,7 @@ const Mobiletransactions: React.FC = () => {
   const allCancelledBookings = async () => {
     try {
       const response = await axios.get(
-        `https://603-bcakend-new.vercel.app/api/v1/bookings/getallcancellbookingsbyuser`,
+        `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
         {
           headers: {
             "Content-Type": "application/json",

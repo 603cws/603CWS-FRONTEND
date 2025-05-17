@@ -40,6 +40,8 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   const [creditsleft, setcreditsleft] = useState(0);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     if (user) {
       setid(user._id);
@@ -57,7 +59,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await axios.post(
-      "https://603-bcakend-new.vercel.app/api/v1/users/admin/updateuser",
+      `${PORT}/api/v1/users/admin/updateuser`,
       {
         companyName,
         location,
@@ -83,7 +85,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
 
   const handleConfirmDelete = async () => {
     const response = await axios.post(
-      "https://603-bcakend-new.vercel.app/api/v1/users/admin/deleteuser",
+      `${PORT}/api/v1/users/admin/deleteuser`,
       { id },
       { withCredentials: true }
     );

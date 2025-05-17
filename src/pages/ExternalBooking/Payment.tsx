@@ -57,24 +57,20 @@ const Payment: React.FC = () => {
   //   refreshAuth();
   // }, []);
 
+  const PORT = import.meta.env.VITE_BACKEND_URL;
+
   const checkuser = async () => {
     try {
-      const res = await axios.get(
-        `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+        withCredentials: true,
+      });
       if (res.data.user) {
         //      {
         //   accHolder.kyc ? handlePayment() : navigate("/kycform");
         // }
-        const checkagain = await axios.get(
-          `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
-          {
-            withCredentials: true,
-          }
-        );
+        const checkagain = await axios.get(`${PORT}/api/v1/users/userdetails`, {
+          withCredentials: true,
+        });
         checkagain.data.user.kyc ? handlePayment() : navigate("/kycform");
       }
       console.log("response from checkuser", res);
@@ -107,7 +103,7 @@ const Payment: React.FC = () => {
     let code = discountCode;
     try {
       const response = await axios.post(
-        `https://603-bcakend-new.vercel.app/api/v1/coupon/validatecoupon`,
+        `${PORT}/api/v1/coupon/validatecoupon`,
         { code },
         {
           headers: {
@@ -209,7 +205,7 @@ const Payment: React.FC = () => {
   // const fetchData = async () => {
   //   try {
   //     const response = await axios.get(
-  //       `https://603-bcakend-new.vercel.app/api/v1/users/userdetails`,
+  //       `${PORT}/api/v1/users/userdetails`,
   //       {
   //         withCredentials: true,
   //       }
@@ -227,7 +223,7 @@ const Payment: React.FC = () => {
   const checkOverLap = async (bookings: any): Promise<boolean> => {
     try {
       const response = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/order/checkOverlap",
+        `${PORT}/api/v1/order/checkOverlap`,
         { bookings },
         {
           headers: {
@@ -298,7 +294,7 @@ const Payment: React.FC = () => {
     };
     try {
       const response = await axios.post(
-        "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
+        `${PORT}/api/v1/order/createorder`,
         data,
         {
           headers: {

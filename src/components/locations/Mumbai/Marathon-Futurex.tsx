@@ -18,11 +18,15 @@ import { useNavigate } from "react-router-dom";
 
 const Webpage = () => {
   const images = [
-    "/officeimg/MarathonFuturex/1.jpeg",
-    "/officeimg/MarathonFuturex/2.jpeg",
-    "/officeimg/MarathonFuturex/3.jpeg",
-    "/officeimg/MarathonFuturex/4.jpeg",
-    "/officeimg/MarathonFuturex/5.jpeg",
+    "/officeimg/MarathonFuturex/marathon1.jpg",
+    "/officeimg/MarathonFuturex/marathon2.jpg",
+    "/officeimg/MarathonFuturex/marathon3.jpg",
+    "/officeimg/MarathonFuturex/marathon4.jpg",
+    "/officeimg/MarathonFuturex/marathon5.jpg",
+    // "/officeimg/MarathonFuturex/2.jpeg",
+    // "/officeimg/MarathonFuturex/3.jpeg",
+    // "/officeimg/MarathonFuturex/4.jpeg",
+    // "/officeimg/MarathonFuturex/5.jpeg",
   ];
   const [source] = useState(
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3585.899025846905!2d72.8306556!3d18.99493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cef3836311c1%3A0x8cfa9225e0aa9bca!2sMarathon%20Futurex!5e1!3m2!1sen!2sin!4v1745241022758!5m2!1sen!2sin"
@@ -43,7 +47,9 @@ const Webpage = () => {
       <section
         className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
         // style={{ backgroundImage: `url(${gallery6})` }}
-        style={{ backgroundImage: `url('/officeimg/MarathonFuturex/1.jpeg')` }}
+        style={{
+          backgroundImage: `url('/officeimg/MarathonFuturex/marathon1.jpg')`,
+        }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">

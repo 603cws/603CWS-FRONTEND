@@ -56,7 +56,7 @@ const Dashboard: React.FC = () => {
     };
   }, []);
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   // const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
 

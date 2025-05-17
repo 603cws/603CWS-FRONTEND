@@ -250,7 +250,7 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
     };
   }, []);
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const containerStyle: React.CSSProperties = {
     display: "flex",

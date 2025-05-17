@@ -14,7 +14,7 @@ function AdminDashNavbar() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
 
   // const handleCreateUser = () => {
   //   console.log("sample test");

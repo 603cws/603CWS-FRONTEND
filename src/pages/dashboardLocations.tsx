@@ -53,7 +53,7 @@ interface LocationDetails {
 
 // }
 
-const PORT = `https://603-bcakend-new.vercel.app`;
+const PORT = import.meta.env.VITE_BACKEND_URL;
 
 const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   // const [alllocations] = useState(locations);

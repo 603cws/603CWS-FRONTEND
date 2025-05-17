@@ -40,7 +40,7 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
 
   const { setAccHolder } = useApp();
 
-  const PORT = "https://603-bcakend-new.vercel.app";
+  const PORT = import.meta.env.VITE_BACKEND_URL;
   // const navigate = useNavigate();
 
   //to check is authenticated
