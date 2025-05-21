@@ -18,11 +18,12 @@ import { useNavigate } from "react-router-dom";
 
 const Webpage = () => {
   const images = [
-    "/officeimg/MarathonFuturex/marathon1.jpg",
+    "/officeimg/MarathonFuturex/marathon1.jpeg",
     "/officeimg/MarathonFuturex/marathon2.jpg",
     "/officeimg/MarathonFuturex/marathon3.jpg",
     "/officeimg/MarathonFuturex/marathon4.jpg",
     "/officeimg/MarathonFuturex/marathon5.jpg",
+    "/officeimg/MarathonFuturex/marathon6.jpg",
     // "/officeimg/MarathonFuturex/2.jpeg",
     // "/officeimg/MarathonFuturex/3.jpeg",
     // "/officeimg/MarathonFuturex/4.jpeg",
@@ -48,7 +49,7 @@ const Webpage = () => {
         className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
         // style={{ backgroundImage: `url(${gallery6})` }}
         style={{
-          backgroundImage: `url('/officeimg/MarathonFuturex/marathon1.jpg')`,
+          backgroundImage: `url('/officeimg/MarathonFuturex/marathon1.jpeg')`,
         }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
