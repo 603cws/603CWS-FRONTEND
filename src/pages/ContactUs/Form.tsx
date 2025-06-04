@@ -18,6 +18,8 @@ const ContactUs = () => {
     specifications: "",
     requirements: "", // New field for requirements
   });
+
+  const mobileRegex = /^[6-9]\d{9}$/;
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -36,32 +38,37 @@ const ContactUs = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setloading(true);
-      setIsPopupVisible(true);
       setIsDisabled(true);
-      const resp = await axiosInstance.post(
-        `/api/v1/users/contactus`,
-        formData
-      );
-      // const resp = await axios.post(
-      //   `${PORT}/api/v1/users/contactus`,
-      //   formData,
-      //   { withCredentials: true }
-      // );
-      setloading(false);
-      toast.success("Request for callback submitted");
-      console.log(resp);
-      console.log(formData);
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        location: "",
-        seats: "",
-        company: "",
-        specifications: "",
-        requirements: "", // Reset new field
-      });
+
+      if (mobileRegex.test(formData.phone)) {
+        setloading(true);
+        // toast.success("valid number");
+        const resp = await axiosInstance.post(
+          `/api/v1/users/contactus`,
+          formData
+        );
+        //handle it when mobile no is valid
+        setIsPopupVisible(true);
+
+        // setloading(false);
+        toast.success("Request for callback submitted");
+        console.log(resp);
+        console.log(formData);
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          location: "",
+          seats: "",
+          company: "",
+          specifications: "",
+          requirements: "", // Reset new field
+        });
+      }
+
+      if (!mobileRegex.test(formData.phone)) {
+        toast.error("use of telephone number not allowed");
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {

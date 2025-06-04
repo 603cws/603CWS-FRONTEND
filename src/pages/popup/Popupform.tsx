@@ -3,6 +3,7 @@ import "./popupanimation.css";
 // import axios from "axios";
 import { useApp } from "../../context/AuthContext";
 import axiosInstance from "../../utils/axiosInstance";
+import toast from "react-hot-toast";
 
 interface PopupformProps {
   val: boolean;
@@ -12,6 +13,8 @@ interface PopupformProps {
 const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
   const { setloading } = useApp();
   // const PORT = import.meta.env.VITE_BACKEND_URL;
+
+  const mobileRegex = /^[6-9]\d{9}$/;
 
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
@@ -53,22 +56,22 @@ const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    setloading(true);
     e.preventDefault();
-    hidePopup();
-    localStorage.setItem("callback", "true");
-    const res = await axiosInstance.post(
-      `/api/v1/users/sendcallback`,
-      formData
-    );
-    // const res = await axios.post(
-    //   `${PORT}/api/v1/users/sendcallback`,
-    //   formData,
-    //   { withCredentials: true }
-    // );
-    console.log(res);
-    setloading(false);
-    console.log("Form data:", formData);
+    if (!mobileRegex.test(formData.phone)) {
+      toast.error("use of telephone number not allowed");
+    }
+    if (mobileRegex.test(formData.phone)) {
+      setloading(true);
+      hidePopup();
+      localStorage.setItem("callback", "true");
+      const res = await axiosInstance.post(
+        `/api/v1/users/sendcallback`,
+        formData
+      );
+      console.log(res);
+      setloading(false);
+      console.log("Form data:", formData);
+    }
   };
 
   return (

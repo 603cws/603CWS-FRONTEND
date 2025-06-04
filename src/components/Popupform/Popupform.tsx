@@ -16,6 +16,8 @@ const Popupform = () => {
     setIsVisible(true);
   };
 
+  const mobileRegex = /^[6-9]\d{9}$/;
+
   const hidePopup = () => {
     setIsAnimating(false);
     setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
@@ -55,21 +57,26 @@ const Popupform = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      setloading(true);
-      localStorage.setItem("callback", "true");
-      const res = await axiosInstance.post(
-        `/api/v1/users/sendcallback`,
-        formData
-      );
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/users/sendcallback`,
-      //   formData,
-      //   { withCredentials: true }
-      // );
-      console.log(res);
-      console.log("Form data:", formData);
-      toast.success("form submitted");
-      hidePopup();
+      if (!mobileRegex.test(formData.phone)) {
+        toast.error("use of telephone number not allowed");
+      }
+      if (mobileRegex.test(formData.phone)) {
+        setloading(true);
+        localStorage.setItem("callback", "true");
+        const res = await axiosInstance.post(
+          `/api/v1/users/sendcallback`,
+          formData
+        );
+        // const res = await axios.post(
+        //   `${PORT}/api/v1/users/sendcallback`,
+        //   formData,
+        //   { withCredentials: true }
+        // );
+        console.log(res);
+        console.log("Form data:", formData);
+        toast.success("form submitted");
+        hidePopup();
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -164,6 +171,7 @@ const Popupform = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
+                  required
                 />
               </div>
               <div>
