@@ -94,7 +94,7 @@ const Webpage = () => {
               <span className="text-sm font-semibold text-gray-500">
                 Day Pass
               </span>
-              <span className="text-sm font-bold text-gray-500">₹ 899</span>
+              <span className="text-sm font-bold text-gray-500">₹ 1199</span>
             </li>
             <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
               <span className="text-sm font-semibold text-gray-500">

@@ -1405,8 +1405,8 @@ export const locationsfornewDashboard: {
           "Our new location at Kamala Mills Compound is based in Lower Parel which is famous for being an entertainment and commercial hub. Lower Parel is one neighbourhood that seamlessly brings together this city’s commercial and entertainment aspects together. Our centre is situated in Kamala Mills Compound one of the most Prime Commercial location in Lower Parel with easy connectivity to rail and bus. Lower Parel and Currey Road station is at 10 minutes walking distance.",
         meetingroom: 799,
         conferenceroom: 1499,
-        daypass: 899,
-        spacetypeprice: 899,
+        daypass: 1199,
+        spacetypeprice: 1199,
         membership: {
           daypass: {
             tendays: 7799,
