@@ -286,7 +286,13 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
             Already a user ,click here to{" "}
             <span
               className="underline cursor-pointer font-bold text-lg"
-              onClick={() => navigate("/login")}
+              onClick={() =>
+                navigate("/login", {
+                  state: {
+                    route: "payment",
+                  },
+                })
+              }
             >
               login
             </span>{" "}

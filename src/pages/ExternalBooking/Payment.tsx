@@ -8,7 +8,7 @@ import {
   FaBuilding,
   FaTrashAlt,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
 import { RootState } from "../../store";
@@ -17,29 +17,19 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import axiosInstance from "../../utils/axiosInstance";
 
-// State variables for form values
-// interface UserDetails {
-//   companyName: string;
-//   username: string;
-//   email: string;
-//   password: string;
-//   phone: string;
-//   role: "admin" | "user";
-//   kyc: boolean;
-//   country: string;
-//   state: string;
-//   city: string;
-//   zipcode: string;
-//   location: string;
-//   credits?: number;
-//   createdAt?: Date;
-//   member: boolean;
-// }
-
 const Payment: React.FC = () => {
   const [discountCode, setDiscountCode] = useState("");
   const [message, setMessage] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [searchParams] = useSearchParams();
+  const encoded = searchParams.get("d");
+  let decryptedData = null;
+
+  if (encoded) {
+    decryptedData = JSON.parse(atob(encoded));
+    // console.log("data", decryptedData);
+  }
+
   const [isDisable, setIsDisable] = useState(false);
   const {
     removeSpecificBooking,
@@ -48,36 +38,23 @@ const Payment: React.FC = () => {
     accHolder,
   } = useApp();
   const navigate = useNavigate();
-  // const [checkStatus, setCheckstatus] = useState(false);
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
   const dayPasses = useSelector(
     (state: RootState) => state.dayPasses.dayPasses
   );
 
-  // useEffect(() => {
-  //   refreshAuth();
-  // }, []);
-
   const PORT = import.meta.env.VITE_BACKEND_URL;
+
+  // const encrypted = btoa(JSON.stringify({ kyc: "verified" }));
+  // // console.log("encrypted", encrypted);
 
   const checkuser = async () => {
     try {
       const res = await axiosInstance.get(`/api/v1/users/userdetails`);
-      // const res = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-      //   withCredentials: true,
-      // });
       if (res.data.user) {
-        //      {
-        //   accHolder.kyc ? handlePayment() : navigate("/kycform");
-        // }
         const checkagain = await axiosInstance.get(`/api/v1/users/userdetails`);
-        // const checkagain = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-        //   withCredentials: true,
-        // });
         checkagain.data.user.kyc ? handlePayment() : navigate("/kycform");
       }
-      console.log("response from checkuser", res);
-      // setAccHolder(res.data.);
     } catch (error) {
       console.log("user not found");
     }
@@ -98,9 +75,6 @@ const Payment: React.FC = () => {
       0
     );
 
-  // accholder
-  console.log("accholder", accHolder);
-
   //coupon changes
   const validateCoupon = async () => {
     let code = discountCode;
@@ -109,17 +83,6 @@ const Payment: React.FC = () => {
         `/api/v1/coupon/validatecoupon`,
         { code }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/coupon/validatecoupon`,
-      //   { code },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
 
       console.log(response);
       setDiscountPercentage(
@@ -144,36 +107,6 @@ const Payment: React.FC = () => {
     }
   };
 
-  //clearing the cart
-  // //bookings
-  // useEffect(() => {
-  //   if (bookings.length > 0) {
-  //     setTimeout(() => {
-  //       bookings.forEach((booking) => {
-  //         handleRemoveBooking(booking);
-  //       });
-  //     }, 3 * 60 * 1000); // 3 minutes
-  //   }
-  // }, [bookings]);
-
-  // //daypass
-  // useEffect(() => {
-  //   if (dayPasses.length > 0) {
-  //     setTimeout(() => {
-  //       dayPasses.forEach((daypass) => {
-  //         handleRemoveDayPass(daypass);
-  //       });
-  //     }, 3 * 60 * 1000); // 3 minutes
-  //   }
-  // }, [dayPasses]);
-
-  // let bill = totalBill + totalBill * 0.18;
-  // let discount = bill * (discountPercentage / 100);
-  // let finalBill = bill - discount;
-  //final bill including gst
-  // let finalBill =
-  //   totalBill + totalBill * 0.18 - totalBill * (discountPercentage / 100);
-
   let TotalBill = +totalBill.toFixed(2);
   let finalBill = TotalBill + TotalBill * 0.18;
 
@@ -188,44 +121,6 @@ const Payment: React.FC = () => {
   const handleTOLogin = () => {
     navigate("/RegisterUser");
   };
-
-  // //get user
-  // const [data, setData] = useState<UserDetails>({
-  //   companyName: "",
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  //   phone: "",
-  //   role: "user",
-  //   kyc: false,
-  //   country: "",
-  //   state: "",
-  //   city: "",
-  //   zipcode: "",
-  //   location: "",
-  //   credits: 0,
-  //   member: false,
-  //   createdAt: new Date(), // Correct initialization for Date
-  // });
-  // console.log(data);
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${PORT}/api/v1/users/userdetails`,
-  //       {
-  //         withCredentials: true,
-  //       }
-  //     );
-  //     const userdata: UserDetails = response.data.user;
-  //     setData(userdata);
-  //   } catch (error) {
-  //     console.error("Error fetching user details:", error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
 
   const checkOverLap = async (bookings: any): Promise<boolean> => {
     try {
@@ -254,43 +149,6 @@ const Payment: React.FC = () => {
       return false;
     }
   };
-
-  // console.log(
-  //   accHolder,
-  //   finalBill.toFixed(2),
-  //   bookings,
-  //   dayPasses,
-  //   discountPercentage
-  // );
-  //handle phonepe payment
-
-  // const handlePayment = async () => {
-  //   const data = {
-  //     accHolder,
-  //     amount: finalBill.toFixed(2),
-  //     bookings,
-  //     dayPasses,
-  //     discountPercentage,
-  //   };
-  //   try {
-  //     const response = await axios.post(
-  //       "http://127.0.0.1:3000/api/v1/order/createorder",
-  //       data,
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         // If you need credentials (cookies/auth), add this:
-  //         withCredentials: true, // Include credentials (cookies) in the request
-  //       }
-  //     );
-  //     console.log(response.data);
-  //     window.location.href = response.data.url;
-  //     // setCheckstatus(true);
-  //   } catch (error) {
-  //     console.log("error in payment", error);
-  //   }
-  // };
   const handlePayment = async () => {
     const data = {
       accHolder,
@@ -309,17 +167,7 @@ const Payment: React.FC = () => {
           },
         }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/order/createorder`,
-      //   data,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
+
       console.log(response.data);
       window.location.href = response.data.url;
       // setCheckstatus(true);
@@ -334,11 +182,12 @@ const Payment: React.FC = () => {
       if (isAuthenticated) {
         const notoverlap = await checkOverLap(bookings);
         if (notoverlap) {
-          // {
-          //   accHolder.kyc ? handlePayment() : navigate("/kycform");
-          // }
-          checkuser();
-          // handlePayment();
+          if (decryptedData && decryptedData?.kyc === "verified") {
+            // console.log("verified kyc request");
+            handlePayment();
+          } else {
+            checkuser();
+          }
         } else {
           toast.error("you are late someone booked around this slot");
         }
@@ -452,14 +301,6 @@ const Payment: React.FC = () => {
               my booking
             </li>
           </ul>
-          {/* <p className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
-            Please note that an 18% GST will be applied to the booking amount
-            during the checkout process.
-          </p>
-          <p className="text-black-100 px-4 py-2  text-sm  w-full ">
-            Note: once the payment is done ,bookings will be shown at dashboard
-            in my booking{" "}
-          </p> */}
 
           {bookings.length + dayPasses.length === 0 && (
             <div className=" text-2xl text-gray-500 flex justify-center h-56 items-center">
@@ -488,18 +329,11 @@ const Payment: React.FC = () => {
                 </button>
                 {message && <p>{message}</p>}
               </div>
-              {/* <div className="text-right text-2xl font-bold text-gray-800 mb-3">
-                Total Bill: ₹{finalBill.toFixed(2)}
-              </div> */}
               <div className="text-right text-2xl  text-gray-800 mb-3">
                 <ul>
                   <li> Bill: ₹{TotalBill}</li>
-                  {/* <li> gst : 18 % ₹{(totalBill * 0.18).toFixed(2)}</li> */}
                   <li>+ GST : 18 %</li>
-                  <li className="font-bold">
-                    {" "}
-                    Total : ₹{finalBill.toFixed(2)}
-                  </li>
+                  <li className="font-bold">Total : ₹{finalBill.toFixed(2)}</li>
                 </ul>
               </div>
               <div className="text-right text-l font-semibold text-gray-500 mb-6">
@@ -512,13 +346,6 @@ const Payment: React.FC = () => {
           {parseInt(totalBill.toFixed(2)) > 0 && (
             <button
               className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-lg transform hover:scale-105"
-              // onClick={
-              //   isAuthenticated
-              //     ? checkOverLap(bookings) && handleRazorpayPayment
-              //     : handleTOLogin
-              // }
-              // // isAuthenticated ?  handleRazorpayPayment :
-
               disabled={isSubmitting}
               onClick={handleButtonClick}
             >

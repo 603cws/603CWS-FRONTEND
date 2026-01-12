@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, useEffect } from "react";
 // import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { gallery3 } from "../../utils/Landing/Landing";
 import { useApp } from "../../context/AuthContext";
@@ -10,6 +10,7 @@ const LogIn: React.FC = () => {
   const { setIsAuthenticated, setloading } = useApp();
   // const PORT = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
+  const location = useLocation();
   const [usernameOrEmail, setUsernameOrEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -20,6 +21,10 @@ const LogIn: React.FC = () => {
     // Reset loading state when the component mounts
     setloading(false);
   }, [setloading]);
+
+  // location data
+  const redirectRoute = location?.state?.route;
+  console.log("redirectroute", redirectRoute);
 
   const handleClickShowPassword = () => setShowPassword((prev) => !prev);
 
@@ -47,7 +52,11 @@ const LogIn: React.FC = () => {
         toast.success("User logged in");
         localStorage.setItem("user", user.companyName);
         localStorage.setItem("token", token);
-        navigate("/dashboard");
+        if (redirectRoute === "payment") {
+          navigate("/payment");
+        } else {
+          navigate("/dashboard");
+        }
         setIsAuthenticated(true);
       }
     } catch (e) {
