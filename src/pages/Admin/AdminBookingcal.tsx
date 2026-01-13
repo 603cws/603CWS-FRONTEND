@@ -163,8 +163,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     };
   }, []);
 
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
-
   const containerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
@@ -356,15 +354,7 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
           email,
         }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/users/getUserByAdmin`,
-      //   { email },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       setloading(false);
-      console.log(response);
       const userdata = response.data;
       setPhone(userdata.phone);
       setcreditsleft(userdata.creditsleft);
@@ -432,7 +422,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     setSelectedEndTime("");
 
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    // console.log("Initial available times:", availableStartTimesUnfiltered);
 
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
@@ -442,7 +431,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
         availableStartTimesUnfiltered = availableStartTimesUnfiltered.filter(
           (time) => {
             const timeInMinutes = getTimeInMinutes(time);
-            // Keep the end time but filter out times within the interval
             if (timeInMinutes === endTimeInMinutes) {
               return true;
             }
@@ -456,7 +444,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    // console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
 
   const selectendtimefunction = (starttime: string) => {
@@ -478,14 +465,13 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        // console.log(y, "rjojro");
+
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    // console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -572,16 +558,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
           appointmentDetails,
           credits: Math.ceil(Number(credits.toFixed(2))),
         });
-        // await axios.post(
-        //   `${PORT}/api/v1/bookings/`,
-        //   {
-        //     appointmentDetails,
-        //     credits: Math.ceil(Number(credits.toFixed(2))),
-        //   },
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
         toast.success("Booking created successfully!");
         setupInterval();
       } catch (error) {
@@ -610,16 +586,6 @@ const AdminCalendar: React.FC<CalendarProps> = ({ value }) => {
         appointmentDetails,
         credits: Math.ceil(Number(credits.toFixed(2))),
       });
-      // await axios.post(
-      //   `${PORT}/api/v1/bookings/`,
-      //   {
-      //     appointmentDetails,
-      //     credits: Math.ceil(Number(credits.toFixed(2))),
-      //   },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       setProfileOpen(true);
       toast.success("Booking created successfully!");
       setupInterval();

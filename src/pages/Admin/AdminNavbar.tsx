@@ -15,27 +15,10 @@ function AdminDashNavbar() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
-
-  // const handleCreateUser = () => {
-  //   console.log("sample test");
-  // };
-
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axiosInstance.post(
-        `/api/v1/auth/logout`,
-        {} // Empty object if no body is needed
-      );
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/auth/logout`,
-      //   {}, // Empty object if no body is needed
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
+      await axiosInstance.post(`/api/v1/auth/logout`, {});
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       setAccHolder({

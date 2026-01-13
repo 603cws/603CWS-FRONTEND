@@ -63,17 +63,7 @@ const Popupform = () => {
       if (mobileRegex.test(formData.phone)) {
         setloading(true);
         localStorage.setItem("callback", "true");
-        const res = await axiosInstance.post(
-          `/api/v1/users/sendcallback`,
-          formData
-        );
-        // const res = await axios.post(
-        //   `${PORT}/api/v1/users/sendcallback`,
-        //   formData,
-        //   { withCredentials: true }
-        // );
-        console.log(res);
-        console.log("Form data:", formData);
+        await axiosInstance.post(`/api/v1/users/sendcallback`, formData);
         toast.success("form submitted");
         hidePopup();
       }

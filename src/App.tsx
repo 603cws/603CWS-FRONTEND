@@ -5,7 +5,6 @@ import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import LogIn from "./pages/LogIn";
 import Register from "./pages/Register";
-// import Dashboard from "./pages/Dashboard";
 import Dashboard from "./pages/Dashboardcopy";
 import Login from "./pages/Admin/Login";
 import Transactions from "./pages/Transactions";
@@ -56,14 +55,13 @@ import Pentagon from "./components/locations/Mumbai/Pentagon";
 import Fort from "./components/locations/Mumbai/lawyers-Chamber";
 import MarathonFuturex from "./components/locations/Mumbai/Marathon-Futurex";
 import TradeLink from "./components/locations/Mumbai/TradeLink";
-// import CreateUserModal from "./pages/Admin/createusermodal";
 import RegisterUser from "./pages/Admin/RegisterUser";
-import CoworkingSpaceLayout from "./components/seatBooking/coworkingspaceLayout";
 
 import ZohoKYCForm from "./pages/zohoForm";
 import MemberDashboard from "./pages/MemberDashboard";
 
 import OnlineBookings from "./pages/Admin/Onlinebookings";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const location = useLocation();
@@ -72,11 +70,6 @@ function App() {
   const { isAuthenticated, loading, refreshAuth, isAdmin, accHolder } =
     useApp();
   const navigate = useNavigate();
-
-  const PORT = import.meta.env.VITE_BACKEND_URL;
-  console.log(PORT);
-
-  console.log(isAuthenticated); // at the begining without login its false
 
   const noPopupRoutes = [
     "/admin/dashboard",
@@ -246,16 +239,9 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/booknow" element={<BookNowPage />} />
             <Route path="/booknow/:id" element={<ConfirmPayment />} />
-            <Route
-              path="/payment"
-              // element={isAdmin === "admin" && <Payment />}
-              element={<Payment />}
-            />
-            <Route
-              path="/kycform"
-              // element={isAdmin === "admin" && <Payment />}
-              element={<ZohoKYCForm />}
-            />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/kycform" element={<ZohoKYCForm />} />
+            <Route path="*" element={<PageNotFound />} />
           </>
         ) : (
           <>
@@ -337,12 +323,8 @@ function App() {
                 />
               }
             />
-            <Route path="/seatlayout" element={<CoworkingSpaceLayout />} />
-            <Route
-              path="/kycform"
-              // element={isAdmin === "admin" && <Payment />}
-              element={<ZohoKYCForm />}
-            />
+            <Route path="/kycform" element={<ZohoKYCForm />} />
+            <Route path="*" element={<PageNotFound />} />
           </>
         )}
       </Routes>

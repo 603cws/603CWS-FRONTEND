@@ -27,7 +27,6 @@ const Payment: React.FC = () => {
 
   if (encoded) {
     decryptedData = JSON.parse(atob(encoded));
-    // console.log("data", decryptedData);
   }
 
   const [isDisable, setIsDisable] = useState(false);
@@ -46,7 +45,6 @@ const Payment: React.FC = () => {
   const PORT = import.meta.env.VITE_BACKEND_URL;
 
   // const encrypted = btoa(JSON.stringify({ kyc: "verified" }));
-  // // console.log("encrypted", encrypted);
 
   const checkuser = async () => {
     try {
@@ -56,13 +54,12 @@ const Payment: React.FC = () => {
         checkagain.data.user.kyc ? handlePayment() : navigate("/kycform");
       }
     } catch (error) {
-      console.log("user not found");
+      console.log("user not found", error);
     }
   };
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  // Calculate total price from all bookings and day passes
   let totalBill =
     bookings.reduce(
       (total, booking) =>
@@ -84,11 +81,9 @@ const Payment: React.FC = () => {
         { code }
       );
 
-      console.log(response);
       setDiscountPercentage(
         (discountPercentage) => discountPercentage + response.data.discount
       );
-      console.log(discountPercentage);
 
       setIsDisable(() => true);
 
@@ -134,7 +129,6 @@ const Payment: React.FC = () => {
           withCredentials: true, // Include credentials (cookies) in the request
         }
       );
-      console.log(response);
 
       // Return true if the status is 200, meaning no booking overlap
       if (response.status === 200) {
@@ -167,10 +161,7 @@ const Payment: React.FC = () => {
           },
         }
       );
-
-      console.log(response.data);
       window.location.href = response.data.url;
-      // setCheckstatus(true);
     } catch (error) {
       console.log("error in payment", error);
     }
@@ -183,7 +174,6 @@ const Payment: React.FC = () => {
         const notoverlap = await checkOverLap(bookings);
         if (notoverlap) {
           if (decryptedData && decryptedData?.kyc === "verified") {
-            // console.log("verified kyc request");
             handlePayment();
           } else {
             checkuser();
@@ -208,7 +198,6 @@ const Payment: React.FC = () => {
 
       <div className="bg-gray-100 min-h-screen pb-8 pt-24">
         <div className="max-w-3xl mx-auto p-6 bg-white shadow-xl rounded-lg">
-          {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
             className="text-yellow-700 hover:text-yellow-800 font-semibold mb-4 flex items-center"
@@ -379,8 +368,6 @@ const Payment: React.FC = () => {
           )}
         </div>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

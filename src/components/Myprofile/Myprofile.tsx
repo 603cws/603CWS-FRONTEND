@@ -125,11 +125,7 @@ const Settings: React.FC = () => {
   const fetchData = async () => {
     try {
       const response = await axiosInstance.get(`/api/v1/users/userdetails`);
-      // const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-      //   withCredentials: true,
-      // });
       const userdata: UserDetails = response.data.user;
-      console.log(userdata);
       setData(userdata);
       setcompanyName(userdata.companyName);
       setphone(userdata.phone);
@@ -161,7 +157,7 @@ const Settings: React.FC = () => {
   const theme = getTheme(darkMode);
 
   const handleProfileSave = async () => {
-    const response = await axiosInstance.put(`/api/v1/users/updateuser`, {
+    await axiosInstance.put(`/api/v1/users/updateuser`, {
       companyName,
       country,
       state,
@@ -169,12 +165,6 @@ const Settings: React.FC = () => {
       zipCode,
       token,
     });
-    // const response = await axios.put(
-    //   `${PORT}/api/v1/users/updateuser`,
-    //   { companyName, country, state, city, zipCode, token },
-    //   { withCredentials: true }
-    // );
-    console.log(response.data);
     fetchData();
   };
 
@@ -186,12 +176,6 @@ const Settings: React.FC = () => {
         oldPassword,
         token,
       });
-      // const response = await axios.put(
-      //   `${PORT}/api/v1/users/changepassword`,
-      //   { newPassword, oldPassword, token },
-      //   { withCredentials: true }
-      // );
-      console.log(response, "dmompdkp");
       if (response.data.msg === "Password changed successfully") {
         toast.success("Password changed successfully");
       } else {
@@ -201,7 +185,6 @@ const Settings: React.FC = () => {
       setConfirmPassword("");
       setNewPassword("");
       setOldPassword("");
-      console.log("Password changed:", { oldPassword, newPassword });
     } else {
       console.error("Passwords do not match");
     }

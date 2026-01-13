@@ -364,12 +364,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get(`/api/v1/users/userdetails`);
-        // const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-        //   withCredentials: true,
-        // });
-
         setloading(false);
-        console.log(response);
         const userdata = response.data.user;
         setEmail(userdata.email);
         setPhone(userdata.phone);
@@ -387,13 +382,6 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
         `/api/v1/bookings/getlocationbookings`,
         { selectedDate: date, selectedLocation }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/getlocationbookings`,
-      //   { selectedDate: date, selectedLocation },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       setloading(false);
       setTimings(response.data);
     } catch (error) {
@@ -436,10 +424,7 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
   const changeday = (day: number) => {
     setSelectedStartTime("");
     setSelectedEndTime("");
-
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    console.log("Initial available times:", availableStartTimesUnfiltered);
-
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
         const startTimeInMinutes = getTimeInMinutes(start.toString());
@@ -462,7 +447,6 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
 
   const selectendtimefunction = (starttime: string) => {
@@ -484,14 +468,12 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        console.log(y, "rjojro");
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -560,9 +542,6 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   const handleSubmit = async () => {
-    console.log(Math.ceil(Number(credits.toFixed(2))));
-    console.log(Math.ceil(Number(credits.toFixed(2))) <= creditsleft);
-
     setconfirm(false);
 
     if (Math.ceil(Number(credits.toFixed(2))) <= creditsleft) {
@@ -581,16 +560,6 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
           appointmentDetails,
           credits: Math.ceil(Number(credits.toFixed(2))),
         });
-        // await axios.post(
-        //   `${PORT}/api/v1/bookings/`,
-        //   {
-        //     appointmentDetails,
-        //     credits: Math.ceil(Number(credits.toFixed(2))),
-        //   },
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
         toast.success("Booking created successfully!");
         setupInterval();
       } catch (error) {
@@ -658,7 +627,6 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
 
   //check time limit
   const checkTimeLimitOfMeetingAndConf = async () => {
-    console.log("enter into the checktimelimit");
     //get bookings
 
     const startMinutes = getTimeInMinutes(selectedStartTime);
@@ -666,15 +634,12 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
 
     //all bookings made by user
     const previousBookings = [...transactions];
-    console.log(previousBookings);
 
     //filter the allbookings by selectedDate
     const ondayBookings = previousBookings.filter(
       (booking) =>
         booking.date == selectedDate && booking.spaceName == value.key
     );
-
-    console.log(ondayBookings);
 
     //calculate the total time
     const hoursArray = ondayBookings.map((book) => {
@@ -684,15 +649,9 @@ const Calendar: React.FC<CalendarProps> = ({ value }) => {
       return (end - start) / 60;
     });
 
-    console.log(hoursArray);
-
     const totalHours = hoursArray.reduce((acc, cur) => acc + cur, 0);
 
-    console.log(totalHours);
-
     const difference = (endMinutes - startMinutes) / 60 + totalHours;
-
-    console.log(difference);
 
     if (spacetype === "conference") {
       difference <= 3 ? setconfirm(true) : setMaxLimit(true);

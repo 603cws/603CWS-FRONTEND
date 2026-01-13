@@ -84,26 +84,13 @@ function Landing() {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
 
     if (isSubmitting) return;
 
     setIsSubmitting(true);
 
     try {
-      const res = await axiosInstance.post(
-        `/api/v1/users/requestTour`,
-        formData
-      );
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/users/requestTour`,
-      //   formData,
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
-      console.log("Form data:", formData);
+      await axiosInstance.post(`/api/v1/users/requestTour`, formData);
 
       setFormData({
         name: "",
@@ -126,14 +113,11 @@ function Landing() {
   return (
     <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
       <div className="fixed top-0 left-0 right-0 z-50">
-        {/* <div className=""> */}
         <Navbar />
       </div>
 
-      {/* Hero Section */}
       <Popupform val={popup} setpopup={setpopup} />
       <div className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10">
-        {/* Background image with blur */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
@@ -146,7 +130,6 @@ function Landing() {
 
         <div className="relative z-10 md:w-full">
           <div className="text-white">
-            {/* <div className="text-black"> */}
             <h1 className="border-l-4 border-yellow-500 pl-4 mb-6">
               <div className="flex items-center space-x-3 mb-4">
                 <img src={logo} className="h-10 flex items-center" alt="Logo" />
@@ -214,10 +197,7 @@ function Landing() {
         <p className="text-sm">
           Fill out the form below and a member of our team will get in touch
         </p>
-        <form
-          className=" capitalize grid grid-cols-2 gap-8 m-4"
-          // onSubmit={handleFormSubmit}
-        >
+        <form className=" capitalize grid grid-cols-2 gap-8 m-4">
           <div className="col-span-2 ">
             <input
               id="name"
@@ -459,131 +439,8 @@ function Landing() {
             </span>{" "}
             Explore Our Locations
           </button>
-          {/*<div className="mt-11 flex flex-col items-start">
-            <h1 className="text-4xl font-sans font-semibold text-gray-700">
-              Discover More Details
-            </h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 mx-4 md:mx-0 ">
-              <div className="flex flex-col border-gray-200">
-                <div className="flex flex-col py-4 pr-4 space-y-4">
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Amore-Centre")}
-                    place="Khar Amore Center"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Makhija-Archade")}
-                    place="Bandra Makhija Center"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Sun-Mill-Compound")}
-                    place="Lower Parel Sunmill Compound"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Navratna-Corporate-Park")}
-                    place="Ahmedabad"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Pentagon-Classic")}
-                    place="Pentagon Classic"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                </div>
-              </div>
-
-
-              <div className="flex flex-col border-gray-200">
-                <div className="flex flex-col py-4 pr-4 space-y-4">
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Matulya-Centre")}
-                    place="Lower Parel Matulya"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Diamond-District")}
-                    place="Bangalore Diamond District"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/MIDC")}
-                    place="MIDC Andheri"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Millenium-Business-Park")}
-                    place="Navi Mumbai Millennium"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                </div>
-              </div>
-
-
-              <div className="flex flex-col border-gray-200">
-                <div className="flex flex-col py-4 pr-4 space-y-4">
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Kamala-Mills")}
-                    place="Lower Parel Kamala Mills"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Sunshine-Tower")}
-                    place="Dadar West Sunshine Tower"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Marathon")}
-                    place="Lower Parel Marathon"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                  <Locationdiv
-                    onClick={() => navigate("/locations/Technocity")}
-                    place="Technocity"
-                    icon={<FaMapMarkerAlt className="text-gray-500" />}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>*/}
         </div>
       </div>
-
-      {/* <div className="relative flex flex-col items-center justify-center text-center bg-cover bg-fixed bg-no-repeat blur-animation w-full min-h-[800px] py-20 px-6">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{
-            backgroundImage: `url('${gallery3}')`,
-            filter: "blur(3px)",
-            backgroundColor: "rgba(0, 0, 0, 0.3)", // dark overlay effect
-            backgroundBlendMode: "darken", // blends the overlay with the image
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
-
-        <div className="relative z-10 text-center">
-          <div className="text-lg md:text-2xl lg:text-2xl leading-8 text-yellow-500 mb-4 font-sans">
-            <span>Join the Coworking Movement</span>
-          </div>
-
-          <h2 className="bg-text-base md:text-lg lg:text-lg leading-tight text-white font-sans tracking-tight mb-8 px-4 sm:px-8">
-            <span>
-              Spaces that are occupied by Corporates and Startups, designed with
-              your business&nbsp;in&nbsp;mind
-            </span>
-          </h2>
-
-          <div className="flex justify-center">
-            <button
-              onClick={() => navigate("/booknow")}
-              className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white hover:bg-yellow-200 transition-colors duration-300  py-2 px-4 text-base md:text-xl lg:xl font-sans rounded-md shadow-lg"
-            >
-              Book a Space
-            </button>
-          </div>
-        </div>
-      </div> */}
 
       <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-blue-100 to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">

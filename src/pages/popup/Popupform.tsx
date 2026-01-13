@@ -64,13 +64,8 @@ const Popupform: React.FC<PopupformProps> = ({ val, setpopup }) => {
       setloading(true);
       hidePopup();
       localStorage.setItem("callback", "true");
-      const res = await axiosInstance.post(
-        `/api/v1/users/sendcallback`,
-        formData
-      );
-      console.log(res);
+      await axiosInstance.post(`/api/v1/users/sendcallback`, formData);
       setloading(false);
-      console.log("Form data:", formData);
     }
   };
 

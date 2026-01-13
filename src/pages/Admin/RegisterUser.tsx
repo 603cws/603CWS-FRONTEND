@@ -1,5 +1,3 @@
-// Define the User interface
-// import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
 import { useApp } from "./../../context/AuthContext";
@@ -41,13 +39,9 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
 
   const { setAccHolder } = useApp();
 
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
-  // const navigate = useNavigate();
-
   //to check is authenticated
   const { isAuthenticated, setIsAuthenticated, setloading, setIsAdmin } =
     useApp();
-  console.log(isAuthenticated);
 
   const navigate = useNavigate();
 
@@ -65,40 +59,15 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
         password,
         phone,
       });
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/users/`,
-      //   {
-      //     companyName,
-      //     email,
-      //     role,
-      //     monthlycredits,
-      //     username,
-      //     location,
-      //     password,
-      //     phone,
-      //   },
-      //   { withCredentials: true }
-      // );
 
-      console.log(response);
       if (response.data.msg === "User created") {
         toast.success(response.data.msg);
-        // navigate("/login", { replace: true });
-        // {usernameOrEmail: "rohit", password: "rohit007"}
 
         try {
           const response = await axiosInstance.post(`/api/v1/auth/login`, {
             usernameOrEmail: username,
             password: password,
           });
-          // const response = await axios.post(
-          //   `${PORT}/api/v1/auth/login`,
-          //   { usernameOrEmail: username, password: password },
-          //   {
-          //     withCredentials: true,
-          //   }
-          // );
-          console.log(response);
           const { msg, user, token } = response.data;
 
           if (msg === "User signed in") {
@@ -107,10 +76,6 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
             localStorage.setItem("token", token);
 
             const res = await axiosInstance.get(`/api/v1/users/checkauth`);
-            // const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
-            //   withCredentials: true,
-            // });
-            console.log(res);
             setIsAuthenticated(res.data.auth);
             setIsAdmin(res.data.user);
             setAccHolder(res.data.accHolder);
@@ -121,22 +86,13 @@ const RegisterUser: React.FC<CreateUserModalProps> = ({ isOpen, onClose }) => {
         } finally {
           setloading(false);
         }
-
-        // navigate(-1);
       } else {
         toast.error(response.data.msg);
       }
 
-      //   //for non register user
-      //   if (!isAuthenticated) {
-      //     //navigate him to login page
-      //     navigate("/login");
-      //   }
-
       onClose();
     } catch (error: any) {
       toast.error(error.response.data.msg);
-      console.log("Error creating user:", error);
       setisSubmitting(false);
     }
   };

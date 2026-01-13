@@ -11,7 +11,6 @@ const MemberDashboard: React.FC = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [spacetype, setspacetype] = useState("");
 
-  console.log(accHolder);
   let splitLocation, getmainlocation, userLocation;
   if (accHolder.role !== "admin") {
     if (accHolder.location === "Lawyers Chamber") {
@@ -22,28 +21,14 @@ const MemberDashboard: React.FC = () => {
       userLocation = "Marathon Futurex";
     } else {
       splitLocation = accHolder.location.split(" ");
-      console.log(splitLocation);
 
       getmainlocation = splitLocation[0];
-      console.log(getmainlocation);
 
       userLocation =
         getmainlocation.charAt(0).toUpperCase() +
         getmainlocation.slice(1).toLowerCase();
     }
-    console.log(userLocation);
   }
-
-  // const splitLocation = accHolder.location.split(" ");
-  // console.log(splitLocation);
-
-  // const getmainlocation = splitLocation[0];
-  // console.log(getmainlocation);
-
-  // const userLocation =
-  //   getmainlocation.charAt(0).toUpperCase() +
-  //   getmainlocation.slice(1).toLowerCase();
-  // console.log(userLocation);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,8 +40,6 @@ const MemberDashboard: React.FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleLocationChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -70,26 +53,13 @@ const MemberDashboard: React.FC = () => {
           `/api/v1/spaces/getspacebyname`,
           { name: location }
         );
-        // const response = await axios.post(
-        //   `${PORT}/api/v1/spaces/getspacebyname`,
-        //   { name: location },
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
+
         setspacetype(response.data.roomtype);
       } catch (error) {
         console.error("Error fetching space type:", error);
       }
     }
   };
-
-  // Debugging spacetype value
-  useEffect(() => {
-    console.log("spacetype updated:", spacetype);
-  }, [spacetype]);
-
-  // console.log(selectedLocation);
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200">

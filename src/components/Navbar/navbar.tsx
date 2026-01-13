@@ -48,15 +48,7 @@ const Navbar = () => {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axiosInstance.post(`/api/v1/auth/logout`, {});
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/auth/logout`,
-      //   {}, // Empty object if no body is needed
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
+      await axiosInstance.post(`/api/v1/auth/logout`, {});
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       toast.success("User logged out");

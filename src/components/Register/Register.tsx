@@ -11,7 +11,6 @@ function Register() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     axios.get("", {
@@ -35,10 +34,6 @@ function Register() {
       };
       try {
         const response = await axiosInstance.post(`/api/v1/users/`, data);
-        // const response = await axios.post(`${PORT}/api/v1/users/`, data, {
-        //   withCredentials: true,
-        // });
-        console.log(response);
         if (response.data.msg == "Invalid Inputs") {
           toast.error("Invalid Inputs!");
           return;

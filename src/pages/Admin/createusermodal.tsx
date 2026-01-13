@@ -17,10 +17,8 @@ interface User {
   location: string;
 }
 
-// The rest of your CreateUserModal component code remains the same
 import React, { useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
-// import { useNavigate } from "react-router-dom";
 
 interface CreateUserModalProps {
   isOpen: boolean;
@@ -43,9 +41,6 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
   const [member, setMember] = useState(true);
   //to check is authenticated
   const { isAuthenticated } = useApp();
-  console.log(isAuthenticated);
-
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,23 +56,6 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
         phone,
         member,
       });
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/users/`,
-      //   {
-      //     companyName,
-      //     email,
-      //     role,
-      //     monthlycredits,
-      //     username,
-      //     location,
-      //     password,
-      //     phone,
-      //     member,
-      //   },
-      //   { withCredentials: true }
-      // );
-
-      console.log(response);
       if (response.data.msg === "User created") {
         toast.success(response.data.msg);
         // navigate("/login", { replace: true });
@@ -135,13 +113,6 @@ const CreateUserModal: React.FC<CreateUserModalProps> = ({
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">Location</label>
-            {/* <input
-              type="text"
-              className="w-full p-2 border border-gray-300 rounded mt-1"
-              value={location}
-              onChange={(e) => setlocation(e.target.value)}
-              required
-            /> */}
 
             <select
               className="w-full p-2 border border-gray-300 rounded mt-1"

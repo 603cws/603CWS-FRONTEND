@@ -62,33 +62,15 @@ function DashNavbar() {
     createdAt: new Date(), // Correct initialization for Date
   });
 
-  const PORT = import.meta.env.VITE_BACKEND_URL;
-  console.log(PORT);
-
-  // const PORT = "https://603-bcakend-new.vercel.app";
-
   const n = localStorage.getItem("user");
-  // console.log(n);
 
   const toTransactions = () => {
     navigate("/dashboard/Transactions");
   };
-
-  // const toDaypassTransactions = () => {
-  //   navigate("/dashboard/daypassTransactions");
-  // };
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axiosInstance.post(`/api/v1/auth/logout`, {});
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/auth/logout`,
-      //   {}, // Empty object if no body is needed
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
+      await axiosInstance.post(`/api/v1/auth/logout`, {});
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       setAccHolder({
@@ -120,20 +102,10 @@ function DashNavbar() {
     navigate("/dashboard/Myprofile");
   };
 
-  // const visitHome = () => {
-  //   navigate("/dashboard");
-  // }
-
   //change visit home to home page
   const visitHome = () => {
     navigate("/");
   };
-
-  // const vistDash = () => {
-  //   if (location.pathname !== "/dashboard") {
-  //     navigate("/dashboard");
-  //   }
-  // };
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -141,13 +113,6 @@ function DashNavbar() {
         const response = await axiosInstance.get(
           `/api/v1/credits/getcreditdetails`
         );
-        // const response = await axios.get(
-        //   `${PORT}/api/v1/credits/getcreditdetails`,
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
-        console.log(response);
         setData(response.data);
         setmonthlycredits(response.data.monthlycredits);
         setcreditsleft(response.data.creditsleft);

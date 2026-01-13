@@ -74,23 +74,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
         id,
       }
     );
-    // const response = await axios.post(
-    //   `${PORT}/api/v1/users/admin/updateuser`,
-    //   {
-    //     companyName,
-    //     location,
-    //     kyc,
-    //     phone,
-    //     email,
-    //     role,
-    //     monthlycredits,
-    //     extracredits,
-    //     creditsleft,
-    //     id,
-    //   },
-    //   { withCredentials: true }
-    // );
-    console.log(response);
     if (response.data.msg === "User updated") {
       toast.success(response.data.msg);
     } else {
@@ -104,12 +87,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
       `/api/v1/users/admin/deleteuser`,
       { id }
     );
-    // const response = await axios.post(
-    //   `${PORT}/api/v1/users/admin/deleteuser`,
-    //   { id },
-    //   { withCredentials: true }
-    // );
-    console.log(response);
     if (response.data.msg === "User deleted") {
       toast.success(response.data.msg);
     } else {
@@ -199,13 +176,6 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">Location</label>
-            {/* <input
-                            type="text"
-                            className="w-full p-2 border border-gray-300 rounded mt-1"
-                            value={location}
-                            onChange={(e) => setlocation(e.target.value)}
-                            required
-                        /> */}
             <select
               className="w-full p-2 border border-gray-300 rounded mt-1"
               value={location}

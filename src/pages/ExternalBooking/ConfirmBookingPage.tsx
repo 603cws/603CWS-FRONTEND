@@ -58,14 +58,6 @@ const ConfirmPayment = () => {
 
   const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
-    console.log("Updated dayPasses:", dayPasses);
-  }, [dayPasses]);
-
-  useEffect(() => {
-    console.log("Updated bookings:", bookings);
-  }, [bookings]);
-
   const times = [
     "9:00 am",
     "9:30 am",
@@ -180,17 +172,6 @@ const ConfirmPayment = () => {
         spaceName: selectedLocation,
         quantity,
       });
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/daypass/daypassCheck`,
-      //   {
-      //     spaceName: selectedLocation,
-      //     quantity,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
 
       if (res.status === 200) {
         bookDayPass({
@@ -205,18 +186,10 @@ const ConfirmPayment = () => {
         setshowcalenderconfroom(false);
         setshowcalenderdaypass(false);
         setshowcalendermeetroom(false);
-        console.log(dayPasses);
       }
-
-      // if (res.status === 400) {
-      //   toast.error(
-      //     `${res.data.availabledaypass} ${res.data.quantity}daypass not available for Today at selected location `
-      //   );
-      // }
     } catch (error: any) {
       console.log(error);
-      console.log("daypass not available");
-      // toast.error("daypass not available for Today at selected location ");
+
       toast.error(
         ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
       );
@@ -236,7 +209,6 @@ const ConfirmPayment = () => {
 
     if (foundLocation) {
       setLocationDetails(foundLocation);
-      console.log(foundLocation);
     }
   }, []);
   const navigate = useNavigate();
@@ -244,9 +216,6 @@ const ConfirmPayment = () => {
   const [showcalenderconfroom, setshowcalenderconfroom] = useState(false);
   const [showcalenderdaypass, setshowcalenderdaypass] = useState(false);
   const [showcalendermeetroom, setshowcalendermeetroom] = useState(false);
-  useEffect(() => {
-    console.log("selectedDate", selectedDate);
-  });
 
   const totalBill =
     bookings.reduce((total, booking) => total + booking.price, 0) +
@@ -274,10 +243,6 @@ const ConfirmPayment = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
-  // const [coupon, setCoupon] = useState("");
-
-  //daypass price manipulation based on quantity
 
   useEffect(() => {
     setCartTotal(
@@ -368,7 +333,6 @@ const ConfirmPayment = () => {
     setSelectedEndTime("");
 
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    console.log("Initial available times:", availableStartTimesUnfiltered);
 
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
@@ -392,7 +356,6 @@ const ConfirmPayment = () => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
 
   const selectendtimefunction = (starttime: string) => {
@@ -414,14 +377,12 @@ const ConfirmPayment = () => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        console.log(y, "rjojro");
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -513,18 +474,11 @@ const ConfirmPayment = () => {
 
   const fetchLocationBookings = async (date: string) => {
     try {
-      console.log("selectedLocation", selectedLocation);
       const response = await axiosInstance.post(
         `/api/v1/bookings/getlocationbookings`,
         { selectedDate: date, selectedLocation }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/getlocationbookings`,
-      //   { selectedDate: date, selectedLocation },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
+
       setTimings(response.data);
     } catch (error) {
       console.error(error);
@@ -533,25 +487,13 @@ const ConfirmPayment = () => {
 
   const fetchLocationDayPassBookings = async () => {
     try {
-      console.log("iprjepr", selectedLocation);
       const response = await axiosInstance.post(`/api/v1/daypass/getdata`, {
         selectedLocation,
         selectedYear: currentYear,
         selectedMonth: currentMonth + 1,
       });
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/daypass/getdata`,
-      //   {
-      //     selectedLocation,
-      //     selectedYear: currentYear,
-      //     selectedMonth: currentMonth + 1,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
+
       setunavailabledaypasses(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -713,11 +655,9 @@ const ConfirmPayment = () => {
                     className="bg-gray-200 text-gray-700 px-2 py-2  rounded-md shadow-lg hover:cursor-pointer w-32 md:w-52"
                     onChange={(e) => {
                       setselectedLocation(e.target.value);
-                      const selectedRoom = e.target.value;
                       setshowcalenderconfroom(true);
                       setshowcalenderdaypass(false);
                       setshowcalendermeetroom(false);
-                      console.log("Selected Conference Room:", selectedRoom);
                     }}
                   >
                     <option value="" disabled selected>
@@ -843,15 +783,6 @@ const ConfirmPayment = () => {
                       </div>
                       {selectedEndTime && (
                         <>
-                          {/* <div>
-                              <input
-                                type="text"
-                                   value={coupon}
-                                   onChange={(e) => setCoupon(e.target.value)}
-                                 placeholder="Enter coupon code"
-                                />
-                               <button >Apply Coupon</button>
-                          </div> */}
                           <button
                             className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                             onClick={() => {
@@ -875,10 +806,6 @@ const ConfirmPayment = () => {
                               {locationDetails?.conferenceroom * timedifference}
                             </span>
                           </button>
-                          {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
-                            "Please note that an 18% GST will be applied to the
-                            booking amount during the checkout process."
-                          </span> */}
                         </>
                       )}
                     </div>
@@ -1192,32 +1119,7 @@ const ConfirmPayment = () => {
 
                   {enabledaypasstime && (
                     <>
-                      {/* <button
-                        className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
-                        // onClick={() => {
-                        //   bookDayPass({
-                        //     price: locationDetails?.daypass * quantity,
-                        //     spaceName: selectedLocation,
-                        //     bookeddate: selectedDate,
-                        //     day: selectedDay || 0,
-                        //     month: currentMonth + 1,
-                        //     year: currentYear,
-                        //     quantity: quantity,
-                        //   });
-                        //   setshowcalenderconfroom(false);
-                        //   setshowcalenderdaypass(false);
-                        //   setshowcalendermeetroom(false);
-                        //   console.log(dayPasses);
-                        // }}
-                        onClick={handleAddDaypass}
-                      >
-                        Add{" "}
-                        <span className="text-white font-extrabold">
-                          ₹{locationDetails?.daypass * quantity}
-                        </span>
-                      </button> */}
                       <button
-                        // type="submit"
                         onClick={handleAddDaypass}
                         disabled={isSubmitting}
                         className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
@@ -1249,10 +1151,6 @@ const ConfirmPayment = () => {
                           "Add"
                         )}
                       </button>
-                      {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
-                        "Please note that an 18% GST will be applied to the
-                        booking amount during the checkout process."
-                      </span> */}
                     </>
                   )}
                 </>

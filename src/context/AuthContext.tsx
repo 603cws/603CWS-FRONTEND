@@ -22,31 +22,6 @@ interface BookingInterface {
   date: string;
   price: number;
 }
-
-// {
-//   "member": false,
-//   "_id": "6729c2e70d51e5f265467a94",
-//   "companyName": "603cws",
-//   "username": "testuser",
-//   "email": "manchadiyuvraj@gmail.com",
-//   "country": "India",
-//   "state": "Haryana",
-//   "city": "Hisar",
-//   "zipcode": "125005",
-//   "password": "$2b$10$CBpB76XlqvftF5xWCWppG.5nl3OH7TabhLk4E5Pkz3XZQQiNhjTXO",
-//   "phone": "9594767165",
-//   "role": "admin",
-//   "kyc": true,
-//   "creditsleft": 0,
-//   "monthlycredits": 7,
-//   "extracredits": 29,
-//   "createdAt": "2024-11-05T07:01:59.543Z",
-//   "__v": 0
-// }
-// interface User {
-
-// }
-
 interface UserDetails {
   companyName: string;
   username: string;
@@ -185,7 +160,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       toast.success("Added to Cart");
     } else {
       toast.error("Time slots collide");
-      console.log("Booking already exists or time slots collide");
     }
   };
 
@@ -204,16 +178,12 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       toast.success("Added to Cart");
     } else {
       toast.error("Already Added");
-      console.log("Day pass already exists");
     }
   };
 
   const checkAuth = useCallback(async () => {
     try {
       const res = await axiosInstance.get(`/api/v1/users/checkauth`);
-      // const res = await axios.get(`${PORT}/api/v1/users/checkauth`, {
-      //   withCredentials: true,
-      // });
       setIsAuthenticated(res.data.auth);
       setIsAdmin(res.data.user);
       setAccHolder(res.data.accHolder);
@@ -240,7 +210,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
       });
     } finally {
       setloading(false);
-      console.log(accHolder);
     }
   }, [PORT]);
 

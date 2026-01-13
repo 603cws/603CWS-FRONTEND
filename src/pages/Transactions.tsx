@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
 import "./Transactioncss.css";
-// import axios from "axios";
 import toast from "react-hot-toast";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -53,16 +52,9 @@ const Transactions: React.FC = () => {
     Transaction[]
   >([]);
 
-  // const [daypassTransaction, setDaypassTransaction] = useState<
-  //   DaypassTransaction[]
-  // >([]);
-
   const [selectedTransaction, setSelectedTransaction] =
     useState<Transaction | null>(null);
 
-  // //selected daypass
-  // const [selectedDaypassTransaction, setSelectedDaypassTransaction] =
-  //   useState<DaypassTransaction | null>(null);
   const [showAboutModal, setShowAboutModal] = useState<boolean>(false);
   const [showCancelConfirmation, setShowCancelConfirmation] =
     useState<boolean>(false);
@@ -86,13 +78,6 @@ const Transactions: React.FC = () => {
 
   let today = `${day}/${month}/${year}`;
 
-  //
-  // const addTransaction = (newTransactions: Transaction[]) => {
-  //   setTransactions((prevTransactions) => [
-  //     ...prevTransactions,
-  //     ...newTransactions,
-  //   ]);
-  // };
   const addTransaction = (newTransactions: Transaction[]) => {
     setTransactions((prevTransactions) => {
       const uniqueTransactions = newTransactions.filter(
@@ -145,20 +130,6 @@ const Transactions: React.FC = () => {
     selectedTransaction?.transactionTIme,
     currentTimeinHrandMin
   );
-  // const checkTimeForRefund = 0.3;
-  // const conditionCheckForRefund = checkTimeForRefund > 0.5;
-  //0.5 is the one we have to use
-
-  //default 1
-  console.log(
-    "check time refunding",
-    getTimeDifferenceInDecimal(
-      selectedTransaction?.transactionTIme,
-      currentTimeinHrandMin
-    )
-  );
-  console.log(selectedTransaction?.transactionTIme);
-  console.log(currentTimeinHrandMin);
 
   const handleCancelTransaction = async () => {
     try {
@@ -166,17 +137,6 @@ const Transactions: React.FC = () => {
         `/api/v1/bookings/cancelbooking`,
         { bookingid, isCancellable, isRefundable }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/cancelbooking`,
-      //   { bookingid, isCancellable, isRefundable },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
       setSelectedTransaction(null);
       setShowAboutModal(false);
       setShowWarningMessage(false);
@@ -186,8 +146,6 @@ const Transactions: React.FC = () => {
       } else {
         toast.error("An error occured! PLease try again later");
       }
-
-      console.log(response);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
     }
@@ -198,19 +156,6 @@ const Transactions: React.FC = () => {
         `/api/v1/order/cancelOnlineBooking`,
         { accHolder, bookingid, selectedTransaction }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/order/cancelOnlineBooking`,
-      //   { accHolder, bookingid, selectedTransaction },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
-
-      console.log(response);
       if (response.data.code == "PAYMENT_SUCCESS") {
         toast.success("Refund initiated");
         allbookings();
@@ -234,20 +179,11 @@ const Transactions: React.FC = () => {
     checkForRefundWarning(transaction);
   };
 
-  // //handleviewmore for daypasses
-  // const handleViewDaypassMore = (transaction: DaypassTransaction) => {
-  //   setbookingid(transaction._id);
-  //   setSelectedDaypassTransaction(transaction);
-  //   // setSelectedTransaction(transaction);
-  //   // checkForRefundWarning(transaction);
-  // };
-
   const handleCloseModal = () => {
     setbookingid("");
     setSelectedTransaction(null);
     setShowWarningMessage(false);
     setIsRefundable(true);
-    // setSelectedDaypassTransaction(null);
   };
 
   const handleOpenAboutModal = () => {
@@ -263,36 +199,11 @@ const Transactions: React.FC = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/getallbookingsbyuser`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-      //   { withCredentials: true }
-      // );
-      // setTransactions(response.data);
-      // setTransactions(response.data);
       addTransaction(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
     }
   };
-
-  //   [
-  //     {
-  //         "_id": "673c4031b5c2547d36da6687",
-  //         "space": "6724804d5c694d98e3e0048e",
-  //         "companyName": "603cws",
-  //         "email": "manchadiyuvraj@gmail.com",
-  //         "spaceName": "Bandra Day Pass",
-  //         "phone": "9594767165",
-  //         "bookeddate": "18/11/2024",
-  //         "day": 18,
-  //         "month": 11,
-  //         "year": 2024,
-  //         "status": "captured",
-  //         "paymentMethod": "upi",
-  //         "createdAt": "2024-11-19T07:37:21.615Z",
-  //         "__v": 0
-  //     }
-  // ]
 
   //get all the daypasses by user
   const alldaypasses = async () => {
@@ -301,24 +212,9 @@ const Transactions: React.FC = () => {
         `/api/v1/daypass/getalldaypassbyuser`,
         { accHolder }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/daypass/getalldaypassbyuser`,
-      //   { accHolder },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
-      console.log(response);
-      // setDaypassTransaction(response.data);
-      // setTransactions((prev)=> []);
       addTransaction(response.data);
     } catch (error: any) {
       console.error("Failed to fetch bookings:", error);
-      console.log(error.message);
     }
   };
 
@@ -327,16 +223,7 @@ const Transactions: React.FC = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/getallcancellbookingsbyuser`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
+
       setCancelledTransactions(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
@@ -354,9 +241,6 @@ const Transactions: React.FC = () => {
   };
 
   const handleOnlinePaymentCancellation = () => {
-    console.log(selectedTransaction?.date === today);
-    console.log(selectedTransaction?.date), today;
-
     if (selectedTransaction?.date === today && checkTimeForRefund <= 0.5) {
       setShowOnlinePayCancelConfirmation(true);
     } else {
@@ -403,8 +287,6 @@ const Transactions: React.FC = () => {
       month: month2,
       day: day2,
     } = parseDateComponents(date2);
-    console.log(year1, month1, day1);
-    console.log(year2, month2, day2);
     // Compare years
     if (year1 < year2) {
       return 1;
@@ -449,7 +331,6 @@ const Transactions: React.FC = () => {
         totalMinutes = hours * 60 + minutes; // Convert AM hour to minutes
       }
     }
-    console.log(totalMinutes);
     return totalMinutes;
   };
 
@@ -457,23 +338,16 @@ const Transactions: React.FC = () => {
     const now = new Date();
     const hours = now.getHours(); // Get current hours (0-23)
     const minutes = now.getMinutes();
-    console.log(hours * 60 + minutes); // Get current minutes (0-59)
     return hours * 60 + minutes; // Convert hours to minutes and add current minutes
   };
 
   const checkForRefundWarning = (transaction: Transaction) => {
     const today = new Date();
     const formattedDate = formatDate(today);
-    console.log(formattedDate.toString());
-    console.log(transaction.date.toString());
 
     if (formattedDate.toString() === transaction.date.toString()) {
       const minutes = timeToMinutes(transaction.startTime);
       const currentMinutes = getCurrentTimeInMinutes();
-      console.log(currentMinutes);
-      console.log(minutes);
-      console.log(formattedDate.toString());
-      console.log(transaction.date.toString());
       if (currentMinutes < minutes) {
         if (minutes - currentMinutes < 40 && minutes - currentMinutes > 0) {
           setShowWarningMessage(true);
@@ -515,22 +389,6 @@ const Transactions: React.FC = () => {
           return bTime - aTime;
         })
       : [];
-
-  // //daypass transaction sorting
-  // const sortedDaypassTransactions =
-  //   daypassTransaction.length > 0
-  //     ? [...daypassTransaction].sort((a, b) => {
-  //         const aTime = new Date(a.createdAt).getTime();
-  //         const bTime = new Date(b.createdAt).getTime();
-  //         return bTime - aTime;
-  //       })
-  //     : [];
-
-  // if(selectedTransaction.status === "captured"){
-  //   return true
-  // }else{
-  //   return false
-  // }
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200">
@@ -609,9 +467,6 @@ const Transactions: React.FC = () => {
                           paymentMethodStyles[transaction.paymentMethod]
                         }`}
                       >
-                        {/* {transaction.paymentMethod
-                          .replace("_", " ")
-                          .toUpperCase()} */}
                         {transaction.paymentMethod.toUpperCase()}
                       </span>
                     </td>

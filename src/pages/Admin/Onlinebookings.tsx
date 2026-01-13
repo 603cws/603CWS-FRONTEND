@@ -28,18 +28,6 @@ interface Booking {
   transactionAmount: number;
   billedcredits?: number; // Adding billedcredits here
 }
-// interface Booking {
-//   _id: string;
-//   user: string;
-//   startTime: string;
-//   endTime: string;
-//   companyName: string;
-//   spaceName: string;
-//   date: string;
-//   status: string;
-//   transactionAmount: number;
-//   billedcredits?: number; // Adding billedcredits here
-// }
 
 const OnlineBookings = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -57,7 +45,6 @@ const OnlineBookings = () => {
       const month = (startDate.getMonth() + 1).toString();
       const year = startDate.getFullYear().toString();
       setFormattedDate(`${day}/${month}/${year}`);
-      console.log(`${day}/${month}/${year}`);
     } else {
       setFormattedDate("");
     }
@@ -68,32 +55,11 @@ const OnlineBookings = () => {
   useEffect(() => {
     fetchBookings();
   }, []);
-
-  console.log("hello from the online booking");
-
-  // const fetchBookings = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "http://127.0.0.1:3000/api/v1/bookings/admin/getonlinebookings"
-  //     );
-  //     console.log(response);
-  //     setBookings(response.data.combinedBookings);
-  //   } catch (error) {
-  //     console.error("Error fetching bookings:", error);
-  //   }
-  // };
   const fetchBookings = async () => {
     try {
       const response = await axiosInstance.get(
         `/api/v1/bookings/admin/getonlinebookings`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/admin/getonlinebookings`,
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(response);
       setBookings(response.data.combinedBookings);
     } catch (error) {
       console.error("Error fetching bookings:", error);
@@ -102,7 +68,6 @@ const OnlineBookings = () => {
 
   useEffect(() => {
     fetchBookings();
-    console.log(bookings);
   }, []);
 
   const handleNextPage = () => {
@@ -149,24 +114,6 @@ const OnlineBookings = () => {
         Math.abs(dateA - today.getTime()) - Math.abs(dateB - today.getTime())
       );
     });
-
-  // const filteredBookings = bookings
-  //   .filter((booking) => {
-  //     return (
-  //       (!searchQuery ||
-  //         booking.companyName
-  //           ?.toLowerCase()
-  //           .includes(searchQuery.toLowerCase())) &&
-  //       (!selectedWorkspace || booking.spaceName === selectedWorkspace) &&
-  //       (!formattedDate || booking.date === formattedDate)
-  //     );
-  //   })
-  //   .reduce((uniqueBookings, booking) => {
-  //     if (!uniqueBookings.some((b) => b._id === booking._id)) {
-  //       uniqueBookings.push(booking);
-  //     }
-  //     return uniqueBookings;
-  //   }, [] as Booking[]);
 
   const indexOfLastBooking = currentPage * bookingsPerPage;
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
@@ -384,17 +331,6 @@ const OnlineBookings = () => {
                     >
                       {booking.user.kyc ? "Verified" : "Pending"}
                     </td>
-                    {/* <td className="py-4 px-6 border-b">
-                      <button
-                        className="bg-red-500 py-1 px-2 rounded-lg text-white shadow-2xl"
-                        onClick={() => {
-                          setBookingToCancel(booking);
-                          setIsModalOpen(true);
-                        }}
-                      >
-                        Cancel
-                      </button>
-                    </td> */}
                   </tr>
                 ))}
               </tbody>

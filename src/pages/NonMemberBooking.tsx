@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import { MdClose } from "react-icons/md";
-// import AnimationComponent from "../components/Gif/Gif";
-// import AnimationComponentSorry from "../components/Gif/SorryGif";
 import AnimationComponentAsk from "../components/Gif/Askconfirm";
 import { useApp } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import axiosInstance from "../utils/axiosInstance";
-// import toast from "react-hot-toast";
-
-//for price of booking meeting room and conference room import all location
-// import { locations } from "./AllLocationsDetails";
-// import { addBooking } from "../../redux/bookingsSlice";
 interface Theme {
   background: {
     default: string;
@@ -131,28 +123,6 @@ interface CalendarProps {
   };
 }
 
-// interface Transaction {
-//   _id: string;
-//   user: string;
-//   startTime: string;
-//   endTime: string;
-//   date: string;
-//   status: "confirmed" | "cancelled";
-//   paymentMethod: "credits" | "credit_card" | "paypal";
-//   createdAt: Date | string;
-//   companyName: string;
-//   spaceName: string;
-//   creditsspent: number;
-// }
-
-// interface BookingInterface {
-//   spaceName: string;
-//   startTime: string;
-//   endTime: string;
-//   date: string;
-//   price: number | string;
-// }
-
 interface LocationInterface {
   _id: string;
   name: string;
@@ -165,80 +135,27 @@ interface LocationInterface {
   price: number | string;
 }
 
-// interface DayPassInterface {
-//   price: number;
-//   spaceName: string;
-//   bookeddate: string;
-//   day: number;
-//   month: number;
-//   year: number;
-// }
-
-// {
-//   "_id": "66e024ed59336988c0e3254e",
-//   "name": "Bandra Meeting Room",
-//   "roomtype": "meeting",
-//   "location": "Mumbai",
-//   "description": "One of the best",
-//   "amenities": [
-//       "AC",
-//       "Mic",
-//       "mic"
-//   ],
-//   "capacity": 200,
-//   "createdAt": "2024-09-10T10:52:29.131Z",
-//   "__v": 0,
-//   "price": 699
-// }
-
 const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
-  const { setloading, addNewBooking, dayPasses, bookings, accHolder } =
-    useApp();
-
-  // bookDayPass,
+  const { setloading, addNewBooking, accHolder } = useApp();
 
   const [darkMode] = useState<boolean>(false);
   const { selectedLocation } = value;
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [companyName, setcompanyName] = useState<string>("");
-  // const [email, setEmail] = useState<string>("");
-  // const [phone, setPhone] = useState<string>("");
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<string>("");
   const [currentTime, setCurrentTime] = useState(new Date());
-  // const [credits, setcredits] = useState<number>(0);
-  // const [creditsleft, setcreditsleft] = useState<number>(0);
-  // const [creditstobespent, setcreditstobespent] = useState<number>(0);
-  // const [profileOpen, setProfileOpen] = useState<boolean>(false);
   const [confirm, setconfirm] = useState<boolean>(false);
   const [timings, setTimings] = useState<[string, string][][]>([]);
   const [availableStartTimes, setAvailableStartTimes] = useState<string[]>([]);
   const [availableEndTimes, setAvailableEndTimes] = useState<string[]>([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // const [transactions, setTransactions] = useState<Transaction[]>([]);
-
-  // const [bookingData, setBookingData] = useState<BookingInterface[]>([]);
-  // const [dayPasses, setDaypasses] = useState<DayPassInterface[]>([]);
   const [location, setlocation] = useState<LocationInterface>();
   let navigate = useNavigate();
-
-  // const phone = accHolder.phone;
   const email = accHolder.email;
-
-  useEffect(() => {
-    console.log("Updated dayPasses:", dayPasses);
-  }, [dayPasses]);
-
-  useEffect(() => {
-    console.log("Updated bookings:", bookings);
-  }, [bookings]);
-
-  const daypasses: any = [];
-  // const discountPercentage = 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -250,8 +167,6 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   const containerStyle: React.CSSProperties = {
     display: "flex",
@@ -424,29 +339,6 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   const daytypestyle: React.CSSProperties = {
     fontSize: windowWidth > 470 ? undefined : "13px",
   };
-
-  //WE CAN REPLACE THIS FUNCTION WITH ACCHOLDER AND ASSIGN VALUES TO EMAIL AND PHONE
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get(`${PORT}/api/v1/users/userdetails`, {
-  //         withCredentials: true,
-  //       });
-
-  //       setloading(false);
-  //       console.log(response);
-  //       const userdata = response.data.user;
-  //       setEmail(userdata.email);
-  //       setPhone(userdata.phone);
-  //       // setcreditsleft(userdata.creditsleft);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // /getspacebyname
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -456,16 +348,6 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
             name: selectedLocation,
           }
         );
-        // const response = await axios.post(
-        //   `${PORT}/api/v1/spaces/getspacebyname`,
-        //   {
-        //     name: selectedLocation,
-        //   },
-        //   {
-        //     withCredentials: true,
-        //   }
-        // );
-        console.log(response.data);
         setlocation(response.data);
       } catch (error) {
         console.error(error);
@@ -480,25 +362,13 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
         `/api/v1/bookings/getlocationbookings`,
         { selectedDate: date, selectedLocation }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/getlocationbookings`,
-      //   { selectedDate: date, selectedLocation },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
+
       setloading(false);
       setTimings(response.data);
     } catch (error) {
       console.error(error);
     }
   };
-
-  // useEffect(() => {
-  //   setcreditstobespent(
-  //     spacetype === "meeting" ? 0.5 : spacetype === "conference" ? 1 : 0
-  //   );
-  // }, [spacetype]);
 
   useEffect(() => {
     const updateCurrentTime = () => setCurrentTime(new Date());
@@ -515,25 +385,11 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
     }
   }, [selectedDay, currentMonth, currentYear]);
 
-  useEffect(() => {
-    if (selectedStartTime && selectedEndTime) {
-      const startMinutes = getTimeInMinutes(selectedStartTime);
-      const endMinutes = getTimeInMinutes(selectedEndTime);
-      const difference = (endMinutes - startMinutes) / 60;
-      console.log(difference);
-
-      // setcredits(difference * creditstobespent);
-    } else {
-      // setcredits(0);
-    }
-  }, [selectedStartTime, selectedEndTime]);
-
   const changeday = (day: number) => {
     setSelectedStartTime("");
     setSelectedEndTime("");
 
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    console.log("Initial available times:", availableStartTimesUnfiltered);
 
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
@@ -557,7 +413,6 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
 
   const selectendtimefunction = (starttime: string) => {
@@ -579,14 +434,12 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        console.log(y, "rjojro");
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -649,12 +502,8 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
   };
 
   const handleBookNow = async () => {
-    //get the location details based on the spacetype of location i.e selected location
-    //location
-    // let price = location?.price;
     const price = location?.price || 0;
     const prebill = +price;
-    console.log(location);
     addNewBooking({
       spaceName: selectedLocation,
       startTime: selectedStartTime,
@@ -662,105 +511,13 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
       date: selectedDate,
       price: prebill,
     });
-    console.log("daypass", daypasses);
     setconfirm(true);
   };
 
-  // const setupInterval = () => {
-  //   return setInterval(() => {
-  //     window.location.reload();
-  //   }, 3000);
-  // };
-
-  // const handleSubmit = async () => {
-  //   // console.log(Math.ceil(Number(credits.toFixed(2))));
-  //   // console.log(Math.ceil(Number(credits.toFixed(2))) <= creditsleft);
-
-  //   setconfirm(false);
-
-  //   if (Math.ceil(Number(credits.toFixed(2))) <= creditsleft) {
-  //     setProfileOpen(true);
-  //     const appointmentDetails = {
-  //       location: selectedLocation,
-  //       companyName,
-  //       email,
-  //       phone,
-  //       date: selectedDate,
-  //       startTime: selectedStartTime,
-  //       endTime: selectedEndTime,
-  //     };
-  //     try {
-  //       await axios.post(
-  //         `${PORT}/api/v1/bookings/`,
-  //         {
-  //           appointmentDetails,
-  //           credits: Math.ceil(Number(credits.toFixed(2))),
-  //         },
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       toast.success("Booking created successfully!");
-  //       setupInterval();
-  //     } catch (error) {
-  //       console.error("Error creating booking:", error);
-  //       toast.error("Failed to create booking. Please try again.");
-  //     }
-  //   } else {
-  //     setnotenoughcredits(true);
-  //   }
-  // };
-
-  // const allbookings = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-  //       { withCredentials: true }
-  //     );
-  //     setTransactions(response.data);
-  //   } catch (error) {
-  //     console.error("Failed to fetch bookings:", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   allbookings();
-  // }, []);
-
   //for data formation
   const handleConfirmBooking = async () => {
-    console.log(bookings);
     navigate("/payment");
   };
-
-  //handle phonepe payment
-  // const handlePayment = async () => {
-  //   const data = {
-  //     accHolder,
-  //     amount: finalBill.toFixed(2),
-  //     bookings,
-  //     dayPasses,
-  //     discountPercentage,
-  //   };
-  //   try {
-  //     const response = await axios.post(
-  //       "https://603-bcakend-new.vercel.app/api/v1/order/createorder",
-  //       data,
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         // If you need credentials (cookies/auth), add this:
-  //         withCredentials: true, // Include credentials (cookies) in the request
-  //       }
-  //     );
-  //     console.log(response.data);
-  //     window.location.href = response.data.url;
-  //     // setCheckstatus(true);
-  //   } catch (error) {
-  //     console.log("error in payment", error);
-  //   }
-  // };
 
   return (
     <div style={containerStyle}>
@@ -975,75 +732,6 @@ const NonMemCalendar: React.FC<CalendarProps> = ({ value }) => {
           </>
         )}
       </form>
-      {/* {profileOpen && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-            animation: "fadeIn 0.5s ease",
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: theme.background.default,
-              color: theme.text.primary,
-              padding: "24px",
-              borderRadius: "8px",
-              boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.15)",
-              width: "400px",
-              maxHeight: "80%",
-              overflowY: "auto",
-              animation: "slideIn 0.5s ease",
-              position: "relative",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <AnimationComponent />
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: "16px",
-                borderBottom: `1px solid gray`,
-                paddingTop: "24px",
-                paddingBottom: "2px",
-              }}
-            >
-              <h4
-                style={{
-                  marginTop: 30,
-                  flexGrow: 1,
-                  textAlign: "center",
-                  fontSize: "20px",
-                }}
-              >
-                <b>Booking confirmed successfully!</b>
-              </h4>
-            </div>
-            <p
-              style={{
-                textAlign: "center",
-                marginBottom: "30px",
-                paddingTop: "20px",
-              }}
-            >
-              Kindly check your inbox for comprehensive details regarding your
-              booking.
-            </p>
-          </div>
-        </div>
-      )} */}
       {confirm && (
         <div
           style={{

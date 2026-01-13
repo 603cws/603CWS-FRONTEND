@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import axios from "axios";
 import Popup from "./popup";
 import { useApp } from "../../context/AuthContext";
 import toast from "react-hot-toast";
@@ -7,7 +6,6 @@ import axiosInstance from "../../utils/axiosInstance";
 
 const ContactUs = () => {
   const { setloading } = useApp();
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -43,17 +41,12 @@ const ContactUs = () => {
       if (mobileRegex.test(formData.phone)) {
         setloading(true);
         // toast.success("valid number");
-        const resp = await axiosInstance.post(
-          `/api/v1/users/contactus`,
-          formData
-        );
+        await axiosInstance.post(`/api/v1/users/contactus`, formData);
         //handle it when mobile no is valid
         setIsPopupVisible(true);
 
         // setloading(false);
         toast.success("Request for callback submitted");
-        console.log(resp);
-        console.log(formData);
         setFormData({
           name: "",
           phone: "",
@@ -75,15 +68,6 @@ const ContactUs = () => {
       setIsDisabled(false);
     }
   };
-
-  // const isDisabled =
-  //   !formData.name ||
-  //   !formData.phone ||
-  //   !formData.email ||
-  //   !formData.location ||
-  //   !formData.seats ||
-  //   !formData.company ||
-  //   !formData.requirements;
 
   return (
     <div className="bg-white w-full max-w-2xl mx-auto p-8 rounded-lg shadow-md mb-12">

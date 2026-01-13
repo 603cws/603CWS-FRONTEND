@@ -24,7 +24,6 @@ const LogIn: React.FC = () => {
 
   // location data
   const redirectRoute = location?.state?.route;
-  console.log("redirectroute", redirectRoute);
 
   const handleClickShowPassword = () => setShowPassword((prev) => !prev);
 
@@ -36,10 +35,6 @@ const LogIn: React.FC = () => {
 
     try {
       const response = await axiosInstance.post(`/api/v1/auth/login`, data);
-      // const response = await axios.post(`${PORT}/api/v1/auth/login`, data, {
-      //   withCredentials: true,
-      // });
-      console.log(response);
       const { msg, user, token } = response.data;
 
       if (msg === "Invalid Inputs") {

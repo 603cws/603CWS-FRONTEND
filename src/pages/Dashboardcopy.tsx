@@ -39,7 +39,6 @@ const Dashboard: React.FC = () => {
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  console.log(accHolder);
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,22 +89,14 @@ const Dashboard: React.FC = () => {
         oldPassword,
         token,
       });
-      // const response = await axios.put(
-      //   `${PORT}/api/v1/users/changepassword`,
-      //   { newPassword, oldPassword, token },
-      //   { withCredentials: true }
-      // );
-      console.log(response, "dmompdkp");
       if (response.data.msg === "Password changed successfully") {
         toast.success("Password changed successfully");
       } else {
         toast.success("Wrong details");
       }
-      // setPasswordChange(false);
       setConfirmPassword("");
       setNewPassword("");
       setOldPassword("");
-      console.log("Password changed:", { oldPassword, newPassword });
     } else {
       console.error("Passwords do not match");
     }
@@ -139,13 +130,6 @@ const Dashboard: React.FC = () => {
         `/api/v1/auth/logout`,
         {} // Empty object if no body is needed
       );
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/auth/logout`,
-      //   {}, // Empty object if no body is needed
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       console.log(res);
       localStorage.removeItem("user");
       localStorage.removeItem("token");
@@ -234,17 +218,7 @@ const Dashboard: React.FC = () => {
             603 The Coworking Space
           </div>
         </div>
-        {/* div only for the daypass logout and  */}
         <div className="flex justify-between items-center gap-4">
-          {/* <div
-            className="cursor-pointer hidden sm:block  text-gray-600"
-            onClick={() => {
-              navigate("/booknow");
-            }}
-          >
-            Day Passes
-          </div> */}
-
           {!accHolder.kyc && (
             <div
               className="hidden sm:block cursor-pointer text-gray-600"
@@ -298,11 +272,8 @@ const Dashboard: React.FC = () => {
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
             onClick={() => {
               setIsSideWindowOpen(false);
-
-              // navigate("/dashboard/Myprofile");
               setMyprofile(true);
               setNewDashboard(false);
-              // setbookingdashboard(false);
               setTransacton(false);
             }}
           >
@@ -317,14 +288,11 @@ const Dashboard: React.FC = () => {
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
             onClick={() => {
               setIsSideWindowOpen(false);
-              // navigate("/dashboard/Myprofile");
               setMyprofile(false);
               setNewDashboard(true);
-              // setbookingdashboard(false);
               setTransacton(false);
             }}
           >
-            {" "}
             Dashboard
           </div>
           <div
@@ -338,10 +306,8 @@ const Dashboard: React.FC = () => {
               setTransacton(true);
               setMyprofile(false);
               setNewDashboard(false);
-              // setbookingdashboard(false);
             }}
           >
-            {" "}
             My bookings
           </div>
           {!accHolder.kyc && (
@@ -381,8 +347,6 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* mobile view */}
       <div className="sm:hidden">
         {newDashboard && (
           <>
@@ -494,10 +458,6 @@ const Dashboard: React.FC = () => {
                               <input
                                 className="w-full rounded border border-stroke bg-gray py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                 type="text"
-                                // name="fullName"
-                                // id="fullName"
-                                // placeholder={accHolder.companyName}
-                                // defaultValue={accHolder.companyName}
                                 value={accHolder.companyName}
                                 readOnly
                               />
@@ -505,10 +465,7 @@ const Dashboard: React.FC = () => {
                           </div>
 
                           <div className="w-full sm:w-1/2">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               Phone Number
                             </label>
                             <input
@@ -558,10 +515,6 @@ const Dashboard: React.FC = () => {
                             <input
                               className="w-full rounded border border-stroke bg-gray mb-4 py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                               type="email"
-                              // name="emailAddress"
-                              // id="emailAddress"
-                              // placeholder={accHolder.email}
-                              // defaultValue={accHolder.email}
                               value={accHolder.email}
                               readOnly
                             />
@@ -570,10 +523,7 @@ const Dashboard: React.FC = () => {
                         {/* member or not  */}
                         <div className="mb-5.5 mt-3">
                           <div className="flex gap-2">
-                            <label
-                              className=" block text-sm font-medium text-black "
-                              // htmlFor="emailAddress"
-                            >
+                            <label className=" block text-sm font-medium text-black ">
                               Subscription
                             </label>
 
@@ -602,10 +552,6 @@ const Dashboard: React.FC = () => {
                             <input
                               className="w-full rounded border border-stroke bg-gray mb-4 py-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                               type="text"
-                              // name="emailAddress"
-                              // id="emailAddress"
-                              // placeholder={accHolder.email}
-                              // defaultValue={accHolder.email}
                               value={subscriptionText}
                               readOnly
                             />
@@ -630,7 +576,7 @@ const Dashboard: React.FC = () => {
                         </div>
                       </form>
                     </div>
-                    {/* password change section */}
+
                     <div className="border-b border-stroke py-4 px-7 dark:border-strokedark flex justify-between ">
                       <h3 className="font-medium text-black dark:text-black">
                         password change
@@ -651,10 +597,7 @@ const Dashboard: React.FC = () => {
                     {passwordchange && (
                       <form onSubmit={handlePasswordChange}>
                         <div className="w-full sm:w-1/2 ml-4">
-                          <label
-                            className=" block text-sm font-medium text-black"
-                            // htmlFor="phoneNumber"
-                          >
+                          <label className=" block text-sm font-medium text-black">
                             Old password
                           </label>
                           <input
@@ -662,17 +605,11 @@ const Dashboard: React.FC = () => {
                             type="password"
                             value={oldPassword}
                             onChange={(e) => setOldPassword(e.target.value)}
-                            // name="phoneNumber"
-                            // id="phoneNumber"
                             placeholder="old password"
-                            // defaultValue={accHolder.phone}
                           />
                         </div>
                         <div className="w-full sm:w-1/2 ml-4">
-                          <label
-                            className=" block text-sm font-medium text-black"
-                            // htmlFor="phoneNumber"
-                          >
+                          <label className=" block text-sm font-medium text-black">
                             New password
                           </label>
                           <input
@@ -680,17 +617,11 @@ const Dashboard: React.FC = () => {
                             type="password"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
-                            // name="phoneNumber"
-                            // id="phoneNumber"
                             placeholder="password"
-                            // defaultValue={accHolder.phone}
                           />
                         </div>
                         <div className="w-full sm:w-1/2 ml-4">
-                          <label
-                            className=" block text-sm font-medium text-black"
-                            // htmlFor="phoneNumber"
-                          >
+                          <label className=" block text-sm font-medium text-black">
                             Confirm password
                           </label>
                           <input
@@ -698,10 +629,7 @@ const Dashboard: React.FC = () => {
                             type="password"
                             value={confirmPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
-                            // name="phoneNumber"
-                            // id="phoneNumber"
                             placeholder="password"
-                            // defaultValue={accHolder.phone}
                           />
                         </div>
                         <button
@@ -808,17 +736,6 @@ const Dashboard: React.FC = () => {
                   />
                 )}
               </div>
-
-              {/* {locations && (
-                <LocationComponent
-                  key={selectedPlace}
-                  value={{
-                    key: selectedPlace,
-                    selectedCity: selectedPlace,
-                    spacetype: selectedBookingType,
-                  }}
-                />
-              )} */}
             </>
           )}
           {/* myprofile */}
@@ -869,10 +786,6 @@ const Dashboard: React.FC = () => {
                                 <input
                                   className="w-full rounded border border-stroke bg-gray py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                   type="text"
-                                  // name="fullName"
-                                  // id="fullName"
-                                  // placeholder={accHolder.companyName}
-                                  // defaultValue={accHolder.companyName}
                                   value={accHolder.companyName}
                                   readOnly
                                 />
@@ -880,10 +793,7 @@ const Dashboard: React.FC = () => {
                             </div>
 
                             <div className="w-full sm:w-1/2">
-                              <label
-                                className=" block text-sm font-medium text-black"
-                                // htmlFor="phoneNumber"
-                              >
+                              <label className=" block text-sm font-medium text-black">
                                 Phone Number
                               </label>
                               <input
@@ -933,10 +843,6 @@ const Dashboard: React.FC = () => {
                               <input
                                 className="w-full rounded border border-stroke bg-gray mb-4 py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                 type="email"
-                                // name="emailAddress"
-                                // id="emailAddress"
-                                // placeholder={accHolder.email}
-                                // defaultValue={accHolder.email}
                                 value={accHolder.email}
                                 readOnly
                               />
@@ -945,10 +851,7 @@ const Dashboard: React.FC = () => {
                           {/* member or not  */}
                           <div className="mb-5.5 mt-3">
                             <div className="flex gap-2">
-                              <label
-                                className=" block text-sm font-medium text-black "
-                                // htmlFor="emailAddress"
-                              >
+                              <label className=" block text-sm font-medium text-black ">
                                 Subscription
                               </label>
 
@@ -978,10 +881,6 @@ const Dashboard: React.FC = () => {
                               <input
                                 className="w-full rounded border border-stroke bg-gray mb-4 py-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                 type="text"
-                                // name="emailAddress"
-                                // id="emailAddress"
-                                // placeholder={accHolder.email}
-                                // defaultValue={accHolder.email}
                                 value={subscriptionText}
                                 readOnly
                               />
@@ -1027,10 +926,7 @@ const Dashboard: React.FC = () => {
                       {passwordchange && (
                         <form onSubmit={handlePasswordChange}>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               Old password
                             </label>
                             <input
@@ -1038,17 +934,11 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={oldPassword}
                               onChange={(e) => setOldPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="old password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               New password
                             </label>
                             <input
@@ -1056,17 +946,11 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={newPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               Confirm password
                             </label>
                             <input
@@ -1074,10 +958,7 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={confirmPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <button

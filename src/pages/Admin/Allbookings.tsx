@@ -45,7 +45,6 @@ const AllBookings = () => {
       const month = (startDate.getMonth() + 1).toString();
       const year = startDate.getFullYear().toString();
       setFormattedDate(`${day}/${month}/${year}`);
-      console.log(`${day}/${month}/${year}`);
     } else {
       setFormattedDate("");
     }
@@ -62,13 +61,6 @@ const AllBookings = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/admin/getallbookings`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/admin/getallbookings`,
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(response);
       const bookingsWithBilledCredits = response.data.allbookings.map(
         (booking: Booking) => {
           const user = response.data.allusers.find(
@@ -144,11 +136,9 @@ const AllBookings = () => {
     const originalBookingsPerPage = bookingsPerPage;
     const originalCurrentPage = currentPage;
 
-    // Temporarily set bookingsPerPage to include all filtered bookings
     setBookingsPerPage(filteredBookings.length);
     setCurrentPage(1);
 
-    // Use setTimeout to wait for the rendering to complete
     setTimeout(() => {
       // Trigger the print
       print();
@@ -165,20 +155,12 @@ const AllBookings = () => {
         `/api/v1/bookings/admin/deletebooking`,
         { id }
       );
-      // const resp = await axios.post(
-      //   `${PORT}/api/v1/bookings/admin/deletebooking`,
-      //   { id },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       if (resp.data.message === "Booking not found") {
         toast.error("Booking not found");
       }
       if (resp.data.message === "Booking deleted successfully") {
         toast.success("Booking deleted successfully");
       }
-      console.log(resp);
       fetchBookings();
     } catch (error) {
       console.error("Error deleting booking:", error);

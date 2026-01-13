@@ -132,17 +132,6 @@ const Mobiletransactions: React.FC = () => {
     currentTimeinHrandMin
   );
 
-  //default 1
-  console.log(
-    "check time refunding",
-    getTimeDifferenceInDecimal(
-      selectedTransaction?.transactionTIme,
-      currentTimeinHrandMin
-    )
-  );
-  console.log(selectedTransaction?.transactionTIme);
-  console.log(currentTimeinHrandMin);
-
   const handleCancelTransaction = async () => {
     try {
       const response = await axios.post(
@@ -156,17 +145,7 @@ const Mobiletransactions: React.FC = () => {
           withCredentials: true, // Include credentials (cookies) in the request
         }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/cancelbooking`,
-      //   { bookingid, isCancellable, isRefundable },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
+
       setSelectedTransaction(null);
       setShowAboutModal(false);
       setShowWarningMessage(false);
@@ -176,8 +155,6 @@ const Mobiletransactions: React.FC = () => {
       } else {
         toast.error("An error occured! PLease try again later");
       }
-
-      console.log(response);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
     }
@@ -195,8 +172,6 @@ const Mobiletransactions: React.FC = () => {
           withCredentials: true, // Include credentials (cookies) in the request
         }
       );
-
-      console.log(response);
       if (response.data.code == "PAYMENT_SUCCESS") {
         toast.success("Refund initiated");
         allbookings();
@@ -220,20 +195,11 @@ const Mobiletransactions: React.FC = () => {
     checkForRefundWarning(transaction);
   };
 
-  // //handleviewmore for daypasses
-  // const handleViewDaypassMore = (transaction: DaypassTransaction) => {
-  //   setbookingid(transaction._id);
-  //   setSelectedDaypassTransaction(transaction);
-  //   // setSelectedTransaction(transaction);
-  //   // checkForRefundWarning(transaction);
-  // };
-
   const handleCloseModal = () => {
     setbookingid("");
     setSelectedTransaction(null);
     setShowWarningMessage(false);
     setIsRefundable(true);
-    // setSelectedDaypassTransaction(null);
   };
 
   const handleOpenAboutModal = () => {
@@ -249,10 +215,7 @@ const Mobiletransactions: React.FC = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/getallbookingsbyuser`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/getallbookingsbyuser`,
-      //   { withCredentials: true }
-      // );
+
       addTransaction(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
@@ -266,18 +229,6 @@ const Mobiletransactions: React.FC = () => {
         `/api/v1/daypass/getalldaypassbyuser`,
         { accHolder }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/daypass/getalldaypassbyuser`,
-      //   { accHolder },
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
-      console.log(response);
       addTransaction(response.data);
     } catch (error: any) {
       console.error("Failed to fetch bookings:", error);
@@ -290,16 +241,7 @@ const Mobiletransactions: React.FC = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/getallcancellbookingsbyuser`
       );
-      // const response = await axios.get(
-      //   `${PORT}/api/v1/bookings/getallcancellbookingsbyuser`,
-      //   {
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     // If you need credentials (cookies/auth), add this:
-      //     withCredentials: true, // Include credentials (cookies) in the request
-      //   }
-      // );
+
       setCancelledTransactions(response.data);
     } catch (error) {
       console.error("Failed to fetch bookings:", error);
@@ -317,9 +259,6 @@ const Mobiletransactions: React.FC = () => {
   };
 
   const handleOnlinePaymentCancellation = () => {
-    console.log(selectedTransaction?.date === today);
-    console.log(selectedTransaction?.date), today;
-
     if (selectedTransaction?.date === today && checkTimeForRefund <= 0.5) {
       setShowOnlinePayCancelConfirmation(true);
     } else {
@@ -366,8 +305,7 @@ const Mobiletransactions: React.FC = () => {
       month: month2,
       day: day2,
     } = parseDateComponents(date2);
-    console.log(year1, month1, day1);
-    console.log(year2, month2, day2);
+
     // Compare years
     if (year1 < year2) {
       return 1;
@@ -412,7 +350,6 @@ const Mobiletransactions: React.FC = () => {
         totalMinutes = hours * 60 + minutes; // Convert AM hour to minutes
       }
     }
-    console.log(totalMinutes);
     return totalMinutes;
   };
 
@@ -420,23 +357,16 @@ const Mobiletransactions: React.FC = () => {
     const now = new Date();
     const hours = now.getHours(); // Get current hours (0-23)
     const minutes = now.getMinutes();
-    console.log(hours * 60 + minutes); // Get current minutes (0-59)
     return hours * 60 + minutes; // Convert hours to minutes and add current minutes
   };
 
   const checkForRefundWarning = (transaction: Transaction) => {
     const today = new Date();
     const formattedDate = formatDate(today);
-    console.log(formattedDate.toString());
-    console.log(transaction.date.toString());
 
     if (formattedDate.toString() === transaction.date.toString()) {
       const minutes = timeToMinutes(transaction.startTime);
       const currentMinutes = getCurrentTimeInMinutes();
-      console.log(currentMinutes);
-      console.log(minutes);
-      console.log(formattedDate.toString());
-      console.log(transaction.date.toString());
       if (currentMinutes < minutes) {
         if (minutes - currentMinutes < 40 && minutes - currentMinutes > 0) {
           setShowWarningMessage(true);

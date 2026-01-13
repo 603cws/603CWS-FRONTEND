@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../components/Navbar/navbar";
-// import Footer from "../components/Footer/footer";
-// import { useNavigate } from "react-router-dom";
-// import makhija from "/officeimg/Makhija/Makhija.JPG";
 import { locationsfornewDashboard } from "./AllLocationsDetails";
-// import NonMemCalendar from "./NonMemberBooking";
-// import AdminCalendar from "./Admin/AdminBookingcal";
 import { useApp } from "../context/AuthContext";
-// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
@@ -21,15 +14,6 @@ interface LocationProps {
     spacetype: string;
   };
 }
-
-// interface MembershipDetails {
-//   tendays?: number;
-//   fifteendays?: number;
-//   twentydays?: number;
-//   tenhours?: number;
-//   twentyhours?: number;
-//   thirtyhours?: number;
-// }
 
 interface LocationDetails {
   name: string;
@@ -50,15 +34,7 @@ interface LocationDetails {
   spacetypeprice: number;
 }
 
-// interface DetailedLocation {
-
-// }
-
-// const PORT = import.meta.env.VITE_BACKEND_URL;
-
 const LocationComponent: React.FC<LocationProps> = ({ value }) => {
-  // const [alllocations] = useState(locations);
-
   const [newdatabaselocations] = useState(locationsfornewDashboard);
 
   const [detailedLocation, setDetailedLocation] =
@@ -68,23 +44,9 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     number | null
   >(null);
 
-  // const { isAdmin } = useApp();
-  // const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState<string>("");
-  // const [showcalenderconfroom, setshowcalenderconfroom] = useState(false);
-  // const [showcalenderdaypass, setshowcalenderdaypass] = useState(false);
-  // const [showcalendermeetroom, setshowcalendermeetroom] = useState(false);
-  // useEffect(() => {
-  //   console.log("selectedDate", selectedDate);
-  // });
 
-  // const totalBill =
-  //   bookings.reduce((total, booking) => total + booking.price, 0) +
-  //   dayPasses.reduce((total, dayPass) => total + dayPass.price, 0);
-
-  // const [cartTotal, setCartTotal] = useState(totalBill);
   const [selectedLocation, setselectedLocation] = useState<string>("");
-  // const [spacetype, setspacetype] = useState<string>("");
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [unavailabledaypasses, setunavailabledaypasses] = useState<number[]>(
@@ -95,7 +57,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [timedifference, settimedifference] = useState<number>(0);
-  // // const [enableconftime, setenableconftime] = useState<boolean>(false);
   const [enabledaypasstime, setenabledaypasstime] = useState<boolean>(false);
   const [enablemeettime, setenablemeettime] = useState<boolean>(false);
   const [timings, setTimings] = useState<[string, string][][]>([]);
@@ -104,45 +65,21 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [quantity, setQuantity] = useState(1);
-  // const [selectedCity, setSelectedCity] = useState<string>("All");
-  // const navigate = useNavigate();
   const { selectedCity, spacetype } = value;
-  // const [selectedLocation, setselectedLocation] = useState("");
-  // const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setSelectedCity(event.target.value);
-  // };
-  // console.log(spacetype);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   let navigate = useNavigate();
 
   const likelyprice = detailedLocation?.spacetypeprice || 0;
-  console.log(likelyprice);
 
   const baseprice = likelyprice * timedifference;
 
-  console.log(detailedLocation);
-
   //meetorconf room
   let meetorconf = spacetype !== "Daypass";
-  // let likelyprice = 0;
-
-  // useEffect(() => {
-  //   if (detailedLocation?.spacetype === "Meeting") {
-  //     likelyprice = detailedLocation?.meetingroom || 0;
-  //   }
-  //   if (detailedLocation?.spacetype === "conference") {
-  //     likelyprice = detailedLocation?.conferenceroom || 0;
-  //   }
-  //   if (detailedLocation?.spacetype === "Daypass") {
-  //     likelyprice = detailedLocation?.daypass || 0;
-  //   }
-  //   const baseprice = likelyprice * timedifference;
-  // }, [spacetype]);
 
   //calender
-  const { bookDayPass, addNewBooking, dayPasses, bookings } = useApp();
+  const { bookDayPass, addNewBooking } = useApp();
 
   const handledecQuan = () => {
     if (quantity <= 1) return;
@@ -154,20 +91,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     if (quantity >= 20) return;
     setQuantity(() => quantity + 1);
   };
-
-  //handle daypass for checking
-
-  useEffect(() => {
-    console.log("Updated dayPasses:", dayPasses);
-  }, [dayPasses]);
-
-  useEffect(() => {
-    console.log("Updated bookings:", bookings);
-  }, [bookings]);
-
-  useEffect(() => {
-    console.log(detailedLocation);
-  }, [detailedLocation, setDetailedLocation]);
 
   useEffect(() => {
     if (selectedDay !== null) {
@@ -274,18 +197,11 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   const fetchLocationBookings = async (date: string) => {
     try {
-      console.log("selectedLocation", selectedLocation);
       const response = await axiosInstance.post(
         `/api/v1/bookings/getlocationbookings`,
         { selectedDate: date, selectedLocation }
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/bookings/getlocationbookings`,
-      //   { selectedDate: date, selectedLocation },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
+
       setTimings(response.data);
     } catch (error) {
       console.error(error);
@@ -294,25 +210,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   const fetchLocationDayPassBookings = async () => {
     try {
-      console.log("iprjepr", selectedLocation);
       const response = await axiosInstance.post(`/api/v1/daypass/getdata`, {
         selectedLocation,
         selectedYear: currentYear,
         selectedMonth: currentMonth + 1,
       });
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/daypass/getdata`,
-      //   {
-      //     selectedLocation,
-      //     selectedYear: currentYear,
-      //     selectedMonth: currentMonth + 1,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
       setunavailabledaypasses(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -363,14 +266,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
         endTimes.push(currentEndTime);
       } else {
         const y = times2.indexOf(previousTime);
-        console.log(y, "rjojro");
         endTimes.push(times2[y + 1]);
         break;
       }
     }
 
     setAvailableEndTimes(endTimes);
-    console.log("Filtered end times:", endTimes);
   };
 
   useEffect(() => {
@@ -561,7 +462,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     setSelectedEndTime("");
 
     let availableStartTimesUnfiltered = getFilteredTimes(day, currentTime);
-    console.log("Initial available times:", availableStartTimesUnfiltered);
 
     if (timings.length > 0) {
       timings.forEach(([start, end]) => {
@@ -585,13 +485,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     }
 
     setAvailableStartTimes(availableStartTimesUnfiltered);
-    console.log("Filtered start times:", availableStartTimesUnfiltered);
   };
-
-  // const filteredLocations =
-  //   selectedCity === "All"
-  //     ? alllocations
-  //     : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
 
   //new location
   const filteredLocations =
@@ -604,12 +498,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
             cityGroup.city === selectedCity && cityGroup.spacetype === spacetype
         );
 
-  console.log("filteredlocations", filteredLocations);
-
-  // const handleBookNow = (location) => {
-  //   setselectedLocation(location.name);
-  // };
-
   const handleAddDaypass = async () => {
     try {
       setIsSubmitting(true);
@@ -617,17 +505,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
         spaceName: selectedLocation,
         quantity,
       });
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/daypass/daypassCheck`,
-      //   {
-      //     spaceName: selectedLocation,
-      //     quantity,
-      //   },
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
 
       if (res.status === 200) {
         bookDayPass({
@@ -639,7 +516,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
           year: currentYear,
           quantity: quantity,
         });
-        console.log(dayPasses);
         navigate("/payment");
       }
 
@@ -648,7 +524,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
       }
     } catch (error: any) {
       console.log(error);
-      console.log("daypass not available");
       toast.error(
         ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
       );
@@ -659,49 +534,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   return (
     <div className="font-sans bg-gray-50  overflow-x-hidden">
-      {/* <header className="bg-white shadow-lg z-50 fixed w-full top-0">
-        <Navbar />
-      </header> */}
-
-      {/* <div
-        style={{ backgroundImage: `url(${makhija})` }}
-        className="relative bg-no-repeat bg-cover bg-fixed mb-16 h-screen lg:h-[600px]"
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative flex justify-center items-center h-full w-full ">
-          <div className="text-center px-12 py-16">
-            <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">Locations</h2>
-            <p className="text-white ">Explore our workspaces</p>
-          </div>
-        </div>
-      </div> */}
-
-      {/* City Filter Dropdown */}
-      {/* <div className="container mx-auto px-6 md:px-12 mb-8">
-        <div className="flex justify-center">
-          <select
-            value={selectedCity}
-            onChange={handleCityChange}
-            className="bg-white text-gray-800 border border-gray-300 rounded-lg shadow-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition"
-          >
-            <option value="All">All Cities</option>
-            {locations.map((cityGroup, index) => (
-              <option key={index} value={cityGroup.city}>
-                {cityGroup.city}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div> */}
-
-      {/* <div className="container mx-auto px-2 md:px-12 overflow-auto "> */}
       <div className="w-full md:px-12 px-2">
         {filteredLocations.map((cityGroup, cityIndex) => (
           <div key={cityIndex} className="mb-16">
             <h3 className="text-xl pt-6 font-bold mb-8 text-center text-[#cd952dd1]">
               {cityGroup.city} | {cityGroup.spacetype}
             </h3>
-            {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8"> */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
@@ -712,25 +550,19 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                     <img
                       src={location.imgSrc}
                       alt={location.name}
-                      // className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
                       className="w-full h-52 object-cover rounded-lg mb-4 shadow-lg"
                     />
                   </div>
 
                   <div>
                     <h4 className="text-lg font-semibold mb-2">
-                      {/* {location.name.includes("-")
-                        ? location.name.split("-")[1]
-                        : location.name} */}
                       {location.spacetypename}
                     </h4>
-                    {/* <p className="text-gray-600 mb-4 mx-auto text-justify"> */}
                     <p className="text-gray-600 mb-4 mx-auto text-center">
                       {location.address}
                     </p>
                     {location.enablebooking ? (
                       <button
-                        // onClick={() => navigate(location.link)}
                         onClick={() => {
                           setSelectedLocationIndex(locationIndex);
                           setselectedLocation(location.spacetypename);
@@ -744,7 +576,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                         Book Now
                       </button>
                     ) : (
-                      // <div className="lg:w-2/5 rounded-lg p-6 shadow-xl h-auto flex justify-center">
                       <div className=" p-6  h-auto flex justify-center">
                         <h1 className="text-red-600 text-base">
                           Booking is currently unavailable.
@@ -752,7 +583,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                       </div>
                     )}
                     <button
-                      // onClick={() => navigate(location.link)}
                       onClick={() => {
                         setSelectedLocationIndex(null);
                         setselectedLocation("");
@@ -877,9 +707,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                       <button
                                         className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
                                         onClick={() => {
-                                          // setshowcalenderconfroom(false),
-                                          // setshowcalenderdaypass(false);
-                                          // setshowcalendermeetroom(false);
                                           addNewBooking({
                                             spaceName: selectedLocation,
                                             startTime: selectedStartTime,
@@ -894,27 +721,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                           Add ₹{baseprice}
                                         </span>
                                       </button>
-                                      {/* <button
-                                        className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
-                                        onClick={() => {
-                                          // setshowcalenderconfroom(false),
-                                          // setshowcalenderdaypass(false);
-                                          // setshowcalendermeetroom(false);
-                                          addNewBooking({
-                                            spaceName: selectedLocation,
-                                            startTime: selectedStartTime,
-                                            endTime: selectedEndTime,
-                                            date: selectedDate,
-                                            price: baseprice,
-                                          });
-                                          navigate("/payment");
-                                        }}
-                                      >
-                                        Add{" "}
-                                        <span className="text-white font-extrabold">
-                                          ₹{baseprice}
-                                        </span>
-                                      </button> */}
                                       <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
                                         "Please note that an 18% GST will be
                                         applied to the booking amount during the
@@ -1028,33 +834,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
                             {enabledaypasstime && selectedDay && (
                               <>
-                                {/* <button
-                                  className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
-                                  // onClick={() => {
-                                  //   bookDayPass({
-                                  //     price: likelyprice * quantity,
-                                  //     spaceName: selectedLocation,
-                                  //     bookeddate: selectedDate,
-                                  //     day: selectedDay || 0,
-                                  //     month: currentMonth + 1,
-                                  //     year: currentYear,
-                                  //     quantity: quantity,
-                                  //   });
-                                  //   // setshowcalenderconfroom(false);
-                                  //   // setshowcalenderdaypass(false);
-                                  //   // setshowcalendermeetroom(false);
-                                  //   navigate("/payment");
-                                  //   console.log(dayPasses);
-                                  // }}
-                                  onClick={handleAddDaypass}
-                                >
-                                  Add{" "}
-                                  <span className="text-white font-extrabold">
-                                    ₹{likelyprice * quantity}
-                                  </span>
-                                </button> */}
                                 <button
-                                  // type="submit"
                                   onClick={handleAddDaypass}
                                   disabled={isSubmitting}
                                   className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
@@ -1090,10 +870,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                     </>
                                   )}
                                 </button>
-                                {/* <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
-                        "Please note that an 18% GST will be applied to the
-                        booking amount during the checkout process."
-                      </span> */}
                               </>
                             )}
                           </>
@@ -1106,10 +882,6 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
           </div>
         ))}
       </div>
-
-      {/* <footer className="bg-white shadow-lg">
-        <Footer />
-      </footer> */}
     </div>
   );
 };

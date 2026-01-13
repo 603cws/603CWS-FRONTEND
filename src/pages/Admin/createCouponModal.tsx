@@ -1,6 +1,4 @@
-// Define the User interface
 import React, { useState } from "react";
-// import axios from "axios";
 import "./popup.css";
 import toast from "react-hot-toast";
 import axiosInstance from "../../utils/axiosInstance";
@@ -18,16 +16,6 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
   const [discount, setDiscount] = useState<number | undefined>();
   const [expiryDate, setExpiryDate] = useState("");
   const [usageLimit, setUsageLimit] = useState<number | undefined>();
-
-  // const PORT = "https://603-bcakend-new.vercel.app";
-
-  //req body for creating a discount code
-  // {
-  //     "code": "DISCOUNT10",
-  //     "discount": 10,
-  //     "expiryDate": "2024-12-31T23:59:59Z",
-  //     "usageLimit": 100
-  //   }
 
   const handleClose = async () => {
     toast.success("coupon created");
@@ -47,18 +35,6 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
         usageLimit,
         expiryDate,
       });
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/coupon/createcoupon`,
-      //   {
-      //     code,
-      //     discount,
-      //     usageLimit,
-      //     expiryDate,
-      //   },
-      //   { withCredentials: true }
-      // );
-
-      console.log(response);
       if (response.data.message === "success") {
         toast.success("coupon created");
         await handleClose();
@@ -67,44 +43,7 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
       }
     } catch (error: any) {
       toast.error("coupon already exist");
-      console.log(error.message);
     }
-    // try {
-    //   const response = await axios.post(
-    //     "https://603-bcakend-new.vercel.app/api/v1/users/",
-    //     {
-    //       companyName,
-    //       email,
-    //       role,
-    //       monthlycredits,
-    //       username,
-    //       location,
-    //       password,
-    //       phone,
-    //       member,
-    //     },
-    //     { withCredentials: true }
-    //   );
-
-    //   console.log(response);
-    //   if (response.data.msg === "User created") {
-    //     toast.success(response.data.msg);
-    //     // navigate("/login", { replace: true });
-    //   } else {
-    //     toast.error(response.data.msg);
-    //   }
-
-    //   //   //for non register user
-    //   //   if (!isAuthenticated) {
-    //   //     //navigate him to login page
-    //   //     navigate("/login");
-    //   //   }
-
-    //   onClose();
-    // } catch (error) {
-    //   toast.error("An error occurred");
-    //   console.error("Error creating user:", error);
-    // }
   };
 
   if (!isOpen) return null;

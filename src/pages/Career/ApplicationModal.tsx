@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import axiosInstance from "../../utils/axiosInstance";
 
 interface ApplicationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-// const PORT = import.meta.env.VITE_BACKEND_URL;
 
 const ApplicationModal: React.FC<ApplicationModalProps> = ({
   isOpen,
@@ -15,13 +13,12 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [position, setPosition] = useState(""); // For applying position
+  const [position, setPosition] = useState("");
   const [experience, setExperience] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
 
   // Form validation effect
   useEffect(() => {
-    // Check if all required fields are filled and valid
     const isValid =
       name.trim() !== "" &&
       email.trim() !== "" &&
@@ -35,30 +32,20 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!isFormValid) {
-      console.log("error");
       return; // Stop the function here if the form is invalid
     }
     try {
-      const response = await axiosInstance.post(`/api/v1/career/send`, {
+      await axiosInstance.post(`/api/v1/career/send`, {
         name,
         email,
         phone,
         position,
         experience,
       });
-      //   const response = await axios.post(
-      //     `${PORT}/api/v1/career/send`,
-      //     { name, email, phone, position, experience },
-      //     {
-      //       withCredentials: true,
-      //     }
-      //   );
-      console.log(response);
     } catch (error) {
       console.error("error is", error);
     }
 
-    console.log({ name, email, phone, position, experience });
     onClose();
   };
 

@@ -21,21 +21,12 @@ const Changepassword: React.FC = () => {
 
     const token = url.split("/").pop();
 
-    console.log("Token:", token);
     const data = { password, token };
     try {
       const response = await axiosInstance.post(
         `/api/v1/users/setnewpass`,
         data
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/users/setnewpass`,
-      //   data,
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(response);
       const { msg } = response.data;
 
       if (msg === "Password changed successfully") {

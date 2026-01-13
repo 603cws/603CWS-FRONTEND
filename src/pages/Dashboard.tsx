@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-// import Calendar from "./Booking";
 import DashNavbar from "../components/DashBoardNavbar/DashNavbar";
-// import axios from "axios";
 import { FiMenu } from "react-icons/fi";
 import { logo } from "../utils/Landing/Landing";
 import { useApp } from "../context/AuthContext";
-// import AdminCalendar from "./Admin/AdminBookingcal";
-// import NonMemCalendar from "./NonMemberBooking";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
@@ -15,14 +11,12 @@ import LocationComponent from "./dashboardLocations";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-// import Tran from "./Transactions";
 import Mobiletransactions from "./Mobiletransaction";
 import axiosInstance from "../utils/axiosInstance";
 const Dashboard: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { accHolder, setAccHolder, setloading } = useApp();
   const [myprofile, setMyprofile] = useState(false);
-  // const [bookingDashboard, setbookingdashboard] = useState(true);
   const [selectedBookingType, setSelectedBookingType] = useState("");
   const [passwordchange, setpasswordchange] = useState(false);
   const [arrow, setArrow] = useState(true);
@@ -35,16 +29,12 @@ const Dashboard: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // const [isDropdownOpen, setDropdownOpen] = useState(false);
-  // const [eyemodal, seteyemodal] = useState(false);
-
   const [newDashboard, setNewDashboard] = useState(true);
 
   //password change
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
-  console.log(accHolder);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,33 +47,7 @@ const Dashboard: React.FC = () => {
     };
   }, []);
 
-  // const PORT = import.meta.env.VITE_BACKEND_URL;
-  // const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
-
-  // const [spacetype, setspacetype] = useState("");
-
-  // const handleLocationChange = async (
-  //   event: React.ChangeEvent<HTMLSelectElement>
-  // ) => {
-  //   const location = event.target.value;
-  //   setSelectedLocation(location);
-
-  //   if (location !== "") {
-  //     try {
-  //       const response = await axios.post(
-  //         `${PORT}/api/v1/spaces/getspacebyname`,
-  //         { name: location },
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       setspacetype(response.data.roomtype);
-  //     } catch (error) {
-  //       console.error("Error fetching space type:", error);
-  //     }
-  //   }
-  // };
 
   const handleplaceChange = async (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -91,21 +55,6 @@ const Dashboard: React.FC = () => {
     const location = event.target.value;
     setSelectedPlace(location);
     setLoactions(false);
-
-    // if (location !== "") {
-    //   try {
-    //     const response = await axios.post(
-    //       `${PORT}/api/v1/spaces/getspacebyname`,
-    //       { name: location },
-    //       {
-    //         withCredentials: true,
-    //       }
-    //     );
-    //     // setspacetype(response.data.roomtype);
-    //   } catch (error) {
-    //     console.error("Error fetching space type:", error);
-    //   }
-    // }
   };
 
   const handleBookingTypeChange = async (
@@ -135,45 +84,23 @@ const Dashboard: React.FC = () => {
         oldPassword,
         token,
       });
-      // const response = await axios.put(
-      //   `${PORT}/api/v1/users/changepassword`,
-      //   { newPassword, oldPassword, token },
-      //   { withCredentials: true }
-      // );
-      console.log(response, "dmompdkp");
       if (response.data.msg === "Password changed successfully") {
         toast.success("Password changed successfully");
       } else {
         toast.success("Wrong details");
       }
-      // setPasswordChange(false);
       setConfirmPassword("");
       setNewPassword("");
       setOldPassword("");
-      console.log("Password changed:", { oldPassword, newPassword });
     } else {
       console.error("Passwords do not match");
     }
   };
 
-  // Debugging spacetype value
-  // useEffect(() => {
-  //   console.log("spacetype updated:", spacetype);
-  // }, [spacetype]);
-
-  // console.log(selectedLocation);
-
   const handleprofile = () => {
-    // setbookingdashboard(false);
     setMyprofile(true);
     setNewDashboard(false);
   };
-
-  // const handledashboard = () => {
-  //   // setbookingdashboard(true);
-  //   setMyprofile(false);
-  //   setNewDashboard(false);
-  // };
 
   const handledropdown = () => {
     setpasswordchange(true);
@@ -187,7 +114,6 @@ const Dashboard: React.FC = () => {
 
   const handleNewDashboard = () => {
     setNewDashboard(true);
-    // setbookingdashboard(false);
     setMyprofile(false);
   };
 
@@ -195,18 +121,7 @@ const Dashboard: React.FC = () => {
   const logout = async () => {
     try {
       setloading(true);
-      const res = await axiosInstance.post(
-        `/api/v1/auth/logout`,
-        {} // Empty object if no body is needed
-      );
-      // const res = await axios.post(
-      //   `${PORT}/api/v1/auth/logout`,
-      //   {}, // Empty object if no body is needed
-      //   {
-      //     withCredentials: true,
-      //   }
-      // );
-      console.log(res);
+      await axiosInstance.post(`/api/v1/auth/logout`, {});
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       setAccHolder({
@@ -234,11 +149,6 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  // const handleeyeModal = () => {
-  //   seteyemodal(true);
-  // };
-
-  //message for subscription
   let subscriptionText = accHolder.member ? `A Member` : `Not A Member`;
 
   const containerStyle: React.CSSProperties = {
@@ -353,11 +263,8 @@ const Dashboard: React.FC = () => {
               onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
               onClick={() => {
                 setIsSideWindowOpen(false);
-
-                // navigate("/dashboard/Myprofile");
                 setMyprofile(true);
                 setNewDashboard(false);
-                // setbookingdashboard(false);
                 setTransacton(false);
               }}
             >
@@ -372,10 +279,8 @@ const Dashboard: React.FC = () => {
               onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
               onClick={() => {
                 setIsSideWindowOpen(false);
-                // navigate("/dashboard/Myprofile");
                 setMyprofile(false);
                 setNewDashboard(true);
-                // setbookingdashboard(false);
                 setTransacton(false);
               }}
             >
@@ -393,7 +298,6 @@ const Dashboard: React.FC = () => {
                 setTransacton(true);
                 setMyprofile(false);
                 setNewDashboard(false);
-                // setbookingdashboard(false);
               }}
             >
               {" "}
@@ -425,37 +329,14 @@ const Dashboard: React.FC = () => {
       )}
       {windowWidth > 765 && (
         <div className=" w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 md:grid grid-cols-[1fr_4fr] ">
-          {/* <div className="w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200 grid grid-flow-row justify-start items-start "> */}
-          {/* <DashNavbar /> */}
           <div className="mt-16 relative ">
             <div
               id="sidebar-multi-level-sidebar"
-              // className="fixed top-16 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 border-r-8"
               className="fixed top-16 left-0 z-40 lg:w-[304px] w-64    h-screen transition-transform -translate-x-full sm:translate-x-0 border-r-8"
               aria-label="Sidebar"
             >
               <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 ">
                 <ul className="space-y-2 font-medium  ">
-                  {/* <li>
-                    <button
-                      onClick={handledashboard}
-                      className="flex items-center p-2 text-gray-900 rounded-lg   hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                    >
-                      <svg
-                        className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor"
-                        viewBox="0 0 22 21"
-                      >
-                        <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                        <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-                      </svg>
-                      <span className="ms-3 text-black hover:text-white">
-                        Dashboard
-                      </span>
-                    </button>
-                  </li> */}
                   <li>
                     <button
                       onClick={handleprofile}
@@ -549,10 +430,6 @@ const Dashboard: React.FC = () => {
                                   <input
                                     className="w-full rounded border border-stroke bg-gray py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                     type="text"
-                                    // name="fullName"
-                                    // id="fullName"
-                                    // placeholder={accHolder.companyName}
-                                    // defaultValue={accHolder.companyName}
                                     value={accHolder.companyName}
                                     readOnly
                                   />
@@ -560,10 +437,7 @@ const Dashboard: React.FC = () => {
                               </div>
 
                               <div className="w-full sm:w-1/2">
-                                <label
-                                  className=" block text-sm font-medium text-black"
-                                  // htmlFor="phoneNumber"
-                                >
+                                <label className=" block text-sm font-medium text-black">
                                   Phone Number
                                 </label>
                                 <input
@@ -613,10 +487,6 @@ const Dashboard: React.FC = () => {
                                 <input
                                   className="w-full rounded border border-stroke bg-gray mb-4 py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                   type="email"
-                                  // name="emailAddress"
-                                  // id="emailAddress"
-                                  // placeholder={accHolder.email}
-                                  // defaultValue={accHolder.email}
                                   value={accHolder.email}
                                   readOnly
                                 />
@@ -625,10 +495,7 @@ const Dashboard: React.FC = () => {
                             {/* member or not  */}
                             <div className="mb-5.5 mt-3">
                               <div className="flex gap-2">
-                                <label
-                                  className=" block text-sm font-medium text-black "
-                                  // htmlFor="emailAddress"
-                                >
+                                <label className=" block text-sm font-medium text-black ">
                                   Subscription
                                 </label>
 
@@ -658,10 +525,6 @@ const Dashboard: React.FC = () => {
                                 <input
                                   className="w-full rounded border border-stroke bg-gray mb-4 py-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                   type="text"
-                                  // name="emailAddress"
-                                  // id="emailAddress"
-                                  // placeholder={accHolder.email}
-                                  // defaultValue={accHolder.email}
                                   value={subscriptionText}
                                   readOnly
                                 />
@@ -684,21 +547,6 @@ const Dashboard: React.FC = () => {
                                 defaultValue={accHolder.username}
                               />
                             </div>
-
-                            {/* <div className="flex justify-end gap-4.5">
-                              <button
-                                className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark "
-                                type="submit"
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                                type="submit"
-                              >
-                                Save
-                              </button>
-                            </div> */}
                           </form>
                         </div>
                         {/* password change section */}
@@ -708,7 +556,6 @@ const Dashboard: React.FC = () => {
                           </h3>
                           {arrow ? (
                             <IoIosArrowDropdown
-                              // size="2x"
                               style={{ width: "50px", height: "40px" }}
                               onClick={handledropdown}
                             />
@@ -722,10 +569,7 @@ const Dashboard: React.FC = () => {
                         {passwordchange && (
                           <form onSubmit={handlePasswordChange}>
                             <div className="w-full sm:w-1/2 ml-4">
-                              <label
-                                className=" block text-sm font-medium text-black"
-                                // htmlFor="phoneNumber"
-                              >
+                              <label className=" block text-sm font-medium text-black">
                                 Old password
                               </label>
                               <input
@@ -733,17 +577,11 @@ const Dashboard: React.FC = () => {
                                 type="password"
                                 value={oldPassword}
                                 onChange={(e) => setOldPassword(e.target.value)}
-                                // name="phoneNumber"
-                                // id="phoneNumber"
                                 placeholder="old password"
-                                // defaultValue={accHolder.phone}
                               />
                             </div>
                             <div className="w-full sm:w-1/2 ml-4">
-                              <label
-                                className=" block text-sm font-medium text-black"
-                                // htmlFor="phoneNumber"
-                              >
+                              <label className=" block text-sm font-medium text-black">
                                 New password
                               </label>
                               <input
@@ -751,17 +589,11 @@ const Dashboard: React.FC = () => {
                                 type="password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                // name="phoneNumber"
-                                // id="phoneNumber"
                                 placeholder="password"
-                                // defaultValue={accHolder.phone}
                               />
                             </div>
                             <div className="w-full sm:w-1/2 ml-4">
-                              <label
-                                className=" block text-sm font-medium text-black"
-                                // htmlFor="phoneNumber"
-                              >
+                              <label className=" block text-sm font-medium text-black">
                                 Confirm password
                               </label>
                               <input
@@ -769,10 +601,7 @@ const Dashboard: React.FC = () => {
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                // name="phoneNumber"
-                                // id="phoneNumber"
                                 placeholder="password"
-                                // defaultValue={accHolder.phone}
                               />
                             </div>
                             <button
@@ -785,325 +614,10 @@ const Dashboard: React.FC = () => {
                         )}
                       </div>
                     </div>
-
-                    {/* <div className="col-span-5 xl:col-span-2">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                      <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
-                        <h3 className="font-medium text-black ">Your Photo</h3>
-                      </div>
-                      <div className="p-7">
-                        <form action="#">
-                          <div className="mb-4 flex items-center gap-3">
-                            <div className="h-14 w-14 rounded-full">
-                              <img alt="User" />
-                            </div>
-                            <div>
-                              <span className="mb-1.5 text-black ">
-                                Edit your photo
-                              </span>
-                              <span className="flex gap-2.5">
-                                <button className="text-sm hover:text-primary">
-                                  Delete
-                                </button>
-                                <button className="text-sm hover:text-primary">
-                                  Update
-                                </button>
-                              </span>
-                            </div>
-                          </div>
-
-                          <div
-                            id="FileUpload"
-                            className="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
-                          >
-                            <input
-                              type="file"
-                              accept="image/*"
-                              className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
-                            />
-                            <div className="flex flex-col items-center justify-center space-y-3">
-                              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
-                                <svg
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 16 16"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M1.99967 9.33337C2.36786 9.33337 2.66634 9.63185 2.66634 10V12.6667C2.66634 12.8435 2.73658 13.0131 2.8616 13.1381C2.98663 13.2631 3.1562 13.3334 3.33301 13.3334H12.6663C12.8431 13.3334 13.0127 13.2631 13.1377 13.1381C13.2628 13.0131 13.333 12.8435 13.333 12.6667V10C13.333 9.63185 13.6315 9.33337 13.9997 9.33337C14.3679 9.33337 14.6663 9.63185 14.6663 10V12.6667C14.6663 13.1971 14.4556 13.7058 14.0806 14.0809C13.7055 14.456 13.1968 14.6667 12.6663 14.6667H3.33301C2.80257 14.6667 2.29387 14.456 1.91879 14.0809C1.54372 13.7058 1.33301 13.1971 1.33301 12.6667V10C1.33301 9.63185 1.63148 9.33337 1.99967 9.33337Z"
-                                    fill="#3C50E0"
-                                  />
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M7.5286 1.52864C7.78894 1.26829 8.21106 1.26829 8.4714 1.52864L11.8047 4.86197C12.0651 5.12232 12.0651 5.54443 11.8047 5.80478C11.5444 6.06513 11.1223 6.06513 10.8619 5.80478L8 2.94285L5.13807 5.80478C4.87772 6.06513 4.45561 6.06513 4.19526 5.80478C3.93491 5.54443 3.93491 5.12232 4.19526 4.86197L7.5286 1.52864Z"
-                                    fill="#3C50E0"
-                                  />
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M7.99967 1.33337C8.36786 1.33337 8.66634 1.63185 8.66634 2.00004V10C8.66634 10.3682 8.36786 10.6667 7.99967 10.6667C7.63148 10.6667 7.33301 10.3682 7.33301 10V2.00004C7.33301 1.63185 7.63148 1.33337 7.99967 1.33337Z"
-                                    fill="#3C50E0"
-                                  />
-                                </svg>
-                              </span>
-                              <p>
-                                <span className="text-primary">
-                                  Click to upload
-                                </span>{" "}
-                                or drag and drop
-                              </p>
-                              <p className="mt-1.5">SVG, PNG, JPG or GIF</p>
-                              <p>(max, 800 X 800px)</p>
-                            </div>
-                          </div>
-
-                          <div className="flex justify-end gap-4.5">
-                            <button
-                              className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark "
-                              type="submit"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                              type="submit"
-                            >
-                              Save
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div> */}
                   </div>
                 </div>
               </>
             )}
-            {/* {bookingDashboard && (
-              <>
-                <div
-                  className={`flex flex-col items-center ${
-                    windowWidth > 440 ? "p-16" : "px-4 pt-16 pb-4"
-                  }`}
-                >
-                  <div className="bg-white flex flex-col items-center shadow-lg rounded-lg p-8 mt-8 w-full max-w-lg">
-                    <h1
-                      className={`font-bold text-center mb-4 ${
-                        windowWidth > 610
-                          ? "text-4xl"
-                          : windowWidth > 333
-                          ? "text-2xl"
-                          : "text-xl"
-                      } text-gray-800`}
-                    >
-                      Booking Dashboard
-                    </h1>
-                    {windowWidth > 536 ? (
-                      <p className="text-sm text-center text-gray-500 mb-6">
-                        Select your preferred location to make a booking
-                      </p>
-                    ) : (
-                      <p className="text-sm text-center text-gray-500 mb-6">
-                        Select your preferred location
-                      </p>
-                    )}
-                    <div className="flex justify-around items-center w-full">
-                      <select
-                        id="location"
-                        value={selectedLocation}
-                        onChange={handleLocationChange}
-                        className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-                      >
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value=""
-                        >
-                          Please Select
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Amore Conference Room"
-                        >
-                          Amore Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Amore Meeting Room"
-                        >
-                          Amore Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Bandra Conference Room"
-                        >
-                          Bandra Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Bandra Meeting Room"
-                        >
-                          Bandra Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Kamala Mills Conference Room"
-                        >
-                          Kamala Mills Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Kamala Mills Meeting Room 1"
-                        >
-                          Kamala Mills Meeting Room 1
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Kamala Mills Meeting Room 2"
-                        >
-                          Kamala Mills Meeting Room 2
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Matulya Conference Room"
-                        >
-                          Matulya Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Matulya Meeting Room"
-                        >
-                          Matulya Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Millennium Conference Room"
-                        >
-                          Millennium Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Millennium Meeting Room"
-                        >
-                          Millennium Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Sunmill Conference Room"
-                        >
-                          Sunmill Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Sunmill Meeting Room"
-                        >
-                          Sunmill Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Technocity Conference Room"
-                        >
-                          Technocity Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Technocity Meeting Room"
-                        >
-                          Technocity Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Sunshine Conference Room"
-                        >
-                          Sunshine Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Sunshine Meeting Room"
-                        >
-                          Sunshine Meeting Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Navratna Conference Room"
-                        >
-                          Navratna Conference Room
-                        </option>
-                        <option
-                          className={`${
-                            windowWidth > 610 ? "text-base" : "text-sm"
-                          }`}
-                          value="Navratna Meeting Room"
-                        >
-                          Navratna Meeting Room
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                {selectedLocation !== "" &&
-                  (isAdmin == "admin" ? (
-                    <AdminCalendar
-                      key={selectedLocation}
-                      value={{
-                        key: selectedLocation,
-                        selectedLocation,
-                        spacetype,
-                      }}
-                    />
-                  ) : (
-                    <NonMemCalendar
-                      key={selectedLocation}
-                      value={{
-                        key: selectedLocation,
-                        selectedLocation,
-                        spacetype,
-                      }}
-                    />
-                  ))}
-              </>
-            )} */}
 
             {newDashboard && (
               <>
@@ -1165,34 +679,6 @@ const Dashboard: React.FC = () => {
               </>
             )}
           </div>
-
-          {/* {selectedLocation !== "" && isAdmin ? (
-        <AdminCalendar
-          key={selectedLocation}
-          value={{ key: selectedLocation, selectedLocation, spacetype }}
-        />
-      ) : (
-        <Calendar
-          key={selectedLocation}
-          value={{ key: selectedLocation, selectedLocation, spacetype }}
-        />
-      )} */}
-
-          {/* this is a nonmber dashboard */}
-
-          {/* calender for nonmember admin  */}
-          {/* {selectedLocation !== "" &&
-          (isAdmin == "admin" ? (
-            <AdminCalendar
-              key={selectedLocation}
-              value={{ key: selectedLocation, selectedLocation, spacetype }}
-            />
-          ) : (
-            <NonMemCalendar
-              key={selectedLocation}
-              value={{ key: selectedLocation, selectedLocation, spacetype }}
-            />
-          ))} */}
         </div>
       )}
       {/* mibile version starts here */}
@@ -1245,10 +731,6 @@ const Dashboard: React.FC = () => {
                                 <input
                                   className="w-full rounded border border-stroke bg-gray py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                   type="text"
-                                  // name="fullName"
-                                  // id="fullName"
-                                  // placeholder={accHolder.companyName}
-                                  // defaultValue={accHolder.companyName}
                                   value={accHolder.companyName}
                                   readOnly
                                 />
@@ -1309,10 +791,6 @@ const Dashboard: React.FC = () => {
                               <input
                                 className="w-full rounded border border-stroke bg-gray mb-4 py-3 pl-10 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                 type="email"
-                                // name="emailAddress"
-                                // id="emailAddress"
-                                // placeholder={accHolder.email}
-                                // defaultValue={accHolder.email}
                                 value={accHolder.email}
                                 readOnly
                               />
@@ -1354,10 +832,6 @@ const Dashboard: React.FC = () => {
                               <input
                                 className="w-full rounded border border-stroke bg-gray mb-4 py-3 pr-4.5 text-black focus:border-primary focus-visible:outline-none dark:border-strokedark dark:bg-meta-4  dark:focus:border-primary hover:cursor-not-allowed"
                                 type="text"
-                                // name="emailAddress"
-                                // id="emailAddress"
-                                // placeholder={accHolder.email}
-                                // defaultValue={accHolder.email}
                                 value={subscriptionText}
                                 readOnly
                               />
@@ -1380,21 +854,6 @@ const Dashboard: React.FC = () => {
                               defaultValue={accHolder.username}
                             />
                           </div>
-
-                          {/* <div className="flex justify-end gap-4.5">
-                              <button
-                                className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark "
-                                type="submit"
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                                type="submit"
-                              >
-                                Save
-                              </button>
-                            </div> */}
                         </form>
                       </div>
                       {/* password change section */}
@@ -1418,10 +877,7 @@ const Dashboard: React.FC = () => {
                       {passwordchange && (
                         <form onSubmit={handlePasswordChange}>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               Old password
                             </label>
                             <input
@@ -1429,17 +885,11 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={oldPassword}
                               onChange={(e) => setOldPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="old password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               New password
                             </label>
                             <input
@@ -1447,17 +897,11 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={newPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <div className="w-full sm:w-1/2 ml-4">
-                            <label
-                              className=" block text-sm font-medium text-black"
-                              // htmlFor="phoneNumber"
-                            >
+                            <label className=" block text-sm font-medium text-black">
                               Confirm password
                             </label>
                             <input
@@ -1465,10 +909,7 @@ const Dashboard: React.FC = () => {
                               type="password"
                               value={confirmPassword}
                               onChange={(e) => setNewPassword(e.target.value)}
-                              // name="phoneNumber"
-                              // id="phoneNumber"
                               placeholder="password"
-                              // defaultValue={accHolder.phone}
                             />
                           </div>
                           <button
@@ -1481,325 +922,10 @@ const Dashboard: React.FC = () => {
                       )}
                     </div>
                   </div>
-
-                  {/* <div className="col-span-5 xl:col-span-2">
-                    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-                      <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
-                        <h3 className="font-medium text-black ">Your Photo</h3>
-                      </div>
-                      <div className="p-7">
-                        <form action="#">
-                          <div className="mb-4 flex items-center gap-3">
-                            <div className="h-14 w-14 rounded-full">
-                              <img alt="User" />
-                            </div>
-                            <div>
-                              <span className="mb-1.5 text-black ">
-                                Edit your photo
-                              </span>
-                              <span className="flex gap-2.5">
-                                <button className="text-sm hover:text-primary">
-                                  Delete
-                                </button>
-                                <button className="text-sm hover:text-primary">
-                                  Update
-                                </button>
-                              </span>
-                            </div>
-                          </div>
-
-                          <div
-                            id="FileUpload"
-                            className="relative mb-5.5 block w-full cursor-pointer appearance-none rounded border border-dashed border-primary bg-gray py-4 px-4 dark:bg-meta-4 sm:py-7.5"
-                          >
-                            <input
-                              type="file"
-                              accept="image/*"
-                              className="absolute inset-0 z-50 m-0 h-full w-full cursor-pointer p-0 opacity-0 outline-none"
-                            />
-                            <div className="flex flex-col items-center justify-center space-y-3">
-                              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
-                                <svg
-                                  width="16"
-                                  height="16"
-                                  viewBox="0 0 16 16"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M1.99967 9.33337C2.36786 9.33337 2.66634 9.63185 2.66634 10V12.6667C2.66634 12.8435 2.73658 13.0131 2.8616 13.1381C2.98663 13.2631 3.1562 13.3334 3.33301 13.3334H12.6663C12.8431 13.3334 13.0127 13.2631 13.1377 13.1381C13.2628 13.0131 13.333 12.8435 13.333 12.6667V10C13.333 9.63185 13.6315 9.33337 13.9997 9.33337C14.3679 9.33337 14.6663 9.63185 14.6663 10V12.6667C14.6663 13.1971 14.4556 13.7058 14.0806 14.0809C13.7055 14.456 13.1968 14.6667 12.6663 14.6667H3.33301C2.80257 14.6667 2.29387 14.456 1.91879 14.0809C1.54372 13.7058 1.33301 13.1971 1.33301 12.6667V10C1.33301 9.63185 1.63148 9.33337 1.99967 9.33337Z"
-                                    fill="#3C50E0"
-                                  />
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M7.5286 1.52864C7.78894 1.26829 8.21106 1.26829 8.4714 1.52864L11.8047 4.86197C12.0651 5.12232 12.0651 5.54443 11.8047 5.80478C11.5444 6.06513 11.1223 6.06513 10.8619 5.80478L8 2.94285L5.13807 5.80478C4.87772 6.06513 4.45561 6.06513 4.19526 5.80478C3.93491 5.54443 3.93491 5.12232 4.19526 4.86197L7.5286 1.52864Z"
-                                    fill="#3C50E0"
-                                  />
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M7.99967 1.33337C8.36786 1.33337 8.66634 1.63185 8.66634 2.00004V10C8.66634 10.3682 8.36786 10.6667 7.99967 10.6667C7.63148 10.6667 7.33301 10.3682 7.33301 10V2.00004C7.33301 1.63185 7.63148 1.33337 7.99967 1.33337Z"
-                                    fill="#3C50E0"
-                                  />
-                                </svg>
-                              </span>
-                              <p>
-                                <span className="text-primary">
-                                  Click to upload
-                                </span>{" "}
-                                or drag and drop
-                              </p>
-                              <p className="mt-1.5">SVG, PNG, JPG or GIF</p>
-                              <p>(max, 800 X 800px)</p>
-                            </div>
-                          </div>
-
-                          <div className="flex justify-end gap-4.5">
-                            <button
-                              className="flex justify-center rounded border border-stroke py-2 px-6 font-medium text-black hover:shadow-1 dark:border-strokedark "
-                              type="submit"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              className="flex justify-center rounded bg-primary py-2 px-6 font-medium text-gray hover:bg-opacity-90"
-                              type="submit"
-                            >
-                              Save
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </>
           )}
-          {/* {bookingDashboard && (
-            <>
-              <div
-                className={`flex flex-col items-center ${
-                  windowWidth > 440 ? "p-16" : "px-4 pt-16 pb-4"
-                }`}
-              >
-                <div className="bg-white flex flex-col items-center shadow-lg rounded-lg p-8 mt-8 w-full max-w-lg">
-                  <h1
-                    className={`font-bold text-center mb-4 ${
-                      windowWidth > 610
-                        ? "text-4xl"
-                        : windowWidth > 333
-                        ? "text-2xl"
-                        : "text-xl"
-                    } text-gray-800`}
-                  >
-                    Booking Dashboard
-                  </h1>
-                  {windowWidth > 536 ? (
-                    <p className="text-sm text-center text-gray-500 mb-6">
-                      Select your preferred location to make a booking
-                    </p>
-                  ) : (
-                    <p className="text-sm text-center text-gray-500 mb-6">
-                      Select your preferred location
-                    </p>
-                  )}
-                  <div className="flex justify-around items-center w-full">
-                    <select
-                      id="location"
-                      value={selectedLocation}
-                      onChange={handleLocationChange}
-                      className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-                    >
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value=""
-                      >
-                        Please Select
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Amore Conference Room"
-                      >
-                        Amore Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Amore Meeting Room"
-                      >
-                        Amore Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Bandra Conference Room"
-                      >
-                        Bandra Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Bandra Meeting Room"
-                      >
-                        Bandra Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Kamala Mills Conference Room"
-                      >
-                        Kamala Mills Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Kamala Mills Meeting Room 1"
-                      >
-                        Kamala Mills Meeting Room 1
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Kamala Mills Meeting Room 2"
-                      >
-                        Kamala Mills Meeting Room 2
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Matulya Conference Room"
-                      >
-                        Matulya Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Matulya Meeting Room"
-                      >
-                        Matulya Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Millennium Conference Room"
-                      >
-                        Millennium Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Millennium Meeting Room"
-                      >
-                        Millennium Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Sunmill Conference Room"
-                      >
-                        Sunmill Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Sunmill Meeting Room"
-                      >
-                        Sunmill Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Technocity Conference Room"
-                      >
-                        Technocity Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Technocity Meeting Room"
-                      >
-                        Technocity Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Sunshine Conference Room"
-                      >
-                        Sunshine Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Sunshine Meeting Room"
-                      >
-                        Sunshine Meeting Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Navratna Conference Room"
-                      >
-                        Navratna Conference Room
-                      </option>
-                      <option
-                        className={`${
-                          windowWidth > 610 ? "text-base" : "text-sm"
-                        }`}
-                        value="Navratna Meeting Room"
-                      >
-                        Navratna Meeting Room
-                      </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              {selectedLocation !== "" &&
-                (isAdmin == "admin" ? (
-                  <AdminCalendar
-                    key={selectedLocation}
-                    value={{
-                      key: selectedLocation,
-                      selectedLocation,
-                      spacetype,
-                    }}
-                  />
-                ) : (
-                  <NonMemCalendar
-                    key={selectedLocation}
-                    value={{
-                      key: selectedLocation,
-                      selectedLocation,
-                      spacetype,
-                    }}
-                  />
-                ))}
-            </>
-          )} */}
 
           {newDashboard && (
             <>
@@ -1874,206 +1000,4 @@ const Dashboard: React.FC = () => {
     </>
   );
 };
-
-//changes in the dashboard
-// const Dashboard: React.FC = () => {
-//   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setWindowWidth(window.innerWidth);
-//     };
-
-//     window.addEventListener("resize", handleResize);
-//     return () => {
-//       window.removeEventListener("resize", handleResize);
-//     };
-//   }, []);
-
-//   const PORT = "https://603-bcakend-new.vercel.app";
-//   const [selectedLocation, setSelectedLocation] = useState("");
-//   const [selectedPlace, setSelectedPlace] = useState("");
-//   const [spacetype, setspacetype] = useState("");
-
-//   const handleLocationChange = async (
-//     event: React.ChangeEvent<HTMLSelectElement>
-//   ) => {
-//     const location = event.target.value;
-//     setSelectedLocation(location);
-
-//     if (location !== "") {
-//       try {
-//         const response = await axios.post(
-//           `${PORT}/api/v1/spaces/getspacebyname`,
-//           { name: location },
-//           {
-//             withCredentials: true,
-//           }
-//         );
-//         setspacetype(response.data.roomtype);
-//       } catch (error) {
-//         console.error("Error fetching space type:", error);
-//       }
-//     }
-//   };
-
-//   const handleSelectedPlace = async (
-//     event: React.ChangeEvent<HTMLSelectElement>
-//   ) => {
-//     const location = event.target.value;
-//     setSelectedPlace(location);
-//   };
-
-//   // Debugging spacetype value
-//   useEffect(() => {
-//     console.log("spacetype updated:", spacetype);
-//   }, [spacetype]);
-
-//   return (
-//     <div className="w-full min-h-screen bg-gradient-to-r from-gray-100 to-gray-200">
-//       <DashNavbar />
-//       <div
-//         className={`flex flex-col items-center ${
-//           windowWidth > 440 ? "p-16" : "px-4 pt-16 pb-4"
-//         }`}
-//       >
-//         <div className="bg-white flex flex-col items-center shadow-lg rounded-lg p-8 mt-8 w-full max-w-lg">
-//           <h1
-//             className={`font-bold text-center mb-4 ${
-//               windowWidth > 610
-//                 ? "text-4xl"
-//                 : windowWidth > 333
-//                 ? "text-2xl"
-//                 : "text-xl"
-//             } text-gray-800`}
-//           >
-//             Booking Dashboard
-//           </h1>
-//           {windowWidth > 536 ? (
-//             <p className="text-sm text-center text-gray-500 mb-6">
-//               Select your preferred location to make a booking
-//             </p>
-//           ) : (
-//             <p className="text-sm text-center text-gray-500 mb-6">
-//               Select your preferred location
-//             </p>
-//           )}
-//           <div className="flex justify-around items-center w-full">
-//             <select
-//               id="location"
-//               value={selectedLocation}
-//               onChange={handleLocationChange}
-//               className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-//             >
-//               <option
-//                 className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                 value=""
-//               >
-//                 Select location
-//               </option>
-//               <option
-//                 className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                 value="Mumbai"
-//               >
-//                 Mumbai
-//               </option>
-//               <option
-//                 className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                 value="Navi Mumbai"
-//               >
-//                 Navi Mumbai
-//               </option>
-//               <option
-//                 className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                 value="Ahmedabad"
-//               >
-//                 Ahmedabad
-//               </option>
-//             </select>
-//           </div>
-//           {selectedLocation == "Mumbai" && (
-//             <>
-//               {windowWidth > 536 ? (
-//                 <p className="text-sm text-center text-gray-500 mt-4 ">
-//                   Select your prefered place in mumbai
-//                 </p>
-//               ) : (
-//                 <p className="text-sm text-center text-gray-500 mt-4 mb-1">
-//                   Select your preferred Place
-//                 </p>
-//               )}
-//             </>
-//           )}
-//           {selectedLocation == "Mumbai" && (
-//             <div className="flex justify-around items-center w-full m-4">
-//               <select
-//                 id="location"
-//                 value={selectedPlace}
-//                 onChange={handleSelectedPlace}
-//                 className="text-base p-2 border border-gray-300 rounded-md bg-white shadow-sm cursor-pointer w-full"
-//               >
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="Matulya center,lower Parel"
-//                 >
-//                   Matulya center,lower Parel
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="sun mill compound ,lower parel"
-//                 >
-//                   sun mill compound ,lower parel
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="kamala Mills, Lower Parel"
-//                 >
-//                   kamala Mills, Lower Parel
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="Sunshine Tower,Lower Parel"
-//                 >
-//                   Sunshine Tower,Lower Parel
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="Amore Centre ,Khar"
-//                 >
-//                   Amore Centre ,Khar
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="Makhija Archade ,Bandra"
-//                 >
-//                   Makhija Archade ,Bandra
-//                 </option>
-//                 <option
-//                   className={`${windowWidth > 610 ? "text-base" : "text-sm"}`}
-//                   value="Classic Pentagon"
-//                 >
-//                   Classic Pentagon
-//                 </option>
-//               </select>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-
-//       {/* {selectedPlace !== "" && (
-//         <Calendar
-//           key={selectedPlace}
-//           value={{ key: selectedPlace, selectedPlace, spacetype }}
-//         />
-//       )} */}
-//       {selectedLocation !== "" && (
-//         <Calendar
-//           key={selectedLocation}
-//           value={{ key: selectedLocation, selectedLocation, spacetype }}
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
 export default Dashboard;
