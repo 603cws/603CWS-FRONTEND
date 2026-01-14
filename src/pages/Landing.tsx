@@ -30,7 +30,7 @@ import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import "../utils/Landing/custom.css";
 import { useApp } from "../context/AuthContext";
-import OurServices from "./../components/AboutUs/OurServices";
+// import OurServices from "./../components/AboutUs/OurServices";
 import OurPopularity from "../components/AboutUs/OurPopularity";
 import Modal from "../components/DashBoardNavbar/Modal";
 // import axios from "axios";
@@ -538,7 +538,7 @@ function Landing() {
         <OurPopularity />
       </section>
 
-      <div className="pt-20 bg-gradient-to-r from-blue-100 to-yellow-100">
+      <div className=" lg:pt-20 bg-gradient-to-r from-blue-100 to-yellow-100">
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-yellow-500 font-sans font-semibold text-center">
           Our Photo Gallery
         </h1>
@@ -554,7 +554,7 @@ function Landing() {
         )}
 
         {/* our clients  */}
-        <OurServices />
+        {/* <OurServices /> */}
         <div className="w-full bg-gradient-to-r from-blue-100 to-yellow-100">
           <Review />
         </div>

@@ -9,23 +9,23 @@ const OurPopularity: React.FC = () => {
           <h2>India's largest marketplace for flexible workspace solutions</h2>
         </div>
         {/* second for flex */}
-        <div className="grid grid-cols-4 gap-y-8 p-8 w-2/3 mx-auto">
-          <div className="justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-y-8 p-8 w-2/3 mx-auto">
+          <div className="flex flex-col justify-center items-center ">
             {/* <Scramble totype="50+" /> */}
             <span className="text-3xl text-yellow-500 font-bold">50+</span>
-            <p className="text-lg ">Dedicated experts</p>
+            <p className="text-center text-lg ">Dedicated experts</p>
           </div>
-          <div className="justify-items-center">
+          <div className="flex flex-col justify-center items-center ">
             <span className="text-3xl text-yellow-500 font-bold">1000+</span>
-            <p className="text-lg">Clients Served</p>
+            <p className="text-center text-lg">Clients Served</p>
           </div>
-          <div className="justify-items-center">
+          <div className="flex flex-col justify-center items-center ">
             <span className="text-3xl text-yellow-500 font-bold">10+</span>
-            <p className="text-lg">Locations</p>
+            <p className="text-center text-lg">Locations</p>
           </div>
-          <div className="justify-items-center">
+          <div className="flex flex-col justify-center items-center ">
             <span className="text-3xl text-yellow-500 font-bold">5000+</span>
-            <p className="text-lg">Seats Delivered</p>
+            <p className="text-center text-lg">Seats Delivered</p>
           </div>
         </div>
         {/* last line

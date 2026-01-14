@@ -29,7 +29,7 @@ function OurServices() {
   return (
     <div className="w-full  md:pt-20 pb-5 px-20 bg-gradient-to-r from-blue-100 to-yellow-100">
       <h1 className="text-center text-lg  md:text-2xl lg:text-2xl font-sans font-bold text-[#fcc519]">
-        Clients we have worked with.
+        Clients we have worked with
       </h1>
       <div className="w-full">
         <Swiper
