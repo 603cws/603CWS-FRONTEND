@@ -24,7 +24,7 @@ const Popupform = () => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(showPopup, 80000);
+    const intervalId = setInterval(showPopup, 30000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -45,7 +45,7 @@ const Popupform = () => {
     !formData.requirements;
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
