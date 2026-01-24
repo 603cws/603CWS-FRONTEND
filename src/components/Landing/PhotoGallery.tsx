@@ -5,14 +5,16 @@ import SwiperCore from "swiper";
 import { Autoplay } from "swiper/modules";
 import {
   // gallery1,
-  gallery3,
+  // gallery3,
   gallery4,
   gallery5,
-  gallery6,
+  // gallery6,
   gallery7,
   // gallery8,
-  gallery9,
+  // gallery9,
   gallery10,
+  gallery11,
+  gallery12,
 } from "../../utils/Landing/Landing";
 
 SwiperCore.use([Autoplay]);
@@ -20,13 +22,15 @@ SwiperCore.use([Autoplay]);
 const photos = [
   // { src: `${gallery1}`, alt: 'Photo 1' },
   { src: `${gallery10}`, alt: "Photo 1" },
-  { src: `${gallery3}`, alt: "Photo 3" },
+  // { src: `${gallery3}`, alt: "Photo 3" },
   { src: `${gallery4}`, alt: "Photo 4" },
   { src: `${gallery5}`, alt: "Photo 5" },
-  { src: `${gallery6}`, alt: "Photo 6" },
+  // { src: `${gallery6}`, alt: "Photo 6" },
   { src: `${gallery7}`, alt: "Photo 7" },
   // { src: `${gallery8}`, alt: "Photo 8" },
-  { src: `${gallery9}`, alt: "Photo 9" },
+  // { src: `${gallery9}`, alt: "Photo 9" },
+  { src: `${gallery11}`, alt: "Photo 9" },
+  { src: `${gallery12}`, alt: "Photo 9" },
 ];
 
 const PhotoGallery: React.FC = () => {

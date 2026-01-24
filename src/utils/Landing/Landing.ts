@@ -13,6 +13,8 @@ import diamond3 from "/diamond3.webp";
 import amore3 from "/amore3.webp";
 import matulya4 from "/matulya4.webp";
 import MakhijaConf from "./../../../public/officeimg/Makhija/Makhija.JPG";
+import tradelinkImg from "./../../../public/officeimg/Tradelink/tradelink1.jpg";
+import martathonIMg from "./../../../public/officeimg/MarathonFuturex/marathon1.jpeg";
 
 export const logo = logoImg;
 export const office_main = "";
@@ -34,6 +36,8 @@ export const gallery8 = amore3;
 export const gallery9 = matulya4;
 
 export const gallery10 = MakhijaConf;
+export const gallery11 = tradelinkImg;
+export const gallery12 = martathonIMg;
 
 export const background2 = "https://www.603thecoworkingspace.com/#lg=1&slide=0";
 export const vid = "https://videos.files.wordpress.com/he8mF3Bd/about.mp4";
