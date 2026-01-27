@@ -23,8 +23,11 @@ const Popupform = () => {
     setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
   };
 
+  const developmentMode =
+    import.meta.env.MODE === "development" ? 180000 : 30000;
+
   useEffect(() => {
-    const intervalId = setInterval(showPopup, 30000);
+    const intervalId = setInterval(showPopup, developmentMode);
 
     return () => clearInterval(intervalId);
   }, []);

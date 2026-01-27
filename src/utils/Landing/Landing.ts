@@ -12,9 +12,9 @@ import img from "/img.webp";
 import diamond3 from "/diamond3.webp";
 import amore3 from "/amore3.webp";
 import matulya4 from "/matulya4.webp";
-import MakhijaConf from "./../../../public/officeimg/Makhija/Makhija.JPG";
-import tradelinkImg from "./../../../public/officeimg/Tradelink/tradelink1.jpg";
-import martathonIMg from "./../../../public/officeimg/MarathonFuturex/marathon1.jpeg";
+import MakhijaConf from "/officeimg/Makhija/Makhija.JPG";
+import tradelinkImg from "/officeimg/Tradelink/tradelink1.jpg";
+import martathonIMg from "/officeimg/MarathonFuturex/marathon1.jpeg";
 
 export const logo = logoImg;
 export const office_main = "";

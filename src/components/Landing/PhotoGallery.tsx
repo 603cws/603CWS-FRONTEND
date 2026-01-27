@@ -13,15 +13,15 @@ import {
   // gallery8,
   // gallery9,
   gallery10,
-  // gallery11,
-  // gallery12,
+  gallery11,
+  gallery12,
 } from "../../utils/Landing/Landing";
 
 SwiperCore.use([Autoplay]);
 
 const photos = [
   // { src: `${gallery1}`, alt: 'Photo 1' },
-  { src: `${gallery10}`, alt: "Photo 1" },
+  { src: `${gallery10}`, alt: "Photo 10" },
   // { src: `${gallery3}`, alt: "Photo 3" },
   { src: `${gallery4}`, alt: "Photo 4" },
   { src: `${gallery5}`, alt: "Photo 5" },
@@ -29,8 +29,8 @@ const photos = [
   { src: `${gallery7}`, alt: "Photo 7" },
   // { src: `${gallery8}`, alt: "Photo 8" },
   // { src: `${gallery9}`, alt: "Photo 9" },
-  // { src: `${gallery11}`, alt: "Photo 9" },
-  // { src: `${gallery12}`, alt: "Photo 9" },
+  { src: `${gallery11}`, alt: "Photo 11" },
+  { src: `${gallery12}`, alt: "Photo 12" },
 ];
 
 const PhotoGallery: React.FC = () => {
@@ -51,12 +51,12 @@ const PhotoGallery: React.FC = () => {
           }}
           className="mySwiper"
         >
-          {photos.map((photo, index) => (
+          {photos?.map((photo, index) => (
             <SwiperSlide key={index}>
               <img
-                src={photo.src}
-                alt={photo.alt}
-                className="w-full h-auto rounded-2xl"
+                src={photo?.src}
+                alt={photo?.alt}
+                className="w-full h-[250px] sm:h-[300px] md:h-[400px]  rounded-2xl object-cover"
               />
             </SwiperSlide>
           ))}

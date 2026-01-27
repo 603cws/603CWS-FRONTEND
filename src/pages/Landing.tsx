@@ -54,7 +54,7 @@ function Landing() {
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -100,7 +100,7 @@ function Landing() {
         intrestedIn: "",
       });
       toast.success(
-        "Your Request has been Received,we will shortly contact you"
+        "Your Request has been Received,we will shortly contact you",
       );
       setRequestTour(() => false);
     } catch (error) {
@@ -186,7 +186,7 @@ function Landing() {
       <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
         <button
           onClick={() => setRequestTour(true)}
-          className="text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
+          className="text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900 px-2 lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
         >
           Request A Tour
         </button>
