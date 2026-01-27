@@ -4,12 +4,31 @@ import "./popupanimation.css";
 import { useApp } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 import axiosInstance from "../../utils/axiosInstance";
-const Popupform = () => {
+const ExitIntentedPopupForm = () => {
   const { setloading } = useApp();
   // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const a = localStorage.getItem("callback");
+  const a = sessionStorage.getItem("callbackExitintend");
+
+  useEffect(() => {
+    const alreadyShown = sessionStorage.getItem("callbackExitintend");
+    if (alreadyShown === "true") return;
+
+    const handleMouseLeave = (e: any) => {
+      // Detect mouse leaving from top (close intent)
+      if (e.clientY <= 0) {
+        showPopup();
+        document.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
 
   const showPopup = () => {
     setIsAnimating(true);
@@ -21,14 +40,15 @@ const Popupform = () => {
   const hidePopup = () => {
     setIsAnimating(false);
     setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
+    // sessionStorage.setItem("callbackExitintend", "true");
   };
 
-  const popupTime = 30000;
+  const popupTime = 60000;
 
   useEffect(() => {
-    const intervalId = setTimeout(showPopup, popupTime);
+    const intervalId = setInterval(showPopup, popupTime);
 
-    return () => clearTimeout(intervalId);
+    return () => clearInterval(intervalId);
   }, []);
 
   const [formData, setFormData] = useState({
@@ -64,7 +84,7 @@ const Popupform = () => {
       }
       if (mobileRegex.test(formData.phone)) {
         setloading(true);
-        localStorage.setItem("callback", "true");
+        sessionStorage.setItem("callbackExitintend", "true");
         await axiosInstance.post(`/api/v1/users/sendcallback`, formData);
         toast.success("form submitted");
         hidePopup();
@@ -233,4 +253,4 @@ const Popupform = () => {
   );
 };
 
-export default Popupform;
+export default ExitIntentedPopupForm;

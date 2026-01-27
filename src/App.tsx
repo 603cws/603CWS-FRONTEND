@@ -62,6 +62,9 @@ import MemberDashboard from "./pages/MemberDashboard";
 
 import OnlineBookings from "./pages/Admin/Onlinebookings";
 import PageNotFound from "./pages/PageNotFound";
+// import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
+import ExitGuard from "./pages/popup/ExitPrompt";
+// import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 
 function App() {
   const location = useLocation();
@@ -110,7 +113,7 @@ function App() {
   }, [refreshAuth]);
 
   const shouldShowPopup = !noPopupRoutes.some((route) =>
-    matchDynamicRoute(route, location.pathname)
+    matchDynamicRoute(route, location.pathname),
   );
 
   const a = localStorage.getItem("callback");
@@ -145,6 +148,8 @@ function App() {
 
   return (
     <div className="">
+      {/* <ExitIntentedPopupForm /> */}
+      {!isAuthenticated && <ExitGuard />}
       <Routes>
         {isAuthenticated ? (
           <>
