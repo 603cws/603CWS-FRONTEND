@@ -3,7 +3,6 @@ import ExitPopupForm from "../../components/Popupform/ExitPopupForm";
 
 const ExitGuard = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
-  const a = localStorage.getItem("callback");
 
   const allowCloseRef = useRef(false);
   const triggeredRef = useRef(false);
@@ -32,7 +31,7 @@ const ExitGuard = () => {
 
   return (
     <>
-      {showContactPopup && a !== "true" && (
+      {showContactPopup && (
         <ExitPopupForm setShowContactPopup={setShowContactPopup} />
       )}
     </>
