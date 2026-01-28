@@ -10,6 +10,7 @@ import {
   FaPrint,
   FaCouch,
   FaCoffee,
+  FaRupeeSign,
 } from "react-icons/fa";
 import ImageCarousel from "../../LocationCarousal/LocationCarousal";
 import { useState } from "react";
@@ -17,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 const Webpage = () => {
   const [source] = useState(
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15089.895512569543!2d72.8173286431614!3d18.99882917941545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf4397856501%3A0x482f3f34e960ca79!2sSun%20Mill%20Compound!5e0!3m2!1sen!2sin!4v1721254812039!5m2!1sen!2sin"
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15089.895512569543!2d72.8173286431614!3d18.99882917941545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cf4397856501%3A0x482f3f34e960ca79!2sSun%20Mill%20Compound!5e0!3m2!1sen!2sin!4v1721254812039!5m2!1sen!2sin",
   );
   const images = [
     "/officeimg/SunMill/Sunmill.jpeg",
@@ -90,54 +91,56 @@ const Webpage = () => {
                 <span className="text-sm font-semibold text-gray-500">
                   Day Pass
                 </span>
-                <span className="text-sm font-bold text-gray-500">₹ 599</span>
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 599
+                </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Hot Desk
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 6,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 6,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Dedicated Desk
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 8,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 8,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Cabin Space
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 9,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 9,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Custom Cabin
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 9,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 9,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Meeting Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 499 / Hourly
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 499 / Hourly
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Conference Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 999 / Hourly
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 999 / Hourly
                 </span>
               </li>
             </ul>

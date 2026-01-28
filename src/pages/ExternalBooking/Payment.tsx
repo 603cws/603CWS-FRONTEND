@@ -7,6 +7,7 @@ import {
   FaMoneyBillAlt,
   FaBuilding,
   FaTrashAlt,
+  FaRupeeSign,
 } from "react-icons/fa";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "../../components/Navbar/navbar";
@@ -16,6 +17,7 @@ import { useApp } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 import axiosInstance from "../../utils/axiosInstance";
+import { MdCurrencyRupee } from "react-icons/md";
 
 const Payment: React.FC = () => {
   const [discountCode, setDiscountCode] = useState("");
@@ -39,7 +41,7 @@ const Payment: React.FC = () => {
   const navigate = useNavigate();
   const bookings = useSelector((state: RootState) => state.bookings.bookings);
   const dayPasses = useSelector(
-    (state: RootState) => state.dayPasses.dayPasses
+    (state: RootState) => state.dayPasses.dayPasses,
   );
 
   const PORT = import.meta.env.VITE_BACKEND_URL;
@@ -64,12 +66,12 @@ const Payment: React.FC = () => {
     bookings.reduce(
       (total, booking) =>
         total + booking.price - booking.price * (discountPercentage / 100),
-      0
+      0,
     ) +
     dayPasses.reduce(
       (total, dayPass) =>
         total + dayPass.price - dayPass.price * (discountPercentage / 100),
-      0
+      0,
     );
 
   //coupon changes
@@ -78,11 +80,11 @@ const Payment: React.FC = () => {
     try {
       const response = await axiosInstance.post(
         `/api/v1/coupon/validatecoupon`,
-        { code }
+        { code },
       );
 
       setDiscountPercentage(
-        (discountPercentage) => discountPercentage + response.data.discount
+        (discountPercentage) => discountPercentage + response.data.discount,
       );
 
       setIsDisable(() => true);
@@ -127,7 +129,7 @@ const Payment: React.FC = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true, // Include credentials (cookies) in the request
-        }
+        },
       );
 
       // Return true if the status is 200, meaning no booking overlap
@@ -159,7 +161,7 @@ const Payment: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       window.location.href = response.data.url;
     } catch (error) {
@@ -227,8 +229,12 @@ const Payment: React.FC = () => {
                 <FaClock className="inline-block mr-2" /> {booking.startTime} -{" "}
                 {booking.endTime}
               </div>
-              <div className="text-gray-600 font-semibold">
-                <FaMoneyBillAlt className="inline-block mr-2" /> Price: ₹
+              <div className="text-gray-600 font-semibold flex items-center">
+                <FaMoneyBillAlt className="inline-block mr-2" />
+                <span className="flex items-center">
+                  Price:
+                  <FaRupeeSign />
+                </span>
                 {booking.price.toFixed(2)}
               </div>
               {/* Delete Button */}
@@ -258,8 +264,12 @@ const Payment: React.FC = () => {
                 <FaCalendarAlt className="inline-block mr-2" />{" "}
                 {dayPass.bookeddate}
               </div>
-              <div className="text-gray-600 font-semibold">
-                <FaMoneyBillAlt className="inline-block mr-2" /> Price: ₹
+              <div className="text-gray-600 font-semibold flex items-center">
+                <FaMoneyBillAlt className="inline-block mr-2" />
+                <span className="flex items-center">
+                  Price:
+                  <FaRupeeSign />
+                </span>
                 {dayPass.price.toFixed(2)}
               </div>
               {dayPass.quantity && (
@@ -320,9 +330,15 @@ const Payment: React.FC = () => {
               </div>
               <div className="text-right text-2xl  text-gray-800 mb-3">
                 <ul>
-                  <li> Bill: ₹{TotalBill}</li>
+                  <li className="flex items-center justify-end">
+                    Bill: <MdCurrencyRupee />
+                    {TotalBill}
+                  </li>
                   <li>+ GST : 18 %</li>
-                  <li className="font-bold">Total : ₹{finalBill.toFixed(2)}</li>
+                  <li className="font-bold flex items-center justify-end">
+                    Total : <FaRupeeSign />
+                    {finalBill.toFixed(2)}
+                  </li>
                 </ul>
               </div>
               <div className="text-right text-l font-semibold text-gray-500 mb-6">

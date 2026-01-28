@@ -9,6 +9,7 @@ import {
   FaPrint,
   FaCouch,
   FaCoffee,
+  FaRupeeSign,
 } from "react-icons/fa";
 import ImageCarousel from "../../LocationCarousal/LocationCarousal";
 import { useState } from "react";
@@ -18,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 const Pentagon = () => {
   const [source] = useState(
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1887.365476441699!2d72.8507678!3d19.1070941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c83489ddac01%3A0xa443ab275b61ce12!2sClassic%20Pentagon%2C%20Mumbai%2C%20Maharashtra%20400053!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin"
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1887.365476441699!2d72.8507678!3d19.1070941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c83489ddac01%3A0xa443ab275b61ce12!2sClassic%20Pentagon%2C%20Mumbai%2C%20Maharashtra%20400053!5e0!3m2!1sen!2sin!4v1721255614332!5m2!1sen!2sin",
   );
   const images = [
     "/officeimg/Pentagon/pentagon.JPG",
@@ -94,38 +95,40 @@ const Pentagon = () => {
                 <span className="text-sm font-semibold text-gray-500">
                   Day Pass
                 </span>
-                <span className="text-sm font-bold text-gray-500">₹ 599</span>
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 599
+                </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Dedicated Desk
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 9,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 9,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Cabin Space
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 10,999 Onwards
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 10,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Meeting Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 399 / Hourly
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 399 / Hourly
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
                 <span className="text-sm font-semibold text-gray-500">
                   Conference Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500">
-                  ₹ 699 / Hourly
+                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <FaRupeeSign /> 699 / Hourly
                 </span>
               </li>
             </ul>

@@ -6,6 +6,7 @@ import { CiCirclePlus } from "react-icons/ci";
 import { CiCircleMinus } from "react-icons/ci";
 import toast from "react-hot-toast";
 import axiosInstance from "../utils/axiosInstance";
+import { FaRupeeSign } from "react-icons/fa";
 
 interface LocationProps {
   value: {
@@ -50,7 +51,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [unavailabledaypasses, setunavailabledaypasses] = useState<number[]>(
-    []
+    [],
   );
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -199,7 +200,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     try {
       const response = await axiosInstance.post(
         `/api/v1/bookings/getlocationbookings`,
-        { selectedDate: date, selectedLocation }
+        { selectedDate: date, selectedLocation },
       );
 
       setTimings(response.data);
@@ -223,7 +224,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
 
   const getFilteredTimes = (
     selectedDay: number | null,
-    currentTime: Date
+    currentTime: Date,
   ): string[] => {
     if (selectedDay === null) {
       return times;
@@ -233,7 +234,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     const selectedDate = new Date(
       currentTime.getFullYear(),
       currentTime.getMonth(),
-      selectedDay
+      selectedDay,
     );
     if (selectedDate.toDateString() === today.toDateString()) {
       const currentTimeInMinutes =
@@ -317,10 +318,10 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
       windowWidth > 1280
         ? "60px"
         : windowWidth > 545
-        ? "45px"
-        : windowWidth > 377
-        ? "40px"
-        : "35px",
+          ? "45px"
+          : windowWidth > 377
+            ? "40px"
+            : "35px",
     height: windowWidth > 440 ? "40px" : "35px",
     fontSize: windowWidth > 582 ? undefined : "14px",
     display: "flex",
@@ -440,7 +441,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   };
 
   const handleStartTimeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSelectedStartTime(event.target.value);
     setSelectedEndTime("");
@@ -479,7 +480,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
               timeInMinutes < startTimeInMinutes ||
               timeInMinutes > endTimeInMinutes
             );
-          }
+          },
         );
       });
     }
@@ -491,11 +492,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
   const filteredLocations =
     selectedCity === "All"
       ? newdatabaselocations.filter(
-          (cityGroup) => cityGroup.spacetype === spacetype
+          (cityGroup) => cityGroup.spacetype === spacetype,
         )
       : newdatabaselocations.filter(
           (cityGroup) =>
-            cityGroup.city === selectedCity && cityGroup.spacetype === spacetype
+            cityGroup.city === selectedCity &&
+            cityGroup.spacetype === spacetype,
         );
 
   const handleAddDaypass = async () => {
@@ -525,7 +527,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
     } catch (error: any) {
       console.log(error);
       toast.error(
-        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
+        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `,
       );
     } finally {
       setIsSubmitting(false);
@@ -610,7 +612,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                               </button>
                               <h2 style={timestyle}>{`${new Date(
                                 currentYear,
-                                currentMonth
+                                currentMonth,
                               ).toLocaleString("default", {
                                 month: "long",
                               })} ${currentYear}`}</h2>
@@ -626,10 +628,10 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                 {
                                   length: daysInMonth(
                                     currentMonth,
-                                    currentYear
+                                    currentYear,
                                   ),
                                 },
-                                (_, index) => index + 1
+                                (_, index) => index + 1,
                               ).map((day) => (
                                 <div
                                   key={day}
@@ -638,12 +640,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                     ...(isPastDay(day)
                                       ? pastDayStyle
                                       : isWeekend(
-                                          day,
-                                          currentMonth,
-                                          currentYear
-                                        )
-                                      ? partiallyBookedStyle
-                                      : availableStyle1),
+                                            day,
+                                            currentMonth,
+                                            currentYear,
+                                          )
+                                        ? partiallyBookedStyle
+                                        : availableStyle1),
                                     ...(selectedDay === day && selectedStyle),
                                   }}
                                   onClick={() => {
@@ -717,8 +719,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                           navigate("/payment");
                                         }}
                                       >
-                                        <span className="text-white font-extrabold">
-                                          Add ₹{baseprice}
+                                        <span className="text-white font-extrabold flex justify-center items-center gap-2">
+                                          Add
+                                          <span className="flex items-center">
+                                            <FaRupeeSign />
+                                            {baseprice}
+                                          </span>
                                         </span>
                                       </button>
                                       <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
@@ -749,7 +755,7 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                               </button>
                               <h2 style={timestyle}>{`${new Date(
                                 currentYear,
-                                currentMonth
+                                currentMonth,
                               ).toLocaleString("default", {
                                 month: "long",
                               })} ${currentYear}`}</h2>
@@ -765,10 +771,10 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                 {
                                   length: daysInMonth(
                                     currentMonth,
-                                    currentYear
+                                    currentYear,
                                   ),
                                 },
-                                (_, index) => index + 1
+                                (_, index) => index + 1,
                               ).map((day) => (
                                 <div
                                   key={day}
@@ -782,12 +788,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                     unavailabledaypasses.includes(day)
                                       ? pastDayStyle
                                       : isWeekend(
-                                          day,
-                                          currentMonth,
-                                          currentYear
-                                        )
-                                      ? partiallyBookedStyle
-                                      : availableStyle1),
+                                            day,
+                                            currentMonth,
+                                            currentYear,
+                                          )
+                                        ? partiallyBookedStyle
+                                        : availableStyle1),
                                     ...(selectedDay === day && selectedStyle),
                                   }}
                                   onClick={() => {
@@ -864,8 +870,12 @@ const LocationComponent: React.FC<LocationProps> = ({ value }) => {
                                     </div>
                                   ) : (
                                     <>
-                                      <span className="text-white font-extrabold">
-                                        Add ₹{likelyprice * quantity}
+                                      <span className="text-white font-extrabold flex justify-center items-center gap-2">
+                                        Add
+                                        <span className="flex items-center">
+                                          <FaRupeeSign />
+                                          {likelyprice * quantity}
+                                        </span>
                                       </span>
                                     </>
                                   )}

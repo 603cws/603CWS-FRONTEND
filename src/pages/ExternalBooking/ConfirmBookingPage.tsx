@@ -8,6 +8,7 @@ import {
   FaWifi,
   FaBriefcase,
   FaCoffee,
+  FaRupeeSign,
 } from "react-icons/fa"; // Import FontAwesome icons
 import { locations } from "../AllLocationsDetails";
 // import axios from "axios";
@@ -127,7 +128,7 @@ const ConfirmPayment = () => {
 
   const getFilteredTimes = (
     selectedDay: number | null,
-    currentTime: Date
+    currentTime: Date,
   ): string[] => {
     if (selectedDay === null) {
       return times;
@@ -137,7 +138,7 @@ const ConfirmPayment = () => {
     const selectedDate = new Date(
       currentTime.getFullYear(),
       currentTime.getMonth(),
-      selectedDay
+      selectedDay,
     );
     if (selectedDate.toDateString() === today.toDateString()) {
       const currentTimeInMinutes =
@@ -151,7 +152,7 @@ const ConfirmPayment = () => {
     }
   };
   const [locationDetails, setLocationDetails] = useState<Location | undefined>(
-    undefined
+    undefined,
   );
 
   const handledecQuan = () => {
@@ -191,7 +192,7 @@ const ConfirmPayment = () => {
       console.log(error);
 
       toast.error(
-        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `
+        ` ${error.response.data.quantity} daypass not available for Today at selected location only ${error.response.data.availabledaypass} are available `,
       );
     } finally {
       setIsSubmitting(false);
@@ -227,7 +228,7 @@ const ConfirmPayment = () => {
   const [selectedStartTime, setSelectedStartTime] = useState<string>("");
   const [selectedEndTime, setSelectedEndTime] = useState<string>("");
   const [unavailabledaypasses, setunavailabledaypasses] = useState<number[]>(
-    []
+    [],
   );
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
@@ -247,7 +248,7 @@ const ConfirmPayment = () => {
   useEffect(() => {
     setCartTotal(
       bookings.reduce((total, booking) => total + booking.price, 0) +
-        dayPasses.reduce((total, dayPass) => total + dayPass.price, 0)
+        dayPasses.reduce((total, dayPass) => total + dayPass.price, 0),
     );
   }, [bookings, dayPasses]);
 
@@ -275,10 +276,10 @@ const ConfirmPayment = () => {
       windowWidth > 1280
         ? "60px"
         : windowWidth > 545
-        ? "45px"
-        : windowWidth > 377
-        ? "40px"
-        : "35px",
+          ? "45px"
+          : windowWidth > 377
+            ? "40px"
+            : "35px",
     height: windowWidth > 440 ? "40px" : "35px",
     fontSize: windowWidth > 582 ? undefined : "14px",
     display: "flex",
@@ -350,7 +351,7 @@ const ConfirmPayment = () => {
               timeInMinutes < startTimeInMinutes ||
               timeInMinutes > endTimeInMinutes
             );
-          }
+          },
         );
       });
     }
@@ -476,7 +477,7 @@ const ConfirmPayment = () => {
     try {
       const response = await axiosInstance.post(
         `/api/v1/bookings/getlocationbookings`,
-        { selectedDate: date, selectedLocation }
+        { selectedDate: date, selectedLocation },
       );
 
       setTimings(response.data);
@@ -552,7 +553,7 @@ const ConfirmPayment = () => {
   };
 
   const handleStartTimeChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setSelectedStartTime(event.target.value);
     setSelectedEndTime("");
@@ -645,8 +646,9 @@ const ConfirmPayment = () => {
             <div className="flex items-center justify-between mt-6">
               <div className="py-5">
                 <p className="text-gray-700 font-semibold">Conference Rooms</p>
-                <p className="text-2xl font-semibold text-yellow-500">
-                  ₹{locationDetails?.conferenceroom}/Hr
+                <p className="text-2xl font-semibold text-yellow-500 flex items-center">
+                  <FaRupeeSign />
+                  {locationDetails?.conferenceroom}/Hr
                 </p>
               </div>
               {!showcalenderconfroom &&
@@ -707,7 +709,7 @@ const ConfirmPayment = () => {
                     </button>
                     <h2 style={timestyle}>{`${new Date(
                       currentYear,
-                      currentMonth
+                      currentMonth,
                     ).toLocaleString("default", {
                       month: "long",
                     })} ${currentYear}`}</h2>
@@ -718,7 +720,7 @@ const ConfirmPayment = () => {
                   <div style={calendarStyle}>
                     {Array.from(
                       { length: daysInMonth(currentMonth, currentYear) },
-                      (_, index) => index + 1
+                      (_, index) => index + 1,
                     ).map((day) => (
                       <div
                         key={day}
@@ -727,8 +729,8 @@ const ConfirmPayment = () => {
                           ...(isPastDay(day)
                             ? pastDayStyle
                             : isWeekend(day, currentMonth, currentYear)
-                            ? partiallyBookedStyle
-                            : availableStyle1),
+                              ? partiallyBookedStyle
+                              : availableStyle1),
                           ...(selectedDay === day && selectedStyle),
                         }}
                         onClick={() => {
@@ -784,10 +786,10 @@ const ConfirmPayment = () => {
                       {selectedEndTime && (
                         <>
                           <button
-                            className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
+                            className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4 flex justify-center items-center gap-2"
                             onClick={() => {
-                              setshowcalenderconfroom(false),
-                                setshowcalenderdaypass(false);
+                              (setshowcalenderconfroom(false),
+                                setshowcalenderdaypass(false));
                               setshowcalendermeetroom(false);
                               addNewBooking({
                                 spaceName: selectedLocation,
@@ -800,9 +802,9 @@ const ConfirmPayment = () => {
                               });
                             }}
                           >
-                            Add{" "}
-                            <span className="text-white font-extrabold">
-                              ₹
+                            Add
+                            <span className="text-white font-extrabold flex items-center">
+                              <FaRupeeSign />
                               {locationDetails?.conferenceroom * timedifference}
                             </span>
                           </button>
@@ -818,8 +820,9 @@ const ConfirmPayment = () => {
               <div className="flex items-center justify-between border-t-2 border-gray-200">
                 <div className="py-5">
                   <p className="text-gray-700 font-semibold">Meetings Rooms</p>
-                  <p className="text-2xl font-semibold text-yellow-500">
-                    ₹{locationDetails?.meetingroom}/Hr
+                  <p className="text-2xl font-semibold text-yellow-500 flex items-center">
+                    <FaRupeeSign />
+                    {locationDetails?.meetingroom}/Hr
                   </p>
                 </div>
                 {!showcalendermeetroom &&
@@ -882,7 +885,7 @@ const ConfirmPayment = () => {
                     </button>
                     <h2 style={timestyle}>{`${new Date(
                       currentYear,
-                      currentMonth
+                      currentMonth,
                     ).toLocaleString("default", {
                       month: "long",
                     })} ${currentYear}`}</h2>
@@ -893,7 +896,7 @@ const ConfirmPayment = () => {
                   <div style={calendarStyle}>
                     {Array.from(
                       { length: daysInMonth(currentMonth, currentYear) },
-                      (_, index) => index + 1
+                      (_, index) => index + 1,
                     ).map((day) => (
                       <div
                         key={day}
@@ -902,8 +905,8 @@ const ConfirmPayment = () => {
                           ...(isPastDay(day)
                             ? pastDayStyle
                             : isWeekend(day, currentMonth, currentYear)
-                            ? partiallyBookedStyle
-                            : availableStyle1),
+                              ? partiallyBookedStyle
+                              : availableStyle1),
                           ...(selectedDay === day && selectedStyle),
                         }}
                         onClick={() => {
@@ -959,10 +962,10 @@ const ConfirmPayment = () => {
                       {selectedEndTime && (
                         <>
                           <button
-                            className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4"
+                            className="bg-yellow-500 text-gray-100 px-4 py-2 rounded-md shadow-lg text-lg transition transform hover:bg-yellow-600 hover:scale-105 w-full mt-4 flex justify-center items-center gap-2"
                             onClick={() => {
-                              setshowcalenderconfroom(false),
-                                setshowcalenderdaypass(false);
+                              (setshowcalenderconfroom(false),
+                                setshowcalenderdaypass(false));
                               setshowcalendermeetroom(false);
                               addNewBooking({
                                 spaceName: selectedLocation,
@@ -975,8 +978,9 @@ const ConfirmPayment = () => {
                             }}
                           >
                             Add{" "}
-                            <span className="text-white font-extrabold">
-                              ₹{locationDetails?.meetingroom * timedifference}
+                            <span className="text-white font-extrabold flex items-center">
+                              <FaRupeeSign />
+                              {locationDetails?.meetingroom * timedifference}
                             </span>
                           </button>
                           <span className=" text-black-100 px-4 py-2  text-sm  w-full mt-4">
@@ -994,8 +998,9 @@ const ConfirmPayment = () => {
             <div className="flex items-center justify-between border-t-2 border-gray-200">
               <div className="py-5">
                 <p className="text-gray-700 font-semibold">Day Pass</p>
-                <p className="text-2xl font-semibold text-yellow-500">
-                  ₹{locationDetails?.daypass}/Day
+                <p className="text-2xl font-semibold text-yellow-500 flex items-center">
+                  <FaRupeeSign />
+                  {locationDetails?.daypass}/Day
                 </p>
               </div>
               {!showcalenderdaypass &&
@@ -1050,7 +1055,7 @@ const ConfirmPayment = () => {
                     </button>
                     <h2 style={timestyle}>{`${new Date(
                       currentYear,
-                      currentMonth
+                      currentMonth,
                     ).toLocaleString("default", {
                       month: "long",
                     })} ${currentYear}`}</h2>
@@ -1061,7 +1066,7 @@ const ConfirmPayment = () => {
                   <div style={calendarStyle}>
                     {Array.from(
                       { length: daysInMonth(currentMonth, currentYear) },
-                      (_, index) => index + 1
+                      (_, index) => index + 1,
                     ).map((day) => (
                       <div
                         key={day}
@@ -1074,8 +1079,8 @@ const ConfirmPayment = () => {
                           unavailabledaypasses.includes(day)
                             ? pastDayStyle
                             : isWeekend(day, currentMonth, currentYear)
-                            ? partiallyBookedStyle
-                            : availableStyle1),
+                              ? partiallyBookedStyle
+                              : availableStyle1),
                           ...(selectedDay === day && selectedStyle),
                         }}
                         onClick={() => {
@@ -1181,7 +1186,8 @@ const ConfirmPayment = () => {
       <div className="fixed bottom-0 left-0 w-full rounded-t-3xl bg-stone-700 shadow-2xl px-6 py-3 border-t border-gray-400 z-[50]">
         <div className="container mx-auto flex justify-between items-center">
           <p className="text-white text-base md:text-xl lg:text-lg flex items-center">
-            <FaShoppingCart className="mr-2" /> Total: ₹{cartTotal}
+            <FaShoppingCart className="mr-2" /> Total: <FaRupeeSign />
+            {cartTotal}
           </p>
           <button
             onClick={() => navigate("/payment")}

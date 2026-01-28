@@ -1,6 +1,6 @@
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
-import { FaStar } from "react-icons/fa"; // Logos for each plan
+import { FaRupeeSign, FaStar } from "react-icons/fa"; // Logos for each plan
 import React, { useState } from "react";
 import { FaHandPointRight } from "react-icons/fa";
 import { locations } from "./AllLocationsDetails";
@@ -130,7 +130,7 @@ const Membership: React.FC = () => {
                       .filter(
                         (loc) =>
                           loc.membership &&
-                          Object.keys(loc.membership).length > 0
+                          Object.keys(loc.membership).length > 0,
                       )
                       .map((location, locationIndex) => (
                         <div
@@ -169,7 +169,7 @@ const Membership: React.FC = () => {
                                     twentyhours: 0,
                                     thirtyhours: 0,
                                   },
-                                }
+                                },
                               );
                               setshowsubscriptionpart(true);
                             }}
@@ -198,16 +198,19 @@ const Membership: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                   Flexible day pass options for coworking.
                 </p>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.daypass?.tendays}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.daypass?.tendays}{" "}
                   <span className="text-xl text-gray-500"> / 10 Days</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.daypass?.fifteendays}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.daypass?.fifteendays}{" "}
                   <span className="text-xl text-gray-500"> / 15 Days</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.daypass?.twentydays}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.daypass?.twentydays}{" "}
                   <span className="text-xl text-gray-500"> / 20 Days</span>
                 </div>
                 <ul className="space-y-2 text-gray-700">
@@ -244,15 +247,18 @@ const Membership: React.FC = () => {
                   Hourly conference room booking options.
                 </p>
                 <div className="text-2xl font-semibold flex items-center text-gray-600 mb-2 pb-3">
-                  ₹{data.conferenceroom?.tenhours}{" "}
+                  <FaRupeeSign />
+                  {data.conferenceroom?.tenhours}{" "}
                   <span className="text-xl text-gray-500"> / 10 Hrs</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.conferenceroom?.twentyhours}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.conferenceroom?.twentyhours}{" "}
                   <span className="text-xl text-gray-500"> / 20 Hrs</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.conferenceroom?.thirtyhours}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.conferenceroom?.thirtyhours}{" "}
                   <span className="text-xl text-gray-500"> / 30 Hrs</span>
                 </div>
                 <ul className="space-y-2 text-gray-700">
@@ -288,16 +294,19 @@ const Membership: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                   Flexible meeting room booking options.
                 </p>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.meetingroom?.tenhours}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.meetingroom?.tenhours}{" "}
                   <span className="text-xl text-gray-500 "> / 10 Hrs</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.meetingroom?.twentyhours}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.meetingroom?.twentyhours}{" "}
                   <span className="text-xl text-gray-500"> / 20 Hrs</span>
                 </div>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3">
-                  ₹{data.meetingroom?.thirtyhours}{" "}
+                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                  <FaRupeeSign />
+                  {data.meetingroom?.thirtyhours}{" "}
                   <span className="text-xl text-gray-500"> / 30 Hrs</span>
                 </div>
                 <ul className="space-y-2 text-gray-700">
