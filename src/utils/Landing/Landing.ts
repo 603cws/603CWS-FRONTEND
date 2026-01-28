@@ -16,6 +16,13 @@ import MakhijaConf from "/officeimg/Makhija/Makhija.JPG";
 import tradelinkImg from "/officeimg/Tradelink/tradelink1.jpg";
 import martathonIMg from "/officeimg/MarathonFuturex/marathon1.jpeg";
 
+import newPhoto1 from "/photo1.jpg";
+import newPhoto2 from "/photo2.jpg";
+import newPhoto3 from "/photo3.jpg";
+import newPhoto4 from "/photo4.jpg";
+import newPhoto5 from "/photo5.jpg";
+import newPhoto6 from "/photo6.jpeg";
+
 export const logo = logoImg;
 export const office_main = "";
 export const office_pic = office;
@@ -38,6 +45,13 @@ export const gallery9 = matulya4;
 export const gallery10 = MakhijaConf;
 export const gallery11 = tradelinkImg;
 export const gallery12 = martathonIMg;
+
+export const gallery13 = newPhoto1;
+export const gallery14 = newPhoto2;
+export const gallery15 = newPhoto3;
+export const gallery16 = newPhoto4;
+export const gallery17 = newPhoto5;
+export const gallery18 = newPhoto6;
 
 export const background2 = "https://www.603thecoworkingspace.com/#lg=1&slide=0";
 export const vid = "https://videos.files.wordpress.com/he8mF3Bd/about.mp4";

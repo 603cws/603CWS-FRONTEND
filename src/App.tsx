@@ -65,6 +65,7 @@ import PageNotFound from "./pages/PageNotFound";
 // import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 import ExitGuard from "./pages/popup/ExitPrompt";
 import WhatsappBtn from "./utils/WhatsappBtn";
+import RequestTour from "./components/Landing/RequestTour";
 // import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 
 function App() {
@@ -363,6 +364,7 @@ function App() {
       </Routes>
       {shouldShowPopup && a !== "true" && <Popupform />}
       {shouldShowWhatsappBtn && <WhatsappBtn />}
+      {shouldShowWhatsappBtn && <RequestTour />}
     </div>
   );
 }

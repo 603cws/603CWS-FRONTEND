@@ -152,6 +152,11 @@ const ContactUs = () => {
         </div>
 
         <div className="lg:w-1/2 lg:pl-12 mt-12 lg:mt-0 flex flex-col items-center lg:items-start">
+          <img
+            className="rounded-lg shadow-xl border border-gray-300"
+            src="/ContactUsKunal.jpg"
+            alt="Contact Us"
+          />
           {/* <img
             className="rounded-lg shadow-xl border border-gray-300"
             src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/1644091050845.jpg?resize=180%2C180&ssl=1"

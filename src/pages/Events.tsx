@@ -74,18 +74,18 @@ const eventsData = [
     detailedDescription:
       "HSBC Credit Cards visited 603 to provide coworkers with information on the rewards, cashback offers, and privileges of their credit cards. This session was designed to enhance financial literacy and promote smart financial management.",
   },
-  {
-    title: "Financial Investment Workshop with Kartik Parekh",
-    date: "July 2024",
-    time: "9:00 AM - 12:00 PM",
-    location: "603 The Coworking Space",
-    description:
-      "Kartik Parekh offers personalized financial advice to coworkers during an investment workshop.",
-    imageUrl:
-      "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/241373392_107866471637903_3192617419931596522_n.png?stp=dst-png_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=SKgF6ZQTbbMQ7kNvgECR-Ou&_nc_zt=23&_nc_ht=scontent.fdel28-1.fna&_nc_gid=Aw6tDY6mjz8EgYiADcwT-Ht&oh=00_AYA9Tj6a6BGGaMfM4NxZfWUrpKLWxvYXFSOeNV5KB_fD5A&oe=67285DE1",
-    detailedDescription:
-      "Renowned investment advisor Kartik Parekh conducted a comprehensive financial investment workshop, providing tailored advice to employees based on their unique financial situations. His insights helped attendees enhance their understanding of financial planning and strategies.",
-  },
+  // {
+  //   title: "Financial Investment Workshop with Kartik Parekh",
+  //   date: "July 2024",
+  //   time: "9:00 AM - 12:00 PM",
+  //   location: "603 The Coworking Space",
+  //   description:
+  //     "Kartik Parekh offers personalized financial advice to coworkers during an investment workshop.",
+  //   imageUrl:
+  //     "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/241373392_107866471637903_3192617419931596522_n.png?stp=dst-png_s960x960&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=SKgF6ZQTbbMQ7kNvgECR-Ou&_nc_zt=23&_nc_ht=scontent.fdel28-1.fna&_nc_gid=Aw6tDY6mjz8EgYiADcwT-Ht&oh=00_AYA9Tj6a6BGGaMfM4NxZfWUrpKLWxvYXFSOeNV5KB_fD5A&oe=67285DE1",
+  //   detailedDescription:
+  //     "Renowned investment advisor Kartik Parekh conducted a comprehensive financial investment workshop, providing tailored advice to employees based on their unique financial situations. His insights helped attendees enhance their understanding of financial planning and strategies.",
+  // },
   {
     title: "Ground Zero's Plant Desk Initiative",
     date: "August 2024",
@@ -98,18 +98,18 @@ const eventsData = [
     detailedDescription:
       "Ground Zero organized a thoughtful event where employees anonymously nominated coworkers to receive a plant for their desk. This initiative promoted a sense of appreciation and contributed to a greener, more pleasant workspace at 603.",
   },
-  {
-    title: "Mumbai Mum Tribe Entrepreneurial Panel",
-    date: "June 2024",
-    time: "4:00 PM - 6:00 PM",
-    location: "Amore Centre, Khar, Mumbai",
-    description:
-      "A panel session featuring prominent female entrepreneurs, fostering networking and collaboration.",
-    imageUrl:
-      "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/332940767_1856574414713647_1191539903949162969_n.png?stp=dst-jpg_s960x960&_nc_cat=100&ccb=1-7&_nc_sid=2285d6&_nc_ohc=eJgiwNkQw-MQ7kNvgEwNxQU&_nc_ht=scontent.fdel28-1.fna&oh=00_AYD3VUN_lhy5eV8eWUrpBs0QXLy_nEqUzwhtxC9xhjaewA&oe=66FCD32E",
-    detailedDescription:
-      "Mumbai Mum Tribe hosted a panel session at 603, where prominent female entrepreneurs shared their experiences and strategies for business growth. The event emphasized collaboration and mutual empowerment within the entrepreneurial ecosystem.",
-  },
+  // {
+  //   title: "Mumbai Mum Tribe Entrepreneurial Panel",
+  //   date: "June 2024",
+  //   time: "4:00 PM - 6:00 PM",
+  //   location: "Amore Centre, Khar, Mumbai",
+  //   description:
+  //     "A panel session featuring prominent female entrepreneurs, fostering networking and collaboration.",
+  //   imageUrl:
+  //     "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/332940767_1856574414713647_1191539903949162969_n.png?stp=dst-jpg_s960x960&_nc_cat=100&ccb=1-7&_nc_sid=2285d6&_nc_ohc=eJgiwNkQw-MQ7kNvgEwNxQU&_nc_ht=scontent.fdel28-1.fna&oh=00_AYD3VUN_lhy5eV8eWUrpBs0QXLy_nEqUzwhtxC9xhjaewA&oe=66FCD32E",
+  //   detailedDescription:
+  //     "Mumbai Mum Tribe hosted a panel session at 603, where prominent female entrepreneurs shared their experiences and strategies for business growth. The event emphasized collaboration and mutual empowerment within the entrepreneurial ecosystem.",
+  // },
   {
     title: "Artwala House Linocut Printing Workshop",
     date: "April 2024",
@@ -129,7 +129,8 @@ const eventsData = [
     location: "Matulya Centre, Lower Parel",
     description:
       "A lively marketplace event featuring small businesses showcasing their brands.",
-    imageUrl: "https://gunjevent.in/wp-content/uploads/2024/03/12-scaled.jpg",
+    imageUrl: "/GunjPopUpEvent.webp",
+    // imageUrl: "https://gunjevent.in/wp-content/uploads/2024/03/12-scaled.jpg",
     detailedDescription:
       "Gunj Pop-Up organized a vibrant marketplace at 603, bringing together small businesses and creating valuable exposure for their brands. Attendees enjoyed engaging with vendors and exploring a diverse range of offerings.",
   },
@@ -140,8 +141,9 @@ const eventsData = [
     location: "All 603 Locations",
     description:
       "The Health Factory promotes nutritional awareness by offering free samplings of their products.",
-    imageUrl:
-      "https://www.thehealthfactory.in/cdn/shop/articles/Kunal-_-Janhvi-Youtube.jpg?v=1708414412",
+    imageUrl: "/HealthFactorySharkTank.webp",
+    // imageUrl:
+    //   "https://www.thehealthfactory.in/cdn/shop/articles/Kunal-_-Janhvi-Youtube.jpg?v=1708414412",
     detailedDescription:
       "The Health Factory, a bread manufacturer featured on Shark Tank, launched a campaign at all 603 locations, offering free samples of their products and educating attendees on the health benefits of high-quality ingredients.",
   },
@@ -164,8 +166,9 @@ const eventsData = [
     location: "603 The Coworking Space",
     description:
       "An informative session on managing daily mental stress, promoting well-being and resilience.",
-    imageUrl:
-      "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/359366880_659247789557682_8084992839664851166_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=7nI98QFXPGQQ7kNvgEUukwP&_nc_ht=scontent.fdel28-1.fna&_nc_gid=ABE0Ub1YiFdxjZtvuniqnOS&oh=00_AYCGo8kYtIODjxWArKx0JiUxHK1WYHAVCqy_1xhKlPeOWw&oe=66FCAD38",
+    imageUrl: "/MentalHealthAwareness.png",
+    // imageUrl:
+    //   "https://scontent.fdel28-1.fna.fbcdn.net/v/t39.30808-6/359366880_659247789557682_8084992839664851166_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=7nI98QFXPGQQ7kNvgEUukwP&_nc_ht=scontent.fdel28-1.fna&_nc_gid=ABE0Ub1YiFdxjZtvuniqnOS&oh=00_AYCGo8kYtIODjxWArKx0JiUxHK1WYHAVCqy_1xhKlPeOWw&oe=66FCAD38",
     detailedDescription:
       "Mending Mind conducted a mental health awareness session at 603, focusing on strategies for managing daily mental stress. The event promoted mental wellness and resilience, contributing to a healthier work environment.",
   },
@@ -186,7 +189,7 @@ function Events() {
     setSelectedEvent(null);
   };
 
-  const openFormModal = () => setIsFormOpen(true);
+  // const openFormModal = () => setIsFormOpen(true);
   const closeFormModal = () => setIsFormOpen(false);
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -210,7 +213,7 @@ function Events() {
             professionals.
           </p>
         </section>
-        <section className="bg-gray-100 py-12 text-center">
+        {/* <section className="bg-gray-100 py-12 text-center">
           <h2 className="text-4xl font-bold text-gray-800">Host Your Event!</h2>
           <p className="text-xl text-gray-600 mt-4">
             Interested in conducting your event? Submit your details here.
@@ -221,7 +224,7 @@ function Events() {
           >
             Conduct an Event
           </button>
-        </section>
+        </section> */}
 
         {/* Events Section */}
         <section className="max-w-7xl mx-auto py-16 px-4">

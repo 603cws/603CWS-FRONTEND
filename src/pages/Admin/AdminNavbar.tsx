@@ -179,7 +179,7 @@ function AdminDashNavbar() {
               style={closeButtonStyle}
               onClick={() => setIsSideWindowOpen(false)}
             />
-            <div
+            {/* <div
               style={sideLinkStyle}
               onMouseOver={(e) =>
                 (e.currentTarget.style.backgroundColor = "#f0f0f0")
@@ -201,7 +201,7 @@ function AdminDashNavbar() {
               onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "")}
             >
               Contact Us
-            </div>
+            </div> */}
             <div
               style={sideLinkStyle}
               onMouseOver={(e) =>
@@ -227,7 +227,7 @@ function AdminDashNavbar() {
           >
             <h1>Create Coupon</h1>
           </div>
-          <div>KYC Requests</div>
+          {/* <div>KYC Requests</div> */}
           <div
             className="cursor-pointer"
             onClick={() => navigate("/admin/allbookings")}
