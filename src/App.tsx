@@ -64,6 +64,7 @@ import OnlineBookings from "./pages/Admin/Onlinebookings";
 import PageNotFound from "./pages/PageNotFound";
 // import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 import ExitGuard from "./pages/popup/ExitPrompt";
+import WhatsappBtn from "./utils/WhatsappBtn";
 // import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 
 function App() {
@@ -102,6 +103,30 @@ function App() {
     "/603Interior",
     "/kycform",
   ];
+  const noWhatsappPopupRoutes = [
+    "/admin/dashboard",
+    "/admin/login",
+    "/admin/createacc",
+    "/admin/edituser/:id",
+    "/dashboard",
+    "/dashboard/Myprofile",
+    "/dashboard/Transactions",
+    "/login",
+    "/Register",
+    "/admin/userinfo/:user",
+    "/admin/alluserinfo",
+    "/admin/allbookings",
+    "/admin/onlinebookings",
+    "/admin/edituser/:id",
+    "/forgotPassword",
+    "/changepassword/:id",
+    "/confirmpayment",
+    "/payment",
+    "/booknow/:id",
+    "/RegisterUser",
+    "/603Interior",
+    "/kycform",
+  ];
 
   const matchDynamicRoute = (route: any, path: any) => {
     const routeRegex = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
@@ -113,6 +138,9 @@ function App() {
   }, [refreshAuth]);
 
   const shouldShowPopup = !noPopupRoutes.some((route) =>
+    matchDynamicRoute(route, location.pathname),
+  );
+  const shouldShowWhatsappBtn = !noWhatsappPopupRoutes.some((route) =>
     matchDynamicRoute(route, location.pathname),
   );
 
@@ -236,7 +264,7 @@ function App() {
             <Route path="/forgotPassword" element={<Forgot />} />
             <Route path="/changepassword/:id" element={<Changepassword />} />
             <Route path="/blogs" element={<Blogs />} />
-            <Route path="/blogs" element={<Blogs />} />
+            {/* <Route path="/blogs" element={<Blogs />} /> */}
             <Route path="/blogs/:title" element={<BlogDetail />} />
             <Route path="/membership-plans" element={<Membership />} />
             <Route path="/career" element={<Career />} />
@@ -334,6 +362,7 @@ function App() {
         )}
       </Routes>
       {shouldShowPopup && a !== "true" && <Popupform />}
+      {shouldShowWhatsappBtn && <WhatsappBtn />}
     </div>
   );
 }

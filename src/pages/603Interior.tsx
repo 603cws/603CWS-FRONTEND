@@ -39,19 +39,8 @@ const Webpage = () => {
           phone: mobileNo,
           company: companyName,
           message,
-        }
+        },
       );
-      // const response = await axios.post(
-      //   `${PORT}/api/v1/users/contactusInterior`,
-      //   {
-      //     name,
-      //     email,
-      //     phone: mobileNo,
-      //     company: companyName,
-      //     message,
-      //   },
-      //   { withCredentials: true }
-      // );
 
       if (response.status === 200) {
         toast.success("form submitted succesfully");
@@ -70,12 +59,10 @@ const Webpage = () => {
   };
   return (
     <div className="font-sans">
-      {/* Navbar Section */}
       <header className="bg-white shadow-lg z-50 relative">
         <Navbar />
       </header>
 
-      {/* Hero Section */}
       <div className="pt-16">
         <section
           className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
@@ -84,19 +71,17 @@ const Webpage = () => {
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-10">
             <h1 className="uppercase text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-              603 Interiors
+              Workved Interior
             </h1>
-            {/* <p className="text-lg text-gray-200 mt-4">by 603</p> */}
           </div>
         </section>
       </div>
 
       <div>
-        <section className="flex m-5 p-10 gap-10">
+        <section className="flex-col lg:flex-row flex m-5 lg:p-10 gap-10">
           {/* form section */}
           <div className="flex-1">
-            <div className="px-10 bg-[#F2C66D] rounded-3xl">
-              {/* text */}
+            <div className="px-4 lg:px-10 bg-[#F2C66D] rounded-3xl">
               <div className="font-Poppins font-semibold py-3">
                 <p className=" text-[#1A3A36] font-semibold">Get in Touch!</p>
                 <img src="/serviceIcon.png" alt="service icon" />
@@ -107,8 +92,7 @@ const Webpage = () => {
                   Here’s how you can reach us.
                 </h5>
               </div>
-              {/* form part */}
-              <div className="font-Poppins pl-2">
+              <div className="font-Poppins lg:pl-2">
                 <form onSubmit={handleformSubmit} className="">
                   <div className="mb-2 flex flex-col gap-2">
                     <label className="font-semibold text-white ">Name*</label>
@@ -142,7 +126,7 @@ const Webpage = () => {
                       required
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      //   placeholder="John Doe"
+                      placeholder="Your Company Name"
                     />
                   </div>
                   <div className="mb-2 flex flex-col gap-2">
@@ -214,12 +198,6 @@ const Webpage = () => {
           {/* div for gif and text */}
           <div className="flex-1 flex flex-col justify-center items-center gap-3">
             <div>
-              {/* <img
-                src="/Chatbot.gif"
-                alt="gif for animation"
-                className="object-contain object-center"
-              /> */}
-
               <h2 className="text-center lg:text-3xl sm:text-lg pb-10 uppercase font-semibold">
                 Design Your Dream Office Space
               </h2>
@@ -256,8 +234,8 @@ const Webpage = () => {
               </div>
 
               <p className="text-center pt-10 text-lg">
-                603 Interiors is an online platform that empowers businesses to
-                design and furnish their ideal office spaces. Our intuitive
+                Workved Interior is an online platform that empowers businesses
+                to design and furnish their ideal office spaces. Our intuitive
                 interface guides you through selecting your desired workspace,
                 customizing it with a wide range of furniture, flooring, and
                 finishes, and instantly generates a detailed cost estimate and
@@ -269,7 +247,7 @@ const Webpage = () => {
                 onClick={handleButtonClick}
                 className="bg-[#F2C66D] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase rounded-lg hover:bg-[#1A3A36] hover:text-[#f4f4f4]"
               >
-                visit 603 Interior
+                visit Workved Interior
               </button>
             </div>
           </div>

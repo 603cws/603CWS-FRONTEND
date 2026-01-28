@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-stone-900 to-stone-800  text-gray-300 py-8 px-5 ">
       {/* <div className="container mx-auto max-h-9 px-6 lg:px-16"> */}
-      <div className="container mx-auto px-6 lg:px-16">
+      <div className="container mx-auto md:px-6 lg:px-16">
         {/* 3-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Logo and Description */}
@@ -132,7 +132,7 @@ const Footer = () => {
 
           {/* Contact Section */}
           <div className="space-y-6">
-            <h3 className=" font-semibold text-base">Get in Touch</h3>
+            <h3 className="font-semibold text-base">Get in Touch</h3>
             <div className="flex flex-col space-y-2 text-sm">
               {/* <div className="flex items-center gap-2">
                 <FaEnvelope className="text-yellow-400" />
@@ -173,7 +173,7 @@ const Footer = () => {
             </div>
 
             {/* Social Media Links */}
-            <div className="flex space-x-4 text-sm">
+            <div className="flex space-x-4 text-sm pb-4 sm:pb-0">
               <a
                 href="https://www.facebook.com/603coworking"
                 target="_blank"

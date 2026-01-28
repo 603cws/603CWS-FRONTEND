@@ -93,6 +93,7 @@ const Navbar = () => {
         // className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10  "
         className=" bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
       >
+        {/* mobile version  */}
         <div>
           <div className="dropdown ">
             <div
@@ -164,7 +165,7 @@ const Navbar = () => {
                     onMouseLeave={() => {
                       timeoutId = setTimeout(
                         () => setMumbaiDropdownVisible(false),
-                        1000
+                        1000,
                       );
                     }}
                   >
@@ -188,14 +189,6 @@ const Navbar = () => {
                           Matulya Centre, Lower Parel
                         </button>
                       </li>
-                      {/*
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300 ">
-                        <button className="text-base" onClick={() => { navigate("/locations/Marathon") }}>
-                          Marathon, Lower Parel
-                        </button>
-                      </li>
-                       */}
-
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
@@ -246,14 +239,6 @@ const Navbar = () => {
                           Makhija Archade, Bandra
                         </button>
                       </li>
-                      {/*
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button className="text-base" onClick={() => { navigate("/locations/MIDC") }}>
-                          MIDC, Andheri
-                        </button>
-                      </li>
-                       */}
-
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
@@ -317,7 +302,7 @@ const Navbar = () => {
                     onMouseLeave={() => {
                       timeoutId = setTimeout(
                         () => setNaviMumbaiDropdownVisible(false),
-                        1000
+                        1000,
                       );
                     }}
                   >
@@ -353,42 +338,6 @@ const Navbar = () => {
                       </li>
                     </ul>
                   </li>
-                  {/*<li
-                    className="relative group border-b border-gray-300"
-                    onMouseEnter={() => {
-                      clearTimeout(timeoutId);
-                      setBangaloreDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setNaviMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
-                    }}
-                    onMouseLeave={() => {
-                      timeoutId = setTimeout(() => setBangaloreDropdownVisible(false), 1000);
-                    }}
-                  >
-                    <summary className="py-2 hover:text-yellow-500 border-2 border-transparent text-base">
-                      Bangalore
-                    </summary>
-
-                    <ul
-                      className={`p-2 w-60 absolute left-10 top-0 ml-2 bg-white shadow-lg rounded z-50 transition-all duration-200 ${isBangaloreDropdownVisible
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
-                        } overflow-y-auto max-h-60`}
-                    >
-                      <li className="py-2 hover:text-yellow-500">
-                        <button className="text-base"
-                          onClick={() => {
-                          
-                            navigate("/locations/Diamond-District")
-                          }}
-                        >
-                          Diamond District, Domlar
-                        </button>
-
-                    </ul>
-                  </li>*/}
-
                   <li
                     className="relative group"
                     onMouseEnter={() => {
@@ -400,7 +349,7 @@ const Navbar = () => {
                     onMouseLeave={() => {
                       timeoutId = setTimeout(
                         () => setAhmedabadDropdownVisible(false),
-                        1000
+                        1000,
                       );
                     }}
                   >
@@ -449,14 +398,6 @@ const Navbar = () => {
                   >
                     Managed Space Solutions
                   </div>
-                  {/* <div
-                    className="text-base"
-                    onClick={() => {
-                      navigate("/managed_space_solutions");
-                    }}
-                  >
-                    Workzone
-                  </div> */}
                   <div
                     style={{
                       backgroundColor: "#f0f0f0",
@@ -512,16 +453,6 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              {/* <li className="border-b-[1px] border-gray-300 py-1">
-                <button
-                  className="text-base"
-                  onClick={() => {
-                    navigate("/partner-with-us");
-                  }}
-                >
-                  Partner with us
-                </button>
-              </li> */}
               <li className="border-b-[1px] border-gray-300 py-1">
                 <button
                   className="text-base"
@@ -529,10 +460,10 @@ const Navbar = () => {
                     navigate("/partner-with-us");
                   }}
                 >
-                  Collaborate
+                  Partners
                 </button>
               </li>
-              <li className="py-1">
+              <li className="border-b-[1px] border-gray-300 py-1">
                 <button
                   className="text-base"
                   onClick={() => {
@@ -542,24 +473,24 @@ const Navbar = () => {
                   Contact Us
                 </button>
               </li>
-              <li>
+              <li className="border-b-[1px] border-gray-300 py-1">
                 <button
                   onClick={() => {
                     navigate("/603villa");
                   }}
-                  className="hover:underline"
+                  className="text-base hover:underline"
                 >
                   603 Villas
                 </button>
               </li>
-              <li>
+              <li className=" py-1">
                 <button
                   onClick={() => {
                     navigate("/603Interior");
                   }}
-                  className="hover:underline"
+                  className="text-base hover:underline"
                 >
-                  603 Interior
+                  Workved Interior
                 </button>
               </li>
             </ul>
@@ -572,7 +503,7 @@ const Navbar = () => {
             <img src={logo} className="h-15 w-40" />
           </button>
         </div>
-
+        {/* desktop version */}
         <div className="navbar-center hidden lg:flex lg:justify-between">
           {/* <ul className="menu menu-horizontal"> */}
           <ul className="flex items-center gap-5 text-sm">
@@ -586,7 +517,7 @@ const Navbar = () => {
               onMouseLeave={() => {
                 timeoutId = setTimeout(
                   () => setLocationsDropdownVisible(false),
-                  7000
+                  7000,
                 );
               }}
               // className="relative group  hover:bg-blue-500 active:bg-green-500"
@@ -613,273 +544,139 @@ const Navbar = () => {
                       : "opacity-0 invisible"
                   }`}
                 >
-                  <li
-                    className="relative group border-b border-gray-300"
-                    onMouseEnter={() => {
-                      setMumbaiDropdownVisible(true);
-                      setNaviMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
-                    }}
-                  >
-                    <summary
-                      className="py-2 hover:text-yellow-500 border-2 border-transparent"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setMumbaiDropdownVisible(!isMumbaiDropdownVisible);
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Matulya-Centre");
                       }}
                     >
-                      Mumbai
-                    </summary>
-                    <ul
-                      className={`p-2 w-60 absolute left-[80%] top-0 bg-white shadow-lg rounded-lg z-50 transition-opacity duration-300 ease-in-out ${
-                        isMumbaiDropdownVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } overflow-y-auto max-h-96`}
-                    >
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Matulya-Centre");
-                          }}
-                        >
-                          Matulya Centre, Lower Parel
-                        </button>
-                      </li>
-                      {/*
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button onClick={() => { navigate("/locations/Marathon") }}>
-                          Marathon, Lower Parel
-                        </button>
-                      </li>
-                       */}
-
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Sun-Mill-Compound");
-                          }}
-                        >
-                          Sun Mill Compound, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Kamala-Mills");
-                          }}
-                        >
-                          Kamala Mills, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Sunshine-Tower");
-                          }}
-                        >
-                          Sunshine Tower, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Amore-Centre");
-                          }}
-                        >
-                          Amore Centre, Khar
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Makhija-Archade");
-                          }}
-                        >
-                          Makhija Archade, Bandra
-                        </button>
-                      </li>
-                      {/*
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button onClick={() => { navigate("/locations/MIDC") }}>
-                          MIDC, Andheri
-                        </button>
-                      </li>
-                       */}
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Pinnacle-Corporate-Park");
-                          }}
-                        >
-                          Pinnacle Corporate Park, BKC
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Pentagon-Classic");
-                          }}
-                        >
-                          Classic Pentagon,Andheri
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
-                        <button
-                          // className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Lawyers-Chamber");
-                          }}
-                        >
-                          Lawyers Chamber,Fort
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
-                        <button
-                          // className="text-base"
-                          onClick={() => {
-                            navigate("/locations/TradeLink");
-                          }}
-                        >
-                          Trade Link ,Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
-                        <button
-                          // className="text-base"
-                          onClick={() => {
-                            navigate("/locations/MarathonFuturex");
-                          }}
-                        >
-                          Marathon Futurex ,Lower Parel
-                        </button>
-                      </li>
-                    </ul>
+                      Matulya Centre, Lower Parel
+                    </button>
                   </li>
-                  <li
-                    className="relative group border-b border-gray-300"
-                    onMouseEnter={() => {
-                      setNaviMumbaiDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
-                    }}
-                  >
-                    <summary
-                      className="py-2 hover:text-yellow-500 border-2 border-transparent"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setNaviMumbaiDropdownVisible(
-                          !isNaviMumbaiDropdownVisible
-                        );
-                      }}
-                    >
-                      Navi Mumbai
-                    </summary>
-                    <ul
-                      className={`p-2 w-60 absolute left-[80%] top-0 bg-white shadow-lg rounded-lg z-50 transition-opacity duration-300 ease-in-out ${
-                        isNaviMumbaiDropdownVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } overflow-y-auto max-h-96`}
-                    >
-                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Millenium-Business-Park");
-                          }}
-                        >
-                          Millenium Business Park
-                        </button>
-                      </li>
-                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Technocity");
-                          }}
-                        >
-                          Technocity
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                  {/*
-                  <li
-                    className="relative group border-b border-gray-300"
-                    onMouseEnter={() => {
-                      setBangaloreDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setNaviMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
-                    }}
-                  ><summary
-                      className="py-2 hover:text-yellow-500 border-2 border-transparent"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setBangaloreDropdownVisible(!isBangaloreDropdownVisible);
-                      }}
-                    >
-                      Bangalore
-                    </summary>
-                    <ul
-                      className={`p-2 w-60 absolute left-[80%] top-0 bg-white shadow-lg rounded-lg z-50 transition-opacity duration-300 ease-in-out ${isBangaloreDropdownVisible ? "opacity-100 visible" : "opacity-0 invisible"
-                        } overflow-y-auto max-h-96`}
-                    >
-                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
-                        <button
-                          onClick={() => {
 
-                            navigate("/locations/Diamond-District");
-                          }}
-                        >
-                          Diamond District, Domlar
-                        </button>
-                      </li>
-                      
-                    </ul>
-                  </li>*/}
-                  <li
-                    className="relative group"
-                    onMouseEnter={() => {
-                      clearTimeout(timeoutId);
-                      setAhmedabadDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setNaviMumbaiDropdownVisible(false);
-                    }}
-                    onMouseLeave={() => {
-                      timeoutId = setTimeout(
-                        () => setAhmedabadDropdownVisible(false),
-                        1000
-                      );
-                    }}
-                  >
-                    <summary
-                      className="py-2 hover:text-yellow-500 border-2 border-transparent"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setAhmedabadDropdownVisible(
-                          !isAhmedabadDropdownVisible
-                        );
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() => {
+                        navigate("/locations/Sun-Mill-Compound");
                       }}
                     >
-                      Ahmedabad
-                    </summary>
-                    <ul
-                      className={`p-2 w-60 absolute left-[80%] top-0 bg-white shadow-lg rounded-lg z-50 transition-opacity duration-300 ease-in-out ${
-                        isAhmedabadDropdownVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } overflow-y-auto max-h-96`}
+                      Sun Mill Compound, Lower Parel
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Kamala-Mills");
+                      }}
                     >
-                      <li className="py-2 px-4 hover:bg-gray-100 hover:text-yellow-500">
-                        <button
-                          onClick={() => {
-                            navigate("/locations/Navratna-Corporate-Park");
-                          }}
-                        >
-                          Navratna Corporate Park, Ahmedabad
-                        </button>
-                      </li>
-                    </ul>
+                      Kamala Mills, Lower Parel
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Sunshine-Tower");
+                      }}
+                    >
+                      Sunshine Tower, Lower Parel
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Amore-Centre");
+                      }}
+                    >
+                      Amore Centre, Khar
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Makhija-Archade");
+                      }}
+                    >
+                      Makhija Archade, Bandra
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Pinnacle-Corporate-Park");
+                      }}
+                    >
+                      Pinnacle Corporate Park, BKC
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Pentagon-Classic");
+                      }}
+                    >
+                      Classic Pentagon,Andheri
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
+                    <button
+                      // className="text-base"
+                      onClick={() => {
+                        navigate("/locations/Lawyers-Chamber");
+                      }}
+                    >
+                      Lawyers Chamber,Fort
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
+                    <button
+                      // className="text-base"
+                      onClick={() => {
+                        navigate("/locations/TradeLink");
+                      }}
+                    >
+                      Trade Link ,Lower Parel
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300  ">
+                    <button
+                      // className="text-base"
+                      className="text-left block whitespace-normal"
+                      onClick={() => {
+                        navigate("/locations/MarathonFuturex");
+                      }}
+                    >
+                      Marathon Futurex ,Lower Parel
+                    </button>
+                  </li>
+                  <li className="py-2   hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() => {
+                        navigate("/locations/Millenium-Business-Park");
+                      }}
+                    >
+                      Millenium Business Park
+                    </button>
+                  </li>
+                  <li className="py-2   hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => {
+                        navigate("/locations/Technocity");
+                      }}
+                    >
+                      Technocity
+                    </button>
+                  </li>
+                  <li className="py-2  hover:text-yellow-500 text-left">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() => {
+                        navigate("/locations/Navratna-Corporate-Park");
+                      }}
+                    >
+                      Navratna Corporate Park, Ahmedabad
+                    </button>
                   </li>
                 </ul>
               )}
@@ -903,7 +700,7 @@ const Navbar = () => {
               onMouseLeave={() => {
                 timeoutId = setTimeout(
                   () => setManagedSpaceDropdownVisible(false),
-                  2000
+                  2000,
                 );
               }}
               className="relative group"
@@ -913,17 +710,10 @@ const Navbar = () => {
                 onMouseLeave={() => setIsHovered(false)} // Set hover state to false when mouse leaves
                 onClick={() => navigate("/managed_space_solutions")}
                 className="flex items-center cursor-pointer py-2 hover:underline "
-                // className="cursor-pointer py-2 hover:underline border-2 border-transparent"
               >
                 Managed Space Solutions
                 {isHovered ? <FaAngleUp /> : <FaAngleDown />}
               </summary>
-              {/* <summary
-                onClick={() => navigate("/managed_space_solutions")}
-                className="cursor-pointer py-2 hover:text-yellow-500 border-2 border-transparent"
-              >
-                Workzone
-              </summary> */}
               <ul
                 className={`p-2 w-60 absolute  bg-white shadow-lg rounded-lg transition-opacity duration-300 ease-in-out z-50 ${
                   isManagedSpaceDropdownVisible
@@ -960,15 +750,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-            {/* <li>
-              <button
-                onClick={() => {
-                  navigate("/partner-with-us");
-                }}
-              >
-                Partner with us
-              </button>
-            </li> */}
             <li>
               <button
                 onClick={() => {
@@ -976,7 +757,7 @@ const Navbar = () => {
                 }}
                 className="hover:underline"
               >
-                Collaborate
+                Partners
               </button>
             </li>
             <li>
@@ -998,30 +779,24 @@ const Navbar = () => {
               >
                 603 Villas
               </button>
-              {/* <span className="absolute -top-2  text-red-500">New</span> */}
             </li>
-            <li className="relative pl-5">
+            <li className="relative">
               <button
                 onClick={() => {
                   navigate("/603Interior");
                 }}
                 className="font-bold hover:underline "
               >
-                603 Interior
+                Workved Interior
               </button>
               <span className="absolute -top-2  text-red-500">New</span>
             </li>
           </ul>
         </div>
 
+        {/* login part  */}
         <div className="w-full flex justify-end gap-2">
           {isAuthenticated ? (
-            // <button
-            //   className="btn bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-600 rounded-full hover:text-gray-600 text-white font-bold py-1 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102 flex items-center space-x-2 sm:space-x-1"
-            //   onClick={() => (window.location.href = "tel:+919136036603")}
-            // >
-            //   <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
-            // </button>
             <span
               onClick={() => (window.location.href = "tel:+919136036603")}
               className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center "
@@ -1030,15 +805,8 @@ const Navbar = () => {
               {windowWidth > 450 && "+91-9136036603"}
             </span>
           ) : (
-            path != "/login" && (
-              // <button
-              //   className=" bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-600 rounded-full hover:text-gray-600 text-white font-bold py-1 sm:py-1 px-4 sm:px-4 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102 flex items-center space-x-2 sm:space-x-1"
-              //   onClick={() => (window.location.href = "tel:+919136036603")}
-              // >
-              //   <IoIosCall className="h-6 w-5 sm:h-4 sm:w-4" />
-              //   <span className="hidden sm:inline ">+91-9136036603</span>
-              // </button>
-
+            path != "/login" &&
+            path != "/admin/login" && (
               <span className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center ">
                 <FaPhoneAlt />
                 {windowWidth > 450 && "+91-9136036603"}
@@ -1048,39 +816,22 @@ const Navbar = () => {
           {isAuthenticated && (
             <button
               onClick={logout}
-              // className="btn rounded-full w-24 sm:w-28 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-500 text-white hover:text-gray-600 font-bold py-1 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102"
               className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5"
             >
               logout
             </button>
           )}
           {isAuthenticated ? (
-            // <button
-            //   onClick={() => {
-            //     navigate("/dashboard");
-            //   }}
-            //   className="btn rounded-full w-24 sm:w-28 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-500 text-white hover:text-gray-600 font-bold py-1 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102"
-            // >
-            //   Dashboard
-            // </button>
             <button
               onClick={() => {
                 navigate("/dashboard");
               }}
-              // className=""
             >
               <FaRegUser size={25} />
             </button>
           ) : (
-            path != "/login" && (
-              // <button
-              //   onClick={() => {
-              //     navigate("/login");
-              //   }}
-              //   className="btn rounded-full w-24 sm:w-28 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:bg-yellow-500 text-white hover:text-gray-600 font-bold py-1 sm:py-1 px-4 sm:px-2 text-sm sm:text-xs shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-102"
-              // >
-              //   Login
-              // </button>
+            path != "/login" &&
+            path != "/admin/login" && (
               <button
                 onClick={() => {
                   navigate("/login");

@@ -565,7 +565,7 @@ function Landing() {
         <h2 className=" bg-text-base md:text-lg lg:text-lg  font-bold text-gray-900 mb-6 md:mb-8">
           The Rise of Coworking:
         </h2>
-        <ul className="list-disc pl-6 space-y-4 md:space-y-6 text-gray-800 mx-auto text-sm">
+        <ul className="list-disc sm:pl-6 space-y-4 md:space-y-6 text-gray-800 mx-auto text-sm">
           <li className="flex flex-col md:flex-row md:items-start">
             <span className="font-bold mr-2">Revolutionary Concept:</span>
             <p>

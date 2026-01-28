@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import blogsData from "./BlogsData"; // Adjust the import based on your file structure
 import Navbar from "../../components/Navbar/navbar";
 import Footer from "../../components/Footer/footer";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 interface Blog {
   title: string;
@@ -22,7 +23,7 @@ const BlogDetail: React.FC = () => {
     if (title) {
       const decodedTitle = decodeURIComponent(title.replace(/_/g, " ")); // Decode the category
       const foundBlog = blogsData.find(
-        (blog) => blog.title === decodedTitle && blog.title.replace(/\s/g, "_")
+        (blog) => blog.title === decodedTitle && blog.title.replace(/\s/g, "_"),
       ); // Find the blog based on category and title
       setBlog(foundBlog || null);
     }
@@ -37,18 +38,17 @@ const BlogDetail: React.FC = () => {
       <div>
         <Navbar />
       </div>
-      {/* <div className="min-h-screen w-full bg-gray-50"> */}
       <div className="h-screen w-full bg-gray-50">
-        {/* <div style={{ zIndex: 20, position: "relative" }}>
-     
-                <Navbar />
-            </div> */}
-        {/* <div className="max-w-4xl mx-auto mt-20 my-12 p-8 shadow-sm rounded-lg"> */}
         <div className="max-w-4xl mx-auto p-8 shadow-sm rounded-lg">
           <div className="mt-20 my-12">
-            <h1 className="text-3xl font-semibold text-gray-800 mb-4">
-              {blog.title}
-            </h1>
+            <div className="flex items-center gap-4">
+              <button onClick={() => navigate(-1)}>
+                <IoArrowBackCircleOutline size={28} />
+              </button>
+              <h1 className="text-xl lg:text-3xl font-semibold text-gray-800 ">
+                {blog.title}
+              </h1>
+            </div>
             <br />
             <img
               src={blog.image}
@@ -85,17 +85,17 @@ const BlogDetail: React.FC = () => {
                   .filter(
                     (relatedBlog) =>
                       relatedBlog.category === blog.category &&
-                      relatedBlog.title !== blog.title
+                      relatedBlog.title !== blog.title,
                   )
                   .slice(0, 3)
                   .map((relatedBlog, index) => (
                     <div
                       key={index}
-                      className="bg-white shadow-md rounded-lg p-4"
+                      className="bg-white shadow-md rounded-lg p-4 cursor-pointer"
                       onClick={() => {
                         navigate("/blogs");
                         navigate(
-                          `/blogs/${relatedBlog.title.replace(/\s/g, "_")}`
+                          `/blogs/${relatedBlog.title.replace(/\s/g, "_")}`,
                         );
                       }}
                     >

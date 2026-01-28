@@ -28,6 +28,7 @@ const CreateCouponModal: React.FC<CreateUserModalProps> = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       const response = await axiosInstance.post(`/api/v1/coupon/createcoupon`, {
         code,
