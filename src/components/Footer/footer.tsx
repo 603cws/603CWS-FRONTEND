@@ -214,8 +214,8 @@ const Footer = () => {
       {/* Bottom section */}
       {/* <div className="bg-stone-800 text-gray-400 text-center py-4 mt-8"> */}
       <div className="bg-stone-800 text-gray-400 text-center py-1 mt-2">
-        <p>&copy; 2024 ,603 The Coworking Space.</p>
-        <p> Workved spaces pvt ltd. All Rights Reserved.</p>
+        <p>&copy; {new Date().getFullYear()}, 603 The Coworking Space.</p>
+        <p> Workved Spaces Pvt Ltd. All Rights Reserved.</p>
       </div>
     </footer>
   );

@@ -1,3 +1,4 @@
+@import url("https://unpkg.com/leaflet/dist/leaflet.css");
 @import url("https://fonts.googleapis.com/css2?family=Convergence&family=Noto+Color+Emoji&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss/tailwind.css";
 @tailwind base;
@@ -18,7 +19,6 @@ body,
   height: 100%;
   width: 100%;
 }
-
 
 /* .glass {
   background: rgba(255, 255, 255, 0.1);
@@ -75,8 +75,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
-
-.layout-container{
+.layout-container {
   box-sizing: border-box;
   width: 100vw;
   /* height: 100vh; */
@@ -86,9 +85,7 @@ html {
   padding: 5%;
 }
 
-
-
-.box{
+.box {
   display: grid;
   /* grid-template-columns: repeat(3, 1fr); 3 equal-width columns */
   grid-template-rows: repeat(1fr); /* 2 equal-height rows */
@@ -99,8 +96,7 @@ html {
   border-radius: 30px;
 }
 
-
-.box-child{
+.box-child {
   /* background-color: #3498db; Background color for child divs */
   padding: 20px; /* Padding inside the child divs */
   border: 2px solid gray;
@@ -110,7 +106,7 @@ html {
   font-size: 18px; /* Font size for text */
   /* display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
-  /* grid-template-rows: repeat(2, 1fr); 2 equal-height rows */ 
+  /* grid-template-rows: repeat(2, 1fr); 2 equal-height rows */
   /* gap: 20px; Space between grid items */
   display: flex;
   justify-content: space-around;
@@ -122,7 +118,7 @@ html {
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   font-size: 14px;
   text-align: center;
   border-radius: 4px;
@@ -130,7 +126,7 @@ html {
   color: #555;
   cursor: pointer;
 }
-.seat:hover{
+.seat:hover {
   background: green;
   color: white;
 }
@@ -151,7 +147,6 @@ html {
   margin: 10px 0;
 }
 
-
 .seat.available {
   border: 1px solid green;
   cursor: pointer;
@@ -167,7 +162,7 @@ html {
   opacity: 0.6;
   cursor: not-allowed;
 }
-.book-tour-btn{
+.book-tour-btn {
   position: fixed;
   right: -40px;
   top: 50%;
