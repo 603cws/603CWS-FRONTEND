@@ -7,7 +7,7 @@ import {
   photo3,
   gallery6,
 } from "../utils/Landing/Landing";
-import { Twopeoplesitting, Flexiblepo } from "../utils/Landing/Svg";
+import { Twopeoplesitting } from "../utils/Landing/Svg";
 import {
   FaWifi,
   FaPowerOff,
@@ -669,56 +669,32 @@ function Landing() {
       </div>
 
       {/*<Random />*/}
-      <section className="px-6 py-10  bg-gray-100 flex flex-col items-center bg-gradient-to-r from-blue-200 to-yellow-100">
-        <h2 className=" bg-text-base md:text-lg lg:text-lg  font-bold text-gray-900 mb-6 md:mb-8">
-          The Rise of Coworking:
+      <section className="relative overflow-hidden bg-gradient-to-r from-blue-200 to-yellow-100 py-10">
+        <h2 className="text-center text-lg font-bold text-gray-900 mb-6">
+          The Rise of Coworking
         </h2>
-        <ul className="list-disc sm:pl-6 space-y-4 md:space-y-6 text-gray-800 mx-auto text-sm">
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Revolutionary Concept:</span>
-            <p>
-              Coworking spaces are gaining popularity over traditional offices
-              due to flexibility, collaboration, and a dynamic work environment.
-            </p>
-          </li>
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Diverse Clientele:</span>
-            <p>
-              Our coworking spaces cater to freelancers, startups, and
-              established businesses, offering an ecosystem that fosters
-              innovation and productivity.
-            </p>
-          </li>
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Strategic Locations:</span>
-            <p>
-              Positioned in business districts of Mumbai and Thane, reducing
-              commute times and increasing efficiency.
-            </p>
-          </li>
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Collaborative Community:</span>
-            <p>
-              Spaces bring together professionals from various industries,
-              encouraging knowledge exchange and collaboration through
-              networking events and communal areas.
-            </p>
-          </li>
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Flexible Plans:</span>
-            <p>
-              Options range from hot desking to private offices, allowing
-              businesses to scale their workspace according to their needs.
-            </p>
-          </li>
-          <li className="flex flex-col md:flex-row md:items-start">
-            <span className="font-bold mr-2">Enhanced Amenities:</span>
-            <p>
-              High-speed internet, modern meeting rooms, game rooms, ergonomic
-              furniture, and fully-equipped kitchens are standard offerings.
-            </p>
-          </li>
-        </ul>
+
+        <div className="w-full overflow-hidden">
+          <div className="flex w-max animate-ticker hover:[animation-play-state:paused]">
+            {/* Render twice for seamless ticker */}
+            {[0, 1].map((_, duplicateIndex) => (
+              <div
+                key={duplicateIndex}
+                className="flex gap-16 px-8 whitespace-nowrap"
+              >
+                {tickerItems.map((item, index) => (
+                  <div
+                    key={`${duplicateIndex}-${index}`}
+                    className="flex items-center gap-2 text-sm text-gray-800"
+                  >
+                    <span className="font-bold">{item.title}:</span>
+                    <span>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <Footer />
