@@ -44,10 +44,10 @@ const coworkingLocations = [
   {
     id: 6,
     name: "Bandra - Makhija Arcade",
-    lat: 19.065411,
-    lng: 72.834966,
+    lat: 19.0651497,
+    lng: 72.8350928,
     image: "/officeimg/Makhija/Makhija.JPG",
-    url: "https://www.google.com/maps/place/Makhija+Arcade/@19.065411,72.834966,16z/data=!4m6!3m5!1s0x3be7c911698fff91:0x1f2d87a146cbbbc2!8m2!3d19.0654111!4d72.8349656!16s%2Fg%2F11c37ptfd8?hl=en&entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D",
+    url: "https://www.google.com/maps/place/Makhija+Arcade,+35th+Rd,+Khar,+Khar+West,+Mumbai,+Maharashtra+400052/@19.0651497,72.8350928,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c91140262913:0xc53b6407e4d39f76!8m2!3d19.0651497!4d72.8350928!16s%2Fg%2F12hkbx6fn?entry=ttu&g_ep=EgoyMDI2MDEyNi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     id: 7,
@@ -93,7 +93,7 @@ const coworkingLocations = [
 
 const CoworkingMap = () => {
   return (
-    <div className="h-[500px] w-full z-10">
+    <div className="h-[300px] w-full z-10">
       <MapContainer
         center={[19.046, 72.8999]}
         zoom={11}

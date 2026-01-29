@@ -417,7 +417,7 @@ function Landing() {
         </div>
       </section>
 
-      <div className="flex flex-col md:flex-row pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100">
+      <div className="flex flex-col md:flex-row lg:pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20">
           <div className="flex flex-col justify-center items-center py-3">
             <CoworkingMap />
@@ -429,17 +429,17 @@ function Landing() {
             <ul className="[&_li]:list-disc list-inside text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl mx-auto text-justify ">
               <li>
                 Don't get locked into rigid 5-year leases or waste months on
-                fit-outs. 603 provides fully operational, private headquarters
-                tailored to your brand identity.
+                fit-outs. 603 provides fully operational, spaces tailored to
+                your brand identity.
               </li>
               <li>
-                Custom Identity: Your logo on the wall, your culture in the
-                layout. Not ours.
+                You Just Grow : Your logo on the wall, your culture in the
+                layout.
               </li>
-              <li>
+              {/* <li>
                 Agile Terms: Scale your square footage up or down as your
                 headcount changes.
-              </li>
+              </li> */}
               <li>
                 Zero Friction: One monthly invoice covers rent, electricity, IT,
                 and coffee.
@@ -524,11 +524,11 @@ function Landing() {
               offers the prestige your brand deserves and the accessibility your
               team needs.
             </p>
-            {/* <p className="text-gray-700 text-lg leading-relaxed w-full max-w-xl text-justify">
+            <p className="text-gray-700 text-lg leading-relaxed w-full max-w-xl text-justify pt-2">
               Give your team access to thousands of workspace options over
               India, so they can meet, collaborate, and get their best work
               done.
-            </p> */}
+            </p>
           </div>
           <button
             onClick={() => navigate("/allLocations")}
@@ -542,7 +542,7 @@ function Landing() {
         </div>
       </div>
 
-      <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-white to-yellow-100">
+      <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
           <div className="max-w-xl px-5 md:px-0">
             <h1 className="font-sans text-yellow-500 font-extrabold text-lg md:text-2xl lg:text-2xl mb-4">

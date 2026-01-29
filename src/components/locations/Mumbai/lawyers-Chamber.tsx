@@ -19,12 +19,12 @@ import ImageGrid from "../../LocationCarousal/ImageGrid";
 
 const Webpage = () => {
   const images = [
-    "/officeimg/Fort/Fort1.jpeg",
-    "/officeimg/Fort/Fort2.jpeg",
-    "/officeimg/Fort/Fort3.jpeg",
-    "/officeimg/Fort/Fort4.jpeg",
-    "/officeimg/Fort/Fort1.jpeg",
-    "/officeimg/Fort/Fort2.jpeg",
+    "/officeimg/Fort/fort-5.jpeg",
+    "/officeimg/Fort/fort-6.jpeg",
+    "/officeimg/Fort/fort-7.jpeg",
+    "/officeimg/Fort/fort-8.jpeg",
+    "/officeimg/Fort/fort-9.jpeg",
+    "/officeimg/Fort/fort-10.jpeg",
   ];
   const [source] = useState(
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3773.967975681942!2d72.83315967497366!3d18.93281158224242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1db3d654c9b%3A0xde8247f7a6a611c7!2sKaiser-E-Hind%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1737014183093!5m2!1sen!2sin",
@@ -70,8 +70,8 @@ const Webpage = () => {
       <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 px-8 2xl:px-32 grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] items-stretch py-16 lg:gap-10">
         <ImageGrid images={images} />
 
-        <div>
-          <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
+        <div className="flex flex-col justify-between">
+          <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col h-full">
             <div className="flex items-start mb-6">
               <div className="ml-4">
                 <h3 className="text-xl font-black mb-2 text-gray-600">
