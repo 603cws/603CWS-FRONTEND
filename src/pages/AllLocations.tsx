@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useNavigate } from "react-router-dom";
-import makhija from "/officeimg/Makhija/Makhija.JPG"
+import makhija from "/officeimg/Makhija/Makhija.JPG";
 import { locations } from "./AllLocationsDetails";
 
-
 const LocationPage: React.FC = () => {
-  const [alllocations] = useState(locations)
+  const [alllocations] = useState(locations);
   const [selectedCity, setSelectedCity] = useState<string>("All");
   const navigate = useNavigate();
 
@@ -15,12 +14,13 @@ const LocationPage: React.FC = () => {
     setSelectedCity(event.target.value);
   };
 
-  const filteredLocations = selectedCity === "All"
-    ? alllocations
-    : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
+  const filteredLocations =
+    selectedCity === "All"
+      ? alllocations
+      : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
 
   return (
-    <div className="font-sans bg-gray-50 w-screen overflow-x-hidden">
+    <div className="font-sans bg-gray-50 w-full overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 fixed w-full top-0">
         <Navbar />
       </header>
@@ -32,7 +32,9 @@ const LocationPage: React.FC = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative flex justify-center items-center h-full w-full ">
           <div className="text-center px-12 py-16">
-            <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">Locations</h2>
+            <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
+              Locations
+            </h2>
             <p className="text-white ">Explore our workspaces</p>
           </div>
         </div>
@@ -74,8 +76,12 @@ const LocationPage: React.FC = () => {
                     className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
                   />
 
-                  <h4 className="text-2xl font-semibold mb-2">{location.name}</h4>
-                  <p className="text-gray-600 mb-4 mx-auto text-justify">{location.address}</p>
+                  <h4 className="text-2xl font-semibold mb-2">
+                    {location.name}
+                  </h4>
+                  <p className="text-gray-600 mb-4 mx-auto text-justify">
+                    {location.address}
+                  </p>
                   <a
                     onClick={() => navigate(location.link)}
                     className="text-yellow-500 hover:underline font-bold hover:cursor-pointer"

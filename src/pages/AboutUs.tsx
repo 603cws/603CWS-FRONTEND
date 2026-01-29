@@ -170,9 +170,9 @@ function AboutUs() {
 
         {/* <OurServices /> */}
 
-        <section className="px-4 py-16 bg-gray-50 text-gray-700">
+        <section className="px-4 py-16 bg-gray-50 text-gray-700 text-center">
           <div className="max-w-4xl mx-auto text-sm">
-            <p>
+            <p className="font-bold">
               Embracing Affordability: The Charm of Budget-Friendly Coworking
               Spaces in Mumbai and Thane.
             </p>

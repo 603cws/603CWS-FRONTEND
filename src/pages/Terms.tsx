@@ -4,20 +4,19 @@ import Footer from "../components/Footer/footer";
 
 const Terms: React.FC = () => {
   return (
-    <div className="font-sans bg-gray-50 w-screen overflow-x-hidden">
+    <div className="font-sans bg-gray-50 w-full overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 fixed w-full top-0">
         <Navbar />
       </header>
       <div
         style={{
-          backgroundImage:
-            "url('https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/partner.png')",
+          backgroundImage: "url('./terms.png')",
         }}
-        className="relative bg-no-repeat bg-cover bg-fixed mb-16"
+        className="relative bg-no-repeat bg-center bg-cover bg-fixed mb-16"
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
         {/* Dark overlay */}
-        <div className="relative flex justify-center items-center h-[400px] w-full">
+        <div className="relative flex justify-center items-center h-[600px] w-full">
           <div className="text-center px-12 py-16">
             <h2 className="text-white text-6xl font-semibold mb-4">
               Terms & Conditions

@@ -5,14 +5,14 @@ import PartnerWithUs from "../components/Partner/PartnerWithUs";
 const Partner = () => {
   return (
     <>
-      <div className="h-screen w-screen">
+      <div className="h-screen w-full">
         <div>
           <Navbar />
         </div>
         <PartnerWithUs />
-      <div>
-        <Footer />
-      </div>
+        <div>
+          <Footer />
+        </div>
       </div>
     </>
   );
