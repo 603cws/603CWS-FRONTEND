@@ -1,0 +1,101 @@
+import React, { useState } from "react";
+import Navbar from "../components/Navbar/navbar";
+import Footer from "../components/Footer/footer";
+import { useNavigate } from "react-router-dom";
+import sunshine from "/officeimg/Sunshine/sunshine5.JPG";
+import { locations } from "./AllLocationsDetails";
+import { FaRupeeSign } from "react-icons/fa";
+
+const LocationsPricing: React.FC = () => {
+  const [alllocations] = useState(locations);
+
+  return (
+    <div className="font-sans bg-gray-50 w-full overflow-x-hidden">
+      <header className="bg-white shadow-lg z-50 fixed w-full top-0">
+        <Navbar />
+      </header>
+
+      <div
+        style={{ backgroundImage: `url(${sunshine})` }}
+        className="relative bg-no-repeat bg-cover bg-fixed mb-16 h-screen"
+      >
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative flex justify-center items-center h-full w-full ">
+          <div className="text-center px-12 py-16">
+            <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
+              Locations
+            </h2>
+            <p className="text-white ">Explore our workspaces</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-2 md:px-12 overflow-auto">
+        {alllocations.map((cityGroup, cityIndex) => (
+          <div key={cityIndex} className="mb-16">
+            <h3 className="text-3xl sm:text-5xl pt-6 font-bold mb-8 text-center text-[#cd952dd1]">
+              {cityGroup.city}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {cityGroup.locations.map((location, locationIndex) => (
+                <LocationCard
+                  location={location}
+                  locationIndex={locationIndex}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <footer className="bg-white shadow-lg">
+        <Footer />
+      </footer>
+    </div>
+  );
+};
+
+export default LocationsPricing;
+
+type LocationProps = {
+  location: {
+    name: string;
+    imgSrc: string;
+    link: string;
+    address: string;
+    daypass: number;
+  };
+  locationIndex: number;
+};
+function LocationCard({ location, locationIndex }: LocationProps) {
+  const navigate = useNavigate();
+  return (
+    <div
+      key={locationIndex}
+      className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
+    >
+      <img
+        src={location.imgSrc}
+        alt={location.name}
+        className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
+      />
+
+      <h4 className="text-2xl font-semibold mb-2">{location.name}</h4>
+      <p className="text-gray-600 mb-4 mx-auto text-justify">
+        {location.address}
+      </p>
+      <div className="mt-auto">
+        <p className="text-yellow-500 capitalize font-bold flex items-center">
+          starting from &nbsp;
+          <FaRupeeSign /> {location.daypass} per day
+        </p>
+        <a
+          onClick={() => navigate(location.link)}
+          className="text-yellow-500 hover:underline font-bold hover:cursor-pointer"
+        >
+          Read More &rarr;
+        </a>
+      </div>
+    </div>
+  );
+}

@@ -102,7 +102,7 @@ const CoworkingMap = () => {
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; Workved Interiors"
+          attribution="&copy; 603 TheCoWorking Space"
         />
 
         {coworkingLocations.map((location) => {

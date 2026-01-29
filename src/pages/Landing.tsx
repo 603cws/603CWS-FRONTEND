@@ -1,13 +1,6 @@
 import Scramble from "./../components/Landing/Scramble";
 import Popuptext from "../components/Landing/Popuptext";
-import {
-  logo,
-  photo1,
-  photo2,
-  photo3,
-  gallery6,
-} from "../utils/Landing/Landing";
-import { Twopeoplesitting } from "../utils/Landing/Svg";
+import { logo, photo1, photo2, gallery6 } from "../utils/Landing/Landing";
 import {
   FaWifi,
   FaPowerOff,
@@ -22,7 +15,6 @@ import { useEffect, useState } from "react";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { RiTeamFill } from "react-icons/ri";
-import YellowBox from "../components/Landing/YellowBox";
 import PhotoGallery from "../components/Landing/PhotoGallery";
 import Review from "../components/Landing/Review";
 import Navbar from "../components/Navbar/navbar";
@@ -482,52 +474,47 @@ function Landing() {
               and elevate your work experience.
             </p>
           </div>
-          <div className="flex flex-col md:flex-row w-full items-center md:justify-center mb-8 md:gap-4 gap-2 ">
-            <div className="flex w-[30%] mt-4">
-              {/* <Flexiblepo /> */}
+
+          <div className="grid grid-cols-2 gap-5 mb-8">
+            <div className="flex items-center gap-5">
               <img
                 src="/Private-room.png"
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              <div className="flex w-full justify-center items-center font-semibold text-sm md:text-lg lg:text-lg text-gray-700">
-                <div>Private Offices</div>
-              </div>
+              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+                Private Offices
+              </h2>
             </div>
-            <div className="flex w-[30%] mt-4">
+            <div className="flex items-center gap-5">
               <img
                 src="/Meeting-room.png"
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              {/* <Flexiblepo /> */}
-              <div className="flex w-full justify-center items-center font-semibold text-sm md:text-lg lg:text-lg text-gray-700">
-                <div>Meeting Rooms</div>
-              </div>
+              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+                Meeting Rooms
+              </h2>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row w-full items-center md:justify-center mb-8 md:gap-4 gap-2 ">
-            <div className="flex w-[30%] mt-4">
+            <div className="flex items-center gap-5">
               <img
                 src="/Corporate-HQ.png"
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              {/* <Flexiblepo /> */}
-              <div className="flex w-full justify-center items-center font-semibold text-sm md:text-lg lg:text-lg text-gray-700">
-                <div>Corporate HQ</div>
-              </div>
+              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+                Corporate HQ
+              </h2>
             </div>
-            <div className="flex w-[30%] mt-4">
+            <div className="flex items-center gap-5">
               <img
                 src="/Dedicated-Desks.png"
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              {/* <Flexiblepo /> */}
-              <div className="flex w-full justify-center items-center font-semibold text-sm md:text-lg lg:text-lg text-gray-700">
-                <div>Dedicated Desks</div>
-              </div>
+              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+                Dedicated Desks
+              </h2>
             </div>
           </div>
           <div>
@@ -628,24 +615,9 @@ function Landing() {
         )}
       </div>
 
-      <div className="flex-col md:flex-row gap-7 md:gap-14 md:pt-[70px] pt-12 md:px-20 bg-gradient-to-r from-white flex justify-center to-yellow-100 md:pb-12">
-        {windowWidth > 1276 && (
-          <div className="flex md:w-1/2 w-full">
-            <div className="rounded-sm">
-              <img className="rounded" src={photo3} />
-            </div>
-          </div>
-        )}
-        {windowWidth > 1276 ? (
-          <div className="md:w-1/2 w-full">
-            <YellowBox />
-          </div>
-        ) : (
-          <div className="px-6">
-            <YellowBox />
-          </div>
-        )}
-      </div>
+      <section className="px-8 lg:px-20 bg-gradient-to-r from-blue-100  to-yellow-100 pt-10 lg:pt-0">
+        <BenifitsOfCWS />
+      </section>
 
       <section className="px-6 py-10  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100">
         <OurPopularity />
@@ -708,3 +680,69 @@ function Landing() {
 }
 
 export default Landing;
+
+function BenifitsOfCWS() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  return (
+    <div className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 px-5 py-5 xs:px-10 xs:py-10 rounded-2xl shadow-xl w-full flex items-center">
+      <div className="flex-1 p-4 hidden lg:block">
+        <img
+          src="/officeimg/MarathonFuturex/marathon1.jpeg"
+          alt=""
+          className="max-h-[400px] w-full object-cover rounded-xl"
+        />
+      </div>
+      <div className="flex-1 p-4">
+        <h2 className=" text-lg md:text-2xl lg:text-2xl  font-semibold mb-8 text-center text-white flex-1">
+          Benefits of Our Coworking Spaces
+        </h2>
+        <div className="space-y-6">
+          {[
+            {
+              title: "Solopreneurs",
+              content:
+                "No lock-ins, minimal deposit, 60 seconds to sign up. Enjoy maximum flexibility and ease.",
+            },
+            {
+              title: "Teams",
+              content:
+                "Customizable spaces for small businesses or teams of any size. Designed to boost productivity with tailored solutions.",
+            },
+            {
+              title: "Large Businesses",
+              content:
+                "Accommodating multiple teams with varying needs. Explore our customized solutions or exclusive managed offices.",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden"
+            >
+              <button
+                className="flex justify-between items-center w-full p-5 text-left bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
+                onClick={() => toggleAccordion(index)}
+              >
+                <span className="bg-text-base md:text-lg lg:text-lg font-semibold text-gray-800">
+                  {item.title}
+                </span>
+                <span className="bg-text-base md:text-lg lg:text-lg text-gray-600">
+                  {activeIndex === index ? "-" : "+"}
+                </span>
+              </button>
+              {activeIndex === index && (
+                <div className="p-5 bg-gray-50">
+                  <p className="text-gray-700">{item.content}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

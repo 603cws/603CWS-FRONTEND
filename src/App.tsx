@@ -66,6 +66,7 @@ import PageNotFound from "./pages/PageNotFound";
 import ExitGuard from "./pages/popup/ExitPrompt";
 import WhatsappBtn from "./utils/WhatsappBtn";
 import RequestTour from "./components/Landing/RequestTour";
+import LocationsPricing from "./pages/LocationsPricing";
 // import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
 
 function App() {
@@ -304,6 +305,10 @@ function App() {
             <Route path="/payment" element={<Payment />} />
             <Route path="/kycform" element={<ZohoKYCForm />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route
+              path="/locations-pricing-summary"
+              element={<LocationsPricing />}
+            />
           </>
         ) : (
           <>
@@ -387,6 +392,10 @@ function App() {
             />
             <Route path="/kycform" element={<ZohoKYCForm />} />
             <Route path="*" element={<PageNotFound />} />
+            <Route
+              path="/locations-pricing-summary"
+              element={<LocationsPricing />}
+            />
           </>
         )}
       </Routes>
