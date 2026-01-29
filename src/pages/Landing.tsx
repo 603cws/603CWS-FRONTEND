@@ -615,7 +615,7 @@ function Landing() {
         )}
       </div>
 
-      <section className="px-8 lg:px-20 bg-gradient-to-r from-blue-100  to-yellow-100 pt-10 lg:pt-0">
+      <section className="px-8 lg:px-20 bg-gradient-to-r from-white  to-yellow-100 pt-10 lg:pt-0">
         <BenifitsOfCWS />
       </section>
 

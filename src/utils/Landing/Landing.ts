@@ -22,6 +22,7 @@ import newPhoto3 from "/photo3.jpg";
 import newPhoto4 from "/photo4.jpg";
 import newPhoto5 from "/photo5.jpg";
 import newPhoto6 from "/photo6.jpeg";
+import newPhoto7 from "/aspectHome.jpeg";
 
 // home images
 import home1 from "/privateOffices.jpg";
@@ -61,6 +62,8 @@ export const gallery15 = newPhoto3;
 export const gallery16 = newPhoto4;
 export const gallery17 = newPhoto5;
 export const gallery18 = newPhoto6;
+
+export const gallery19 = newPhoto7;
 
 export const background2 = "https://www.603thecoworkingspace.com/#lg=1&slide=0";
 export const vid = "https://videos.files.wordpress.com/he8mF3Bd/about.mp4";

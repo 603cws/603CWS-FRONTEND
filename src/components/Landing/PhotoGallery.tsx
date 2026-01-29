@@ -21,6 +21,7 @@ import {
   gallery16,
   gallery17,
   gallery18,
+  gallery19,
 } from "../../utils/Landing/Landing";
 
 SwiperCore.use([Autoplay]);
@@ -43,6 +44,7 @@ const photos = [
   { src: `${gallery16}`, alt: "Photo 16" },
   { src: `${gallery17}`, alt: "Photo 17" },
   { src: `${gallery18}`, alt: "Photo 18" },
+  { src: `${gallery19}`, alt: "Photo 19" },
 ];
 
 const PhotoGallery: React.FC = () => {
