@@ -12,7 +12,6 @@ import {
   FaCoffee,
   FaRupeeSign,
 } from "react-icons/fa";
-import ImageCarousel from "../../LocationCarousal/LocationCarousal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
