@@ -2,7 +2,6 @@ import Scramble from "./../components/Landing/Scramble";
 import Popuptext from "../components/Landing/Popuptext";
 import {
   logo,
-  office_pic,
   photo1,
   photo2,
   photo3,
