@@ -6,12 +6,14 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../utils/axiosInstance";
 const ExitPopupForm = ({ setShowContactPopup }: any) => {
   const { setloading } = useApp();
+  //   const a = sessionStorage.getItem("callbackExitPopup");
 
   const mobileRegex = /^[6-9]\d{9}$/;
 
   const hidePopup = () => {
     setShowContactPopup((prev: any) => !prev);
     // localStorage.setItem("callback", "true");
+    // sessionStorage.setItem("callbackExitPopup", "true");
   };
 
   const [formData, setFormData] = useState({
@@ -47,7 +49,8 @@ const ExitPopupForm = ({ setShowContactPopup }: any) => {
       }
       if (mobileRegex.test(formData.phone)) {
         setloading(true);
-        localStorage.setItem("callback", "true");
+        // localStorage.setItem("callback", "true");
+        // sessionStorage.setItem("callbackExitPopup", "true");
         await axiosInstance.post(`/api/v1/users/sendcallback`, formData);
         toast.success("form submitted");
         hidePopup();

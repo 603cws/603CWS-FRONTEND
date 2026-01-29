@@ -145,7 +145,8 @@ function App() {
     matchDynamicRoute(route, location.pathname),
   );
 
-  const a = localStorage.getItem("callback");
+  const a = sessionStorage.getItem("callback");
+  // const a = localStorage.getItem("callback");
 
   //handle register
   interface User {

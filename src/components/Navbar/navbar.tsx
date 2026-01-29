@@ -91,7 +91,7 @@ const Navbar = () => {
           setLocationsDropdownVisible(false);
         }}
         // className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10  "
-        className=" bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
+        className=" bg-gradient-to-r from-yellow-100 to-white navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
       >
         {/* mobile version  */}
         <div>
@@ -546,6 +546,94 @@ const Navbar = () => {
                 >
                   <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                     <button
+                      onClick={() => navigate("/locations/Pentagon-Classic")}
+                    >
+                      Andheri, Classic Pentagon
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => navigate("/locations/Makhija-Archade")}
+                    >
+                      Bandra, Makhija Arcade
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button onClick={() => navigate("/locations/Amore-Centre")}>
+                      Khar, Amore Centre
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      className="text-left block"
+                      onClick={() => navigate("/locations/Lawyers-Chamber")}
+                    >
+                      Fort, Heritage Precinct
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button onClick={() => navigate("/locations/Kamala-Mills")}>
+                      Lower Parel, Kamala Mills
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => navigate("/locations/Matulya-Centre")}
+                    >
+                      Lower Parel, Matulya Centre
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() => navigate("/locations/Sun-Mill-Compound")}
+                    >
+                      Lower Parel, Sun Mill Compound
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      onClick={() => navigate("/locations/Sunshine-Tower")}
+                    >
+                      Lower Parel, Sunshine Tower
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button onClick={() => navigate("/locations/TradeLink")}>
+                      Lower Parel, Trade Link
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() => navigate("/locations/MarathonFuturex")}
+                    >
+                      Lower Parel, Marathon Futurex
+                    </button>
+                  </li>
+
+                  <li className="py-2 hover:text-yellow-500 text-left">
+                    <button
+                      className="text-left block whitespace-normal"
+                      onClick={() =>
+                        navigate("/locations/Navratna-Corporate-Park")
+                      }
+                    >
+                      Ahmedabad, Navratna Corporate Park
+                    </button>
+                  </li>
+
+                  {/* <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                    <button
                       onClick={() => {
                         navigate("/locations/Matulya-Centre");
                       }}
@@ -677,7 +765,7 @@ const Navbar = () => {
                     >
                       Navratna Corporate Park, Ahmedabad
                     </button>
-                  </li>
+                  </li> */}
                 </ul>
               )}
             </li>
@@ -807,7 +895,10 @@ const Navbar = () => {
           ) : (
             path != "/login" &&
             path != "/admin/login" && (
-              <span className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center ">
+              <span
+                onClick={() => (window.location.href = "tel:+919136036603")}
+                className=" cursor-pointer font-bold-400 text-sm hover:text-500 hover:underline  border-transparent pr-5 flex items-center "
+              >
                 <FaPhoneAlt />
                 {windowWidth > 450 && "+91-9136036603"}
               </span>

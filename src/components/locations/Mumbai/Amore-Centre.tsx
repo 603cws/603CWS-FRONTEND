@@ -55,6 +55,15 @@ const Webpage = () => {
             <p className="text-lg text-gray-200 mt-4">
               603 The Coworking Space Amore Building, 5th Road, Khar West
             </p>
+            <div className="pt-6">
+              <button
+                className="bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
+                onClick={() => navigate(`/booknow/${name.replace(/\s/g, "_")}`)}
+                // onClick={() => navigate("/")}
+              >
+                Book Now
+              </button>
+            </div>
           </div>
         </section>
 

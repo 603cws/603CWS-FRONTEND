@@ -5,8 +5,13 @@ const OurPopularity: React.FC = () => {
     <>
       <div className="w-full">
         {/* 1st div for headers */}
-        <div className=" text-2xl md:text-xl font-sans font-semibold text-center">
-          <h2>India's largest marketplace for flexible workspace solutions</h2>
+        <div className="max-w-2xl mx-auto text-lg md:text-xl font-sans font-semibold text-center">
+          <h2 className="">
+            Amongst India's premier integrated workspace solutions, delivering
+            the full spectrum of flexible offices, managed HQs, and bespoke
+            build-to-suit solutions.
+          </h2>
+          {/* <h2>India's largest marketplace for flexible workspace solutions</h2> */}
         </div>
         {/* second for flex */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-y-8 p-8 w-2/3 mx-auto">

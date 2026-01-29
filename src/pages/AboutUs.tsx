@@ -1,21 +1,16 @@
-import {
-  lifeat603,
-  mission,
-  bgimage2,
-  vision,
-} from "../utils/AboutUs/AboutUs";
-import { useState } from "react";
+import { lifeat603, mission, bgimage2, vision } from "../utils/AboutUs/AboutUs";
+// import { useState } from "react";
 import OurServices from "../components/AboutUs/OurServices";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useApp } from "../context/AuthContext";
-import Popupform from "./popup/Popupform";
+// import Popupform from "./popup/Popupform";
 import { useNavigate } from "react-router-dom";
 
 function AboutUs() {
-  const [popup, setpopup] = useState<boolean>(false);
+  // const [popup, setpopup] = useState<boolean>(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { setloading } = useApp();
   setloading(false);
@@ -24,7 +19,10 @@ function AboutUs() {
     <div className="w-full min-h-screen flex flex-col">
       <Navbar />
 
-      <header className="relative flex justify-center items-center bg-cover bg-center bg-fixed h-screen md:h-[600px]" style={{ backgroundImage: `url(${bgimage2})`}}>
+      <header
+        className="relative flex justify-center items-center bg-cover bg-center bg-fixed h-screen md:h-[600px]"
+        style={{ backgroundImage: `url(${bgimage2})` }}
+      >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative text-center text-white">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold animate__animated animate__fadeInDown">
@@ -36,7 +34,7 @@ function AboutUs() {
         </div>
       </header>
 
-      <Popupform val={popup} setpopup={setpopup} />
+      {/* <Popupform val={popup} setpopup={setpopup} /> */}
 
       <main className="flex-grow">
         <section className="flex flex-col items-center py-16 bg-gray-50 px-5">
@@ -85,8 +83,6 @@ function AboutUs() {
           </div>
         </section>
 
-
-
         <section className="flex flex-col md:flex-row-reverse gap-8 justify-center px-4 items-center md:px-14 pt-16">
           <img src={mission} className="w-full md:w-1/2" alt="Mission" />
           <div className="md:w-1/2 text-center md:text-left px-4">
@@ -127,9 +123,18 @@ function AboutUs() {
               Join a community of early-stage startups.
             </h1>
             <p className="mt-6 text-base sm:text-base lg:text-lg leading-relaxed w-full max-w-xl text-justify">
-              Our vision at 603 is to be the leading coworking space that transforms the way people work, connect, and succeed. We envision a dynamic and energising environment where creativity flourishes, ideas come to life, and meaningful connections are forged. By nurturing a culture of collaboration, knowledge sharing, and entrepreneurial spirit, we aspire to be a catalyst for innovation and a hub for diverse talents.
+              Our vision at 603 is to be the leading coworking space that
+              transforms the way people work, connect, and succeed. We envision
+              a dynamic and energising environment where creativity flourishes,
+              ideas come to life, and meaningful connections are forged. By
+              nurturing a culture of collaboration, knowledge sharing, and
+              entrepreneurial spirit, we aspire to be a catalyst for innovation
+              and a hub for diverse talents.
             </p>
-            <button onClick={() => navigate("/booknow")} className="mt-8 mb-3 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md">
+            <button
+              onClick={() => navigate("/booknow")}
+              className="mt-8 mb-3 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md"
+            >
               Book a Space
             </button>
           </div>
@@ -146,13 +151,14 @@ function AboutUs() {
               <p className="text-sm md:text-base text-[#3f3836] mt-2 md:mt-4">
                 Creative people space available.
               </p>
-              <h1 className="text-xl md:text-3xl text-[#fcc519] mt-4 md:mt-6">15+</h1>
+              <h1 className="text-xl md:text-3xl text-[#fcc519] mt-4 md:mt-6">
+                15+
+              </h1>
               <p className="text-sm md:text-base text-[#3f3836] mt-2 md:mt-4">
                 Conference & meeting rooms available.
               </p>
             </div>
           </div>
-
         </section>
 
         <OurServices />
@@ -165,24 +171,24 @@ function AboutUs() {
             </p>
             <br />
             <p>
-              In a world where the traditional office paradigm is shifting towards
-              flexibility and collaboration, budget-friendly coworking office
-              spaces have emerged as a beacon for professionals seeking a dynamic
-              work environment without breaking the bank. Our affordable shared
-              workspaces are revolutionizing the way individuals and small
-              businesses operate, providing a cost-effective solution without
-              compromising on essential amenities.
+              In a world where the traditional office paradigm is shifting
+              towards flexibility and collaboration, budget-friendly coworking
+              office spaces have emerged as a beacon for professionals seeking a
+              dynamic work environment without breaking the bank. Our affordable
+              shared workspaces are revolutionizing the way individuals and
+              small businesses operate, providing a cost-effective solution
+              without compromising on essential amenities.
             </p>
             <br />
             <p>
               One of the primary draws of our budget-friendly coworking office
-              spaces is, of course, the cost savings they offer. In bustling urban
-              centers, where real estate prices can skyrocket, our work spaces
-              provide an economical alternative to traditional office leases.
-              Entrepreneurs, freelancers, and small teams can access fully
-              equipped workspaces without the burden of exorbitant rents, making
-              it an attractive proposition for those looking to manage overhead
-              costs more efficiently.
+              spaces is, of course, the cost savings they offer. In bustling
+              urban centers, where real estate prices can skyrocket, our work
+              spaces provide an economical alternative to traditional office
+              leases. Entrepreneurs, freelancers, and small teams can access
+              fully equipped workspaces without the burden of exorbitant rents,
+              making it an attractive proposition for those looking to manage
+              overhead costs more efficiently.
             </p>
             <br />
             <p>
@@ -192,8 +198,8 @@ function AboutUs() {
               ergonomic furniture, games room, meeting rooms, and communal areas
               are standard features, ensuring that professionals have access to
               the tools they need to excel in their work. The emphasis on
-              functionality and comfort allows individuals to focus on their tasks
-              without being hindered by budget constraints.
+              functionality and comfort allows individuals to focus on their
+              tasks without being hindered by budget constraints.
             </p>
             <br />
             <p>
@@ -203,8 +209,8 @@ function AboutUs() {
               specific needs. Whether it’s a hot desk for a freelancer, a
               dedicated desk for a small team, or a private office for a growing
               business, our spaces cater to diverse requirements, providing
-              scalability without the financial burden associated with traditional
-              leasing.
+              scalability without the financial burden associated with
+              traditional leasing.
             </p>
           </div>
         </section>

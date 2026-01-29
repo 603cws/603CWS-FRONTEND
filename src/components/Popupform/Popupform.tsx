@@ -9,7 +9,8 @@ const Popupform = () => {
   // const PORT = import.meta.env.VITE_BACKEND_URL;
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const a = localStorage.getItem("callback");
+  const a = sessionStorage.getItem("callback");
+  // const a = localStorage.getItem("callback");
 
   const showPopup = () => {
     setIsAnimating(true);
@@ -21,6 +22,7 @@ const Popupform = () => {
   const hidePopup = () => {
     setIsAnimating(false);
     setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
+    sessionStorage.setItem("callback", "true");
   };
 
   const popupTime = 30000;
@@ -64,7 +66,7 @@ const Popupform = () => {
       }
       if (mobileRegex.test(formData.phone)) {
         setloading(true);
-        localStorage.setItem("callback", "true");
+        sessionStorage.setItem("callback", "true");
         await axiosInstance.post(`/api/v1/users/sendcallback`, formData);
         toast.success("form submitted");
         hidePopup();
