@@ -39,9 +39,9 @@ const Webpage = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="pt-16">
+      <div className="">
         <section
-          className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
+          className="relative h-screen flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
           style={{ backgroundImage: `url(${background})` }}
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -56,7 +56,7 @@ const Webpage = () => {
         </section>
 
         {/* Workspace Packages Section */}
-        <section className="py-16 flex flex-col 2xl:flex-row justify-between items-center px-8 2xl:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
+        {/* <section className="py-16 flex flex-col 2xl:flex-row justify-between items-center px-8 2xl:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
           <div className="lg:w-3/5">
             <ImageCarousel
               images={images}
@@ -146,6 +146,131 @@ const Webpage = () => {
                 </span>
               </li>
             </ul>
+          </div>
+        </section> */}
+        <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 px-8 2xl:px-32 grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] items-stretch py-16 lg:gap-10">
+          <div className="grid grid-cols-[1.5fr,1fr] gap-1 lg:gap-3 h-full">
+            <div className="grid grid-rows-[2fr,1fr] gap-1 lg:gap-3 h-full">
+              <img
+                src={images[0]}
+                alt=""
+                className="w-full h-full object-cover rounded-xl"
+              />
+
+              <div className="grid grid-cols-2 gap-1 lg:gap-3">
+                <img
+                  src={images[1]}
+                  alt=""
+                  className="w-full h-full object-cover rounded-xl"
+                />
+                <img
+                  src={images[2]}
+                  alt=""
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-rows-3 gap-1 lg:gap-3 h-full">
+              <img
+                src={images[3]}
+                alt=""
+                className="w-full h-full object-cover rounded-xl"
+              />
+              <img
+                src={images[4]}
+                alt=""
+                className="w-full h-full object-cover rounded-xl"
+              />
+              <img
+                src={images[4]}
+                alt=""
+                className="w-full h-full object-cover rounded-xl"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 shadow-md flex flex-col">
+              <div className="flex items-start mb-6">
+                <div className="ml-4">
+                  <h3 className="text-xl font-black mb-2 text-gray-600">
+                    Workspace Packages
+                  </h3>
+                  <p className="text-base font-semibold text-gray-500 mt-6">
+                    Choose the best package for your workspace needs, offering
+                    flexible solutions for all.
+                  </p>
+                </div>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500 flex">
+                    Day Pass
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 799
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Hot Desk
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 7,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Dedicated Desk
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 10,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Cabin Space
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 11,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Custom Cabin
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 11,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Meeting Rooms
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 599 / Hourly
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Conference Rooms
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 1099 / Hourly
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className="pt-5">
+              <button
+                className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
+                onClick={() => navigate(`/booknow/${name.replace(/\s/g, "_")}`)}
+                // onClick={() => navigate("/")}
+              >
+                Book Now
+              </button>
+            </div>
           </div>
         </section>
 

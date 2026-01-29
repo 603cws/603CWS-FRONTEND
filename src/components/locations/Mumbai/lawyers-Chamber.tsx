@@ -39,9 +39,9 @@ const Webpage = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="pt-16"></div>
+
       <section
-        className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
+        className="relative h-screen flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
         // style={{ backgroundImage: `url(${gallery6})` }}
         style={{ backgroundImage: `url('/officeimg/Fort/Fort1.jpeg')` }}
       >

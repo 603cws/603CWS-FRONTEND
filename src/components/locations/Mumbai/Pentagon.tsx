@@ -41,9 +41,9 @@ const Pentagon = () => {
       </header>
 
       {/* Hero Section */}
-      <div className="pt-16">
+      <div className="">
         <section
-          className="relative h-screen lg:h-[600px] flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
+          className="relative h-screen flex items-center text-center justify-center bg-cover bg-center bg-no-repeat bg-gray-100"
           style={{ backgroundImage: `url(${image})` }}
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
