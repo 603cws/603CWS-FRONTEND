@@ -102,11 +102,11 @@ const Footer = () => {
                     Career
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/referral" className="hover:text-yellow-400">
                     Referral
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to="/membership-plans"
