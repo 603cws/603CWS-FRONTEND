@@ -337,7 +337,7 @@ function Landing() {
       </Modal>
 
       {/* Features Section */}
-      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-blue-200 to-yellow-100">
+      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20 flex flex-col justify-center items-center md:items-start">
           <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
@@ -380,7 +380,12 @@ function Landing() {
         <div className="w-full md:w-1/2 mt-10 md:mt-0 flex flex-col items-center">
           <div className="flex items-center bg-gradient-to-r from-yellow-300 to-yellow-400 px-4 py-3 rounded-lg shadow-lg w-[80%]">
             <div>
-              <Twopeoplesitting />
+              <img
+                src="/Homepageicon1.png"
+                alt="seacts icon"
+                className="w-[54px]"
+              />
+              {/* <Twopeoplesitting /> */}
             </div>
             <div className="text-white flex flex-col justify-center w-full">
               <h1 className="text-lg  md:text-xl lg:text-2xl font-semibold flex justify-center">
@@ -420,7 +425,7 @@ function Landing() {
         </div>
       </section>
 
-      <div className="flex flex-col md:flex-row pt-12 pb-12 bg-gradient-to-r from-blue-200 to-yellow-100">
+      <div className="flex flex-col md:flex-row pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full md:w-1/2 px-8 lg:px-20">
           <div className="flex flex-col justify-center items-center py-3">
             <CoworkingMap />
@@ -550,7 +555,7 @@ function Landing() {
         </div>
       </div>
 
-      <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-blue-100 to-yellow-100">
+      <div className="w-full flex flex-col pt-12 md:pb-12 md:pt-[65px] xl:flex-row bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
           <div className="max-w-xl px-5 md:px-0">
             <h1 className="font-sans text-yellow-500 font-extrabold text-lg md:text-2xl lg:text-2xl mb-4">
@@ -623,7 +628,7 @@ function Landing() {
         )}
       </div>
 
-      <div className="flex-col md:flex-row gap-7 md:gap-14 md:pt-[70px] pt-12 md:px-20 bg-gradient-to-r from-blue-100 flex justify-center to-yellow-100 md:pb-12">
+      <div className="flex-col md:flex-row gap-7 md:gap-14 md:pt-[70px] pt-12 md:px-20 bg-gradient-to-r from-white flex justify-center to-yellow-100 md:pb-12">
         {windowWidth > 1276 && (
           <div className="flex md:w-1/2 w-full">
             <div className="rounded-sm">
@@ -642,34 +647,34 @@ function Landing() {
         )}
       </div>
 
-      <section className="px-6 py-10  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-blue-100  to-yellow-100">
+      <section className="px-6 py-10  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100">
         <OurPopularity />
       </section>
 
-      <div className=" lg:pt-20 bg-gradient-to-r from-blue-100 to-yellow-100">
+      <div className=" lg:pt-20 bg-gradient-to-r from-white to-yellow-100">
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-yellow-500 font-sans font-semibold text-center">
           Our Photo Gallery
         </h1>
 
         {windowWidth > 1100 ? (
-          <div className="pb-5 px-20 bg-gradient-to-r from-blue-100 to-yellow-100">
+          <div className="pb-5 px-20 bg-gradient-to-r from-white to-yellow-100">
             <PhotoGallery />
           </div>
         ) : (
-          <div className="pb-5 px-5 bg-gradient-to-r from-blue-100 to-yellow-100">
+          <div className="pb-5 px-5 bg-gradient-to-r from-white to-yellow-100">
             <PhotoGallery />
           </div>
         )}
 
         {/* our clients  */}
         {/* <OurServices /> */}
-        <div className="w-full bg-gradient-to-r from-blue-100 to-yellow-100">
+        <div className="w-full bg-gradient-to-r from-white to-yellow-100">
           <Review />
         </div>
       </div>
 
       {/*<Random />*/}
-      <section className="relative overflow-hidden bg-gradient-to-r from-blue-200 to-yellow-100 py-10">
+      <section className="relative overflow-hidden bg-gradient-to-r from-white to-yellow-100 py-10">
         <h2 className="text-center text-lg font-bold text-gray-900 mb-6">
           The Rise of Coworking
         </h2>

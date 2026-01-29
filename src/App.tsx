@@ -128,6 +128,30 @@ function App() {
     "/603Interior",
     "/kycform",
   ];
+  const noRequestTourPopupRoutes = [
+    "/admin/dashboard",
+    "/admin/login",
+    "/admin/createacc",
+    "/admin/edituser/:id",
+    "/dashboard",
+    "/dashboard/Myprofile",
+    "/dashboard/Transactions",
+    "/login",
+    "/Register",
+    "/admin/userinfo/:user",
+    "/admin/alluserinfo",
+    "/admin/allbookings",
+    "/admin/onlinebookings",
+    "/admin/edituser/:id",
+    "/forgotPassword",
+    "/changepassword/:id",
+    "/confirmpayment",
+    "/payment",
+    "/booknow/:id",
+    "/RegisterUser",
+    "/603Interior",
+    "/kycform",
+  ];
 
   const matchDynamicRoute = (route: any, path: any) => {
     const routeRegex = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
@@ -142,6 +166,9 @@ function App() {
     matchDynamicRoute(route, location.pathname),
   );
   const shouldShowWhatsappBtn = !noWhatsappPopupRoutes.some((route) =>
+    matchDynamicRoute(route, location.pathname),
+  );
+  const shouldShowRequestBtn = !noRequestTourPopupRoutes.some((route) =>
     matchDynamicRoute(route, location.pathname),
   );
 
@@ -365,7 +392,7 @@ function App() {
       </Routes>
       {shouldShowPopup && a !== "true" && <Popupform />}
       {shouldShowWhatsappBtn && <WhatsappBtn />}
-      {shouldShowWhatsappBtn && <RequestTour />}
+      {shouldShowRequestBtn && <RequestTour />}
     </div>
   );
 }

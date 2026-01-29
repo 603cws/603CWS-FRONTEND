@@ -47,7 +47,7 @@ const photos = [
 
 const PhotoGallery: React.FC = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-100 to-yellow-100 py-8 z-0">
+    <div className="bg-gradient-to-r from-white to-yellow-100 py-8 z-0">
       <div className="px-auto">
         <Swiper
           spaceBetween={30}

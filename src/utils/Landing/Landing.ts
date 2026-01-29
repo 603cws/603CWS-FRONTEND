@@ -1,7 +1,7 @@
 import logoImg from "/logo/logo.png";
 import office from "/officepic.jpg";
-import image4 from "/image-4.webp";
-import image5 from "/image-5.webp";
+// import image4 from "/image-4.webp";
+// import image5 from "/image-5.webp";
 import image2 from "/image-2.webp";
 import marathon from "/marathon4.jpg";
 import marathon2 from "/marathon2.webp";
@@ -23,14 +23,23 @@ import newPhoto4 from "/photo4.jpg";
 import newPhoto5 from "/photo5.jpg";
 import newPhoto6 from "/photo6.jpeg";
 
+// home images
+import home1 from "/privateOffices.jpg";
+import home2 from "/MeetingRoomHome.jpg";
+import home3 from "/Homepageicon1.png";
+
 export const logo = logoImg;
 export const office_main = "";
 export const office_pic = office;
 
 //export const background = "https://cdn-bnokp.nitrocdn.com/QNoeDwCprhACHQcnEmHgXDhDpbEOlRHH/assets/images/optimized/rev-33819c0/www.decorilla.com/online-decorating/wp-content/uploads/2022/03/Modern-Office-Interior-with-Open-Floor-Plan-1536x1024.jpeg"
-export const photo1 = image4;
-export const photo2 = image5;
+export const photo1 = home1;
+// export const photo1 = image4;
+export const photo2 = home2;
+// export const photo2 = image5;
 export const photo3 = image2;
+
+export const photo4 = home3;
 
 export const gallery1 = marathon;
 export const gallery2 = marathon2;
