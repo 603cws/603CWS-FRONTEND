@@ -12,10 +12,10 @@ import {
   FaCoffee,
   FaRupeeSign,
 } from "react-icons/fa";
-import ImageCarousel from "../../LocationCarousal/LocationCarousal";
 import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
+import ImageGrid from "../../LocationCarousal/ImageGrid";
 
 const Webpage = () => {
   const [source] = useState(
@@ -59,16 +59,80 @@ const Webpage = () => {
         </section>
 
         {/* Workspace Packages Section */}
-        <section className="py-16 flex flex-col lg:flex-row justify-between items-center px-8 lg:px-32 bg-gradient-to-r from-gray-50 to-yellow-50">
-          <div className="lg:w-3/5">
-            <ImageCarousel
-              images={images}
-              altTextPrefix="My Image"
-              indicatorColor="bg-gray-300"
-              indicatorActiveColor="bg-yellow-600"
-              buttonColor="bg-yellow-600"
-              buttonHoverColor="bg-blue-900"
-            />
+        <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 px-8 2xl:px-32 grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] items-stretch py-16 lg:gap-10">
+          <ImageGrid images={images} />
+          <div>
+            <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
+              <div className="flex items-start mb-6">
+                <div className="ml-4">
+                  <h3 className="text-xl font-black mb-2 text-gray-600">
+                    Workspace Packages
+                  </h3>
+                  <p className="text-base font-semibold text-gray-500 mt-6">
+                    Choose the best package for your workspace needs, offering
+                    flexible solutions for all.
+                  </p>
+                </div>
+              </div>
+              <ul className="space-y-4">
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Day Pass
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 999
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Hot Desk
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 12,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Dedicated Desk
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 15,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Cabin Space
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 17,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Custom Cabin
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 17,999 Onwards
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Meeting Rooms
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 899 / Hourly
+                  </span>
+                </li>
+                <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Conference Rooms
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                    <FaRupeeSign /> 1,499 / Hourly
+                  </span>
+                </li>
+              </ul>
+            </div>
             <div className="pt-5">
               <button
                 className="w-full bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition-all duration-300"
@@ -78,77 +142,6 @@ const Webpage = () => {
                 Book Now
               </button>
             </div>
-          </div>
-          <div className="2xl:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">
-            <div className="flex items-start mb-6">
-              <div className="ml-4">
-                <h3 className="text-xl font-black mb-2 text-gray-600">
-                  Workspace Packages
-                </h3>
-                <p className="text-base font-semibold text-gray-500 mt-6">
-                  Choose the best package for your workspace needs, offering
-                  flexible solutions for all.
-                </p>
-              </div>
-            </div>
-            <ul className="space-y-4">
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Day Pass
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 999
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Hot Desk
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 12,999 Onwards
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Dedicated Desk
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 15,999 Onwards
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Cabin Space
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 17,999 Onwards
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Custom Cabin
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 17,999 Onwards
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Meeting Rooms
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 899 / Hourly
-                </span>
-              </li>
-              <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Conference Rooms
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
-                  <FaRupeeSign /> 1,499 / Hourly
-                </span>
-              </li>
-            </ul>
           </div>
         </section>
 
