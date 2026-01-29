@@ -29,7 +29,7 @@ const Login: React.FC = () => {
     try {
       const response = await axiosInstance.post(
         `/api/v1/auth/admin/login`,
-        data
+        data,
       );
 
       const { msg, user, token } = response.data;
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
       }
     } catch (e) {
       toast.error(
-        "Access Denied. Repeated failed login attempts may result in account suspension."
+        "Access Denied. Repeated failed login attempts may result in account suspension.",
       );
     } finally {
       setloading(false);
@@ -53,12 +53,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
       <div
-        className="flex md:h-[73%] lg:h-[83%] xl:h-[95%] items-center justify-center pt-56 pb-40 pr-7 pl-7 min-w-screen relative overflow-hidden"
+        className="flex md:h-[73%] lg:h-[83%] xl:h-[95%] items-center justify-center pt-56 pb-40 pr-7 pl-7 w-full relative overflow-hidden"
         style={{
           backgroundImage: `url(${gallery8})`,
           backgroundSize: "cover",

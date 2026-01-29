@@ -5,7 +5,8 @@ function PartnerWithUs() {
   return (
     <div>
       <div
-        className="relative flex flex-col md:flex-row items-center justify-center  bg-hero-partner bg-cover bg-center h-[500px] md:h-[600px] px-6 md:px-20"
+        style={{ backgroundImage: `url("./photo4.jpg")` }}
+        className="relative flex flex-col md:flex-row items-center justify-center bg-hero-partner bg-cover bg-center h-[500px] md:h-[600px] px-6 md:px-20"
       >
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-800/40 opacity-80"></div>
@@ -28,12 +29,11 @@ function PartnerWithUs() {
         </div>
       </div>
 
-
       <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-between px-6 py-12 bg-gray-100">
         <div className="relative flex items-center justify-center mb-6 md:mb-0 w-full md:w-1/2">
           <img
             className="rounded-lg shadow-lg w-full h-auto transition-opacity duration-300"
-            src="https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2017/05/matulya2.jpg"
+            src="./partner.jpeg"
             alt="matulya2"
           />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/30 backdrop-blur-md rounded-lg p-4">
@@ -50,7 +50,6 @@ function PartnerWithUs() {
         </p>
       </div>
       <div className="pt-14 pb-12 bg-gradient-to-r from-gray-50 to-yellow-100">
-
         <ContactUs />
       </div>
       {/* 
@@ -78,9 +77,7 @@ function PartnerWithUs() {
         
       </div>
       */}
-
     </div>
-
   );
 }
 export default PartnerWithUs;

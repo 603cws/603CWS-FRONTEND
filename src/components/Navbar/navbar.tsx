@@ -91,7 +91,7 @@ const Navbar = () => {
           setLocationsDropdownVisible(false);
         }}
         // className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10  "
-        className=" bg-gradient-to-r from-yellow-100 to-white navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
+        className=" bg-gradient-to-r from-white to-yellow-100 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl  z-50 flex items-center  font-medium backdrop-filter backdrop-blur-md  lg:pl-20 lg:pr-10 "
       >
         {/* mobile version  */}
         <div>

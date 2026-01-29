@@ -4,8 +4,8 @@ import LogIn from "../components/LogIn/LogIn";
 function SignIn() {
   return (
     <>
-      <div className="h-screen w-screen">
-        <div style={{ zIndex: 20, position: 'relative' }}>
+      <div className="h-screen w-full">
+        <div style={{ zIndex: 20, position: "relative" }}>
           <Navbar />
         </div>
         <div>

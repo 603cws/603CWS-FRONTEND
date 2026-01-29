@@ -1,6 +1,5 @@
-import { lifeat603, mission, bgimage2, vision } from "../utils/AboutUs/AboutUs";
 // import { useState } from "react";
-import OurServices from "../components/AboutUs/OurServices";
+// import OurServices from "../components/AboutUs/OurServices";
 import Navbar from "../components/Navbar/navbar";
 import Footer from "../components/Footer/footer";
 import { useApp } from "../context/AuthContext";
@@ -21,7 +20,7 @@ function AboutUs() {
 
       <header
         className="relative flex justify-center items-center bg-cover bg-center bg-fixed h-screen md:h-[600px]"
-        style={{ backgroundImage: `url(${bgimage2})` }}
+        style={{ backgroundImage: `url("./aboutus/bgimage.jpg")` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative text-center text-white">
@@ -55,7 +54,7 @@ function AboutUs() {
         <section className="flex flex-col lg:flex-row gap-5 justify-center items-center px-4 md:px-14 py-5">
           <div className="lg:w-1/2 w-full flex items-center justify-center">
             <img
-              src={lifeat603}
+              src="./aboutus/about1.jpg"
               className="w-full h-auto max-w-lg lg:max-w-md rounded-lg shadow-lg object-cover"
               alt="Life at 603"
             />
@@ -84,7 +83,11 @@ function AboutUs() {
         </section>
 
         <section className="flex flex-col md:flex-row-reverse gap-8 justify-center px-4 items-center md:px-14 pt-16">
-          <img src={mission} className="w-full md:w-1/2" alt="Mission" />
+          <img
+            src="./aboutus/about2.jpg"
+            className="w-full md:w-1/2"
+            alt="Mission"
+          />
           <div className="md:w-1/2 text-center md:text-left px-4">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3f3836]">
               Our Mission
@@ -100,7 +103,11 @@ function AboutUs() {
         </section>
 
         <section className="flex flex-col md:flex-row gap-8 justify-center items-center pt-16 md:pb-12">
-          <img src={vision} className="w-full md:w-1/2" alt="Vision" />
+          <img
+            src="./aboutus/about3.jpg"
+            className="w-full md:w-1/2"
+            alt="Vision"
+          />
           <div className="md:w-1/2 text-center md:text-left px-4">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#3f3836]">
               Our Vision
@@ -117,7 +124,7 @@ function AboutUs() {
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row bg-[#fcc519] py-16 text-white gap-10 px-5 xl:px-20">
+        <section className="flex flex-col md:flex-row bg-[#eee] py-16 text-black gap-10 px-5 xl:px-20">
           <div className="md:w-1/2 flex flex-col justify-center">
             <h1 className="text-3xl sm:text-4xl lg:text-4xl font-semibold">
               Join a community of early-stage startups.
@@ -133,7 +140,7 @@ function AboutUs() {
             </p>
             <button
               onClick={() => navigate("/booknow")}
-              className="mt-8 mb-3 py-3 bg-[#3f3836] text-lg font-semibold rounded-md shadow-md"
+              className="mt-8 mb-3 py-3 bg-[#fcc519] text-lg font-semibold rounded-md shadow-md hover:text-white"
             >
               Book a Space
             </button>
@@ -141,7 +148,7 @@ function AboutUs() {
 
           <div className="relative w-full md:w-1/2 flex items-center">
             <img
-              src={bgimage2}
+              src="./aboutus/about4.jpg"
               className="h-[400px] md:h-[600px] w-full object-cover rounded-lg shadow-lg"
               alt="Background"
             />
@@ -161,7 +168,7 @@ function AboutUs() {
           </div>
         </section>
 
-        <OurServices />
+        {/* <OurServices /> */}
 
         <section className="px-4 py-16 bg-gray-50 text-gray-700">
           <div className="max-w-4xl mx-auto text-sm">

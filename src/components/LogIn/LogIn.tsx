@@ -73,7 +73,7 @@ const LogIn: React.FC = () => {
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-gray-900 opacity-10"></div>
-      <div className="bg-white rounded-lg p-8 w-full max-w-md shadow-lg z-10 transform transition-transform duration-500">
+      <div className="bg-white rounded-lg p-8 max-w-md w-full shadow-lg z-10 transform transition-transform duration-500">
         <h1 className="text-2xl font-bold mb-8 text-gray-800 text-center animate__animated animate__fadeIn sm:text-3xl">
           Login to Your Account
         </h1>
