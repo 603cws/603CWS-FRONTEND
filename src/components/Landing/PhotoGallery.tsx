@@ -70,7 +70,7 @@ const PhotoGallery: React.FC = () => {
               <img
                 src={photo?.src}
                 alt={photo?.alt}
-                className="w-full h-[250px] sm:h-[300px] md:h-[400px]  rounded-2xl object-cover"
+                className="w-full h-[250px] sm:h-[300px] md:h-[400px]  rounded-2xl object-cover cursor-grab"
               />
             </SwiperSlide>
           ))}

@@ -570,7 +570,12 @@ function Landing() {
         {windowWidth > 1276 && (
           <div className="w-full xl:w-1/2 flex flex-col mt-12 xl:mt-0 px-4 md:px-8 lg:px-16">
             <div className="flex flex-col md:flex-row justify-center">
-              <div className="mx-3 mb-3 bg-gradient-to-r from-gray-700 to-yellow-400 hover:bg-yellow-400 p-6 rounded-lg shadow-lg md:w-96 xl:w-80 flex flex-col items-center justify-around">
+              <div className="mx-3 mb-3 bg-gradient-to-r from-gray-700 to-yellow-400 hover:bg-yellow-400 p-6 rounded-lg shadow-lg md:w-96 xl:w-80 flex flex-col items-center justify-around relative">
+                <div className="absolute top-0 left-0 bg-red-600 rounded-tl-lg rounded-br-lg px-1.5 py-1">
+                  <p className="text-xs font-semibold text-gray-100">
+                    Only 3 Units Left in Bandra West.
+                  </p>
+                </div>
                 <h2 className="font-sans font-semibold text-white text-lg md:text-2xl lg:text-2xl  mb-4">
                   Explore Our Standard Private Offices
                 </h2>
