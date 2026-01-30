@@ -4,6 +4,18 @@ import {
   seed,
   BhashaAdvisors,
   Anritsu,
+  valcreate,
+  wedknott,
+  RosadoGem,
+  eureka,
+  gswlogo,
+  svaryu,
+  MomLogo,
+  RNC,
+  neo,
+  adani,
+  NSDLlogo,
+  IIDELogo,
 } from "./../../utils/AboutUs/AboutUs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./../../../node_modules/swiper/swiper-bundle.min.css";
@@ -19,6 +31,18 @@ function OurServices() {
     seed,
     BhashaAdvisors,
     Anritsu,
+    valcreate,
+    wedknott,
+    RosadoGem,
+    eureka,
+    gswlogo,
+    svaryu,
+    MomLogo,
+    RNC,
+    neo,
+    adani,
+    NSDLlogo,
+    IIDELogo,
   ];
   return (
     <div className="w-full  md:pt-20 pb-5 px-20 bg-gradient-to-r from-white to-yellow-100">

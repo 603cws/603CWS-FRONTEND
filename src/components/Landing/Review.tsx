@@ -84,6 +84,38 @@ I would highly recommend 603 Co-Working Spaces to professionals and organization
 Speaking specifically about our experience at the current facility, we are extremely satisfied with the overall service. The team is highly responsive and prompt in addressing any queries or concerns we may have. What stands out the most is their proactive approaches issues are acknowledged immediately and resolved efficiently.
 Overall, it has been a very positive and seamless experience working from this facility. We truly appreciate the support and professionalism of the team at 603 specially Community Manager and look forward to continuing our association.`,
   },
+  {
+    company: "VALCREATE",
+    author: "Mr. Rajesh Pherwani",
+    designation: "",
+    logo: "/ClientLogos/valcreate.jpeg",
+    text: `We are a portfolio management firm and our business is into investing in stocks and creating portfolios for our clients. The objective is to be at wealth for our clients. I have been associated with 603 The  Co-working since 2019. Recently, I moved to this new center. It is quite convenient for me given that I stay about 5 mins  away from this place. The people out here are pretty professional. The environment is quite conducive for what they do because in investment, we need privacy as well as a little bit of, you know, quietness around. So if we see the people out here, I think they are pretty well behaved and the even the the working staff over here is quite cordial and the service is pretty up to the mark. I think I'm pretty happy with what I see at 603  and I would definitely recommend whoever is looking to set up their shop here.`,
+  },
+  {
+    company: "MEDIVIGIL CLINICAL RESEARCH",
+    author: "Ms. Divya Chandiramani",
+    designation: "Founder",
+    logo: "/ClientLogos/Medvigil.jpeg",
+    text: `Hi everybody, This is Divya Chandiramani I am a CEO, a founder of Medvigil Clinical Research. We are a clinical research organization and we have been at 603 since a year now. Kunal and Joy were extremely helpful when we had to set up office over here. They did everything according to our specifications and our security audit rules. And our team is are extremely comfortable. They have been very professional. We have an environment where people really need to focus on their tasks, but at the same time, we have space to even interact with each other. And it was important for team building. So Thank you to 603. It's been Great.`,
+  },
+  {
+    company: "WEDKNOTT",
+    author: "Ms. Jaya",
+    designation: "Founder",
+    logo: "/ClientLogos/wedknott.jpeg",
+    text: `I would like to share my feedback on our experience at 603 Co-Working Spaces.
+The overall environment is very professional, well-maintained, and conducive to productivity. The workspace layout is thoughtfully designed, offering a good balance of comfort and functionality. The common areas and meeting rooms are clean, organized, and well-equipped, which makes day-to-day operations smooth and efficient.
+The support staff has been extremely cooperative and responsive, always ready to assist with any requirements. The location and amenities provided add great value, making it a convenient and pleasant place to work.
+It has been a positive experience working from 603 Co-Working Spaces, and I would definitely recommend it to other professionals and organizations looking for a reliable and professional workspace.`,
+  },
+  {
+    company: "RASADO GEMS",
+    author: "Ms. Binal",
+    designation: "Founder",
+    logo: "/ClientLogos/RosadoGem.jpeg",
+    text: `I’ve really enjoyed being part of 603 Trade Link at Kamala mills over the past year. The overall vibe is incredibly positive, and the open terrace area is easily my favorite feature—it’s a fantastic spot to recharge and work as well. 
+I'd love to see more focus on phone booth availability, as making calls gets difficult and there are disturbances at times from the other members. Additionally, a bit more proactive cooperation from the management team regarding member needs would make the experience even better. Thanks for maintaining such a great environment!`,
+  },
 ];
 
 const Review: React.FC = () => {
