@@ -56,6 +56,33 @@ const tickerItems = [
   },
 ];
 
+const features = [
+  {
+    title: "Community & Events",
+    image: "/community-events.png",
+    description:
+      "Regular networking events, workshops, and member meetups that encourage collaboration, learning, and meaningful connections.",
+  },
+  {
+    title: "Design Quality",
+    image: "/design-quality.png",
+    description:
+      "Modern interiors, ergonomic furniture, natural lighting, and productivity-focused layouts designed for everyday comfort.",
+  },
+  {
+    title: "Total Flexibility",
+    image: "/flexiblity.png",
+    description:
+      "Choose from hot desks, dedicated desks, or private cabins — scale up or down anytime with zero long-term lock-ins.",
+  },
+  {
+    title: "Business Growth Ecosystem",
+    image: "/business-growth.png",
+    description:
+      "From startups to enterprises, access a supportive ecosystem of mentors, partners, and business-ready infrastructure.",
+  },
+];
+
 function Landing() {
   // const [popup, setpopup] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -572,6 +599,19 @@ function Landing() {
         </div>
       </div>
 
+      <section className="px-8 xl:px-20 bg-gradient-to-r from-white to-yellow-100">
+        <div className="mx-auto text-center">
+          <h2 className="text-gray-800 text-lg md:text-2xl lg:text-2xl font-semibold">
+            Why 603 The Coworking Space?
+          </h2>
+          <p>More than just a workspace - a community built for growth.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 xl:gap-10 py-10">
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} />
+          ))}
+        </div>
+      </section>
       <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row bg-gradient-to-r from-white to-yellow-100">
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
           <div className="max-w-xl px-5 md:px-0">
@@ -778,6 +818,22 @@ function BenifitsOfCWS() {
           ))}
         </div>
       </div>
+    </div>
+  );
+}
+
+function FeatureCard({ feature }: any) {
+  return (
+    <div className="bg-[#fff] border border-[#DDDDDD] rounded-xl px-4 py-10 flex flex-col items-center gap-4 hover:scale-105 transition-all duration-500 ease-in-out">
+      <img
+        src={feature?.image}
+        alt="feature"
+        className="h-24 w-24 object-contain"
+      />
+      <h4 className="text-xl font-semibold text-center">
+        {feature?.title || ""}
+      </h4>
+      <p className="text-center">{feature.description}</p>
     </div>
   );
 }
