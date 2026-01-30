@@ -109,6 +109,16 @@ function Landing() {
     setIsSubmitting(true);
 
     try {
+      if (
+        !formData?.email ||
+        !formData?.intrestedIn ||
+        !formData?.location ||
+        !formData?.name ||
+        !formData?.phone
+      ) {
+        toast.error("fill the form details ");
+        return;
+      }
       await axiosInstance.post(`/api/v1/users/requestTour`, formData);
 
       setFormData({

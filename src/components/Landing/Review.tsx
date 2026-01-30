@@ -35,7 +35,7 @@ SwiperCore.use([Autoplay]);
 const clientTestimonials = [
   {
     company: "Finman Capital Service",
-    author: "Mr. Bhavesh Sheth",
+    author: "Mr. Dipesh Sheth",
     designation: "",
     logo: "/ClientLogos/finmanCapital.jpeg",
     text: `We are delighted to be a part of the 603 family. Our company has a legacy of over 36 years, and being here has given us the flexibility to scale effortlessly, thanks to the ample space and well-planned infrastructure. The availability of multiple meeting rooms, lunch facilities, and excellent staff amenities adds immense value to our day-to-day operations. All these benefits come at a very attractive and cost-effective proposition.
@@ -58,6 +58,22 @@ We began with one office and have now expanded to another, which speaks volumes 
     text: `We have been a part of 603 Co-Working Space for nearly a year, and the experience has been excellent.
 The strong community and welcoming people were key reasons we chose 603. Its proximity to Lower Parel, Mumbai’s central business district, made it an ideal location.
 The pricing is fair, the team is supportive, and the facilities are well maintained. Most importantly, the workspace offers privacy and a focused environment, allowing us to work efficiently.`,
+  },
+  {
+    company: "Bhasha Advisors",
+    author: "Mr. Shanil Jain",
+    designation: "Co Founder",
+    logo: "/ClientLogos/BhashaAdvisors.jpeg",
+    text: `My name is Shanil Jain  and I’m the co-founder of Bhasha Advisors. We have been using the workspace at 603 for the past three years and are proud to be among the first clients at this center. Our experience with 603 has been consistently positive, with the team focusing on continuous improvements across various aspects of the workspace. Most recently, the renovation of the center has further enhanced the overall experience, making it an even better place to work.`,
+  },
+  {
+    company: "Anritsu",
+    author: "Mr. Rohit Sakpal",
+    designation: "Senior Solution Architect",
+    logo: "/ClientLogos/Anritsu.jpeg",
+    text: `I have had a very positive experience working from 603 Co-Working Spaces. The workspace is thoughtfully designed, well-maintained, and offers a comfortable environment that truly supports productivity. The internet connectivity is reliable, meeting the demands of high-end technical work, and the meeting rooms are well equipped for client and internal discussions.
+What stands out the most is the supportive management and staff—they are responsive, professional, and always willing to help, which makes day-to-day operations smooth and stress-free. The overall ambience strikes a great balance between professionalism and comfort, making it an ideal workspace for individuals as well as teams.
+I would highly recommend 603 Co-Working Spaces to professionals and organizations looking for a dependable, well-managed, and growth-oriented work environment.`,
   },
 ];
 
@@ -123,9 +139,14 @@ const Review: React.FC = () => {
 
                 <div className="flex items-center mt-auto">
                   <div className="text-left">
-                    <p className="text-gray-900 font-semibold">
+                    <p className="text-gray-900 font-semibold text-center">
                       {review.author}
                     </p>
+                    {review?.designation && (
+                      <p className="text-gray-900 font-semibold text-center">
+                        {review?.designation}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

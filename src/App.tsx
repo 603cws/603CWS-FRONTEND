@@ -152,6 +152,7 @@ function App() {
     "/RegisterUser",
     "/603Interior",
     "/kycform",
+    "/",
   ];
 
   const matchDynamicRoute = (route: any, path: any) => {
