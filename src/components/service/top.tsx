@@ -70,7 +70,7 @@ const Top: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-gray-800 text-justify mx-auto">
             Join a Network of Innovators at 603 The Coworking Space
           </h1>
-          <p className="mt-6 text-base sm:text-lg lg:text-xl font-Raleway leading-relaxed text-gray-600 text-justify mx-auto">
+          <p className="mt-6 text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed text-gray-600 text-justify mx-auto">
             At 603 The Coworking Space, we offer a thoughtfully designed
             workspace tailored for professionals, entrepreneurs, and
             freelancers. Discover a dynamic environment that fosters

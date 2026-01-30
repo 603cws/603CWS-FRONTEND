@@ -10,8 +10,7 @@ const Privacy: React.FC = () => {
       </header>
       <div
         style={{
-          backgroundImage:
-            "url('./privacy.jpg')",
+          backgroundImage: "url('./privacy.jpg')",
         }}
         className="relative bg-no-repeat bg-center bg-cover bg-fixed mb-5"
       >
@@ -28,7 +27,7 @@ const Privacy: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 overflow-auto">
-        <div className="max-w-4xl mx-auto p-6 sm:p-10 text-gray-800">
+        <div className="mx-auto p-5 sm:p-8 text-gray-800 text-left">
           <p className="mb-4">
             At 603TheCoworkingSpace, accessible from
             <a
