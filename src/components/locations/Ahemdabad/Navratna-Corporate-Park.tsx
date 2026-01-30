@@ -69,7 +69,7 @@ const Webpage = () => {
         <section className="bg-gradient-to-r from-yellow-50 to-yellow-100 px-8 2xl:px-32 grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] items-stretch py-16 lg:gap-10">
           <ImageGrid images={images} />
 
-          <div>
+          <div className="flex flex-col justify-between">
             <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
               <div className="flex items-start mb-6">
                 <div className="ml-4">
