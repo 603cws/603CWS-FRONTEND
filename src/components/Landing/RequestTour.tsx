@@ -172,7 +172,7 @@ function RequestTour() {
             </select>
           </div>
           <button
-            // type="submit"
+            type="submit"
             onClick={handleFormSubmit}
             disabled={isSubmitting}
             className="col-span-2 text-center button text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900  lg:px-4 py-2  rounded-lg shadow-2xl button-animated"

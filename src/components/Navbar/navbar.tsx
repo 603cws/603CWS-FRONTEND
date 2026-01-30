@@ -23,10 +23,10 @@ const Navbar = () => {
   const [isLocationsDropdownVisible, setLocationsDropdownVisible] =
     useState(false);
   const [isMumbaiDropdownVisible, setMumbaiDropdownVisible] = useState(false);
-  const [isNaviMumbaiDropdownVisible, setNaviMumbaiDropdownVisible] =
-    useState(false);
-  const [isAhmedabadDropdownVisible, setAhmedabadDropdownVisible] =
-    useState(false);
+  // const [isNaviMumbaiDropdownVisible, setNaviMumbaiDropdownVisible] =
+  //   useState(false);
+  // const [isAhmedabadDropdownVisible, setAhmedabadDropdownVisible] =
+  //   useState(false);
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
     useState(false);
 
@@ -159,8 +159,8 @@ const Navbar = () => {
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
                       setMumbaiDropdownVisible(true);
-                      setNaviMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
+                      // setNaviMumbaiDropdownVisible(false);
+                      // setAhmedabadDropdownVisible(false);
                     }}
                     onMouseLeave={() => {
                       timeoutId = setTimeout(
@@ -183,50 +183,10 @@ const Navbar = () => {
                         <button
                           className="text-base"
                           onClick={() => {
-                            navigate("/locations/Matulya-Centre");
+                            navigate("/locations/Pentagon-Classic");
                           }}
                         >
-                          Matulya Centre, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Sun-Mill-Compound");
-                          }}
-                        >
-                          Sun Mill Compound, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Kamala-Mills");
-                          }}
-                        >
-                          Kamala Mills, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Sunshine-Tower");
-                          }}
-                        >
-                          Sunshine Tower, Lower Parel
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Amore-Centre");
-                          }}
-                        >
-                          Amore Centre, Khar
+                          Andheri, Classic Pentagon
                         </button>
                       </li>
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
@@ -236,27 +196,17 @@ const Navbar = () => {
                             navigate("/locations/Makhija-Archade");
                           }}
                         >
-                          Makhija Archade, Bandra
+                          Bandra, Makhija Arcade
                         </button>
                       </li>
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
                           onClick={() => {
-                            navigate("/locations/Pinnacle-Corporate-Park");
+                            navigate("/locations/Amore-Centre");
                           }}
                         >
-                          Pinnacle Corporate Park, BKC
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Pentagon-Classic");
-                          }}
-                        >
-                          Classic Pentagon,Andheri
+                          Khar, Amore Centre
                         </button>
                       </li>
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
@@ -266,9 +216,60 @@ const Navbar = () => {
                             navigate("/locations/Lawyers-Chamber");
                           }}
                         >
-                          Lawyers Chamber,Fort
+                          Fort, Heritage Precinct, Lawyers Chamber
                         </button>
                       </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Kamala-Mills");
+                          }}
+                        >
+                          Lower Parel, Kamala Mills
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Matulya-Centre");
+                          }}
+                        >
+                          Lower Parel, Matulya Centre
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Sun-Mill-Compound");
+                          }}
+                        >
+                          Lower Parel, Sun Mill Compound
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Sunshine-Tower");
+                          }}
+                        >
+                          Lower Parel, Sunshine Tower
+                        </button>
+                      </li>
+
+                      {/* <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Pinnacle-Corporate-Park");
+                          }}
+                        >
+                          Pinnacle Corporate Park, BKC
+                        </button>
+                      </li> */}
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                         <button
                           className="text-base"
@@ -276,7 +277,7 @@ const Navbar = () => {
                             navigate("/locations/TradeLink");
                           }}
                         >
-                          Trade Link ,Lower Parel
+                          Lower Parel, Trade Link
                         </button>
                       </li>
                       <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
@@ -286,12 +287,22 @@ const Navbar = () => {
                             navigate("/locations/MarathonFuturex");
                           }}
                         >
-                          Marathon Futurex,Lower Parel
+                          Lower Parel, Marathon Futurex
+                        </button>
+                      </li>
+                      <li className="py-2 hover:text-yellow-500">
+                        <button
+                          className="text-base"
+                          onClick={() => {
+                            navigate("/locations/Navratna-Corporate-Park");
+                          }}
+                        >
+                          Ahmedabad, Navratna Corporate Park
                         </button>
                       </li>
                     </ul>
                   </li>
-                  <li
+                  {/* <li
                     className="relative group border-b border-gray-300"
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
@@ -337,8 +348,8 @@ const Navbar = () => {
                         </button>
                       </li>
                     </ul>
-                  </li>
-                  <li
+                  </li> */}
+                  {/* <li
                     className="relative group"
                     onMouseEnter={() => {
                       clearTimeout(timeoutId);
@@ -370,11 +381,11 @@ const Navbar = () => {
                             navigate("/locations/Navratna-Corporate-Park");
                           }}
                         >
-                          Navratna Corporate Park, Ahmedabad
+                          Ahmedabad, Navratna Corporate Park
                         </button>
                       </li>
                     </ul>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 

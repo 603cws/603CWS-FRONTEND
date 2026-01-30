@@ -11,11 +11,12 @@ const ContactUs = () => {
     message: "",
   });
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isloading, setIsloading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -27,9 +28,10 @@ const ContactUs = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsloading(true);
       await axiosInstance.post(
         `/api/v1/services/sendpartnershipemail`,
-        formData
+        formData,
       );
       setFormData({
         name: "",
@@ -41,6 +43,8 @@ const ContactUs = () => {
       setIsPopupVisible(true);
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setIsloading(false);
     }
   };
 
@@ -153,7 +157,7 @@ const ContactUs = () => {
             type="submit"
             disabled={isDisabled}
           >
-            Send
+            {isloading ? "loading..." : "Send"}
           </button>
           <button
             className="bg-gray-200 text-gray-700 font-bold py-2 px-6 rounded-lg ml-4 hover:bg-gray-400 transition duration-300"
