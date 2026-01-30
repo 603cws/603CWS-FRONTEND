@@ -43,7 +43,7 @@ Being associated with 603 has truly been fortunate for us. During this journey, 
   },
   {
     company: "Whoppls",
-    author: "Ramya Ramachandra",
+    author: "Mr Ramya Ramachandra",
     designation: "Founder",
     logo: "/ClientLogos/whoppl.jpeg",
     text: `I’m Ramya Ramachandra, Founder of Whoppls. We are a content-to-commerce company and have been in business for four and a half years. As a company that started during the pandemic, transitioning back to an office environment was a significant step for us, and 603 proved to be the most viable choice.
@@ -78,7 +78,7 @@ const Review: React.FC = () => {
   return (
     <div className="bg-gradient-to-r from-white to-yellow-100 md:py-12">
       <div className="container mx-auto text-center px-5 md:px-10">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 mb-12">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 mb-6 lg:mb-12">
           Our Valued Clients...
         </h2>
         <Swiper

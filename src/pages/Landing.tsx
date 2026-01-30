@@ -334,7 +334,7 @@ function Landing() {
           <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
           </h1>
-          <ul className="[&_li]:list-disc list-inside mt-6 text-gray-600 bg-text-base md:text-sm lg:text-lg leading-relaxed w-full max-w-xl text-justify">
+          <ul className="[&_li]:list-disc list-inside mt-6 text-gray-600 bg-text-base md:text-lg lg:text-lg leading-relaxed w-full max-w-xl text-justify">
             <li>
               Scale at the Speed of Ambition: Forget rigid leases that lock you
               down. Our flexible, modular workspaces expand instantly alongside
