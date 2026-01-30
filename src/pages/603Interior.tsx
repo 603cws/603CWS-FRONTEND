@@ -70,7 +70,7 @@ const Webpage = () => {
         >
           <div className="absolute inset-0 bg-black opacity-50"></div>
           <div className="relative z-10">
-            <h1 className="uppercase text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
+            <h1 className="uppercase text-3xl sm:text-5xl lg:text-6xl font-bold text-white  drop-shadow-lg">
               Workved Interior
             </h1>
           </div>
@@ -81,24 +81,27 @@ const Webpage = () => {
         <section className="flex-col lg:flex-row flex m-5 lg:p-10 gap-10">
           {/* form section */}
           <div className="flex-1">
-            <div className="px-4 lg:px-10 bg-[#F2C66D] rounded-3xl">
+            <div className="px-4 lg:px-10 bg-[#F9F9F9] rounded-3xl border border-[#CCC]">
               <div className="font-Poppins font-semibold py-3">
-                <p className=" text-[#1A3A36] font-semibold">Get in Touch!</p>
+                <p className=" text-[#EAB308] font-semibold">Get in Touch!</p>
                 <img src="/serviceIcon.png" alt="service icon" />
-                <h4 className="text-2xl text-white font-semibold">
+                <h4 className="text-2xl font-semibold">
                   Love to hear from you
                 </h4>
-                <h5 className="text-2xl text-white font-semibold">
+                <h5 className="text-2xl  font-semibold">
                   Here’s how you can reach us.
                 </h5>
               </div>
               <div className="font-Poppins lg:pl-2">
-                <form onSubmit={handleformSubmit} className="">
+                <form
+                  onSubmit={handleformSubmit}
+                  className="[&_input]:border [&_input]:border-[#ccc] [&_textarea]:border [&_textarea]:border-[#ccc]"
+                >
                   <div className="mb-2 flex flex-col gap-2">
-                    <label className="font-semibold text-white ">Name*</label>
+                    <label className="font-semibold  ">Name*</label>
                     <input
                       type="text"
-                      className="w-full rounded-lg p-2 mb-2 focus:outline-none"
+                      className="w-full rounded-lg p-2 mb-2 focus:outline-none "
                       placeholder="John Doe"
                       value={name}
                       onChange={(e) => setname(e.target.value)}
@@ -106,7 +109,7 @@ const Webpage = () => {
                     />
                   </div>
                   <div className="mb-2 flex flex-col gap-2">
-                    <label className="font-semibold text-white ">Email*</label>
+                    <label className="font-semibold  ">Email*</label>
                     <input
                       type="email"
                       className="w-full rounded-lg p-2 mb-2 focus:outline-none"
@@ -117,9 +120,7 @@ const Webpage = () => {
                     />
                   </div>
                   <div className="mb-2 flex flex-col gap-2">
-                    <label className="font-semibold text-white">
-                      Company Name*
-                    </label>
+                    <label className="font-semibold ">Company Name*</label>
                     <input
                       type="text"
                       className="w-full rounded-lg p-2 mb-2 focus:outline-none"
@@ -130,9 +131,7 @@ const Webpage = () => {
                     />
                   </div>
                   <div className="mb-2 flex flex-col gap-2">
-                    <label className="font-semibold text-white ">
-                      Mobile No*
-                    </label>
+                    <label className="font-semibold  ">Mobile No*</label>
                     <input
                       type="text"
                       className="w-full rounded-lg p-2 mb-2 focus:outline-none "
@@ -143,9 +142,7 @@ const Webpage = () => {
                     />
                   </div>
                   <div className="mb-2 flex flex-col gap-2">
-                    <label className="font-semibold text-white ">
-                      Message*
-                    </label>
+                    <label className="font-semibold  ">Message*</label>
                     <textarea
                       rows={4}
                       className="w-full rounded-lg p-2 mb-2 focus:outline-none"
@@ -158,14 +155,14 @@ const Webpage = () => {
                   </div>
                   <div className="pb-5">
                     <button
-                      className="px-5 py-2 rounded-lg bg-[#1A3A36]  border border-[#000000] mb-2 text-white "
+                      className="px-5 py-2 rounded-lg bg-[#EAB308] uppercase border border-[#EAB308] hover:text-white mb-2  "
                       type="submit"
                       disabled={loader}
                     >
                       {loader ? (
                         <div className="spinner">
                           <svg
-                            className="animate-spin h-5 w-5 text-white"
+                            className="animate-spin h-5 w-5 "
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -245,7 +242,7 @@ const Webpage = () => {
             <div className=" flex justify-center items-center mt-5">
               <button
                 onClick={handleButtonClick}
-                className="bg-[#F2C66D] text-[#1A3A36] border border-[#1A3A36] px-5 py-3 font-bold uppercase rounded-lg hover:bg-[#1A3A36] hover:text-[#f4f4f4]"
+                className="bg-[#EAB308] border border-[#EAB308] px-5 py-3  uppercase rounded-lg hover:bg-[#EAB308] hover:text-[#f4f4f4]"
               >
                 visit Workved Interior
               </button>

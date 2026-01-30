@@ -28,6 +28,7 @@ import Modal from "../components/DashBoardNavbar/Modal";
 import toast from "react-hot-toast";
 import axiosInstance from "../utils/axiosInstance";
 import CoworkingMap from "../components/CoworkingMap";
+import OurServices from "../components/AboutUs/OurServices";
 
 const tickerItems = [
   {
@@ -603,7 +604,7 @@ function Landing() {
             </p>
           </div>
           <button
-            onClick={() => navigate("/allLocations")}
+            onClick={() => navigate("/locations-pricing-summary")}
             className=" flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
           >
             <span className="text-gray-800 text-2xl">
@@ -616,10 +617,12 @@ function Landing() {
 
       <section className="px-8 xl:px-20 bg-gradient-to-r from-white to-yellow-100">
         <div className="mx-auto text-center">
-          <h2 className="text-gray-800 text-lg md:text-2xl lg:text-2xl font-semibold">
+          <h2 className="text-gray-800 text-2xl md:text-3xl lg:text-4xl font-semibold pb-2">
             Why 603 The Coworking Space?
           </h2>
-          <p>More than just a workspace - a community built for growth.</p>
+          <p className="text-lg">
+            More than just a workspace - a community built for growth.
+          </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 xl:gap-10 py-10">
           {features.map((feature, index) => (
@@ -709,12 +712,12 @@ function Landing() {
         <BenifitsOfCWS />
       </section>
 
-      <section className="px-6 py-10  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100">
+      <section className="px-6 py-20  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100">
         <OurPopularity />
       </section>
 
-      <div className=" lg:pt-20 bg-gradient-to-r from-white to-yellow-100">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl text-yellow-500 font-sans font-semibold text-center">
+      <div className="  bg-gradient-to-r from-white to-yellow-100">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-800 font-sans font-semibold text-center">
           Our Photo Gallery
         </h1>
 
@@ -729,7 +732,7 @@ function Landing() {
         )}
 
         {/* our clients  */}
-        {/* <OurServices /> */}
+        <OurServices />
         <div className="w-full bg-gradient-to-r from-white to-yellow-100">
           <Review />
         </div>

@@ -104,6 +104,7 @@ function App() {
     "/RegisterUser",
     "/603Interior",
     "/kycform",
+    "/membership-plans",
   ];
   const noWhatsappPopupRoutes = [
     "/admin/dashboard",

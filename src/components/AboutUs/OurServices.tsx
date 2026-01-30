@@ -1,12 +1,9 @@
 import {
-  company1,
-  company2,
-  company3,
-  company4,
-  company5,
-  company6,
-  company7,
-  company8,
+  finmanCapital,
+  whoppl,
+  seed,
+  BhashaAdvisors,
+  Anritsu,
 } from "./../../utils/AboutUs/AboutUs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./../../../node_modules/swiper/swiper-bundle.min.css";
@@ -17,18 +14,15 @@ SwiperCore.use([Autoplay]);
 
 function OurServices() {
   const comparr: Array<string> = [
-    company1,
-    company2,
-    company3,
-    company4,
-    company5,
-    company6,
-    company7,
-    company8,
+    finmanCapital,
+    whoppl,
+    seed,
+    BhashaAdvisors,
+    Anritsu,
   ];
   return (
-    <div className="w-full  md:pt-20 pb-5 px-20 bg-gradient-to-r from-blue-100 to-yellow-100">
-      <h1 className="text-center text-lg  md:text-2xl lg:text-2xl font-sans font-bold text-[#fcc519]">
+    <div className="w-full  md:pt-20 pb-5 px-20 bg-gradient-to-r from-white to-yellow-100">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-800 font-sans font-semibold text-center">
         Clients we have worked with
       </h1>
       <div className="w-full">

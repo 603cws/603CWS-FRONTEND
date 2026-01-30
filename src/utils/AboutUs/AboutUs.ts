@@ -1,17 +1,41 @@
-export const bgimage = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/about-2.png?fit=1920%2C1080&ssl=1"
-export const lifeat603 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/aboutus2.png?fit=560%2C596&ssl=1" 
-export const mission = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/mission.png?fit=900%2C394&ssl=1"
-export const vision = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/vision-.png?fit=900%2C394&ssl=1"
+export const bgimage =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/about-2.png?fit=1920%2C1080&ssl=1";
+export const lifeat603 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/aboutus2.png?fit=560%2C596&ssl=1";
+export const mission =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/mission.png?fit=900%2C394&ssl=1";
+export const vision =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/vision-.png?fit=900%2C394&ssl=1";
 
-export const bgimage2 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2017/05/matulya2.jpg?w=1800&ssl=1"
+export const bgimage2 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2017/05/matulya2.jpg?w=1800&ssl=1";
 
-export const company1 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/woople.png?fit=500%2C85&ssl=1"
-export const company2 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Facebook.png?fit=3840%2C2160&ssl=1"
-export const company3 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/download-e1716293067602.jpeg?fit=564%2C368&ssl=1"
-export const company4 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/09/IIDE-Logo.png?fit=1200%2C630&ssl=1"
-export const company5 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Raheja.jpg?fit=4005%2C553&ssl=1"
-export const company6 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Facebook.png?fit=3840%2C2160&ssl=1"
-export const company7 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/ICICI_Bank.png?fit=2560%2C514&ssl=1"
-export const company8 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Tata.png?fit=3840%2C2160&ssl=1"
-export const company9 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/busy.png?fit=371%2C153&ssl=1"
-export const company10 = "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/qatar.jpg?fit=770%2C237&ssl=1"
+export const company1 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/woople.png?fit=500%2C85&ssl=1";
+export const company2 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Facebook.png?fit=3840%2C2160&ssl=1";
+export const company3 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2024/05/download-e1716293067602.jpeg?fit=564%2C368&ssl=1";
+export const company4 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/09/IIDE-Logo.png?fit=1200%2C630&ssl=1";
+export const company5 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Raheja.jpg?fit=4005%2C553&ssl=1";
+export const company6 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Facebook.png?fit=3840%2C2160&ssl=1";
+export const company7 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/ICICI_Bank.png?fit=2560%2C514&ssl=1";
+export const company8 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/Tata.png?fit=3840%2C2160&ssl=1";
+export const company9 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/busy.png?fit=371%2C153&ssl=1";
+export const company10 =
+  "https://i0.wp.com/www.603thecoworkingspace.com/wp-content/uploads/2023/08/qatar.jpg?fit=770%2C237&ssl=1";
+
+// new clients slider images
+
+export const finmanCapital = "/ClientLogos/finmanCapital.jpeg";
+export const whoppl = "/ClientLogos/whoppl.jpeg";
+export const seed = "/ClientLogos/seed.jpeg";
+export const BhashaAdvisors = "/ClientLogos/BhashaAdvisors.jpeg";
+export const Anritsu = "/ClientLogos/Anritsu.jpeg";
+// export const viraRealspace = "/ClientLogos/viraRealspace.jpeg";

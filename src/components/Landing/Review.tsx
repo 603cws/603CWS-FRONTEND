@@ -75,6 +75,15 @@ The pricing is fair, the team is supportive, and the facilities are well maintai
 What stands out the most is the supportive management and staff—they are responsive, professional, and always willing to help, which makes day-to-day operations smooth and stress-free. The overall ambience strikes a great balance between professionalism and comfort, making it an ideal workspace for individuals as well as teams.
 I would highly recommend 603 Co-Working Spaces to professionals and organizations looking for a dependable, well-managed, and growth-oriented work environment.`,
   },
+  {
+    company: "VIRA REALSPACE LLP",
+    author: "Mr. RAHUL JOSHI",
+    designation: "",
+    logo: "/ClientLogos/viraRealspace.jpeg",
+    text: `We are a construction-focused real estate development company, and we have been associated with 603 for almost a year now. Prior to this, we were operating out of their Sunshine Towers facility.
+Speaking specifically about our experience at the current facility, we are extremely satisfied with the overall service. The team is highly responsive and prompt in addressing any queries or concerns we may have. What stands out the most is their proactive approaches issues are acknowledged immediately and resolved efficiently.
+Overall, it has been a very positive and seamless experience working from this facility. We truly appreciate the support and professionalism of the team at 603 specially Community Manager and look forward to continuing our association.`,
+  },
 ];
 
 const Review: React.FC = () => {
@@ -128,7 +137,10 @@ const Review: React.FC = () => {
                   <img
                     src={review?.logo}
                     alt="Company Logo"
-                    className="h-14 w-18 mb-4"
+                    // height="56px"
+                    // width="135px"
+                    className="h-14 mb-4"
+                    // className="h-14  w-18 mb-4"
                   />
                   {/* <img src={logo} alt="Company Logo" className="h-14 mb-4" /> */}
                 </div>
