@@ -22,7 +22,7 @@ const BookNowPage: React.FC = () => {
       : alllocations.filter((cityGroup) => cityGroup.city === selectedCity);
 
   return (
-    <div className="font-sans bg-gray-50 min-h-screen w-screen overflow-x-hidden">
+    <div className="font-sans bg-gray-50 min-h-screen w-full overflow-x-hidden">
       <header className="bg-white shadow-md z-50 fixed w-full top-0">
         <Navbar />
       </header>

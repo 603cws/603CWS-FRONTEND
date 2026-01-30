@@ -68,7 +68,7 @@ const UserManagement = () => {
 
   const handleEditUser = (updatedUser: User) => {
     setUsers((prevUsers) =>
-      prevUsers.map((u) => (u._id === updatedUser._id ? updatedUser : u))
+      prevUsers.map((u) => (u._id === updatedUser._id ? updatedUser : u)),
     );
     setIsEditModalOpen(false);
     setSelectedUser(null);
@@ -82,7 +82,7 @@ const UserManagement = () => {
   const filteredUsers = users.filter(
     (user) =>
       user.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+      user.email.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const indexOfLastUser = currentPage * usersPerPage;
@@ -108,7 +108,7 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
+    <div className="w-full bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
         <AdminDashNavbar />
       </header>

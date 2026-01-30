@@ -59,19 +59,19 @@ const AllBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axiosInstance.get(
-        `/api/v1/bookings/admin/getallbookings`
+        `/api/v1/bookings/admin/getallbookings`,
       );
       const bookingsWithBilledCredits = response.data.allbookings.map(
         (booking: Booking) => {
           const user = response.data.allusers.find(
-            (user: userdetails) => user._id === booking.user
+            (user: userdetails) => user._id === booking.user,
           );
           const billedcredits = user ? user.extracredits : 0;
           return {
             ...booking,
             billedcredits: billedcredits,
           };
-        }
+        },
       );
       setBookings(bookingsWithBilledCredits);
     } catch (error) {
@@ -117,7 +117,7 @@ const AllBookings = () => {
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
   const currentBookings = filteredBookings.slice(
     indexOfFirstBooking,
-    indexOfLastBooking
+    indexOfLastBooking,
   );
 
   const print = useReactToPrint({
@@ -153,7 +153,7 @@ const AllBookings = () => {
     try {
       const resp = await axiosInstance.post(
         `/api/v1/bookings/admin/deletebooking`,
-        { id }
+        { id },
       );
       if (resp.data.message === "Booking not found") {
         toast.error("Booking not found");
@@ -169,7 +169,7 @@ const AllBookings = () => {
   };
 
   return (
-    <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
+    <div className="w-full bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
         <AdminDashNavbar />
       </header>

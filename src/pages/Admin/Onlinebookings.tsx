@@ -58,7 +58,7 @@ const OnlineBookings = () => {
   const fetchBookings = async () => {
     try {
       const response = await axiosInstance.get(
-        `/api/v1/bookings/admin/getonlinebookings`
+        `/api/v1/bookings/admin/getonlinebookings`,
       );
       setBookings(response.data.combinedBookings);
     } catch (error) {
@@ -119,7 +119,7 @@ const OnlineBookings = () => {
   const indexOfFirstBooking = indexOfLastBooking - bookingsPerPage;
   const currentBookings = filteredBookings.slice(
     indexOfFirstBooking,
-    indexOfLastBooking
+    indexOfLastBooking,
   );
 
   const print = useReactToPrint({
@@ -154,7 +154,7 @@ const OnlineBookings = () => {
   };
 
   return (
-    <div className="w-screen bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
+    <div className="w-full bg-gradient-to-r from-blue-50 to-blue-100 overflow-x-hidden">
       <header className="bg-white shadow-lg z-50 relative">
         <AdminDashNavbar />
       </header>

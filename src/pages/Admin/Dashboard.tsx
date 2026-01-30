@@ -45,7 +45,7 @@ function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const response = await axiosInstance.get(
-        `/api/v1/users/details/dashboard`
+        `/api/v1/users/details/dashboard`,
       );
 
       const data = response.data;
@@ -69,7 +69,7 @@ function AdminDashboard() {
   const bookings: any = [];
 
   return (
-    <div className="h-screen w-screen">
+    <div className="h-screen w-full">
       <AdminDashNavbar />
       <div className="w-full">
         <div className="p-6 bg-gray-100 min-h-screen">

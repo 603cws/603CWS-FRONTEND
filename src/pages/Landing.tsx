@@ -179,9 +179,24 @@ function Landing() {
             </h2>
             <button
               onClick={() => navigate("/booknow")}
-              className="text-base md:text-xl lg:text-lg mt-8 bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900 font-bold lg:px-4 py-2 px-3 rounded-lg shadow-2xl button-animated"
+              className="group relative overflow-hidden mt-8
+    text-base md:text-xl lg:text-lg
+    bg-gradient-to-r from-yellow-300 to-yellow-500
+    hover:from-yellow-400 hover:to-yellow-600
+    transition-all duration-300
+    text-gray-900 font-bold
+    lg:px-6 px-3 py-2
+    rounded-lg shadow-2xl"
             >
-              Book a Space
+              <span className="relative z-10">Book a Space</span>
+
+              {/* Glare / Shine effect */}
+              <span
+                className="absolute w-32 h-full bg-white/30
+    rotate-45 -left-40 top-0
+    transition-all duration-500
+    group-hover:left-full"
+              />
             </button>
           </div>
         </div>
@@ -192,20 +207,25 @@ function Landing() {
               href="https://www.instagram.com/603thecoworkingspace/"
               target="_blank"
               rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:scale-110"
             >
               <FaInstagram className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
+
             <a
               href="https://www.linkedin.com/company/603thecoworkingspace/"
               target="_blank"
               rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:scale-110"
             >
               <FaLinkedin className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
+
             <a
               href="https://www.facebook.com/603coworking"
               target="_blank"
               rel="noopener noreferrer"
+              className="transition-transform duration-300 hover:scale-110"
             >
               <FaFacebook className="text-2xl font-semibold hover:text-yellow-300 transition-colors duration-300" />
             </a>
