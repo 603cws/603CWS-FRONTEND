@@ -262,9 +262,24 @@ function Landing() {
       <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
         <button
           onClick={() => setRequestTour(true)}
-          className="text-base text-md  bg-gradient-to-r from-yellow-300 to-yellow-500 hover:bg-yellow-800 transition-all duration-300 text-gray-900 px-2 lg:px-4 py-2  rounded-lg shadow-2xl button-animated"
+          className="group relative overflow-hidden
+    text-base
+    bg-gradient-to-r from-yellow-300 to-yellow-500
+    hover:from-yellow-400 hover:to-yellow-600
+    transition-all duration-300
+    text-gray-900
+    px-2 lg:px-4 py-2
+    rounded-lg shadow-2xl"
         >
-          Request A Tour
+          <span className="relative z-10">Request A Tour</span>
+
+          {/* Glare / Shine effect */}
+          <span
+            className="absolute w-32 h-full bg-white/30
+    rotate-45 -left-40 top-0
+    transition-all duration-500
+    group-hover:left-full"
+          />
         </button>
       </div>
 
