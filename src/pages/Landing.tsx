@@ -10,7 +10,6 @@ import {
   FaCar,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-// import Popupform from "./popup/Popupform";
 import { useEffect, useState } from "react";
 import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -24,7 +23,6 @@ import { useApp } from "../context/AuthContext";
 // import OurServices from "./../components/AboutUs/OurServices";
 import OurPopularity from "../components/AboutUs/OurPopularity";
 import Modal from "../components/DashBoardNavbar/Modal";
-// import axios from "axios";
 import toast from "react-hot-toast";
 import axiosInstance from "../utils/axiosInstance";
 import CoworkingMap from "../components/CoworkingMap";
@@ -168,12 +166,11 @@ function Landing() {
     }
   };
   return (
-    <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff">
+    <div className="h-screen w-screen overflow-x-hidden bg-gradient-to-br from-#fffed8 via-gray-900 to-#ffffff ">
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
 
-      {/* <Popupform val={popup} setpopup={setpopup} /> */}
       <div className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -270,7 +267,7 @@ function Landing() {
     transition-all duration-300
     text-gray-900
     px-2 lg:px-4 py-2
-    rounded-lg shadow-2xl"
+    rounded-lg "
         >
           <span className="relative z-10">Request A Tour</span>
 
@@ -402,7 +399,8 @@ function Landing() {
       </Modal>
 
       {/* Features Section */}
-      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-white to-yellow-100">
+      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 ">
+        {/* <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full md:w-1/2 px-8 lg:px-20 flex flex-col justify-center items-center md:items-start">
           <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
@@ -490,7 +488,8 @@ function Landing() {
         </div>
       </section>
 
-      <div className="flex flex-col md:flex-row lg:pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100">
+      <div className="flex flex-col md:flex-row lg:pt-12 pb-12 ">
+        {/* <div className="flex flex-col md:flex-row lg:pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full md:w-1/2 px-8 lg:px-20">
           <div className="flex flex-col justify-center items-center py-3">
             <CoworkingMap />
@@ -615,7 +614,8 @@ function Landing() {
         </div>
       </div>
 
-      <section className="px-8 xl:px-20 bg-gradient-to-r from-white to-yellow-100">
+      <section className="px-8 xl:px-20">
+        {/* <section className="px-8 xl:px-20 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="mx-auto text-center">
           <h2 className="text-gray-800 text-2xl md:text-3xl lg:text-4xl font-semibold pb-2">
             Why 603 The Coworking Space?
@@ -630,7 +630,8 @@ function Landing() {
           ))}
         </div>
       </section>
-      <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row bg-gradient-to-r from-white to-yellow-100">
+      <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row ">
+        {/* <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
           <div className="max-w-xl px-5 md:px-0">
             <h1 className="font-sans text-yellow-500 font-extrabold text-lg md:text-2xl lg:text-2xl mb-4">
@@ -708,38 +709,41 @@ function Landing() {
         )}
       </div>
 
-      <section className="px-8 lg:px-20 bg-gradient-to-r from-white  to-yellow-100 pt-10 lg:pt-0">
+      <section className="px-8 lg:px-20  pt-10 lg:pt-0">
+        {/* <section className="px-8 lg:px-20 bg-gradient-to-r from-white  to-yellow-100 pt-10 lg:pt-0"> */}
         <BenifitsOfCWS />
       </section>
 
-      <section className="px-6 py-20  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100">
+      <section className="px-6 py-20  flex flex-col items-center">
+        {/* <section className="px-6 py-20  bg-gray-100 flex flex-col items-center  bg-gradient-to-r from-white  to-yellow-100"> */}
         <OurPopularity />
       </section>
 
-      <div className="  bg-gradient-to-r from-white to-yellow-100">
+      <div className=" ">
+        {/* <div className="  bg-gradient-to-r from-white to-yellow-100"> */}
         <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-800 font-sans font-semibold text-center">
           Our Photo Gallery
         </h1>
 
         {windowWidth > 1100 ? (
-          <div className="pb-5 px-20 bg-gradient-to-r from-white to-yellow-100">
+          <div className="pb-5 px-20 ">
             <PhotoGallery />
           </div>
         ) : (
-          <div className="pb-5 px-5 bg-gradient-to-r from-white to-yellow-100">
+          <div className="pb-5 px-5">
             <PhotoGallery />
           </div>
         )}
 
         {/* our clients  */}
         <OurServices />
-        <div className="w-full bg-gradient-to-r from-white to-yellow-100">
+        <div className="w-full ">
           <Review />
         </div>
       </div>
 
       {/*<Random />*/}
-      <section className="relative overflow-hidden bg-gradient-to-r from-white to-yellow-100 py-10">
+      <section className="relative overflow-hidden  py-10">
         <h2 className="text-center text-lg font-bold text-gray-900 mb-6">
           The Rise of Coworking
         </h2>

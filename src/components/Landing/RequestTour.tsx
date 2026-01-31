@@ -77,7 +77,7 @@ function RequestTour() {
     transition-all duration-300
     text-gray-900
     px-2 lg:px-4 py-2
-    rounded-lg shadow-2xl"
+    rounded-lg"
         >
           <span className="relative z-10">Request A Tour</span>
 

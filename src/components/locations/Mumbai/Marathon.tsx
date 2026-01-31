@@ -44,7 +44,7 @@ const Webpage = () => {
         </section>
 
         {/* Workspace Packages Section */}
-        <section className="py-16 flex flex-col 2xl:flex-row justify-between items-center px-8 2xl:px-32 bg-gradient-to-r from-yellow-50 to-yellow-100">
+        <section className="py-16 flex flex-col 2xl:flex-row justify-between items-center px-8 2xl:px-32 ">
           <div className="lg:w-3/5">
             <img
               src={gallery8}
@@ -125,7 +125,7 @@ const Webpage = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gradient-to-r from-yellow-100 to-gray-100 flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
+        <section className="py-16  flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
           <div className="lg:w-3/5">
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Overview
@@ -191,7 +191,7 @@ const Webpage = () => {
             </ul>
           </div>
         </section>
-        <div className="py-16 bg-gradient-to-r from-gray-100 to-yellow-100">
+        <div className="py-16 ">
           <iframe
             src={source}
             className="w-full h-80 rounded-lg shadow-lg"

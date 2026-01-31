@@ -133,7 +133,7 @@ const Review: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-white to-yellow-100 md:py-12">
+    <div className=" md:py-12">
       <div className="container mx-auto text-center px-5 md:px-10">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 mb-6 lg:mb-12">
           Our Valued Clients...

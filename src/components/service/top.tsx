@@ -18,7 +18,7 @@ const Top: React.FC = () => {
   const isInViewText = useInView(refText, { once: true });
 
   return (
-    <div className="min-h-screen w-full font-sans bg-gray-100">
+    <div className="min-h-screen w-full font-sans ">
       <Navbar />
 
       <div

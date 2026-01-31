@@ -49,7 +49,7 @@ function PartnerWithUs() {
           Coworking Space.
         </p>
       </div>
-      <div className="pt-14 pb-12 bg-gradient-to-r from-gray-50 to-yellow-100">
+      <div className="pt-14 pb-12 bg-gray-100">
         <ContactUs />
       </div>
       {/* 

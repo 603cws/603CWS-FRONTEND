@@ -45,7 +45,7 @@ function OurServices() {
     IIDELogo,
   ];
   return (
-    <div className="w-full  md:pt-20 pb-5 px-20 bg-gradient-to-r from-white to-yellow-100">
+    <div className="w-full  md:pt-20 pb-5 px-20 ">
       <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-800 font-sans font-semibold text-center">
         Clients we have worked with
       </h1>
