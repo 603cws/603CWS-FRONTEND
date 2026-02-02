@@ -35,7 +35,9 @@ const LocationPage: React.FC = () => {
             <h2 className="text-white text-4xl sm:text-5xl lg:text-6xl font-semibold mb-4">
               Locations
             </h2>
-            <p className="text-white ">Explore our workspaces</p>
+            <p className="text-white lg:text-lg xl:text-xl">
+              Explore our workspaces
+            </p>
           </div>
         </div>
       </div>

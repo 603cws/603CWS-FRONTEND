@@ -55,69 +55,65 @@ const Webpage = () => {
           <div className="2xl:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">
             <div className="flex items-start mb-6">
               <div className="ml-4">
-                <h3 className="text-xl font-black mb-2 text-gray-600">
+                <h3 className="text-xl xl:text-2xl font-black mb-2 text-gray-600">
                   Workspace Packages
                 </h3>
-                <p className="text-base font-semibold text-gray-500 mt-6">
+                <p className="text-base lg:text-lg font-semibold text-gray-500 mt-6">
                   Choose the best package for your workspace needs, offering
                   flexible solutions for all.
                 </p>
               </div>
             </div>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Day Pass
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-semibold text-gray-500">Day Pass</span>
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 599.00
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
-                  Hot Desk
-                </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-semibold text-gray-500">Hot Desk</span>
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 7,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
+                <span className=" font-semibold text-gray-500">
                   Dedicated Desk
                 </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 11,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
+                <span className=" font-semibold text-gray-500">
                   Cabin Space
                 </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 12,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
+                <span className=" font-semibold text-gray-500">
                   Custom Cabin
                 </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 12,999 Onwards
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
+                <span className=" font-semibold text-gray-500">
                   Meeting Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 499 / Hourly
                 </span>
               </li>
               <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-sm font-semibold text-gray-500">
+                <span className=" font-semibold text-gray-500">
                   Conference Rooms
                 </span>
-                <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                   <FaRupeeSign /> 999 / Hourly
                 </span>
               </li>
@@ -130,13 +126,13 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Overview
             </h2>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Marathon Centre is based in Lower Parel which is famous for being
               an entertainment and commercial hub. Lower Parel is one
               neighbourhood that seamlessly brings together this city’s
               commercial and entertainment aspects together.
             </p>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Our centre is situated on the main-road which helps the commuter
               to travel easily by rail and bus. Lower Parel and Currey Road
               station is at 5 minutes walking distance. If you are sociable, you
@@ -145,7 +141,7 @@ const Webpage = () => {
               multiplex, 5-star restaurants, four levels of exclusive shopping
               area.
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Another highlighted spot to visit is Kamala Mills Compound. It is
               a commercial complex and a party spot located at 5 minutes walking
               distance from Marathon centre. You can find many renowned
@@ -159,7 +155,7 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Amenities
             </h2>
-            <ul className="space-y-4 text-gray-700">
+            <ul className="space-y-4 text-gray-700 text-base xl:text-lg leading-relaxed ">
               <li className="flex items-center">
                 <FaWifi className="text-yellow-500 mr-2" /> High speed internet
               </li>

@@ -102,7 +102,7 @@ function AboutUs() {
           </div>
         </section>
 
-        <section className="flex flex-col md:flex-row gap-8 justify-center items-center pt-16 md:pb-12">
+        <section className="flex flex-col md:flex-row gap-8 justify-center items-center pt-16 md:pb-12 px-4 md:px-14">
           <img
             src="./aboutus/about3.jpg"
             className="w-full md:w-1/2"
@@ -172,12 +172,12 @@ function AboutUs() {
 
         <section className="px-4 py-16 bg-gray-50 text-gray-700 text-center">
           <div className="max-w-4xl mx-auto text-sm">
-            <p className="font-semibold text-sm sm:text-lg md:text-lg">
+            <p className="font-semibold text-sm sm:text-lg md:text-lg lg:text-[26px]">
               Embracing Affordability: The Charm of Budget-Friendly Coworking
               Spaces in Mumbai and Thane.
             </p>
             <br />
-            <p className="text-xs sm:text-sm md:text-sm lg:text-base">
+            <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg">
               In a world where the traditional office paradigm is shifting
               towards flexibility and collaboration, budget-friendly coworking
               office spaces have emerged as a beacon for professionals seeking a
@@ -187,7 +187,7 @@ function AboutUs() {
               without compromising on essential amenities.
             </p>
             <br />
-            <p className="text-xs sm:text-sm md:text-sm lg:text-base">
+            <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg">
               One of the primary draws of our budget-friendly coworking office
               spaces is, of course, the cost savings they offer. In bustling
               urban centers, where real estate prices can skyrocket, our work
@@ -198,7 +198,7 @@ function AboutUs() {
               overhead costs more efficiently.
             </p>
             <br />
-            <p className="text-xs sm:text-sm md:text-sm lg:text-base">
+            <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg">
               Despite being budget-friendly, our coworking spaces do not
               compromise on quality. They typically offer a range of amenities
               essential for a productive work environment. High-speed internet,
@@ -209,7 +209,7 @@ function AboutUs() {
               tasks without being hindered by budget constraints.
             </p>
             <br />
-            <p className="text-xs sm:text-sm md:text-sm lg:text-base">
+            <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg">
               The flexibility provided by budget-friendly coworking spaces is
               another compelling factor. Many of our spaces offer a variety of
               plans, allowing users to choose options that align with their

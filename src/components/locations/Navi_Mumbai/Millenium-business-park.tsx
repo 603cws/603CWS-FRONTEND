@@ -73,69 +73,65 @@ const Webpage = () => {
             <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
               <div className="flex items-start mb-6">
                 <div className="ml-4">
-                  <h3 className="text-xl font-black mb-2 text-gray-600">
+                  <h3 className="text-xl xl:text-2xl font-black mb-2 text-gray-600">
                     Workspace Packages
                   </h3>
-                  <p className="text-base font-semibold text-gray-500 mt-6">
+                  <p className="text-base lg:text-lg font-semibold text-gray-500 mt-6">
                     Choose the best package for your workspace needs, offering
                     flexible solutions for all.
                   </p>
                 </div>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-2">
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
-                    Day Pass
-                  </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-semibold text-gray-500">Day Pass</span>
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 499
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
-                    Hot Desk
-                  </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-semibold text-gray-500">Hot Desk</span>
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 5,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
+                  <span className=" font-semibold text-gray-500">
                     Dedicated Desk
                   </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 7,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
+                  <span className=" font-semibold text-gray-500">
                     Cabin Space
                   </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 8,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
+                  <span className=" font-semibold text-gray-500">
                     Custom Cabin
                   </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 8,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
+                  <span className=" font-semibold text-gray-500">
                     Meeting Rooms
                   </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 399 / Hourly
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className="text-sm font-semibold text-gray-500">
+                  <span className=" font-semibold text-gray-500">
                     Conference Rooms
                   </span>
-                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 799 / Hourly
                   </span>
                 </li>
@@ -158,7 +154,7 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Overview
             </h2>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Discover the epitome of flexibility with our coworking office
               spaces in Ghansoli. Our brand-new facility is designed to
               revolutionize your work experience, providing state-of-the-art
@@ -169,14 +165,14 @@ const Webpage = () => {
               evolving needs of professionals and businesses, and our Ghansoli
               location is tailored to meet those demands.
             </p>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Lying within the Millenium Business Park, Rupa Solitaire is a 1.2
               million-square-foot commercial property developed by Rupa Group.
               It provides easy access to transport, classy hotels, restaurants,
               and other basic amenities. The premises is 10 minutes from
               Ghansoli station and 5 minutes from National Highway.
             </p>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               The building stands right at the doorstep of Ramada Navi Mumbai
               and is just five minutes away from Country Inn & Suites. 603 The
               Coworking Space (Millenium Business Park) is a well-designed
@@ -188,7 +184,7 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Amenities
             </h2>
-            <ul className="space-y-4 text-gray-700">
+            <ul className="space-y-4 text-gray-700 text-base xl:text-lg leading-relaxed ">
               <li className="flex items-center">
                 <FaWifi className="text-yellow-500 mr-2" /> High speed internet
               </li>

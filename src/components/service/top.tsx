@@ -29,17 +29,17 @@ const Top: React.FC = () => {
         }}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-20">
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white drop-shadow-lg text-center">
+          <h1 className="text-4xl sm:text-6xl lg:text-6xl font-extrabold text-white drop-shadow-lg text-center">
             <Scramble
               totype="Our Services"
-              className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white"
+              className="text-4xl sm:text-6xl lg:text-6xl font-extrabold text-white"
               speed={0.2}
             />
           </h1>
-          <p className="text-gray-300 font-semibold mt-4 text-lg sm:text-xl lg:text-2xl text-center">
+          <p className="text-gray-300 font-semibold mt-4 text-lg sm:text-xl lg:text-xl text-center">
             <Scramble
               totype="Everywhere your Business should be"
-              className="text-gray-300 font-semibold mt-4 sm:text-xl lg:text-2xl"
+              className="text-gray-300 font-semibold mt-4 sm:text-xl lg:text-xl"
               speed={0.5}
             />
           </p>
@@ -70,7 +70,7 @@ const Top: React.FC = () => {
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-gray-800 text-justify mx-auto">
             Join a Network of Innovators at 603 The Coworking Space
           </h1>
-          <p className="mt-6 text-xs sm:text-sm md:text-sm lg:text-base leading-relaxed text-gray-600 text-justify mx-auto">
+          <p className="mt-6 text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg leading-relaxed text-gray-600 text-justify mx-auto">
             At 603 The Coworking Space, we offer a thoughtfully designed
             workspace tailored for professionals, entrepreneurs, and
             freelancers. Discover a dynamic environment that fosters
@@ -81,7 +81,7 @@ const Top: React.FC = () => {
 
       <div className="p-5 max-w-full flex justify-center items-center">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1300px]">
-          {offers.offers.map((offer, index) => (
+          {offers?.offers?.map((offer, index) => (
             <div key={index} className="p-4">
               <Offer
                 title={offer.title}
@@ -117,10 +117,10 @@ const Top: React.FC = () => {
 
       <div className="flex items-center justify-center py-10 px-6 shadow-lg mx-4">
         <div className="text-gray-800 text-center leading-relaxed w-full sm:w-[550px] md:w-[650px] lg:w-[70%]">
-          <span className="font-semibold text-sm sm:text-lg md:text-lg mb-7">
+          <h2 className="font-semibold text-sm sm:text-lg md:text-lg lg:text-2xl xl:text-[26px] pb-7">
             Flexible Workspaces in Mumbai & Thane
-          </span>
-          <p className="text-xs sm:text-sm md:text-sm lg:text-base">
+          </h2>
+          <p className="text-xs sm:text-sm md:text-sm lg:text-base xl:text-lg leading-relaxed">
             In the ever-evolving landscape of work, the demand for flexibility
             has become a defining characteristic for professionals and
             businesses alike. Mumbai and Thane, bustling metropolises known for

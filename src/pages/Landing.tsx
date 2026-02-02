@@ -213,7 +213,7 @@ function Landing() {
     lg:px-6 px-3 py-2
     rounded-lg shadow-2xl"
             >
-              <span className="relative z-10">Book a Space</span>
+              <span className="relative z-10 capitalize">Book a Space</span>
 
               {/* Glare / Shine effect */}
               <span
@@ -402,7 +402,7 @@ function Landing() {
       <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 ">
         {/* <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full md:w-1/2 px-8 lg:px-20 flex flex-col justify-center items-center md:items-start">
-          <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
+          <h1 className="text-lg  md:text-2xl lg:text-2xl xl:text-[26px] font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
           </h1>
           <ul className="[&_li]:list-disc list-inside mt-6 text-gray-600 bg-text-base md:text-lg lg:text-lg leading-relaxed w-full max-w-xl text-justify">
@@ -459,7 +459,7 @@ function Landing() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col justify-center space-y-3 mt-6 text-gray-700 bg-text-base md:text-lg lg:text-lg">
+          <div className="flex flex-col justify-center space-y-3 mt-6 text-gray-700 bg-text-base md:text-lg lg:text-lg xl:text-xl">
             <div className="flex items-center">
               <FaWifi className="text-yellow-400 mr-7" /> High-speed internet
             </div>
@@ -495,7 +495,7 @@ function Landing() {
             <CoworkingMap />
           </div>
           <div className="py-4">
-            <h1 className="text-lg pb-3 md:text-2xl lg:text-2xl font-semibold text-gray-800 leading-relaxed w-full max-w-xl mx-auto text-justify">
+            <h1 className="text-lg pb-3 md:text-2xl lg:text-2xl xl:text-[26px] font-semibold text-gray-800 leading-relaxed w-full max-w-xl mx-auto text-justify">
               We Build, Manage, and Run Your Office. You Just Grow.
             </h1>
             <ul className="[&_li]:list-disc list-inside text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl mx-auto text-justify ">
@@ -508,25 +508,15 @@ function Landing() {
                 You Just Grow : Your logo on the wall, your culture in the
                 layout.
               </li>
-              {/* <li>
-                Agile Terms: Scale your square footage up or down as your
-                headcount changes.
-              </li> */}
               <li>
                 Zero Friction: One monthly invoice covers rent, electricity, IT,
                 and coffee.
               </li>
             </ul>
-            {/* <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl mx-auto text-justify ">
-              If you need space today, you need a huge range of options that can
-              be reserved simply and efficiently. If you need to offer flexible
-              work benefits to all your team members, you need our simple
-              solution for teams of any size.
-            </p> */}
             <button
               // onClick={() => navigate("/managed_space_solutions")}
               onClick={() => setRequestTour((prev) => !prev)}
-              className="my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
+              className="capitalize my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
             >
               Get a Custom Quote
             </button>
@@ -534,7 +524,7 @@ function Landing() {
         </div>
         <div className="w-full md:w-1/2 px-5 flex flex-col items-center">
           <div className=" md:mb-8 md:flex md: flex-col justify-center">
-            <h1 className="font-semibold text-gray-800 text-lg md:text-2xl lg:text-2xl  ">
+            <h1 className="font-semibold text-gray-800 text-lg md:text-2xl lg:text-2xl xl:text-[26px] ">
               Our Locations
             </h1>
             <br />
@@ -590,13 +580,13 @@ function Landing() {
             </div>
           </div>
           <div>
-            <p className="text-gray-700 text-lg leading-relaxed w-full max-w-xl text-justify">
+            <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl text-justify">
               At 603, we dont just pick buildings; we curate power centers. From
               Bandra to Fort & In between, our network of premium locations
               offers the prestige your brand deserves and the accessibility your
               team needs.
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed w-full max-w-xl text-justify pt-2">
+            <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl text-justify pt-2">
               Give your team access to thousands of workspace options over
               India, so they can meet, collaborate, and get their best work
               done.
@@ -620,12 +610,12 @@ function Landing() {
           <h2 className="text-gray-800 text-2xl md:text-3xl lg:text-4xl font-semibold pb-2">
             Why 603 The Coworking Space?
           </h2>
-          <p className="text-lg">
+          <p className="text-lg xl:text-xl">
             More than just a workspace - a community built for growth.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 xl:gap-10 py-10">
-          {features.map((feature, index) => (
+          {features?.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}
         </div>
@@ -634,13 +624,13 @@ function Landing() {
         {/* <div className="w-full flex flex-col lg:pt-12 md:pb-12  xl:flex-row bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full xl:w-1/2 flex justify-center md:px-8 lg:px-20">
           <div className="max-w-xl px-5 md:px-0">
-            <h1 className="font-sans text-yellow-500 font-extrabold text-lg md:text-2xl lg:text-2xl mb-4">
+            <h1 className="font-sans text-yellow-500 font-extrabold text-lg md:text-2xl lg:text-2xl xl:text-[36px] mb-4">
               Did you know about this?
             </h1>
-            <h2 className=" text-gray-800 text-lg md:text-2xl lg:text-2xl  font-sans font-semibold mb-6">
+            <h2 className=" text-gray-800 text-lg md:text-2xl lg:text-2xl xl:text-[26px]  font-sans font-semibold mb-6">
               Managed office solutions for any size!
             </h2>
-            <p className="text-slate-600 bg-text-base md:text-lg lg:text-lg md:text-lgmb-8 leading-relaxed w-full max-w-xl mx-auto text-justify">
+            <p className="text-slate-600 bg-text-base md:text-lg lg:text-lg mb-8 leading-relaxed w-full max-w-xl mx-auto text-justify">
               Explore our bespoke standalone workspaces, meticulously crafted to
               reflect and enhance your brand while meeting your unique
               requirements. Whether you're seeking private offices, versatile
@@ -665,7 +655,7 @@ function Landing() {
                     Only 3 Units Left in Bandra West.
                   </p>
                 </div>
-                <h2 className="font-sans font-semibold text-white text-lg md:text-2xl lg:text-2xl  mb-4">
+                <h2 className="font-sans font-semibold text-white text-lg md:text-2xl lg:text-2xl xl:text-[26px]  mb-4">
                   Explore Our Standard Private Offices
                 </h2>
                 <button
@@ -693,7 +683,7 @@ function Landing() {
                 />
               </div>
               <div className="mx-3 mb-3 bg-gradient-to-r from-yellow-400 to-gray-700  p-6 rounded-lg shadow-lg md:w-96 xl:w-80 flex flex-col items-center justify-around">
-                <h2 className="font-sans font-semibold text-white mb-4 text-lg md:text-2xl lg:text-2xl ">
+                <h2 className="font-sans font-semibold text-white mb-4 text-lg md:text-2xl lg:text-2xl xl:text-[26px] ">
                   Rent Conference & Meeting Rooms
                 </h2>
                 <button
@@ -744,7 +734,7 @@ function Landing() {
 
       {/*<Random />*/}
       <section className="relative overflow-hidden  py-10">
-        <h2 className="text-center text-lg font-bold text-gray-900 mb-6">
+        <h2 className="text-center text-lg xl:text-[26px] font-bold text-gray-900 mb-6">
           The Rise of Coworking
         </h2>
 
@@ -761,8 +751,8 @@ function Landing() {
                     key={`${duplicateIndex}-${index}`}
                     className="flex items-center gap-2 text-sm text-gray-800"
                   >
-                    <span className="font-bold">{item.title}:</span>
-                    <span>{item.text}</span>
+                    <span className="font-bold text-lg ">{item.title}:</span>
+                    <span className=" lg:text-lg xl:text-xl">{item.text}</span>
                   </div>
                 ))}
               </div>
@@ -852,10 +842,10 @@ function FeatureCard({ feature }: any) {
         alt="feature"
         className="h-24 w-24 object-contain"
       />
-      <h4 className="text-xl font-semibold text-center">
+      <h4 className="text-xl xl:text-2xl font-semibold text-center">
         {feature?.title || ""}
       </h4>
-      <p className="text-center">{feature.description}</p>
+      <p className="text-center text-base lg:text-lg">{feature?.description}</p>
     </div>
   );
 }

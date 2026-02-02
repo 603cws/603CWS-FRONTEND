@@ -18,8 +18,10 @@ const Offer: React.FC<OfferProps> = ({ title, description, imagesrc }) => {
           />
         </figure>
         <div className="card-body p-4 text-center border-t-2 border-gray-200">
-          <h2 className="text-lg font-bold">{title}</h2>
-          <p className="text-gray-500 mt-2 text-justify mx-auto">{description}</p>
+          <h2 className="text-lg lg:text-xl font-bold">{title}</h2>
+          <p className="text-gray-500 mt-2 text-justify mx-auto">
+            {description}
+          </p>
         </div>
       </div>
     </div>

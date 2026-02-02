@@ -86,7 +86,7 @@ const Webpage = () => {
             <h2 className="uppercase text-4xl font-semibold mb-8 text-gray-800">
               Sattigo Villa – Karjat Overview
             </h2>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="lg:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Our Sattigo Villa is nestled in the heart of Karjat, a serene and
               picturesque destination perfect for both work and relaxation.
               Known for its lush green surroundings, scenic landscapes, and calm
@@ -95,14 +95,14 @@ const Webpage = () => {
               villa is easily accessible by road and rail. Karjat Railway
               Station is just 10 minutes away, ensuring seamless connectivity.
             </p>
-            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="lg:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               For those looking to unwind and socialize, Karjat has plenty to
               offer. Explore nearby attractions such as nature trails,
               waterfalls, and scenic viewpoints. Enjoy farm-to-table dining
               experiences at local restaurants or indulge in adventure
               activities like trekking, cycling, and river rafting.
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="lg:text-lg leading-relaxed text-gray-700">
               The villa itself is thoughtfully designed to offer a peaceful yet
               productive workspace. Whether you’re working solo, collaborating
               with a team, or simply taking a break, our Karjat villa is
@@ -119,35 +119,6 @@ const Webpage = () => {
               </button>
             </div>
           </div>
-          {/* <div className="lg:w-1/3 mt-8 lg:mt-0 lg:ml-12"> */}
-          {/* <h2 className="uppercase text-4xl font-semibold mb-8 text-gray-800">
-              Amenities
-            </h2>
-            <ul className="space-y-4 text-gray-700">
-              <li className="flex items-center">
-                <FaWifi className="text-yellow-500 mr-2" /> High speed internet
-              </li>
-              <li className="flex items-center">
-                <FaBolt className="text-yellow-500 mr-2" /> Uninterruptible
-                power supply
-              </li>
-              <li className="flex items-center">
-                <FaSnowflake className="text-yellow-500 mr-2" /> Fully
-                Airconditioned rooms
-              </li>
-              <li className="flex items-center">
-                <FaBroom className="text-yellow-500 mr-2" /> Housekeeping &
-                Facility Upkeep
-              </li>
-              <li className="flex items-center">
-                <FaCouch className="text-yellow-500 mr-2" /> Relax,
-                entertainment room
-              </li>
-              <li className="flex items-center">
-                <FaCoffee className="text-yellow-500 mr-2" /> Tea & Coffee
-              </li>
-            </ul> */}
-          {/* </div> */}
         </section>
         <div className="py-16 ">
           <iframe

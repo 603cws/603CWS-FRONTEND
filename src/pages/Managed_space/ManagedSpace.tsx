@@ -216,7 +216,7 @@ const Webpage: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-8">
               How it Works
             </h2>
-            <p className="text-lg mb-12 leading-relaxed text-justify">
+            <p className="text-lg mb-12 leading-relaxed  text-center">
               Managed office concepts enable organizations with the necessary
               tools to drive business growth without the burden of operational
               tasks like design, maintenance, utilities, and office materials.
@@ -292,41 +292,36 @@ const Webpage: React.FC = () => {
               ))}
             </div>
             <div className="locations-description pt-16 text-sm flex flex-col items-center">
-              <div className="description-paragraph pb-5 font-semibold">
+              <div className="text-xl lg:text-2xl xl:text-[26px] pb-5 font-semibold">
                 <p>
                   Welcome to efficient business solutions with our Managed
                   Office Spaces in Mumbai and Thane.
                 </p>
               </div>
-              <div className="description-paragraph">
+              <div className=" text-base lg:text-lg text-center">
                 <p>
                   Our turnkey office spaces evolve with the needs of modern
                   enterprises, offering fully-equipped workspaces without the
                   hassle of traditional leases.
                 </p>
-              </div>
-              <div className="description-paragraph">
                 <p>
                   Located in Mumbai and Thane's business hubs, our offices are
                   tailored to various industries. From private offices to
                   coworking spaces, we cater to diverse workforce needs.
                 </p>
-              </div>
-              <div className="description-paragraph">
+
                 <p>
                   Beyond just workspaces, we offer high-speed internet, meeting
                   rooms, and administrative support, enabling seamless business
                   operations with flexible leasing options.
                 </p>
-              </div>
-              <div className="description-paragraph">
+
                 <p>
                   Elevate your operations with spaces that meet modern demands,
                   letting you focus on your core objectives while we handle the
                   rest.
                 </p>
-              </div>
-              <div className="description-paragraph">
+
                 <p>
                   Our meticulously designed spaces foster community and
                   collaboration, accommodating businesses of all sizes with
