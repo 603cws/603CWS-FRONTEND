@@ -11,7 +11,7 @@ function WhatsappBtn() {
       href={whatsappURL}
       target="_blank"
       rel="noopener noreferrer"
-      className="z-50 fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600"
+      className="z-50 fixed bottom-5 right-5 bg-green-500 text-white p-4 rounded-full scale-75 hover:scale-100 transition duration-300 ease-in-out shadow-lg hover:bg-green-600"
     >
       <FaWhatsapp size={28} />
     </a>
