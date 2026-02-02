@@ -34,12 +34,12 @@ const Webpage = () => {
         </section>
 
         {/* Overview Section */}
-        <section className="bg-white py-16 px-6">
+        <section className="bg-white pt-12 pb-6 px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-800">
               A Space Designed for Success
             </h2>
-            <p className="text-lg md:text-lg lg:text-xl text-gray-600 mt-6 leading-relaxed text-justify">
+            <p className="text-lg md:text-lg lg:text-xl text-gray-600 mt-6 leading-relaxed text-center">
               603 Naman Midtown Center is situated at a very prominent location
               in Mumbai, Dadar and in a lavish structure by the name Naman
               Midtown.
@@ -86,8 +86,8 @@ const Webpage = () => {
         </div>
 
         {/* Amenities Section */}
-        <div className="max-w-6xl mx-auto py-16 px-6">
-          <h3 className="text-3xl font-semibold text-gray-800 text-center mb-12">
+        <div className="max-w-6xl mx-auto py-8 px-6">
+          <h3 className="text-2xl md:text-2xl lg:text-4xl font-semibold text-gray-800 text-center mb-12">
             Amenities
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
@@ -139,11 +139,11 @@ const Webpage = () => {
           {/* Connectivity Section */}
           <section className="flex-1">
             <div className="px-8">
-              <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
+              <h3 className="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 text-center mb-3">
                 Connectivity
               </h3>
               <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-              <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+              <ul className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mt-6 space-y-2 flex flex-col items-center">
                 <li>Eastern Express Highway - 1 KM</li>
                 <li>Dadar Railway Station - 1.5 KM</li>
                 <li>Prabhadevi Railway Station - 0.5 KM</li>
@@ -155,11 +155,11 @@ const Webpage = () => {
           {/* Leisure Section */}
           <section className="flex-1">
             <div className="px-8">
-              <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
+              <h3 className="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 text-center mb-3">
                 Leisure
               </h3>
               <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-              <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+              <ul className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mt-6 space-y-2 flex flex-col items-center">
                 <li>Restuarants - 0.5 KM</li>
               </ul>
             </div>
@@ -168,11 +168,11 @@ const Webpage = () => {
           {/* Utility & Facilities Section */}
           <section className="flex-1">
             <div className="px-8">
-              <h3 className="text-2xl md:text-2xl lg:text-3xl font-semibold text-gray-900 text-center mb-3">
+              <h3 className="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 text-center mb-3">
                 Utility & Facilities
               </h3>
               <hr className="border-t-4 border-yellow-500 w-24 mx-auto mb-8" />
-              <ul className="text-sm md:text-base text-gray-700 leading-relaxed mt-6 space-y-4 flex flex-col items-center">
+              <ul className="text-sm md:text-base lg:text-lg text-gray-700 leading-relaxed mt-6 space-y-2 flex flex-col items-center">
                 <li>Petrol Pump - 2.5 KM</li>
                 <li>Pharmacy - 0.5 KM</li>
               </ul>
