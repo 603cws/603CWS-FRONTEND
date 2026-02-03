@@ -22,11 +22,11 @@ const Webpage = () => {
   );
   const images = [
     "/officeimg/Matulya/Matulya.jpg",
-    "/officeimg/Matulya/Matulya2.jpg",
+    "/officeimg/Matulya/MatulyaNew2.webp",
     "/officeimg/Matulya/Matulya3.JPG",
     "/officeimg/Matulya/Matulya4.JPG",
     "/officeimg/Matulya/Matulya5.JPG",
-    "/officeimg/Matulya/Matulya.jpg",
+    "/officeimg/Matulya/MatulyaNew.webp",
   ];
 
   const navigate = useNavigate();
