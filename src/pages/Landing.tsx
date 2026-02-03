@@ -171,8 +171,8 @@ function Landing() {
         <Navbar />
       </div>
 
-      <div className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed blur-animation min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10">
-        <div
+      <div className="relative flex flex-col-reverse md:flex-row items-center justify-center py-20 px-6 md:px-20 font-sans z-10 bg-cover bg-no-repeat bg-fixed  min-h-screen w-full space-y-10 md:space-y-0 md:space-x-10">
+        {/* <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
           style={{
             backgroundImage: `url('${gallery6}')`,
@@ -180,7 +180,26 @@ function Landing() {
             backgroundColor: "rgba(0, 0, 0, 0.6)", // dark overlay effect
             backgroundBlendMode: "darken", // blends the overlay with the image
           }}
-        ></div>
+        ></div> */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster={gallery6}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              filter: "blur(2px)",
+            }}
+          >
+            <source src="/coworkingVideoBanner.mp4" type="video/mp4" />
+            {/* <source src="/path-to-your-video.webm" type="video/webm" /> */}
+            Your browser does not support the video tag.
+          </video>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
 
         <div className="relative z-10 md:w-full">
           <div className="text-white">

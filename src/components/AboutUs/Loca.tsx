@@ -10,18 +10,12 @@ const Loca: React.FC<LocaProps> = ({ title, description, src }) => {
 
   return (
     <div
-      className={`flex min-h-28 max-w-[400px] ${
-        hover ? "text-red-500" : ""
-      }`}
+      className={`flex min-h-28 max-w-[400px] ${hover ? "text-red-500" : ""}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
       {src && (
-        <img
-          src={src}
-          alt={title}
-          className="w-14 h-14 rounded-full mr-4"
-        />
+        <img src={src} alt={title} className="w-14 h-14 rounded-full mr-4" />
       )}
       <div className="flex flex-col">
         <p className={`font-bold text-amber-950 text-lg`}>{title}</p>
