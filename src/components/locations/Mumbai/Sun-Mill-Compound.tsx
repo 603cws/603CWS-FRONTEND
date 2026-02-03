@@ -25,8 +25,8 @@ const Webpage = () => {
     "/officeimg/SunMill/Sunmill2.jpeg",
     "/officeimg/SunMill/Sunmill3.jpeg",
     "/officeimg/SunMill/Sunmill4.jpeg",
-    "/officeimg/SunMill/Sunmill.jpeg",
-    "/officeimg/SunMill/Sunmill.jpeg",
+    "/officeimg/SunMill/sunmillNew1.webp",
+    "/officeimg/SunMill/sunmillNew.png",
   ];
   const name = "Lower Parel - Sun Mill Compound";
 
