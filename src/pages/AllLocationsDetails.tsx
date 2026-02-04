@@ -5,6 +5,11 @@ import matulya from "/officeimg/Matulya/Matulya.jpg";
 import sunshine from "/officeimg/Sunshine/sunshine.JPG";
 import Sunmill from "/officeimg/SunMill/Sunmill.jpeg";
 // import { gallery5 } from "../utils/Landing/Landing";
+import { TbAirConditioning } from "react-icons/tb";
+import { FaWifi } from "react-icons/fa";
+import { PiCoffeeFill } from "react-icons/pi";
+import { AiFillPrinter } from "react-icons/ai";
+import { MdDining } from "react-icons/md";
 
 type Location = {
   name: string;
@@ -20,6 +25,8 @@ type Location = {
   conferencerooms: string[];
   meetingrooms?: string[];
   daypasses: string[];
+  Amenities?: any;
+  shortAddress?: string;
 };
 
 type newLocation = {
@@ -108,6 +115,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Amore Conference Room"],
         meetingrooms: ["Amore Meeting Room"],
         daypasses: ["Amore Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Amore Centre, 5th Floor, Khar West, Mumbai",
       },
       {
         name: "Bandra - Makhija Arcade",
@@ -144,6 +159,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         // meetingrooms: [],
         meetingrooms: ["Bandra Meeting Room"],
         daypasses: ["Bandra Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Makhija Arcade, 6th Floor, Khar West, Mumbai",
       },
       {
         name: "Dadar - Sunshine Tower",
@@ -177,6 +200,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Sunshine Conference Room"],
         meetingrooms: ["Sunshine Meeting Room"],
         daypasses: ["Sunshine Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Sunshine Tower, 26th Floor, Dadar West, Mumbai",
       },
       {
         name: "Lower Parel - Matulya Centre",
@@ -210,6 +241,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Matulya Conference Room"],
         meetingrooms: ["Matulya Meeting Room"],
         daypasses: ["Matulya Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Matulya Centre, 2nd Floor, Lower Parel, Mumbai",
       },
       {
         name: "Lower Parel - Kamala Mills",
@@ -248,6 +287,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         //   "Kamala Mills Meeting Room 2",
         // ],
         daypasses: ["Kamala Mills Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Kamala Mills, 4th Floor, Lower Parel, Mumbai",
       },
       {
         name: "Lower Parel - Sun Mill Compound",
@@ -281,6 +328,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Sunmill Conference Room"],
         meetingrooms: ["Sunmill Meeting Room"],
         daypasses: ["Sunmill Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Sun Mill Compound, Unit 15, Lower Parel, Mumbai",
       },
       {
         name: "Pentagon Classic",
@@ -298,6 +353,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Pentagon Conference Room"],
         meetingrooms: ["Pentagon Meeting Room"],
         daypasses: ["Pentagon Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Pentagon Classic, Andheri East, Mumbai",
       },
       {
         name: "Fort - Lawyers Chamber",
@@ -331,6 +394,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Fort Conference Room"],
         meetingrooms: ["Fort Meeting Room"],
         daypasses: ["Fort Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Lawyers Chamber, Ground Floor, Fort, Mumbai",
       },
       {
         name: "Marathon Futurex",
@@ -364,6 +435,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Marathon Futurex Conference Room"],
         meetingrooms: ["Marathon Futurex Meeting Room"],
         daypasses: ["Marathon Futurex Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Marathon Futurex, 7th Floor, Lower Parel, Mumbai",
       },
       {
         name: "Trade Link, Kamala Mills",
@@ -398,6 +477,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         // meetingrooms: [],
         // meetingrooms: ["Trade Link Meeting Room"],
         daypasses: ["Trade Link Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Trade Link, 1st Floor, Lower Parel, Mumbai",
       },
     ],
   },
@@ -437,6 +524,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Millennium Conference Room"],
         meetingrooms: ["Millennium Meeting Room"],
         daypasses: ["Millennium Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Millennium Business Park, Kopar Khairane, Navi Mumbai",
       },
       {
         name: "Technocity",
@@ -469,6 +564,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Technocity Conference Room"],
         meetingrooms: ["Technocity Meeting Room"],
         daypasses: ["Technocity Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Technocity, 5th Floor, Navi Mumbai",
       },
     ],
   },
@@ -507,6 +610,14 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Navratna Conference Room"],
         meetingrooms: ["Navratna Meeting Room"],
         daypasses: ["Navratna Day Pass"],
+        Amenities: [
+          { icon: FaWifi, title: "Wifi" },
+          { icon: MdDining, title: "Cafeteria" },
+          { icon: AiFillPrinter, title: "Free Printer" },
+          { icon: PiCoffeeFill, title: "Coffee" },
+          { icon: TbAirConditioning, title: "AC Room" },
+        ],
+        shortAddress: "Navratna Corporate Park, Ambli Bopal, Ahmedabad",
       },
     ],
   },

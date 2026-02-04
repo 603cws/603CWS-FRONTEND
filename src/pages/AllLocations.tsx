@@ -61,7 +61,7 @@ const LocationPage: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-2 md:px-12 overflow-auto">
-        {filteredLocations.map((cityGroup, cityIndex) => (
+        {filteredLocations?.map((cityGroup, cityIndex) => (
           <div key={cityIndex} className="mb-16">
             <h3 className="text-3xl sm:text-5xl pt-6 font-bold mb-8 text-center text-[#cd952dd1]">
               {cityGroup.city}
@@ -70,26 +70,65 @@ const LocationPage: React.FC = () => {
               {cityGroup.locations.map((location, locationIndex) => (
                 <div
                   key={locationIndex}
-                  className="flex flex-col items-center text-center bg-white p-4 xl:p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out mb-4"
+                  className="flex flex-col items-center text-center bg-white border border-[#ccc] p-4 xl:p-6 rounded-lg shadow-lg hover:shadow-xl hover:border-yellow-500 transition-shadow duration-300 ease-in-out mb-4"
                 >
                   <img
                     src={location.imgSrc}
                     alt={location.name}
                     className="w-full h-56 object-cover rounded-lg mb-4 shadow-lg"
                   />
-
                   <h4 className="text-2xl font-semibold mb-2">
                     {location.name}
                   </h4>
-                  <p className="text-gray-600 mb-4 mx-auto text-justify">
-                    {location.address}
+                  <p className="text-gray-600  mx-auto text-center">
+                    {location.shortAddress}
                   </p>
-                  <a
+                  <div className="flex gap-3 py-4 lg:py-6">
+                    {location?.Amenities?.map((Amenitie: any) => {
+                      const Icon = Amenitie?.icon;
+                      return (
+                        <div className="flex flex-col justify-center items-center gap-2 ">
+                          <Icon size={28} />
+                          <p className="text-[#6B7280] text-xs">
+                            {Amenitie?.title}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <div className="flex items-center justify-center gap-3 mt-auto ">
+                    <div className="flex flex-col gap-1 font-semibold items-start">
+                      <p className=" text-[#EAB308] ">
+                        From INR {location?.daypass} per day
+                      </p>
+                      <div>
+                        <button
+                          onClick={() => navigate(location.link)}
+                          className="hover:underline capitalize "
+                        >
+                          read more
+                        </button>
+                      </div>
+                    </div>
+                    <div>
+                      <button
+                        onClick={() =>
+                          navigate(
+                            `/booknow/${location?.name?.replace(/\s/g, "_")}`,
+                          )
+                        }
+                        className="bg-yellow-500 hover:bg-yellow-600 px-3 py-2 rounded-lg text-white"
+                      >
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                  {/* <a
                     onClick={() => navigate(location.link)}
                     className="text-yellow-500 hover:underline font-bold hover:cursor-pointer"
                   >
                     Read More &rarr;
-                  </a>
+                  </a> */}
                 </div>
               ))}
             </div>

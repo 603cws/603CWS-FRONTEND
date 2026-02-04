@@ -28,6 +28,7 @@ import axiosInstance from "../utils/axiosInstance";
 import CoworkingMap from "../components/CoworkingMap";
 import OurServices from "../components/AboutUs/OurServices";
 import { MdEditDocument } from "react-icons/md";
+import EnquiryBanner from "../utils/Landing/EnquiryBanner";
 
 const tickerItems = [
   {
@@ -277,6 +278,7 @@ function Landing() {
           </div>
         </div>
       </div>
+
       <div className="fixed z-10 right-0 rotate-90 book-tour-btn ">
         <button
           onClick={() => setRequestTour(true)}
@@ -291,7 +293,6 @@ function Landing() {
         >
           <span className="relative z-10">Request A Tour</span>
 
-          {/* Glare / Shine effect */}
           <span
             className="absolute w-32 h-full bg-white/30
     rotate-45 -left-40 top-0
@@ -344,7 +345,6 @@ function Landing() {
             />
           </div>
           <div>
-            {/* <label>Location*</label> */}
             <select
               id="location"
               name="location"
@@ -418,14 +418,17 @@ function Landing() {
         </form>
       </Modal>
 
-      {/* Features Section */}
-      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 ">
+      <div className="px-8 lg:px-20 py-10 lg:py-20">
+        <EnquiryBanner />
+      </div>
+
+      <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 ">
         {/* <section className="flex flex-col md:flex-row items-center md:items-start justify-between pb-12 pt-10 md:pt-20 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="w-full md:w-1/2 px-8 lg:px-20 flex flex-col justify-center items-center md:items-start">
           <h1 className="text-lg  md:text-2xl lg:text-2xl font-semibold text-gray-800 w-full text-justify">
             Tailored workspaces and solutions to meet your business needs.
           </h1>
-          <ul className="[&_li]:list-disc [&_li]:ml-4 mt-6 text-gray-600 bg-text-base md:text-lg lg:text-lg leading-relaxed w-full max-w-xl text-justify">
+          <ul className=" [&_li]:list-disc [&_li]:ml-4 [&_li]:mb-2 mt-6 text-gray-600 bg-text-base  leading-relaxed w-full max-w-xl text-justify">
             <li>
               Scale at the Speed of Ambition: Forget rigid leases that lock you
               down. Our flexible, modular workspaces expand instantly alongside
@@ -474,12 +477,12 @@ function Landing() {
               <h1 className="text-lg  md:text-xl lg:text-2xl font-semibold flex justify-center">
                 1,650
               </h1>
-              <p className="bg-text-base md:text-lg lg:text-lg  text-gray-700 flex justify-center">
+              <p className="bg-text-base   text-gray-700 flex justify-center">
                 Total seats available
               </p>
             </div>
           </div>
-          <div className="flex flex-col justify-center space-y-3 mt-6 text-gray-700 bg-text-base md:text-lg lg:text-lg">
+          <div className="flex flex-col justify-center space-y-3 mt-6 text-gray-700 bg-text-base ">
             <div className="flex items-center">
               <FaWifi className="text-yellow-400 mr-7" /> High-speed internet
             </div>
@@ -508,17 +511,19 @@ function Landing() {
         </div>
       </section>
 
-      <div className="flex flex-col md:flex-row lg:pt-12 pb-12 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 items-stretch lg:pt-12 pb-12 ">
+        {/* <div className="flex flex-col md:flex-row lg:pt-12 pb-12 "> */}
         {/* <div className="flex flex-col md:flex-row lg:pt-12 pb-12 bg-gradient-to-r from-white to-yellow-100"> */}
-        <div className="w-full md:w-1/2 px-8 lg:px-20">
+        <div className="w-full  px-8 lg:px-20">
+          {/* <div className="w-full md:w-1/2 px-8 lg:px-20"> */}
           <div className="flex flex-col justify-center items-center py-3">
             <CoworkingMap />
           </div>
-          <div className="py-4">
-            <h1 className="text-lg pb-3 md:text-2xl lg:text-2xl font-semibold text-gray-800 leading-relaxed w-full max-w-xl mx-auto text-justify">
+          <div className="pt-4">
+            <h1 className="text-lg pb-3 md:text-2xl lg:text-2xl font-semibold text-gray-800 leading-relaxed w-full max-w-xl  text-justify">
               We Build, Manage, and Run Your Office. You Just Grow.
             </h1>
-            <ul className="[&_li]:list-disc [&_li]:ml-4 text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl  text-justify ">
+            <ul className="[&_li]:list-disc [&_li]:mb-2 [&_li]:ml-4 text-gray-700 bg-text-base   leading-relaxed w-full max-w-xl  text-justify ">
               <li>
                 Don't get locked into rigid 5-year leases or waste months on
                 fit-outs. 603 provides fully operational, spaces tailored to
@@ -536,7 +541,7 @@ function Landing() {
             <button
               // onClick={() => navigate("/managed_space_solutions")}
               onClick={() => setRequestTour((prev) => !prev)}
-              className="capitalize flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
+              className="mt-auto place-self-center capitalize flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
             >
               <span className="text-gray-800 text-2xl">
                 <MdEditDocument />
@@ -545,13 +550,14 @@ function Landing() {
             </button>
           </div>
         </div>
-        <div className="w-full md:w-1/2 px-5 flex flex-col items-center">
+        <div className="w-full  px-5 flex flex-col items-center">
+          {/* <div className="w-full md:w-1/2 px-5 flex flex-col items-center"> */}
           <div className=" md:mb-8 md:flex md: flex-col justify-center">
             <h1 className="font-semibold text-gray-800 text-lg md:text-2xl lg:text-2xl  ">
               Our Locations
             </h1>
             <br />
-            <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl text-justify ">
+            <p className="text-gray-700 bg-text-base  leading-relaxed w-full max-w-xl text-justify ">
               Experience the epitome of workspace excellence with 603, the
               leading coworking space. Our thoughtfully curated collection of
               premium locations provides a distinguished environment for
@@ -567,7 +573,7 @@ function Landing() {
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+              <h2 className="text-sm  text-gray-700 font-semibold">
                 Private Offices
               </h2>
             </div>
@@ -577,7 +583,7 @@ function Landing() {
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+              <h2 className="text-sm  text-gray-700 font-semibold">
                 Meeting Rooms
               </h2>
             </div>
@@ -587,7 +593,7 @@ function Landing() {
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+              <h2 className="text-sm  text-gray-700 font-semibold">
                 Corporate HQ
               </h2>
             </div>
@@ -597,19 +603,19 @@ function Landing() {
                 alt="corporate hq"
                 className="w-[50px]"
               />
-              <h2 className="text-sm md:text-lg text-gray-700 font-semibold">
+              <h2 className="text-sm  text-gray-700 font-semibold">
                 Dedicated Desks
               </h2>
             </div>
           </div>
           <div>
-            <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl text-justify">
+            <p className="text-gray-700 bg-text-base  leading-relaxed w-full max-w-xl text-justify">
               At 603, we dont just pick buildings, we curate power centers. From
               Bandra to Fort & In between, our network of premium locations
               offers the prestige your brand deserves and the accessibility your
               team needs.
             </p>
-            <p className="text-gray-700 bg-text-base md:text-lg lg:text-lg  leading-relaxed w-full max-w-xl text-justify pt-2">
+            <p className="text-gray-700 bg-text-base leading-relaxed w-full max-w-xl text-justify pt-2">
               Give your team access to thousands of workspace options over
               India, so they can meet, collaborate, and get their best work
               done.
@@ -617,7 +623,7 @@ function Landing() {
           </div>
           <button
             onClick={() => navigate("/locations-pricing-summary")}
-            className=" flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
+            className="mt-auto place-self-center flex items-center gap-5 my-6 mx-10 p-3 md:p-4 bg-gradient-to-r from-yellow-400 to-yellow-200 border-l-4 border-black text-black rounded-md shadow-md hover:bg-yellow-500 hover:border-l-4 hover:border-yellow-600 hover:shadow-lg hover:scale-105 transition transform duration-300 ease-in-out font-poppins"
           >
             <span className="text-gray-800 text-2xl">
               <FaMapMarkerAlt />
@@ -630,10 +636,10 @@ function Landing() {
       <section className="px-8 xl:px-20">
         {/* <section className="px-8 xl:px-20 bg-gradient-to-r from-white to-yellow-100"> */}
         <div className="mx-auto text-center">
-          <h2 className="text-gray-800 text-2xl md:text-3xl lg:text-4xl font-semibold pb-2">
+          <h2 className="text-gray-800 text-2xl md:text-3xl font-semibold pb-2">
             Why 603 The Coworking Space?
           </h2>
-          <p className="text-lg">
+          <p className="">
             More than just a workspace - a community built for growth.
           </p>
         </div>
@@ -653,7 +659,7 @@ function Landing() {
             <h2 className=" text-gray-800 text-lg md:text-2xl lg:text-2xl  font-sans font-semibold mb-6">
               Managed office solutions for any size!
             </h2>
-            <p className="text-slate-600 bg-text-base md:text-lg lg:text-lg md:text-lgmb-8 leading-relaxed w-full max-w-xl mx-auto text-justify">
+            <p className="text-slate-600 bg-text-base  leading-relaxed w-full max-w-xl mx-auto text-justify">
               Explore our bespoke standalone workspaces, meticulously crafted to
               reflect and enhance your brand while meeting your unique
               requirements. Whether you're seeking private offices, versatile
@@ -734,7 +740,7 @@ function Landing() {
 
       <div className=" ">
         {/* <div className="  bg-gradient-to-r from-white to-yellow-100"> */}
-        <h1 className="text-2xl md:text-3xl lg:text-4xl text-gray-800 font-sans font-semibold text-center">
+        <h1 className="text-2xl md:text-3xl  text-gray-800 font-sans font-semibold text-center">
           Our Photo Gallery
         </h1>
 
@@ -757,7 +763,7 @@ function Landing() {
 
       {/*<Random />*/}
       <section className="relative overflow-hidden  py-10">
-        <h2 className="text-center text-lg font-bold text-gray-900 mb-6">
+        <h2 className="text-center text-lg md:text-3xl font-semibold text-gray-900 mb-6">
           The Rise of Coworking
         </h2>
 
@@ -837,10 +843,10 @@ function BenifitsOfCWS() {
                 className="flex justify-between items-center w-full p-5 text-left bg-gray-100 hover:bg-gray-200 transition-colors duration-300"
                 onClick={() => toggleAccordion(index)}
               >
-                <span className="bg-text-base md:text-lg lg:text-lg font-semibold text-gray-800">
+                <span className="bg-text-base  font-semibold text-gray-800">
                   {item.title}
                 </span>
-                <span className="bg-text-base md:text-lg lg:text-lg text-gray-600">
+                <span className="bg-text-base  text-gray-600">
                   {activeIndex === index ? "-" : "+"}
                 </span>
               </button>
@@ -865,10 +871,10 @@ function FeatureCard({ feature }: any) {
         alt="feature"
         className="h-24 w-24 object-contain"
       />
-      <h4 className="text-xl font-semibold text-center">
+      <h4 className="text-lg font-semibold text-center">
         {feature?.title || ""}
       </h4>
-      <p className="text-center">{feature.description}</p>
+      <p className="text-sm text-center">{feature.description}</p>
     </div>
   );
 }
