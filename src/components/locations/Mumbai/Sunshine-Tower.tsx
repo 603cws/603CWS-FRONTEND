@@ -23,12 +23,17 @@ const Webpage = () => {
 
   const images = [
     "/officeimg/Sunshine/sunshine.JPG",
-    "/officeimg/Sunshine/sunshine2.JPG",
-    "/officeimg/Sunshine/sunshine3.JPG",
-    "/officeimg/Sunshine/sunshine4.JPG",
-    "/officeimg/Sunshine/sunshine5.JPG",
-    "/officeimg/Sunshine/sunshine4.JPG",
+    "/officeimg/Sunshine/sunshineNew1.webp",
+    "/officeimg/Sunshine/sunshineNew2.webp",
+    "/officeimg/Sunshine/sunshineNew6.webp",
+    "/officeimg/Sunshine/sunshineNew5.webp",
+    "/officeimg/Sunshine/sunshineNew4.webp",
   ];
+  // "/officeimg/Sunshine/sunshine2.JPG",
+  // "/officeimg/Sunshine/sunshine3.JPG",
+  // "/officeimg/Sunshine/sunshine4.JPG",
+  // "/officeimg/Sunshine/sunshine5.JPG",
+  // "/officeimg/Sunshine/sunshine4.JPG",
 
   const name = "Dadar - Sunshine Tower";
   const navigate = useNavigate();

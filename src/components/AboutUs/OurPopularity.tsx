@@ -5,8 +5,8 @@ const OurPopularity: React.FC = () => {
     <>
       <div className="w-full">
         {/* 1st div for headers */}
-        <div className="max-w-3xl mx-auto  font-sans font-semibold text-center">
-          <h2 className="text-lg md:text-xl lg:text-[26px] tracking-wide ">
+        <div className="max-w-3xl mx-auto font-sans font-semibold text-center">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900 tracking-wide ">
             Amongst India's premier integrated workspace solutions, delivering
             the full spectrum of flexible offices, managed HQs, and bespoke
             build-to-suit solutions.

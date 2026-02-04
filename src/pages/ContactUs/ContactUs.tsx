@@ -145,7 +145,7 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <p className="mt-8 lg:mt-10 text-gray-800 leading-relaxed text-lg lg:text-xl text-justify">
+          <p className="mt-8 lg:mt-10 text-gray-800 leading-relaxed text-lg text-justify">
             Our team is dedicated to assisting you and answering any questions.
             We eagerly await the opportunity to connect with you.
           </p>
@@ -167,7 +167,7 @@ const ContactUs = () => {
             <p className="text-3xl font-semibold text-yellow-500">
               Kunal Kataria, Director
             </p>
-            <p className="mt-4 leading-relaxed text-lg lg:text-xl text-justify">
+            <p className="mt-4 leading-relaxed text-lg  text-justify">
               At 603, we represent Success, Infinity, and Energy. Our mission is
               to foster your business's achievements and create a lasting
               impact. Should we be able to enhance your accomplishments even

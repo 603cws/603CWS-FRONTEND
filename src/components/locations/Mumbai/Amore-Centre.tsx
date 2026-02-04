@@ -23,11 +23,11 @@ const Webpage = () => {
 
   const images = [
     "/officeimg/Amore/Amore.JPG",
-    "/officeimg/Amore/Amore2.JPG",
-    "/officeimg/Amore/Amore3.JPG",
-    "/officeimg/Amore/Amore.JPG",
-    "/officeimg/Amore/Amore2.JPG",
-    "/officeimg/Amore/Amore3.JPG",
+    "/officeimg/Amore/amoreNew6.webp",
+    "/officeimg/Amore/amoreNew4.webp",
+    "/officeimg/Amore/amoreNew1.webp",
+    "/officeimg/Amore/amoreNew2.webp",
+    "/officeimg/Amore/amoreNew3.webp",
   ];
 
   const navigate = useNavigate();

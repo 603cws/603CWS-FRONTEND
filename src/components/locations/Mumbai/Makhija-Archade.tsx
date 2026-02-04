@@ -23,10 +23,11 @@ const Webpage = () => {
   const images = [
     "/officeimg/Makhija/Makhija.JPG",
     "/officeimg/Makhija/Makhija2.JPG",
-    "/officeimg/Makhija/Makhija3.JPG",
+    "/officeimg/Makhija/makijaNew6.jpg",
+    // "/officeimg/Makhija/Makhija3.JPG",
     "/officeimg/Makhija/Makhija4.JPG",
     "/officeimg/Makhija/Makhija5.JPG",
-    "/officeimg/Makhija/Makhija.JPG",
+    "/officeimg/Makhija/makhijaNew.webp",
   ];
 
   const name = "Bandra - Makhija Arcade";
