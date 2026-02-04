@@ -72,65 +72,69 @@ const Webpage = () => {
             <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
               <div className="flex items-start mb-6">
                 <div className="ml-4">
-                  <h3 className="text-xl xl:text-2xl font-black mb-2 text-gray-600">
+                  <h3 className="text-xl font-black mb-2 text-gray-600">
                     Workspace Packages
                   </h3>
-                  <p className="text-base lg:text-lg font-semibold text-gray-500 mt-6">
+                  <p className="text-base font-semibold text-gray-500 mt-6">
                     Choose the best package for your workspace needs, offering
                     flexible solutions for all.
                   </p>
                 </div>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-4">
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">Day Pass</span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Day Pass
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 899
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">Hot Desk</span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-semibold text-gray-500">
+                    Hot Desk
+                  </span>
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 9,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">
+                  <span className="text-sm font-semibold text-gray-500">
                     Dedicated Desk
                   </span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 12,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">
+                  <span className="text-sm font-semibold text-gray-500">
                     Cabin Space
                   </span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 13,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">
+                  <span className="text-sm font-semibold text-gray-500">
                     Custom Cabin
                   </span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 13,999 Onwards
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">
+                  <span className="text-sm font-semibold text-gray-500">
                     Meeting Rooms
                   </span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 699 / Hourly
                   </span>
                 </li>
                 <li className="flex items-center justify-between p-4 from-yellow-200 to-yellow-100 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:-translate-y-1">
-                  <span className=" font-semibold text-gray-500">
+                  <span className="text-sm font-semibold text-gray-500">
                     Conference Rooms
                   </span>
-                  <span className=" font-bold text-gray-500 flex items-center gap-0.5">
+                  <span className="text-sm font-bold text-gray-500 flex items-center gap-0.5">
                     <FaRupeeSign /> 1199 / Hourly
                   </span>
                 </li>
@@ -152,14 +156,14 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Overview
             </h2>
-            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Sunshine Tower is based in Dadar which is famous for being an
               entertainment and commercial hub. Situated on the 29th Floor
               overlooking the most beautiful Mumbai Skyline. Dadar is one
               neighbourhood that seamlessly brings together this city’s
               commercial and entertainment aspects together.
             </p>
-            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Our centre is situated on the main-road which helps the commuter
               to travel easily by rail and bus. Parel and Prabhadevi station is
               at 5 minutes walking distance. If you are sociable, you can find
@@ -167,7 +171,7 @@ const Webpage = () => {
               Kohinoor mall is at 10 minutes distance which has a multiplex,
               5-star restaurants, three levels of exclusive shopping area.
             </p>
-            <p className="text-base xl:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className="leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Another highlighted spot to visit is Kamala Mills Compound. It is
               a commercial complex and a party spot located at 15 minutes
               walking distance from Sunshine Tower. You can find many renowned
@@ -181,7 +185,7 @@ const Webpage = () => {
             <h2 className="text-4xl font-semibold mb-8 text-gray-800">
               Amenities
             </h2>
-            <ul className="space-y-4 text-gray-700 text-base xl:text-lg leading-relaxed ">
+            <ul className="space-y-4 text-gray-700">
               <li className="flex items-center">
                 <FaWifi className="text-yellow-500 mr-2" /> High speed internet
               </li>
