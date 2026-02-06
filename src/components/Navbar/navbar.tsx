@@ -28,6 +28,7 @@ const Navbar = () => {
   //   useState(false);
   // const [isAhmedabadDropdownVisible, setAhmedabadDropdownVisible] =
   //   useState(false);
+  const [servicesDropdownVisible, setServicesDropdownVisible] = useState(false);
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
     useState(false);
   const [isServiceVisible, setIsServiceVisible] = useState(false);
@@ -130,8 +131,6 @@ const Navbar = () => {
                     onClick={() => {
                       navigate("/allLocations");
                     }}
-
-                    // onMouseLeave={() => setMumbaiDropdownVisible(false)}
                   >
                     Locations
                   </div>
@@ -149,40 +148,10 @@ const Navbar = () => {
                         setManagedSpaceDropdownVisible(false);
                         setMumbaiDropdownVisible(true);
                       }}
-                      //         onMouseEnter={() => {
-                      //   clearTimeout(timeoutId);
-                      //   setMumbaiDropdownVisible(true);
-                      //   // setNaviMumbaiDropdownVisible(false);
-                      //   // setAhmedabadDropdownVisible(false);
-                      // }}
                     />
                   </div>
                 </summary>
-                {/* <ul
-                  className={`p-2 w-40 absolute left-0 mt-7 bg-white shadow-lg rounded z-50 transition-all duration-200 ${
-                    isLocationsDropdownVisible
-                      ? "opacity-100 visible"
-                      : "opacity-0 invisible"
-                  }`}
-                > */}
-                {/* <li
-                    className="border-b-[1px] border-gray-300 py-1"
-                    onMouseEnter={() => {
-                      clearTimeout(timeoutId);
-                      setMumbaiDropdownVisible(true);
-                      // setNaviMumbaiDropdownVisible(false);
-                      // setAhmedabadDropdownVisible(false);
-                    }}
-                    onMouseLeave={() => {
-                      timeoutId = setTimeout(
-                        () => setMumbaiDropdownVisible(false),
-                        1000,
-                      );
-                    }}
-                  >
-                    <summary className="py-2 hover:text-yellow-500 border-2 border-transparent text-base">
-                      Mumbai
-                    </summary> */}
+
                 <ul
                   className={`w-56 p-2 absolute left-10 top-0 bg-white shadow-lg rounded z-50 transition-all duration-200 ${
                     isMumbaiDropdownVisible
@@ -272,16 +241,6 @@ const Navbar = () => {
                     </button>
                   </li>
 
-                  {/* <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Pinnacle-Corporate-Park");
-                          }}
-                        >
-                          Pinnacle Corporate Park, BKC
-                        </button>
-                      </li> */}
                   <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
                     <button
                       className="text-base"
@@ -313,105 +272,77 @@ const Navbar = () => {
                     </button>
                   </li>
                 </ul>
-                {/* </li> */}
-                {/* <li
-                    className="relative group border-b border-gray-300"
-                    onMouseEnter={() => {
-                      clearTimeout(timeoutId);
-                      setNaviMumbaiDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setAhmedabadDropdownVisible(false);
-                    }}
-                    onMouseLeave={() => {
-                      timeoutId = setTimeout(
-                        () => setNaviMumbaiDropdownVisible(false),
-                        1000,
-                      );
-                    }}
-                  >
-                    <summary className="py-2 hover:text-yellow-500 border-2 border-transparent text-base">
-                      Navi Mumbai
-                    </summary>
-                    <ul
-                      className={`left-10 p-2 w-60 absolute top-0 ml-2 bg-white shadow-lg rounded z-50 transition-all duration-200 ${
-                        isNaviMumbaiDropdownVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } overflow-y-auto max-h-60`}
-                    >
-                      <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Millenium-Business-Park");
-                          }}
-                        >
-                          Millenium Business Park
-                        </button>
-                      </li>
-                      <li className="py-2 hover:text-yellow-500">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Technocity");
-                          }}
-                        >
-                          Technocity
-                        </button>
-                      </li>
-                    </ul>
-                  </li> */}
-                {/* <li
-                    className="relative group"
-                    onMouseEnter={() => {
-                      clearTimeout(timeoutId);
-                      setAhmedabadDropdownVisible(true);
-                      setMumbaiDropdownVisible(false);
-                      setNaviMumbaiDropdownVisible(false);
-                    }}
-                    onMouseLeave={() => {
-                      timeoutId = setTimeout(
-                        () => setAhmedabadDropdownVisible(false),
-                        1000,
-                      );
-                    }}
-                  >
-                    <summary className="py-2 hover:text-yellow-500 border-2 border-transparent text-base">
-                      Ahmedabad
-                    </summary>
-                    <ul
-                      className={`p-2 w-60 absolute left-10 top-0 ml-2 bg-white shadow-lg rounded z-50 transition-all duration-200 ${
-                        isAhmedabadDropdownVisible
-                          ? "opacity-100 visible"
-                          : "opacity-0 invisible"
-                      } overflow-y-auto max-h-60`}
-                    >
-                      <li className="py-2 hover:text-yellow-500">
-                        <button
-                          className="text-base"
-                          onClick={() => {
-                            navigate("/locations/Navratna-Corporate-Park");
-                          }}
-                        >
-                          Ahmedabad, Navratna Corporate Park
-                        </button>
-                      </li>
-                    </ul>
-                  </li> */}
-                {/* </ul> */}
               </li>
 
               <li className="border-b-[1px] border-gray-300 py-1">
-                <button
-                  className="text-base"
-                  onClick={() => {
-                    navigate("/service");
-                  }}
+                <summary className="cursor-pointer hover:text-yellow-500 border-2 border-transparent flex justify-between">
+                  <div
+                    className="text-base"
+                    onClick={() => {
+                      navigate("/service");
+                    }}
+                  >
+                    Services
+                  </div>
+                  <div
+                    style={{
+                      backgroundColor: "#f0f0f0",
+                      padding: "3px",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    <IoMdMore
+                      size={23}
+                      onClick={() => {
+                        setLocationsDropdownVisible(false);
+                        setManagedSpaceDropdownVisible(false);
+                        setServicesDropdownVisible(true);
+                      }}
+                    />
+                  </div>
+                </summary>
+                <ul
+                  className={`p-2 w-60 absolute left-0 mt-7 bg-white shadow-lg rounded z-50 transition-all duration-200 ease-in-out transform ${
+                    servicesDropdownVisible
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible translate-y-2"
+                  } overflow-y-auto max-h-60`}
                 >
-                  Services
-                </button>
+                  <li className="py-2 hover:text-yellow-500">
+                    <button
+                      className="text-base"
+                      onClick={() => navigate("/managed_space_solutions")}
+                    >
+                      Managed Space Solutions
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500">
+                    <button
+                      className="text-base"
+                      onClick={() => navigate("/membership-plans")}
+                    >
+                      Membership plans
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500">
+                    <button
+                      className="text-base"
+                      onClick={() => navigate("/events")}
+                    >
+                      603Coworking Events
+                    </button>
+                  </li>
+                  <li className="py-2 hover:text-yellow-500">
+                    <button
+                      className="text-base"
+                      onClick={() => navigate("/allLocations")}
+                    >
+                      All Locations
+                    </button>
+                  </li>
+                </ul>
               </li>
-              <li className="border-b-[1px] border-gray-300 py-1">
+              {/* <li className="border-b-[1px] border-gray-300 py-1">
                 <summary className="cursor-pointer hover:text-yellow-500 border-2 border-transparent">
                   <div
                     className="text-base"
@@ -476,7 +407,7 @@ const Navbar = () => {
                     </button>
                   </li>
                 </ul>
-              </li>
+              </li> */}
               <li className="border-b-[1px] border-gray-300 py-1">
                 <button
                   className="text-base"
