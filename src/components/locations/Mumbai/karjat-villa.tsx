@@ -1,32 +1,14 @@
 // import background from "/villaimg/villa_photo_9.webp";
+import { useState } from "react";
 import background from "/villaimg/sattigosection.webp";
 import Navbar from "../../Navbar/navbar";
 import Footer from "../../Footer/footer";
-
 import ImageCarousel from "../../LocationCarousal/LocationCarousal";
-import { useState } from "react";
-
-// <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5435.959280715239!2d73.31827823930506!3d18.909171595176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7fb76ff72fb6b%3A0x2711a3c5836a79e4!2sKarjat%20Junction!5e0!3m2!1sen!2sin!4v1734351856143!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+import EnquiryBannerSattigo from "../../../utils/Landing/EnquiryBannerSattigo";
 const Webpage = () => {
   const [source] = useState(
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5435.959280715239!2d73.31827823930506!3d18.909171595176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7fb76ff72fb6b%3A0x2711a3c5836a79e4!2sKarjat%20Junction!5e0!3m2!1sen!2sin!4v1734351856143!5m2!1sen!2sin",
   );
-
-  //old images
-
-  // const images = [
-  //   "/villaimg/villa_photo_1.webp",
-  //   "/villaimg/villa_photo_2.webp",
-  //   "/villaimg/villa_photo_3.webp",
-  //   "/villaimg/villa_photo_4.webp",
-  //   "/villaimg/villa_photo_5.webp",
-  //   "/villaimg/villa_photo_6.webp",
-  //   "/villaimg/villa_photo_7.webp",
-  //   "/villaimg/villa_photo_8.webp",
-  //   "/villaimg/villa_photo_9.webp",
-  //   "/villaimg/villa_photo_10.webp",
-  // ];
 
   const images = [
     "/villaimg/villa1.webp",
@@ -67,7 +49,6 @@ const Webpage = () => {
             {/* <p className="text-lg text-gray-200 mt-4">by 603</p> */}
           </div>
         </section>
-        {/* Workspace Packages Section */}
         <section className="py-16 flex flex-col 2xl:flex-row justify-between items-center px-8 2xl:px-32 ">
           <div className="w-full">
             <ImageCarousel
@@ -80,13 +61,16 @@ const Webpage = () => {
             />
           </div>
         </section>
-        <section className="py-16  flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
+        <div className="px-4 lg:px-32 py-6 xl:py-10">
+          <EnquiryBannerSattigo />
+        </div>
+        <section className="py-8  flex flex-col lg:flex-row justify-between items-start px-8 lg:px-32">
           {/* <div className="lg:w-3/5 "> */}
           <div className=" ">
-            <h2 className="uppercase text-4xl font-semibold mb-8 text-gray-800">
+            <h2 className="uppercase text-2xl font-semibold mb-8 text-gray-800">
               Sattigo Villa – Karjat Overview
             </h2>
-            <p className="lg:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className=" leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               Our Sattigo Villa is nestled in the heart of Karjat, a serene and
               picturesque destination perfect for both work and relaxation.
               Known for its lush green surroundings, scenic landscapes, and calm
@@ -95,14 +79,14 @@ const Webpage = () => {
               villa is easily accessible by road and rail. Karjat Railway
               Station is just 10 minutes away, ensuring seamless connectivity.
             </p>
-            <p className="lg:text-lg leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
+            <p className=" leading-relaxed text-gray-700 mb-6 mx-auto text-justify">
               For those looking to unwind and socialize, Karjat has plenty to
               offer. Explore nearby attractions such as nature trails,
               waterfalls, and scenic viewpoints. Enjoy farm-to-table dining
               experiences at local restaurants or indulge in adventure
               activities like trekking, cycling, and river rafting.
             </p>
-            <p className="lg:text-lg leading-relaxed text-gray-700">
+            <p className=" leading-relaxed text-gray-700">
               The villa itself is thoughtfully designed to offer a peaceful yet
               productive workspace. Whether you’re working solo, collaborating
               with a team, or simply taking a break, our Karjat villa is

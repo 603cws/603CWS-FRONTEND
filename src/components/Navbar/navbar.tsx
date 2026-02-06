@@ -29,8 +29,8 @@ const Navbar = () => {
   // const [isAhmedabadDropdownVisible, setAhmedabadDropdownVisible] =
   //   useState(false);
   const [servicesDropdownVisible, setServicesDropdownVisible] = useState(false);
-  const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
-    useState(false);
+  // const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
+  //   useState(false);
   const [isServiceVisible, setIsServiceVisible] = useState(false);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -90,7 +90,8 @@ const Navbar = () => {
     <>
       <div
         onMouseLeave={() => {
-          setManagedSpaceDropdownVisible(false);
+          // setManagedSpaceDropdownVisible(false);
+          setIsServiceVisible(false);
           setLocationsDropdownVisible(false);
         }}
         // className="bg-gradient-to-r from-yellow-100 to-blue-200 navbar font-sans text-lg leading-8 tracking-normal text-gray-700 w-screen fixed border-b-2 border-yellow-400 shadow-xl py-[1px] z-50 flex items-center font-medium backdrop-filter backdrop-blur-md  pl-20 pr-10  "
@@ -145,7 +146,8 @@ const Navbar = () => {
                       size={23}
                       onClick={() => {
                         setLocationsDropdownVisible(true);
-                        setManagedSpaceDropdownVisible(false);
+                        setIsServiceVisible(false);
+                        // setManagedSpaceDropdownVisible(false);
                         setMumbaiDropdownVisible(true);
                       }}
                     />
@@ -295,7 +297,8 @@ const Navbar = () => {
                       size={23}
                       onClick={() => {
                         setLocationsDropdownVisible(false);
-                        setManagedSpaceDropdownVisible(false);
+                        // setManagedSpaceDropdownVisible(false);
+                        setIsServiceVisible(false);
                         setServicesDropdownVisible(true);
                       }}
                     />
@@ -467,7 +470,8 @@ const Navbar = () => {
               onMouseEnter={() => {
                 clearTimeout(timeoutId);
                 setLocationsDropdownVisible(true);
-                setManagedSpaceDropdownVisible(false);
+                // setManagedSpaceDropdownVisible(false);
+                setIsServiceVisible(false);
               }}
               onMouseLeave={() => {
                 timeoutId = setTimeout(
