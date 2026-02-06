@@ -11,13 +11,13 @@ function PartnerWithUs() {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 to-gray-800/40 opacity-80"></div>
         <div className="relative flex flex-col justify-center w-full md:w-1/2 py-10 md:py-0 z-10">
-          <h2 className="text-white text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-snug animate-fadeInUp">
+          <h2 className="text-white text-center text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight md:leading-snug animate-fadeInUp">
             Interested in becoming a Property Partner?
           </h2>
         </div>
 
         {/* Hide the video below 930px */}
-        <div className="hidden md:flex justify-center items-center w-full md:w-1/2 mt-8 md:mt-0 z-10">
+        {/* <div className="hidden md:flex justify-center items-center w-full md:w-1/2 mt-8 md:mt-0 z-10">
           <iframe
             className="w-full md:w-[570px] h-[250px] md:h-[329px] rounded-lg shadow-lg animate-fadeInUp delay-400"
             src="https://www.youtube.com/embed/c5CNPHuvwck?si=FApWC0PEnjGHtz9h"
@@ -26,21 +26,29 @@ function PartnerWithUs() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
+        </div> */}
       </div>
 
       <div className="relative flex flex-col md:flex-row items-center justify-center md:justify-between px-6 py-12 bg-gray-100">
         <div className="relative flex items-center justify-center mb-6 md:mb-0 w-full md:w-1/2">
-          <img
+          {/* <img
             className="rounded-lg shadow-lg w-full h-auto transition-opacity duration-300"
             src="./partner.jpeg"
             alt="matulya2"
-          />
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/30 backdrop-blur-md rounded-lg p-4">
+          /> */}
+          <iframe
+            className="w-full md:w-[570px] h-[250px] md:h-[329px] rounded-lg shadow-lg animate-fadeInUp delay-400"
+            src="https://www.youtube.com/embed/c5CNPHuvwck?si=FApWC0PEnjGHtz9h"
+            title="What is coworking and how to get started today"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+          {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/30 backdrop-blur-md rounded-lg p-4">
             <p className="text-lg text-gray-800 font-semibold text-center">
               603 The Coworking Space
             </p>
-          </div>
+          </div> */}
         </div>
         <p className="hidden md:block text-lg md:text-xl text-gray-600 font-medium leading-relaxed md:text-left md:ml-8 w-full md:w-1/2 text-justify">
           Coworking is an opportunity to transform your usual office premises

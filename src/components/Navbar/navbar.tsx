@@ -14,6 +14,7 @@ import axiosInstance from "../../utils/axiosInstance";
 const Navbar = () => {
   const [path, setPath] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [isHoveredServices, setIsHoveredServices] = useState(false);
   // const PORT = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const Navbar = () => {
   //   useState(false);
   const [isManagedSpaceDropdownVisible, setManagedSpaceDropdownVisible] =
     useState(false);
+  const [isServiceVisible, setIsServiceVisible] = useState(false);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -791,7 +793,53 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
-            <li>
+            <li
+              onMouseEnter={() => {
+                clearTimeout(timeoutId);
+                setIsServiceVisible(true);
+                setLocationsDropdownVisible(false);
+              }}
+              onMouseLeave={() => {
+                timeoutId = setTimeout(() => setIsServiceVisible(false), 2000);
+              }}
+              className="relative group"
+            >
+              <summary
+                onMouseEnter={() => setIsHoveredServices(true)} // Set hover state to true when mouse enters
+                onMouseLeave={() => setIsHoveredServices(false)} // Set hover state to false when mouse leaves
+                onClick={() => {
+                  navigate("/service");
+                }}
+                className="flex items-center cursor-pointer py-2 hover:underline "
+              >
+                Services
+                {isHoveredServices ? <FaAngleUp /> : <FaAngleDown />}
+              </summary>
+              <ul
+                className={`p-2 w-60 absolute  bg-white shadow-lg rounded-lg transition-opacity duration-300 ease-in-out z-50 ${
+                  isServiceVisible
+                    ? "opacity-100 visible"
+                    : "opacity-0 invisible"
+                } overflow-y-auto max-h-96`}
+              >
+                <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                  <button onClick={() => navigate("/managed_space_solutions")}>
+                    Managed Space Solutions
+                  </button>
+                </li>
+                <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                  <button onClick={() => navigate("/membership-plans")}>
+                    Membership plans
+                  </button>
+                </li>
+                <li className="py-2 hover:text-yellow-500 border-b border-gray-300">
+                  <button onClick={() => navigate("/events")}>
+                    603Coworking Events
+                  </button>
+                </li>
+              </ul>
+            </li>
+            {/* <li>
               <button
                 onClick={() => {
                   navigate("/service");
@@ -800,18 +848,15 @@ const Navbar = () => {
               >
                 Services
               </button>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               onMouseEnter={() => {
                 clearTimeout(timeoutId);
-                setManagedSpaceDropdownVisible(true);
+                setIsServiceVisible(true);
                 setLocationsDropdownVisible(false);
               }}
               onMouseLeave={() => {
-                timeoutId = setTimeout(
-                  () => setManagedSpaceDropdownVisible(false),
-                  2000,
-                );
+                timeoutId = setTimeout(() => setIsServiceVisible(false), 2000);
               }}
               className="relative group"
             >
@@ -826,7 +871,7 @@ const Navbar = () => {
               </summary>
               <ul
                 className={`p-2 w-60 absolute  bg-white shadow-lg rounded-lg transition-opacity duration-300 ease-in-out z-50 ${
-                  isManagedSpaceDropdownVisible
+                  isServiceVisible
                     ? "opacity-100 visible"
                     : "opacity-0 invisible"
                 } overflow-y-auto max-h-96`}
@@ -859,7 +904,7 @@ const Navbar = () => {
                   </button>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li>
               <button
                 onClick={() => {

@@ -50,10 +50,10 @@ const Webpage = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10">
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-            Lawyers Chamber ,Fort
+            Lawyers Chamber, Fort
           </h1>
           <p className="text-lg text-gray-200 mt-4">
-            603 The Co Working Space, Lawyers Chamber
+            603 The CoWorking Space, Lawyers Chamber
           </p>
           <div className="pt-6">
             <button
@@ -71,7 +71,7 @@ const Webpage = () => {
         <ImageGrid images={images} />
 
         <div className="flex flex-col justify-between">
-          <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col h-full">
+          <div className="p-4 lg:p-6 border border-[#ccc] rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col h-full">
             <div className="flex items-start mb-6">
               <div className="ml-4">
                 <h3 className="text-xl font-black mb-2 text-gray-600">

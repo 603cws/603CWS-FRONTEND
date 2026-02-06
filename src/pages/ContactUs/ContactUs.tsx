@@ -106,7 +106,6 @@ const ContactUs = () => {
           <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 lg:mb-8 text-center lg:text-left">
             Connect with <span className="text-yellow-500">603</span>
           </h1>
-
           <div className="space-y-3 hidden sm:block sm:max-w-sm">
             <div className="flex items-center text-gray-700">
               <FontAwesomeIcon
@@ -190,7 +189,7 @@ const ContactUs = () => {
       </div>
 
       <div className="flex flex-wrap justify-between items-center mt-12 mb-12 gap-6">
-        <div
+        {/* <div
           onClick={() =>
             setSource(
               "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.9011137451!2d77.46578492597025!3d12.953945399494673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1721250670237!5m2!1sen!2sin",
@@ -209,7 +208,7 @@ const ContactUs = () => {
           className="cursor-pointer text-yellow-500 font-semibold hover:underline px-4"
         >
           View Larger Map
-        </div>
+        </div> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-4">
           {locations.map((location, index) => (
             <div

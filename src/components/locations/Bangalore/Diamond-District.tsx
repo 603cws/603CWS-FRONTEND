@@ -38,7 +38,7 @@ const Webpage = () => {
               Diamond District Bangalore
             </h1>
             <p className="text-lg text-gray-200 mt-4">
-              603 The Co Working Space, Bangalore
+              603 The CoWorking Space, Bangalore
             </p>
           </div>
         </section>
@@ -52,7 +52,7 @@ const Webpage = () => {
             />
           </div>
 
-          <div className="2xl:w-1/3 p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">
+          <div className="2xl:w-1/3 p-6 border border-[#ccc] rounded-2xl mt-8 2xl:mt-0 lg:ml-8 shadow-md flex flex-col">
             <div className="flex items-start mb-6">
               <div className="ml-4">
                 <h3 className="text-xl font-black mb-2 text-gray-600">

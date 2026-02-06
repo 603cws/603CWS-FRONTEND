@@ -56,7 +56,7 @@ const Webpage = () => {
               Sunshine Tower Lower Parel
             </h1>
             <p className="text-lg text-gray-200 mt-4">
-              603 The Co Working Space, Sunshine Tower Lower Parel
+              603 The CoWorking Space, Sunshine Tower Lower Parel
             </p>
             <div className="pt-6">
               <button
@@ -74,7 +74,7 @@ const Webpage = () => {
         <section className=" px-8 2xl:px-32 grid grid-cols-1 lg:grid-cols-[1.5fr,1fr] items-stretch py-16 lg:gap-10">
           <ImageGrid images={images} />
           <div className="flex flex-col justify-between">
-            <div className="p-4 lg:p-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
+            <div className="p-4 lg:p-6 border border-[#ccc] rounded-2xl mt-8 lg:mt-0 shadow-md flex flex-col">
               <div className="flex items-start mb-6">
                 <div className="ml-4">
                   <h3 className="text-xl font-black mb-2 text-gray-600">
