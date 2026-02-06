@@ -772,6 +772,11 @@ const Navbar = () => {
                     603Coworking Events
                   </button>
                 </li>
+                <li className="py-2 hover:text-yellow-500 ">
+                  <button onClick={() => navigate("/allLocations")}>
+                    Locations
+                  </button>
+                </li>
               </ul>
             </li>
             {/* <li>

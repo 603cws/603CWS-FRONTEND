@@ -64,13 +64,13 @@ const Membership: React.FC = () => {
       {/* <div className=" mx-auto py-16 px-6 md:px-8 my-14"> */}
       <div className=" mx-auto pb-16 pt-20 px-6 md:px-10 ">
         {!spacename ? (
-          <h2 className="text-center text-4xl md:text-5xl font-extrabold text-gray-800 mb-12 tracking-tight leading-tight">
+          <h2 className="text-center text-3xl md:text-4xl font-extrabold text-gray-800 mb-12 tracking-tight leading-tight">
             Membership Plans
           </h2>
         ) : (
           <div className="flex items-center gap-12">
             <h2
-              className="text-center text-4xl md:text-4xl font-semibold text-gray-700 mb-12 tracking-tight leading-tight hover:text-gray-300 hover:cursor-pointer"
+              className="text-center text-2xl md:text-3xl font-semibold text-gray-700 mb-12 tracking-tight leading-tight hover:text-gray-300 hover:cursor-pointer"
               onClick={() => {
                 setdata({
                   daypass: {
@@ -95,7 +95,7 @@ const Membership: React.FC = () => {
             >
               &larr;
             </h2>
-            <h2 className="text-center text-4xl md:text-4xl font-bold text-gray-800 mb-12 tracking-tight leading-tight">
+            <h2 className="text-center text-2xl md:text-3xl font-bold text-gray-800 mb-12 tracking-tight leading-tight">
               {spacename}
             </h2>
           </div>
@@ -173,7 +173,7 @@ const Membership: React.FC = () => {
                               );
                               setshowsubscriptionpart(true);
                             }}
-                            className="text-yellow-500 hover:underline font-bold hover:cursor-pointer"
+                            className="text-yellow-500 hover:underline font-bold hover:cursor-pointer mt-auto"
                           >
                             View Plans &rarr;
                           </a>
@@ -191,14 +191,14 @@ const Membership: React.FC = () => {
               <div className="relative bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
                 <div className="flex items-center gap-2 mb-4">
                   <FaStar className="text-yellow-500 text-2xl" />
-                  <h3 className="text-3xl font-semibold text-gray-800">
+                  <h3 className="text-xl xl:text-2xl font-semibold text-gray-800">
                     Day Pass
                   </h3>
                 </div>
                 <p className="text-gray-600 mb-6">
                   Flexible day pass options for coworking.
                 </p>
-                <div className="text-2xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
+                <div className="text-xl font-semibold text-gray-600 mb-2 pb-3 flex items-center">
                   <FaRupeeSign />
                   {data.daypass?.tendays}{" "}
                   <span className="text-xl text-gray-500"> / 10 Days</span>
@@ -239,7 +239,7 @@ const Membership: React.FC = () => {
               <div className="relative bg-yellow-50 shadow-lg rounded-lg p-6 border border-yellow-400 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
                 <div className="flex items-center gap-2 mb-4">
                   <FaStar className="text-yellow-600 text-2xl" />
-                  <h3 className="text-3xl font-semibold text-gray-800">
+                  <h3 className="text-xl xl:text-2xl font-semibold text-gray-800">
                     Conference Room
                   </h3>
                 </div>
@@ -287,7 +287,7 @@ const Membership: React.FC = () => {
               <div className="relative bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
                 <div className="flex items-center gap-2 mb-4">
                   <FaStar className="text-yellow-500 text-2xl" />
-                  <h3 className="text-3xl font-semibold text-gray-800">
+                  <h3 className="text-xl xl:text-2xl font-semibold text-gray-800">
                     Meeting Room
                   </h3>
                 </div>
