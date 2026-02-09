@@ -27,7 +27,7 @@ const Webpage = () => {
     "/officeimg/Kamala/kamala6.jpg",
   ];
   const [source] = useState(
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609930707!2d72.7462354!3d19.0026697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ceed2879bcd3%3A0x519449d10ba027f0!2s2R3H%2B3FC%2C%20Lower%2C%20Parel%2C%20Mumbai%2C%20Maharashtra%20400013!5e0!3m2!1sen!2sin!4v1721254426295!5m2!1sen!2sin",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14343.29170826237!2d72.82001179742787!3d18.998461965040526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce9336955555%3A0xbe3ae1b3d45ad1f3!2sTrade%20world!5e1!3m2!1sen!2sin!4v1770616953559!5m2!1sen!2sin",
   );
 
   const name = "Lower Parel - Kamala Mills";
