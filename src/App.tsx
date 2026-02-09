@@ -62,12 +62,90 @@ import MemberDashboard from "./pages/MemberDashboard";
 
 import OnlineBookings from "./pages/Admin/Onlinebookings";
 import PageNotFound from "./pages/PageNotFound";
-// import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
-import ExitGuard from "./pages/popup/ExitPrompt";
+// import ExitGuard from "./pages/popup/ExitPrompt";
 import WhatsappBtn from "./utils/WhatsappBtn";
 import RequestTour from "./components/Landing/RequestTour";
 import LocationsPricing from "./pages/LocationsPricing";
-// import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
+import ExitIntentedPopupForm from "./pages/popup/ExitIntentedPopupForm";
+
+const noPopupRoutes = [
+  "/admin/dashboard",
+  "/admin/login",
+  "/admin/createacc",
+  "/admin/edituser/:id",
+  "/dashboard",
+  "/dashboard/Myprofile",
+  "/dashboard/Transactions",
+  "/login",
+  "/Register",
+  "/admin/userinfo/:user",
+  "/admin/alluserinfo",
+  "/admin/allbookings",
+  "/admin/onlinebookings",
+  "/admin/edituser/:id",
+  "/contactus",
+  "/partner-with-us",
+  "/forgotPassword",
+  "/changepassword/:id",
+  "/confirmpayment",
+  "/payment",
+  "/booknow/:id",
+  "/booknow",
+  "/career",
+  "/RegisterUser",
+  "/603Interior",
+  "/kycform",
+  "/membership-plans",
+];
+const noWhatsappPopupRoutes = [
+  "/admin/dashboard",
+  "/admin/login",
+  "/admin/createacc",
+  "/admin/edituser/:id",
+  "/dashboard",
+  "/dashboard/Myprofile",
+  "/dashboard/Transactions",
+  "/login",
+  "/Register",
+  "/admin/userinfo/:user",
+  "/admin/alluserinfo",
+  "/admin/allbookings",
+  "/admin/onlinebookings",
+  "/admin/edituser/:id",
+  "/forgotPassword",
+  "/changepassword/:id",
+  "/confirmpayment",
+  "/payment",
+  "/booknow/:id",
+  "/RegisterUser",
+  "/603Interior",
+  "/kycform",
+];
+const noRequestTourPopupRoutes = [
+  "/admin/dashboard",
+  "/admin/login",
+  "/admin/createacc",
+  "/admin/edituser/:id",
+  "/dashboard",
+  "/dashboard/Myprofile",
+  "/dashboard/Transactions",
+  "/login",
+  "/Register",
+  "/admin/userinfo/:user",
+  "/admin/alluserinfo",
+  "/admin/allbookings",
+  "/admin/onlinebookings",
+  "/admin/edituser/:id",
+  "/forgotPassword",
+  "/changepassword/:id",
+  "/confirmpayment",
+  "/payment",
+  "/booknow/:id",
+  "/RegisterUser",
+  "/603Interior",
+  "/kycform",
+  "/",
+];
 
 function App() {
   const location = useLocation();
@@ -76,85 +154,6 @@ function App() {
   const { isAuthenticated, loading, refreshAuth, isAdmin, accHolder } =
     useApp();
   const navigate = useNavigate();
-
-  const noPopupRoutes = [
-    "/admin/dashboard",
-    "/admin/login",
-    "/admin/createacc",
-    "/admin/edituser/:id",
-    "/dashboard",
-    "/dashboard/Myprofile",
-    "/dashboard/Transactions",
-    "/login",
-    "/Register",
-    "/admin/userinfo/:user",
-    "/admin/alluserinfo",
-    "/admin/allbookings",
-    "/admin/onlinebookings",
-    "/admin/edituser/:id",
-    "/contactus",
-    "/partner-with-us",
-    "/forgotPassword",
-    "/changepassword/:id",
-    "/confirmpayment",
-    "/payment",
-    "/booknow/:id",
-    "/booknow",
-    "/career",
-    "/RegisterUser",
-    "/603Interior",
-    "/kycform",
-    "/membership-plans",
-  ];
-  const noWhatsappPopupRoutes = [
-    "/admin/dashboard",
-    "/admin/login",
-    "/admin/createacc",
-    "/admin/edituser/:id",
-    "/dashboard",
-    "/dashboard/Myprofile",
-    "/dashboard/Transactions",
-    "/login",
-    "/Register",
-    "/admin/userinfo/:user",
-    "/admin/alluserinfo",
-    "/admin/allbookings",
-    "/admin/onlinebookings",
-    "/admin/edituser/:id",
-    "/forgotPassword",
-    "/changepassword/:id",
-    "/confirmpayment",
-    "/payment",
-    "/booknow/:id",
-    "/RegisterUser",
-    "/603Interior",
-    "/kycform",
-  ];
-  const noRequestTourPopupRoutes = [
-    "/admin/dashboard",
-    "/admin/login",
-    "/admin/createacc",
-    "/admin/edituser/:id",
-    "/dashboard",
-    "/dashboard/Myprofile",
-    "/dashboard/Transactions",
-    "/login",
-    "/Register",
-    "/admin/userinfo/:user",
-    "/admin/alluserinfo",
-    "/admin/allbookings",
-    "/admin/onlinebookings",
-    "/admin/edituser/:id",
-    "/forgotPassword",
-    "/changepassword/:id",
-    "/confirmpayment",
-    "/payment",
-    "/booknow/:id",
-    "/RegisterUser",
-    "/603Interior",
-    "/kycform",
-    "/",
-  ];
 
   const matchDynamicRoute = (route: any, path: any) => {
     const routeRegex = new RegExp(`^${route.replace(/:\w+/g, "[^/]+")}$`);
@@ -208,8 +207,8 @@ function App() {
 
   return (
     <div className="">
-      {/* <ExitIntentedPopupForm /> */}
-      {!isAuthenticated && <ExitGuard />}
+      {!isAuthenticated && <ExitIntentedPopupForm />}
+      {/* {!isAuthenticated && <ExitGuard />} */}
       <Routes>
         {isAuthenticated ? (
           <>

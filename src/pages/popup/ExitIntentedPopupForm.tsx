@@ -40,14 +40,13 @@ const ExitIntentedPopupForm = () => {
   const hidePopup = () => {
     setIsAnimating(false);
     setTimeout(() => setIsVisible(false), 500); // Match the duration of the slide out animation
-    // sessionStorage.setItem("callbackExitintend", "true");
+    sessionStorage.setItem("callbackExitintend", "true");
   };
 
   const popupTime = 60000;
 
   useEffect(() => {
     const intervalId = setInterval(showPopup, popupTime);
-
     return () => clearInterval(intervalId);
   }, []);
 
