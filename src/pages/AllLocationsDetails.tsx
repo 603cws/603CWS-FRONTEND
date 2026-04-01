@@ -114,7 +114,8 @@ export const locations: { city: string; locations: Location[] }[] = [
         enablebooking: true,
         conferencerooms: ["Amore Conference Room"],
         meetingrooms: ["Amore Meeting Room"],
-        daypasses: ["Amore Day Pass"],
+        daypasses: [],
+        // daypasses: ["Amore Day Pass"],
         Amenities: [
           { icon: FaWifi, title: "Wifi" },
           { icon: MdDining, title: "Cafeteria" },
@@ -158,7 +159,8 @@ export const locations: { city: string; locations: Location[] }[] = [
         conferencerooms: ["Bandra Conference Room"],
         // meetingrooms: [],
         meetingrooms: ["Bandra Meeting Room"],
-        daypasses: ["Bandra Day Pass"],
+        daypasses: [],
+        // daypasses: ["Bandra Day Pass"],
         Amenities: [
           { icon: FaWifi, title: "Wifi" },
           { icon: MdDining, title: "Cafeteria" },
@@ -393,7 +395,8 @@ export const locations: { city: string; locations: Location[] }[] = [
         enablebooking: true,
         conferencerooms: ["Fort Conference Room"],
         meetingrooms: ["Fort Meeting Room"],
-        daypasses: ["Fort Day Pass"],
+        daypasses: [],
+        // daypasses: ["Fort Day Pass"],
         Amenities: [
           { icon: FaWifi, title: "Wifi" },
           { icon: MdDining, title: "Cafeteria" },
