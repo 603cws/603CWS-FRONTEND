@@ -486,7 +486,8 @@ export const locations: { city: string; locations: Location[] }[] = [
         // conferencerooms: ["Trade Link Conference Room"],
         meetingrooms: [],
         // meetingrooms: ["Trade Link Meeting Room"],
-        daypasses: ["Trade Link Day Pass"],
+        // daypasses: ["Trade Link Day Pass"],
+        daypasses:[],
         Amenities: [
           { icon: FaWifi, title: "Wifi" },
           { icon: MdDining, title: "Cafeteria" },
