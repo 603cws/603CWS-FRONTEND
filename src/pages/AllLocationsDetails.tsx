@@ -114,7 +114,8 @@ export const locations: { city: string; locations: Location[] }[] = [
         enablebooking: true,
         conferencerooms:[],
         // conferencerooms: ["Amore Conference Room"],
-        meetingrooms: ["Amore Meeting Room"],
+        // meetingrooms: ["Amore Meeting Room"],
+        meetingrooms:[],
         daypasses: [],
         // daypasses: ["Amore Day Pass"],
         Amenities: [
