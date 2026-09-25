@@ -18,7 +18,7 @@ interface onlinebookinguser {
 
 interface Booking {
   _id: string;
-  user: onlinebookinguser;
+  user: onlinebookinguser | null; // null when the referenced user no longer exists
   startTime: string;
   endTime: string;
   companyName: string;
@@ -60,7 +60,16 @@ const OnlineBookings = () => {
       const response = await axiosInstance.get(
         `/api/v1/bookings/admin/getonlinebookings`,
       );
-      setBookings(response.data.combinedBookings);
+      const combinedBookings: Booking[] = response.data.combinedBookings ?? [];
+      const orphaned = combinedBookings.filter((b) => !b.user);
+      if (orphaned.length) {
+        // TEMP: identify bookings whose user reference is missing/deleted
+        console.warn(
+          "Online bookings with missing user:",
+          orphaned.map((b) => b._id),
+        );
+      }
+      setBookings(combinedBookings);
     } catch (error) {
       console.error("Error fetching bookings:", error);
     }
@@ -82,8 +91,8 @@ const OnlineBookings = () => {
     }
   };
 
-  function parseCustomDate(dateStr: string): Date {
-    const [day, month, year] = dateStr.split("/").map(Number);
+  function parseCustomDate(dateStr?: string): Date {
+    const [day, month, year] = (dateStr ?? "").split("/").map(Number);
     return new Date(year, month - 1, day); // JS months are 0-indexed
   }
   const today = new Date();
@@ -311,7 +320,7 @@ const OnlineBookings = () => {
                 {currentBookings.map((booking) => (
                   <tr key={booking._id}>
                     <td className="py-4 px-6 border-b">
-                      {booking.user.username}
+                      {booking.user?.username ?? "Unknown user"}
                     </td>
                     <td className="py-4 px-6 border-b">
                       {booking.companyName}
@@ -326,10 +335,10 @@ const OnlineBookings = () => {
                     <td className="py-4 px-6 border-b">{booking.endTime}</td>
                     <td
                       className={`py-4 px-6 border-b ${
-                        booking.user.kyc ? "text-green-700" : "text-red-700"
+                        booking.user?.kyc ? "text-green-700" : "text-red-700"
                       }`}
                     >
-                      {booking.user.kyc ? "Verified" : "Pending"}
+                      {booking.user?.kyc ? "Verified" : "Pending"}
                     </td>
                   </tr>
                 ))}
